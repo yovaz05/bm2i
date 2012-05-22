@@ -1,0 +1,16 @@
+#Wed Aug 06 19:35:32 BST 2008
+action.package=com.bm2i.action
+action.sources=/bm2i/src/hot
+eclipse.preferences.version=1
+model.package=com.bm2i.model
+model.sources=/bm2i/src/main
+seam.ejb.project=bm2i
+seam.project.connection.profile=
+seam.project.deployment.type=ear
+seam.project.settings.version=1.1
+seam.project.web.root.folder=/bm2i/view
+seam.runtime.name=
+seam.test.creating=true
+seam.test.project=bm2i
+test.package=com.bm2i.test
+test.sources=/bm2i/src/test
