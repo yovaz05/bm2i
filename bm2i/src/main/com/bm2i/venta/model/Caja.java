@@ -34,7 +34,7 @@ public class Caja {
 	@ManyToOne
 	private Sucursal sucursal;
 
-	@OneToMany(mappedBy = "sucursal", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "caja", cascade = CascadeType.ALL)
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<CajaPermiso> permisos;
 
