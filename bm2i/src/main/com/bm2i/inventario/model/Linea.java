@@ -1,5 +1,6 @@
 package com.bm2i.inventario.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,15 +18,18 @@ import javax.persistence.TableGenerator;
 @TableGenerator(name = "LineaGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "Linea", initialValue = 1, allocationSize = 1)
 public class Linea {
 
-	private String codigo;
-
-	private String detalle;
-
 	@Id
 	@GeneratedValue(generator = "LineaGenerator", strategy = GenerationType.TABLE)
 	private Long id;
 
+	@Column(length = 30)
 	private String nombre;
+
+	@Column(length = 30)
+	private String codigo;
+
+	@Column(length = 100)
+	private String detalle;
 
 	public Linea() {
 
@@ -33,5 +37,37 @@ public class Linea {
 
 	public void finalize() throws Throwable {
 
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getDetalle() {
+		return detalle;
+	}
+
+	public void setDetalle(String detalle) {
+		this.detalle = detalle;
 	}
 }// end Linea
