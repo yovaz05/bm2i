@@ -1,0 +1,147 @@
+package com.bm2i.comun.model;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import javax.persistence.TableGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Cascade;
+
+import com.bm2i.compra.model.ComprobanteCompra;
+import com.bm2i.venta.model.ComprobanteVenta;
+
+/**
+ * @author richard
+ * @version 1.0
+ * @created 23-May-2012 10:53:39
+ */
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@TableGenerator(name = "ResidentGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "Resident", initialValue = 1, allocationSize = 1)
+public abstract class Resident {
+
+	@Id
+	@GeneratedValue(generator = "ResidentGenerator", strategy = GenerationType.TABLE)
+	private Long id;
+
+	@Enumerated(EnumType.STRING)
+	@Column(length = 15)
+	private TipoIdentificacion tipoIdentificacion;
+
+	@Column(length = 15)
+	private String numeroIdentificacion;
+
+	@Column(length = 50)
+	private String nombre;
+
+	@Column(length = 50)
+	private String email;
+
+	@Temporal(TemporalType.DATE)
+	private Date fechaRegistro;
+
+	@OneToMany(mappedBy = "resident", cascade = CascadeType.ALL)
+	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	private List<ComprobanteVenta> comprobantesVenta;
+
+	@OneToMany(mappedBy = "resident", cascade = CascadeType.ALL)
+	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	private List<Direccion> direcciones;
+
+	@OneToMany(mappedBy = "preveedor", cascade = CascadeType.ALL)
+	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	private List<ComprobanteCompra> comprobantesCompra;
+
+	public Resident() {
+
+	}
+
+	public void finalize() throws Throwable {
+
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public TipoIdentificacion getTipoIdentificacion() {
+		return tipoIdentificacion;
+	}
+
+	public void setTipoIdentificacion(TipoIdentificacion tipoIdentificacion) {
+		this.tipoIdentificacion = tipoIdentificacion;
+	}
+
+	public String getNumeroIdentificacion() {
+		return numeroIdentificacion;
+	}
+
+	public void setNumeroIdentificacion(String numeroIdentificacion) {
+		this.numeroIdentificacion = numeroIdentificacion;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	public List<ComprobanteVenta> getComprobantesVenta() {
+		return comprobantesVenta;
+	}
+
+	public void setComprobantesVenta(List<ComprobanteVenta> comprobantesVenta) {
+		this.comprobantesVenta = comprobantesVenta;
+	}
+
+	public List<Direccion> getDirecciones() {
+		return direcciones;
+	}
+
+	public void setDirecciones(List<Direccion> direcciones) {
+		this.direcciones = direcciones;
+	}
+
+	public List<ComprobanteCompra> getComprobantesCompra() {
+		return comprobantesCompra;
+	}
+
+	public void setComprobantesCompra(List<ComprobanteCompra> comprobantesCompra) {
+		this.comprobantesCompra = comprobantesCompra;
+	}
+}// end Resident
