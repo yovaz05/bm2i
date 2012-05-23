@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -29,7 +31,8 @@ import com.bm2i.venta.model.ComprobanteVenta;
  * @created 23-May-2012 10:53:39
  */
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="residentType", discriminatorType=DiscriminatorType.STRING, length=1)
 @TableGenerator(name = "ResidentGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "Resident", initialValue = 1, allocationSize = 1)
 public abstract class Resident {
 

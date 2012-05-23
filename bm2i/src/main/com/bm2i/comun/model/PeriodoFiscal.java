@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,6 +20,9 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @TableGenerator(name = "PeriodoFiscalGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "PeriodoFiscal", initialValue = 1, allocationSize = 1)
+@NamedQueries({
+		@NamedQuery(name = "PeriodoFiscal.findAll", query = "select o from PeriodoFiscal o order by o.fechaInicio"),
+		@NamedQuery(name = "PeriodoFiscal.findCurrent", query = "select o from PeriodoFiscal o where :fActual >= o.fechaInicio and :fActual <= o.fechaFin order by o.fechaInicio") })
 public class PeriodoFiscal {
 
 	@Id

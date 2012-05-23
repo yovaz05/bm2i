@@ -68,7 +68,7 @@ public class AuthenticatorBean implements Authenticator {
 				Persona persona = (Persona) query.getSingleResult();
 				userSession.setUsuario(user);
 				userSession.setPersona(persona);
-				initializeCurrentDiaTrabajo(persona);
+				//initializeCurrentDiaTrabajo(persona);
 				return true;
 			} else {
 				return false;

@@ -6,6 +6,8 @@ package com.bm2i.comun.model;
  * @created 23-May-2012 10:53:38
  */
 public enum EstadoCivil {
+	
+	SOLTERO,
 
 	DIVORCIADO,
 
@@ -14,4 +16,5 @@ public enum EstadoCivil {
 	CASADO,
 
 	VIUDO
+
 }
