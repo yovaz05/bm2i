@@ -1,0 +1,125 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:form id="action" styleClass="edit">
+
+
+			<h:outputText styleClass="formTitle"
+				value="#{actionHome.managed ? messages['common.edit'] : messages['common.create']} #{messages['action.tittle']}" />
+
+			<rich:panel>
+				<f:facet name="header">Acciones</f:facet>
+
+				<s:decorate id="nameField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['action.name']}</ui:define>
+					<h:inputText id="name" required="true"
+						value="#{actionHome.instance.name}">
+						<a:support event="onblur" reRender="nameField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
+				<s:decorate id="urlField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['action.url']}</ui:define>
+					<h:inputText id="url" required="true"
+						value="#{actionHome.instance.url}">
+						<a:support event="onblur" reRender="urlField" bypassUpdates="true"
+							ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
+				<s:decorate id="priorityField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['action.priority']}</ui:define>
+					<h:inputText id="name" required="true"
+						value="#{actionHome.instance.priority}">
+						<a:support event="onblur" reRender="priorityField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
+				<div style="clear: both">
+					<span class="required">*</span>
+					#{messages['common.requiredFields']}
+				</div>
+
+			</rich:panel>
+
+			<rich:tabPanel id="usersChildren">
+				<rich:tab label="#{messages['permissions.tittle']}">
+
+					<h:panelGrid width="100%" id="pnlAddPermission"
+						style="FONT-SIZE: xx-small;">
+						<s:decorate template="../layout/edit.xhtml">
+
+							<ui:define name="label">#{messages['actions']}:</ui:define>
+							<h:inputText id="value" label="#{messages['criteria']}"
+								styleClass="uppercase" size="100">
+								<a:support event="onblur" ajaxSingle="true" />
+							</h:inputText>
+
+							<a:region renderRegionOnly="true">
+								<rich:suggestionbox for="value"
+									suggestionAction="#{actionHome.searchActionByName}"
+									var="actionItem" height="150" width="250" ajaxSingle="true">
+									<f:facet name="nothingLabel">
+										<h:outputText value="#{messages['user.nothingUsers']}" />
+									</f:facet>
+									<a:support event="onselect" reRender="permissionsTable"
+										action="#{actionHome.addAction(actionItem)}" />
+									<h:column>
+										<h:outputText
+											value=" #{actionItem.priority} #{actionItem.name}" />
+									</h:column>
+								</rich:suggestionbox>
+							</a:region>
+						</s:decorate>
+					</h:panelGrid>
+					<rich:dataTable value="#{actionHome.instance.actions}" var="_p"
+						rowClasses="rvgRowOne,rvgRowTwo" id="permissionsTable">
+						<rich:column>
+							<f:facet name="header">#{messages['user.action']}</f:facet>
+							<h:outputText value="#{_p.name}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">#{messages['user.priority']}</f:facet>
+							<h:outputText value="#{_p.priority}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">#{messages['action']}</f:facet>
+							<a:commandLink value="#{messages['remove']}"
+								action="#{actionHome.removeAction(_p)}"
+								reRender="permissionsTable" ajaxSingle="true" />
+						</rich:column>
+					</rich:dataTable>
+				</rich:tab>
+			</rich:tabPanel>
+			<div class="actionButtons">
+
+				<h:commandButton id="save" value="#{messages['common.save']}"
+					action="#{actionHome.persist}" disabled="#{!actionHome.wired}"
+					rendered="#{!actionHome.managed}" />
+
+				<h:commandButton id="update" value="#{messages['common.save']}"
+					action="#{actionHome.update}" rendered="#{actionHome.managed}" />
+
+				<h:commandButton id="delete" value="#{messages['common.delete']}"
+					action="#{actionHome.remove}" immediate="true"
+					rendered="#{actionHome.managed}" />
+
+				<s:button id="cancelEdit" value="#{messages['common.cancel']}"
+					propagation="end" view="/comun/ActionList.xhtml" />
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

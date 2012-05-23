@@ -1,0 +1,142 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:form id="usuario" styleClass="edit">
+
+			<h:outputText styleClass="formTitle"
+				value="#{messages['usuario.editFormTitle']}" />
+
+			<rich:panel id="panelpersona">
+				<f:facet name="header">#{messages['persona']}</f:facet>
+				<s:decorate id="buscarpersonaField" template="../layout/edit.xhtml">
+					<ui:define name="label">Buscar persona:</ui:define>
+					<h:inputText id="buscarpersona" size="55"
+						value="#{usuarioHome.persona.numeroIdentificacion}">
+						<a:support event="onblur" reRender="buscarpersonaField"
+							ajaxSingle="true" />
+					</h:inputText>
+
+					<rich:suggestionbox for="buscarpersona" minChars="3"
+						suggestionAction="#{usuarioHome.findPersona}" width="375"
+						var="_persona">
+						<h:column>
+							<h:outputText value="#{_persona.tipoIdentificacion}" />
+						</h:column>
+						<h:column>
+							<h:outputText value="#{_persona.numeroIdentificacion}" />
+						</h:column>
+						<h:column>
+							<h:outputText value="#{_persona.nombres} #{_persona.apellidos}" />
+						</h:column>
+						<a:support event="onselect"
+							action="#{usuarioHome.cargarPersona(_persona)}"
+							reRender="panelpersona, ttiField, numerotidField"
+							ajaxSingle="true" />
+						<a:support event="onobjectchange"
+							action="#{usuarioHome.cargarPersona(_persona)}"
+							reRender="panelpersona, ttiField, numerotidField"
+							ajaxSingle="true" />
+					</rich:suggestionbox>
+
+				</s:decorate>
+
+				<s:decorate id="ttiField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['persona.identificationType']}</ui:define>
+					<h:inputText id="identificationType" size="15" maxlength="15"
+						value="#{usuarioHome.instance.persona.tipoIdentificacion}"
+						disabled="true">
+					</h:inputText>
+				</s:decorate>
+
+				<s:decorate id="numerotidField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['persona.numeroTid']}</ui:define>
+					<h:inputText id="numerotid" size="15" maxlength="15"
+						value="#{usuarioHome.instance.persona.numeroIdentificacion}"
+						disabled="true">
+					</h:inputText>
+				</s:decorate>
+
+				<s:decorate id="nombresField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['persona.nombre']}</ui:define>
+					<h:inputText id="nombres" size="30" maxlength="30"
+						value="#{usuarioHome.instance.persona.nombres} #{usuarioHome.instance.persona.apellidos}"
+						style="text-transform: uppercase" required="true" disabled="true">
+					</h:inputText>
+				</s:decorate>
+
+				<s:decorate id="fechaIngresoField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['persona.fechaIngreso']}</ui:define>
+					<rich:calendar id="fechaIngreso"
+						value="#{usuarioHome.instance.persona.fechaRegistro}"
+						datePattern="#{messages['common.datePattern']}" disabled="true" />
+				</s:decorate>
+
+				<div style="clear: both">
+					<span class="required"></span>
+				</div>
+
+			</rich:panel>
+
+			<rich:panel>
+				<f:facet name="header">#{messages['usuario']}</f:facet>
+
+				<s:decorate id="loginField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['usuario.login']}</ui:define>
+					<h:inputText id="login" required="true" size="30" maxlength="30"
+						value="#{usuarioHome.instance.name}">
+						<a:support event="onblur" reRender="loginField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
+				<s:decorate id="passwaordField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['usuario.password']}</ui:define>
+					<h:inputText id="passwaord" required="true" size="30"
+						maxlength="30" value="#{usuarioHome.instance.password}">
+						<a:support event="onblur" reRender="passwaordField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
+				<!-- s:decorate id="isActiveField" template="../layout/edit.xhtml">
+					<ui:define name="label"># { messages['usuario.isActive']}</ui:define>
+					<h:selectBooleanCheckbox id="isActive"
+						value="# { usuarioHome.instance.isActive}" />
+				</s:decorate-->
+
+				<div style="clear: both">
+					<span class="required">*</span>
+					#{messages['common.requiredFields']}
+				</div>
+
+			</rich:panel>
+
+			<div class="actionButtons">
+
+				<h:commandButton id="save" value="#{messages['common.save']}"
+					action="#{usuarioHome.persist}" disabled="#{!usuarioHome.wired}"
+					rendered="#{!usuarioHome.managed}" />
+
+				<h:commandButton id="update" value="#{messages['common.save']}"
+					action="#{usuarioHome.update}" rendered="#{usuarioHome.managed}" />
+
+				<s:button id="cancelEdit" value="#{messages['common.cancel']}"
+					propagation="end" view="/comun/UsuarioList.xhtml" />
+
+			</div>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

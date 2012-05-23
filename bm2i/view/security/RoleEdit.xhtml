@@ -1,0 +1,159 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:form id="role" styleClass="edit">
+
+			<h:outputText styleClass="formTitle"
+				value="#{roleHome.managed ? messages['common.edit'] : messages['common.create']} #{messages['role.tittle']}" />
+
+			<rich:panel>
+				<s:decorate id="nameField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['role.name']}</ui:define>
+					<h:inputText id="name" required="true"
+						value="#{roleHome.instance.name}" />
+				</s:decorate>
+
+				<s:decorate id="descriptionField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['role.description']}</ui:define>
+					<h:inputText id="description"
+						value="#{roleHome.instance.description}" />
+				</s:decorate>
+
+				<div style="clear: both">
+					<span class="required">*</span>
+					#{messages['common.requiredFields']}
+				</div>
+
+			</rich:panel>
+			<rich:tabPanel id="usersChildren">
+
+				<rich:tab label="#{messages['users.tittle']}">
+
+					<h:outputText value="#{messages['users.noResults']}"
+						rendered="#{empty roleHome.instance.users}" />
+
+					<h:panelGrid width="100%" id="pnlAddUser"
+						style="FONT-SIZE: xx-small;">
+						<s:decorate template="../layout/display.xhtml">
+
+							<ui:define name="label">#{messages['users.add']}:</ui:define>
+							<h:inputText id="value" label="#{messages['criteria']}"
+								styleClass="uppercase" size="100">
+							</h:inputText>
+
+							<rich:suggestionbox for="value"
+								suggestionAction="#{roleHome.searchUserByNameOrIdentifierOrResidentName}"
+								var="userItem" height="150" width="250">
+								<f:facet name="nothingLabel">
+									<h:outputText value="#{messages['user.nothingUsers']}" />
+								</f:facet>
+								<a:support event="onselect" reRender="usersChildren"
+									action="#{roleHome.addUser(userItem)}" />
+								<h:column>
+									<h:outputText
+										value=" #{userItem.name} #{userItem.person.identificationNumber} #{userItem.person.name}" />
+								</h:column>
+							</rich:suggestionbox>
+						</s:decorate>
+					</h:panelGrid>
+
+					<rich:dataTable value="#{roleHome.instance.users}" var="_user"
+						rendered="#{not empty roleHome.instance.users}"
+						rowClasses="rvgRowOne,rvgRowTwo" id="usersTable">
+						<rich:column >
+							<f:facet name="header">#{messages['user.name']}</f:facet>
+							<h:outputText value="#{_user.name}" />
+						</rich:column>
+						<rich:column >
+							<f:facet name="header">#{messages['person.identificationNumber']}</f:facet>
+							<h:outputText value="#{_user.persona.numeroIdentificacion}" />
+						</rich:column>
+						<rich:column sortBy="#{_user.person.name}">
+							<f:facet name="header">#{messages['person.name']}</f:facet>
+							<h:outputText value="#{_user.persona.nombre}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">#{messages['action']}</f:facet>
+							<a:commandLink value="#{messages['remove']}"
+								action="#{roleHome.removeUser(_user)}" reRender="usersChildren"
+								ajaxSingle="true" />
+						</rich:column>
+					</rich:dataTable>
+				</rich:tab>
+				<rich:tab label="#{messages['permissions.tittle']}">
+
+					<h:panelGrid width="100%" id="pnlAddPermission"
+						style="FONT-SIZE: xx-small;">
+						<s:decorate template="../layout/display.xhtml">
+
+							<ui:define name="label">#{messages['users.permission']}:</ui:define>
+							<h:inputText id="value" label="#{messages['criteria']}"
+								styleClass="uppercase" size="100">
+							</h:inputText>
+
+							<rich:suggestionbox for="value"
+								suggestionAction="#{roleHome.searchActionByName}"
+								var="actionItem" height="150" width="250">
+								<f:facet name="nothingLabel">
+									<h:outputText value="#{messages['user.nothingUsers']}" />
+								</f:facet>
+								<a:support event="onselect" reRender="usersChildren"
+									action="#{roleHome.addAction(actionItem)}" />
+								<h:column>
+									<h:outputText
+										value=" #{actionItem.priority} #{actionItem.name}" />
+								</h:column>
+							</rich:suggestionbox>
+						</s:decorate>
+					</h:panelGrid>
+					<rich:dataTable value="#{roleHome.instance.permissions}" var="_p"
+						rowClasses="rvgRowOne,rvgRowTwo" id="permissionsTable">
+						<rich:column>
+							<f:facet name="header">#{messages['user.action']}</f:facet>
+							<h:outputText value="#{_p.action.name}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">#{messages['user.priority']}</f:facet>
+							<h:outputText value="#{_p.action.priority}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">#{messages['action']}</f:facet>
+							<a:commandLink value="#{messages['remove']}"
+								action="#{roleHome.removeAction(_p)}"
+								reRender="permissionsTable" ajaxSingle="true" />
+						</rich:column>
+					</rich:dataTable>
+				</rich:tab>
+			</rich:tabPanel>
+			<div class="actionButtons">
+
+				<h:commandButton id="save" value="#{messages['common.save']}"
+					action="#{roleHome.persist}" disabled="#{!roleHome.wired}"
+					rendered="#{!roleHome.managed}" />
+
+				<h:commandButton id="update" value="#{messages['common.save']}"
+					action="#{roleHome.update}" rendered="#{roleHome.managed}" />
+
+				<h:commandButton id="delete" value="#{messages['common.delete']}"
+					action="#{roleHome.remove}" immediate="true"
+					rendered="#{roleHome.managed}" />
+
+				<s:button id="cancelEdit" value="#{messages['common.cancel']}"
+					propagation="end" view="/comun/RoleList.xhtml" />
+
+			</div>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
