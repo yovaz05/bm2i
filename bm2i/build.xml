@@ -224,6 +224,7 @@
         <copy todir="${war.dir}/WEB-INF/classes">
             <fileset dir="${basedir}/resources">
                 <include name="messages*.properties"/>
+            	<include name="bm2i*.properties"/>
                 <include name="*.skin.properties" if="richfaces.present"/>
                 <include name="*_theme.properties"/>
                 <include name="**/*.xcss" if="richfaces.present"/>
