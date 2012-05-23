@@ -3,6 +3,7 @@ html {
 }
 
 body {
+	font-family: Arial;
 	font-size: 12px;
 	margin: 0px;
 }
@@ -16,13 +17,13 @@ h1 {
 	margin-top: 0;
 }
 
-input[type=submit], input[type=button] {
+input[type=submit],input[type=button] {
 	font-size: 11px;
 	margin: 5px 5px 5px 0;
 	cursor: pointer;
 }
 
-input[type=text], input[type=password], textarea {
+input[type=text],input[type=password],textarea {
 	font-size: 12px;
 	padding-left: 1px;
 }
@@ -31,7 +32,11 @@ select {
 	font-size: 13px;
 }
 
-.tableControl, .actionButtons {
+.headerTitle {
+	width: 100%;
+}
+
+.tableControl,.actionButtons {
 	width: 100%;
 }
 
@@ -56,6 +61,7 @@ select {
 .body {
 	padding: 30px;
 }
+
 .message {
 	padding: 5px;
 	list-style: none;
@@ -91,14 +97,62 @@ select {
 	font-weight: bold;
 	width: 115px;
 	float: left;
-	padding: 5px;
-	margin-top: 3px;
+	padding: 1px;
+	margin-top: 1px;
 	clear: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
 }
 
 .value {
 	float: left;
-	padding: 5px;
+	padding: 1px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.right-name {
+	float: right;
+	vertical-align: top;
+	font-weight: bold;
+	width: 115px;
+	float: left;
+	padding: 1px;
+	margin-top: 1px;
+	clear: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.vertical-name {
+	text-align: left;
+	vertical-align: top;
+	font-weight: bold;
+	font-size: x-small;
+	/*width: 115px;*/
+	float: left;
+	/*padding: 5px;*/
+	margin-top: 5px;
+	clear: both;
+}
+
+.vertical-value {
+	clear: both;
+	float: left;
+	/*padding: 5px;*/
+	padding-top: 0px;
+	margin-top: 0px;
+	margin-bottom: 3px;
+	vertical-align: top;
+}
+
+.vertical-error {
+	clear: both;
+	float: left;
+	padding-top: 0px;
+	margin-top: 0px;
+	margin-bottom: 3px;
+	vertical-align: top;
 }
 
 .error {
@@ -115,7 +169,7 @@ img.errors {
 	padding-right: 5px;
 }
 
-.errors input, .errors textarea, .errors select {
+.errors input,.errors textarea,.errors select {
 	border: 1px solid red !important;
 }
 
@@ -126,7 +180,7 @@ img.errors {
 
 .rich-stglpanel-body {
 	overflow: auto;
-} 
+}
 
 /* the specificity here is necessary to override the defaults */
 /*
@@ -134,13 +188,13 @@ img.errors {
 .rich-stglpanel .rich-stglpanel-header {
 	padding: 2px 3px;
 }*/
-
-.rich-panel input[type=submit], .rich-panel input[type=button],
-.rich-tabpanel input[type=submit], .rich-tabpanel input[type=button] {
+.rich-panel input[type=submit],.rich-panel input[type=button],.rich-tabpanel input[type=submit],.rich-tabpanel input[type=button]
+	{
 	margin-bottom: 0;
 }
 
-.tableControl input[type=submit], .tableControl input[type=button], .tableControl select {
+.tableControl input[type=submit],.tableControl input[type=button],.tableControl select
+	{
 	margin: 5px 0 5px 5px;
 }
 
@@ -164,7 +218,7 @@ img.errors {
 	text-decoration: none;
 }
 
-.rich-toolbar-item a:hover, .rich-ddmenu-label-select {
+.rich-toolbar-item a:hover,.rich-ddmenu-label-select {
 	text-decoration: underline;
 }
 
@@ -206,13 +260,127 @@ td.action a {
 }
 
 table.radio {
-   border: 0;
+	border: 0;
 }
 
 table.radio td {
-   padding: 0 2px;
+	padding: 0 2px;
 }
 
 table.radio input[type=radio] {
-   vertical-align: bottom;
+	vertical-align: bottom;
+}
+
+.formTitle {
+	font-size: 18px;
+	font-weight: bold;
+	font-family: Arial;
+}
+
+.separatorTitle {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Arial;
+	color: blue;
+}
+
+.cadasterCodeLabel {
+	font-size: 16px;
+	font-weight: bold;
+	font-family: Arial;
+}
+
+.rightAligned {
+	text-align: right;
+}
+
+.centerAligned {
+	text-align: center;
+}
+
+.topAligned {
+	vertical-align: top;
+}
+
+.half {
+	vertical-align: top;
+	width: 50%;
+	height: 100%;
+}
+
+.streetColumnWidth {
+	width: 50px;
+}
+
+.labelBold {
+	vertical-align: top;
+	font-weight: bold;
+	padding: 5px;
+	margin-top: 3px;
+}
+
+.number {
+	vertical-align: center;
+	text-align: right;
+	padding: 5px;
+}
+
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+.center {
+	text-align: center;
+}
+
+.tableCellFont {
+	font-size: 14px;
+}
+
+.tableTitle,.tabTitle {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.entryTitle {
+	font-size: 16px;
+	font-weight: bold;
+	color: #000000;
+	background-color: #72ff00;
+}
+
+.groupingTitle {
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+	background-color: #FFFF00;
+}
+
+.paymentAgreementTitle {
+	font-size: 14px;
+	color: #FFFFFF;
+	background-color: #FF0000;
+}
+
+.normalTitle {
+	font-size: 14px;
+	color: #000000;
+}
+
+.bigFont {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.dividendsColumnWidth {
+	width: 20%;
+	white-space: normal !important;
+}
+
+.redFont {
+	color: red;
 }

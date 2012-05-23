@@ -1,0 +1,48 @@
+<h:panelGrid xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:rich="http://richfaces.org/rich" border="0" width="100%"
+	cellpadding="0" cellspacing="0" bgcolor="#e0ebf4">
+
+	<rich:toolBar rendered="#{userSession.usuario != null}">
+
+		<c:forEach items="#{menuGeneratorAction.rootPermissions}"
+			var="permission">
+			<rich:dropDownMenu showDelay="250" hideDelay="0" submitMode="none">
+				<f:facet name="label">#{permission.action.name}</f:facet>
+				<c:forEach items="#{permission.action.actions}" var="action">
+					<c:choose>
+						<c:when test="#{action.url != null}">
+							<rich:menuItem>
+								<s:link view="#{action.url}" value="#{action.name}"
+									includePageParams="false" propagation="none">
+									<c:when test="#{action.icon != null}">
+										<f:param name="diaTrabajoId" value="#{userSession.diaTrabajo.id}" />
+									</c:when>
+								</s:link>
+							</rich:menuItem>
+						</c:when>
+						<c:when test="#{action.url == null}">
+							<rich:menuGroup value="#{action.name}">
+								<c:forEach items="#{action.actions}" var="_action">
+									<rich:menuItem>
+										<s:link view="#{_action.url}" value="#{_action.name}"
+											includePageParams="false" propagation="none" />
+										<c:when test="#{action.icon != null}">
+											<f:param name="diaTrabajoId" value="#{userSession.diaTrabajo.id}" />
+										</c:when>
+									</rich:menuItem>
+								</c:forEach>
+							</rich:menuGroup>
+						</c:when>
+					</c:choose>
+				</c:forEach>
+			</rich:dropDownMenu>
+		</c:forEach>
+
+	</rich:toolBar>
+</h:panelGrid>
