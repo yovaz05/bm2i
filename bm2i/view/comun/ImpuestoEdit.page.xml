@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd"
+      no-conversation-view-id="/ImpuestoList.xhtml"
+      login-required="true">
+
+   <begin-conversation join="true" flush-mode="MANUAL"/>
+
+   <action execute="#{impuestoHome.wire}"/>
+
+   <param name="impuestoFrom"/>
+   <param name="impuestoId" value="#{impuestoHome.impuestoId}"/>
+   <param name="tipoComprobanteFrom"/>
+   <param name="tipoComprobanteId" value="#{tipoComprobanteHome.tipoComprobanteId}"/>
+
+
+
+   <navigation from-action="#{impuestoHome.persist}">
+      <rule if-outcome="persisted">
+         <end-conversation/>
+         <redirect view-id="/Impuesto.xhtml"/>
+      </rule>
+   </navigation>
+
+   <navigation from-action="#{impuestoHome.update}">
+      <rule if-outcome="updated">
+         <end-conversation/>
+         <redirect view-id="/Impuesto.xhtml"/>
+      </rule>
+   </navigation>
+
+   <navigation from-action="#{impuestoHome.remove}">
+      <rule if-outcome="removed">
+         <end-conversation/>
+         <redirect view-id="/ImpuestoList.xhtml"/>
+      </rule>
+   </navigation>
+
+</page>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd">
+
+   <param name="firstResult" value="#{direccionList.firstResult}"/>
+   <param name="sort" value="#{direccionList.orderColumn}"/>
+   <param name="dir" value="#{direccionList.orderDirection}"/>
+   <param name="logic" value="#{direccionList.restrictionLogicOperator}"/>
+
+   <param name="from"/>
+   <param name="calle" value="#{direccionList.direccion.calle}"/>
+   <param name="cuidad" value="#{direccionList.direccion.cuidad}"/>
+   <param name="numero" value="#{direccionList.direccion.numero}"/>
+   <param name="pais" value="#{direccionList.direccion.pais}"/>
+   <param name="telefonoCedular" value="#{direccionList.direccion.telefonoCedular}"/>
+   <param name="telefonoFijo" value="#{direccionList.direccion.telefonoFijo}"/>
+
+</page>

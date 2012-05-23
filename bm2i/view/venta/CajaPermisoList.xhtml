@@ -1,0 +1,201 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="cajaPermisoSearch" styleClass="edit">
+
+        <rich:simpleTogglePanel label="CajaPermiso Search Filter" switchType="ajax">
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Match</ui:define>
+                <h:selectOneRadio id="logic" value="#{cajaPermisoList.restrictionLogicOperator}" styleClass="radio">
+                    <f:selectItem itemLabel="All" itemValue="and"/>
+                    <f:selectItem itemLabel="Any" itemValue="or"/>
+                </h:selectOneRadio>
+            </s:decorate>
+
+        </rich:simpleTogglePanel>
+
+        <div class="actionButtons">
+            <h:commandButton id="search" value="Search" action="/CajaPermisoList.xhtml"/>
+            <s:button id="reset" value="Reset" includePageParams="false"/>
+        </div>
+
+    </h:form>
+
+    <rich:panel>
+        <f:facet name="header">CajaPermiso Search Results (#{empty cajaPermisoList.resultList ? 0 : (cajaPermisoList.paginated ? cajaPermisoList.resultCount : cajaPermisoList.resultList.size)})</f:facet>
+    <div class="results" id="cajaPermisoList">
+
+    <h:outputText value="The cajaPermiso search returned no results."
+               rendered="#{empty cajaPermisoList.resultList}"/>
+
+    <rich:dataTable id="cajaPermisoList"
+                var="_cajaPermiso"
+              value="#{cajaPermisoList.resultList}"
+           rendered="#{not empty cajaPermisoList.resultList}">
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{cajaPermisoList}"/>
+                    <ui:param name="propertyLabel" value="Id"/>
+                    <ui:param name="propertyPath" value="cajaPermiso.id"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_cajaPermiso.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{cajaPermisoList}"/>
+                    <ui:param name="propertyLabel" value="Balance inicial"/>
+                    <ui:param name="propertyPath" value="cajaPermiso.balanceInicial"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_cajaPermiso.balanceInicial}">
+                <f:convertNumber/>
+            </h:outputText>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{cajaPermisoList}"/>
+                    <ui:param name="propertyLabel" value="Caja id"/>
+                    <ui:param name="propertyPath" value="cajaPermiso.caja.id"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_cajaPermiso.caja.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{cajaPermisoList}"/>
+                    <ui:param name="propertyLabel" value="Cajero id"/>
+                    <ui:param name="propertyPath" value="cajaPermiso.cajero.id"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_cajaPermiso.cajero.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{cajaPermisoList}"/>
+                    <ui:param name="propertyLabel" value="Closing time"/>
+                    <ui:param name="propertyPath" value="cajaPermiso.closingTime"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_cajaPermiso.closingTime}">
+                <s:convertDateTime type="date" dateStyle="short"/>
+            </h:outputText>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{cajaPermisoList}"/>
+                    <ui:param name="propertyLabel" value="Dia trabajo id"/>
+                    <ui:param name="propertyPath" value="cajaPermiso.diaTrabajo.id"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_cajaPermiso.diaTrabajo.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{cajaPermisoList}"/>
+                    <ui:param name="propertyLabel" value="Is active"/>
+                    <ui:param name="propertyPath" value="cajaPermiso.isActive"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_cajaPermiso.isActive}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{cajaPermisoList}"/>
+                    <ui:param name="propertyLabel" value="Opening time"/>
+                    <ui:param name="propertyPath" value="cajaPermiso.openingTime"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_cajaPermiso.openingTime}">
+                <s:convertDateTime type="date" dateStyle="short"/>
+            </h:outputText>
+        </h:column>
+        <rich:column styleClass="action">
+            <f:facet name="header">Action</f:facet>
+            <s:link view="/#{empty from ? 'CajaPermiso' : from}.xhtml"
+                   value="#{empty from ? 'View' : 'Select'}"
+             propagation="#{empty from ? 'none' : 'default'}"
+                      id="cajaPermisoViewId">
+                <f:param name="cajaPermisoId"
+                        value="#{_cajaPermiso.id}"/>
+            </s:link>
+            #{' '}
+            <s:link view="/CajaPermisoEdit.xhtml"
+                   value="Edit"
+             propagation="none"
+                      id="cajaPermisoEdit"
+                rendered="#{empty from}">
+                <f:param name="cajaPermisoId"
+                        value="#{_cajaPermiso.id}"/>
+            </s:link>
+        </rich:column>
+    </rich:dataTable>
+
+    </div>
+    </rich:panel>
+
+    <div class="tableControl">
+
+        <s:link view="/CajaPermisoList.xhtml"
+            rendered="#{cajaPermisoList.previousExists}"
+               value="#{messages.left}#{messages.left} First Page"
+                  id="firstPage">
+          <f:param name="firstResult" value="0"/>
+        </s:link>
+
+        <s:link view="/CajaPermisoList.xhtml"
+            rendered="#{cajaPermisoList.previousExists}"
+               value="#{messages.left} Previous Page"
+                  id="previousPage">
+            <f:param name="firstResult"
+                    value="#{cajaPermisoList.previousFirstResult}"/>
+        </s:link>
+
+        <s:link view="/CajaPermisoList.xhtml"
+            rendered="#{cajaPermisoList.nextExists}"
+               value="Next Page #{messages.right}"
+                  id="nextPage">
+            <f:param name="firstResult"
+                    value="#{cajaPermisoList.nextFirstResult}"/>
+        </s:link>
+
+        <s:link view="/CajaPermisoList.xhtml"
+            rendered="#{cajaPermisoList.nextExists}"
+               value="Last Page #{messages.right}#{messages.right}"
+                  id="lastPage">
+            <f:param name="firstResult"
+                    value="#{cajaPermisoList.lastFirstResult}"/>
+        </s:link>
+
+    </div>
+
+    <s:div styleClass="actionButtons" rendered="#{empty from}">
+        <s:button view="/CajaPermisoEdit.xhtml"
+                    id="create"
+           propagation="none"
+                 value="Create cajaPermiso">
+            <f:param name="cajaPermisoId"/>
+        </s:button>
+    </s:div>
+
+</ui:define>
+
+</ui:composition>

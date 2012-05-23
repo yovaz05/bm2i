@@ -1,0 +1,89 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="entidadLegal" styleClass="edit">
+
+        <rich:panel>
+            <f:facet name="header">#{entidadLegalHome.managed ? 'Edit' : 'Add'} Entidad legal</f:facet>
+
+
+            <s:decorate id="codigoField" template="layout/edit.xhtml">
+                <ui:define name="label">Codigo</ui:define>
+                <h:inputText id="codigo"
+                           size="15"
+                      maxlength="15"
+                          value="#{entidadLegalHome.instance.codigo}">
+                    <a:support event="onblur" reRender="codigoField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="fechaConstitucionField" template="layout/edit.xhtml">
+                <ui:define name="label">Fecha constitucion</ui:define>
+                <rich:calendar id="fechaConstitucion"
+                          value="#{entidadLegalHome.instance.fechaConstitucion}" datePattern="MM/dd/yyyy" />
+            </s:decorate>
+
+
+            <s:decorate id="tipoEntidadLegalField" template="layout/edit.xhtml">
+                <ui:define name="label">Tipo entidad legal</ui:define>
+                <h:inputText id="tipoEntidadLegal"
+                          value="#{entidadLegalHome.instance.tipoEntidadLegal}">
+                    <a:support event="onblur" reRender="tipoEntidadLegalField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+            <div style="clear:both">
+                <span class="required">*</span>
+                required fields
+            </div>
+
+        </rich:panel>
+
+        <div class="actionButtons">
+
+            <h:commandButton id="save"
+                          value="Save"
+                         action="#{entidadLegalHome.persist}"
+                       disabled="#{!entidadLegalHome.wired}"
+                       rendered="#{!entidadLegalHome.managed}"/>
+
+            <h:commandButton id="update"
+                          value="Save"
+                         action="#{entidadLegalHome.update}"
+                       rendered="#{entidadLegalHome.managed}"/>
+
+            <h:commandButton id="delete"
+                          value="Delete"
+                         action="#{entidadLegalHome.remove}"
+                      immediate="true"
+                       rendered="#{entidadLegalHome.managed}"/>
+
+            <s:button id="cancelEdit"
+                   value="Cancel"
+             propagation="end"
+                    view="/EntidadLegal.xhtml"
+                rendered="#{entidadLegalHome.managed}"/>
+
+            <s:button id="cancelAdd"
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty entidadLegalFrom ? 'EntidadLegalList' : entidadLegalFrom}.xhtml"
+                rendered="#{!entidadLegalHome.managed}"/>
+
+        </div>
+    </h:form>
+
+</ui:define>
+
+</ui:composition>

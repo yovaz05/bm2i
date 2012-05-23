@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd">
+
+   <param name="firstResult" value="#{systemParameterList.firstResult}"/>
+   <param name="sort" value="#{systemParameterList.orderColumn}"/>
+   <param name="dir" value="#{systemParameterList.orderDirection}"/>
+   <param name="logic" value="#{systemParameterList.restrictionLogicOperator}"/>
+
+   <param name="from"/>
+   <param name="nombre" value="#{systemParameterList.systemParameter.nombre}"/>
+   <param name="className" value="#{systemParameterList.systemParameter.className}"/>
+   <param name="descripcion" value="#{systemParameterList.systemParameter.descripcion}"/>
+   <param name="valor" value="#{systemParameterList.systemParameter.valor}"/>
+
+</page>

@@ -1,0 +1,133 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="pago" styleClass="edit">
+
+        <rich:panel>
+            <f:facet name="header">#{pagoHome.managed ? 'Edit' : 'Add'} Pago</f:facet>
+
+
+
+            <s:decorate id="cambioField" template="layout/edit.xhtml">
+                <ui:define name="label">Cambio</ui:define>
+                <h:inputText id="cambio"
+                          value="#{pagoHome.instance.cambio}"
+                           size="26">
+                    <a:support event="onblur" reRender="cambioField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="efectivoField" template="layout/edit.xhtml">
+                <ui:define name="label">Efectivo</ui:define>
+                <h:inputText id="efectivo"
+                          value="#{pagoHome.instance.efectivo}"
+                           size="26">
+                    <a:support event="onblur" reRender="efectivoField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+
+            <s:decorate id="totalField" template="layout/edit.xhtml">
+                <ui:define name="label">Total</ui:define>
+                <h:inputText id="total"
+                          value="#{pagoHome.instance.total}"
+                           size="26">
+                    <a:support event="onblur" reRender="totalField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+            <div style="clear:both">
+                <span class="required">*</span>
+                required fields
+            </div>
+
+        </rich:panel>
+
+        <div class="actionButtons">
+
+            <h:commandButton id="save"
+                          value="Save"
+                         action="#{pagoHome.persist}"
+                       disabled="#{!pagoHome.wired}"
+                       rendered="#{!pagoHome.managed}"/>
+
+            <h:commandButton id="update"
+                          value="Save"
+                         action="#{pagoHome.update}"
+                       rendered="#{pagoHome.managed}"/>
+
+            <h:commandButton id="delete"
+                          value="Delete"
+                         action="#{pagoHome.remove}"
+                      immediate="true"
+                       rendered="#{pagoHome.managed}"/>
+
+            <s:button id="cancelEdit"
+                   value="Cancel"
+             propagation="end"
+                    view="/Pago.xhtml"
+                rendered="#{pagoHome.managed}"/>
+
+            <s:button id="cancelAdd"
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty pagoFrom ? 'PagoList' : pagoFrom}.xhtml"
+                rendered="#{!pagoHome.managed}"/>
+
+        </div>
+    </h:form>
+
+<rich:tabPanel switchType="ajax">
+
+    <rich:tab label="Tipo pago">
+    <div class="association" id="tipoPagoParent">
+
+        <h:outputText value="There is no tipoPago associated with this pago."
+                   rendered="#{pagoHome.instance.tipoPago == null}"/>
+
+        <rich:dataTable var="_tipoPago"
+                   value="#{pagoHome.instance.tipoPago}"
+                rendered="#{pagoHome.instance.tipoPago != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="tipoPagoTable">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                <h:outputText value="#{_tipoPago.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Fecha</f:facet>
+                <h:outputText value="#{_tipoPago.fecha}">
+                    <s:convertDateTime type="date" dateStyle="short"/>
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nombre</f:facet>
+                <h:outputText value="#{_tipoPago.nombre}"/>
+            </h:column>
+        </rich:dataTable>
+
+        <div class="actionButtons">
+            <s:button id="#{pagoHome.instance.tipoPago != null ? 'changeParent' : 'selectParent'}" value="#{pagoHome.instance.tipoPago != null ? 'Change' : 'Select'} tipoPago"
+                       view="/TipoPagoList.xhtml">
+                <f:param name="from" value="PagoEdit"/>
+            </s:button>
+        </div>
+
+    </div>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

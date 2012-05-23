@@ -1,0 +1,262 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="articuloSearch" styleClass="edit">
+
+        <rich:simpleTogglePanel label="Articulo Search Filter" switchType="ajax">
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Codigo barra</ui:define>
+                <h:inputText id="codigoBarra" value="#{articuloList.articulo.codigoBarra}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Descripcion</ui:define>
+                <h:inputText id="descripcion" value="#{articuloList.articulo.descripcion}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Nombre</ui:define>
+                <h:inputText id="nombre" value="#{articuloList.articulo.nombre}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Ubicacion</ui:define>
+                <h:inputText id="ubicacion" value="#{articuloList.articulo.ubicacion}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Unidad</ui:define>
+                <h:inputText id="unidad" value="#{articuloList.articulo.unidad}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Match</ui:define>
+                <h:selectOneRadio id="logic" value="#{articuloList.restrictionLogicOperator}" styleClass="radio">
+                    <f:selectItem itemLabel="All" itemValue="and"/>
+                    <f:selectItem itemLabel="Any" itemValue="or"/>
+                </h:selectOneRadio>
+            </s:decorate>
+
+        </rich:simpleTogglePanel>
+
+        <div class="actionButtons">
+            <h:commandButton id="search" value="Search" action="/ArticuloList.xhtml"/>
+            <s:button id="reset" value="Reset" includePageParams="false"/>
+        </div>
+
+    </h:form>
+
+    <rich:panel>
+        <f:facet name="header">Articulo Search Results (#{empty articuloList.resultList ? 0 : (articuloList.paginated ? articuloList.resultCount : articuloList.resultList.size)})</f:facet>
+    <div class="results" id="articuloList">
+
+    <h:outputText value="The articulo search returned no results."
+               rendered="#{empty articuloList.resultList}"/>
+
+    <rich:dataTable id="articuloList"
+                var="_articulo"
+              value="#{articuloList.resultList}"
+           rendered="#{not empty articuloList.resultList}">
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{articuloList}"/>
+                    <ui:param name="propertyLabel" value="Id"/>
+                    <ui:param name="propertyPath" value="articulo.id"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_articulo.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{articuloList}"/>
+                    <ui:param name="propertyLabel" value="Cantidad"/>
+                    <ui:param name="propertyPath" value="articulo.cantidad"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_articulo.cantidad}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{articuloList}"/>
+                    <ui:param name="propertyLabel" value="Codigo barra"/>
+                    <ui:param name="propertyPath" value="articulo.codigoBarra"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_articulo.codigoBarra}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{articuloList}"/>
+                    <ui:param name="propertyLabel" value="Current costo"/>
+                    <ui:param name="propertyPath" value="articulo.currentCosto"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_articulo.currentCosto}">
+                <f:convertNumber/>
+            </h:outputText>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{articuloList}"/>
+                    <ui:param name="propertyLabel" value="Descripcion"/>
+                    <ui:param name="propertyPath" value="articulo.descripcion"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_articulo.descripcion}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{articuloList}"/>
+                    <ui:param name="propertyLabel" value="Existencia max"/>
+                    <ui:param name="propertyPath" value="articulo.existenciaMax"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_articulo.existenciaMax}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{articuloList}"/>
+                    <ui:param name="propertyLabel" value="Existencia min"/>
+                    <ui:param name="propertyPath" value="articulo.existenciaMin"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_articulo.existenciaMin}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{articuloList}"/>
+                    <ui:param name="propertyLabel" value="Linea id"/>
+                    <ui:param name="propertyPath" value="articulo.linea.id"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_articulo.linea.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{articuloList}"/>
+                    <ui:param name="propertyLabel" value="Nombre"/>
+                    <ui:param name="propertyPath" value="articulo.nombre"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_articulo.nombre}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{articuloList}"/>
+                    <ui:param name="propertyLabel" value="Tipo articulo"/>
+                    <ui:param name="propertyPath" value="articulo.tipoArticulo"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_articulo.tipoArticulo}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{articuloList}"/>
+                    <ui:param name="propertyLabel" value="Ubicacion"/>
+                    <ui:param name="propertyPath" value="articulo.ubicacion"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_articulo.ubicacion}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{articuloList}"/>
+                    <ui:param name="propertyLabel" value="Unidad"/>
+                    <ui:param name="propertyPath" value="articulo.unidad"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_articulo.unidad}"/>
+        </h:column>
+        <rich:column styleClass="action">
+            <f:facet name="header">Action</f:facet>
+            <s:link view="/#{empty from ? 'Articulo' : from}.xhtml"
+                   value="#{empty from ? 'View' : 'Select'}"
+             propagation="#{empty from ? 'none' : 'default'}"
+                      id="articuloViewId">
+                <f:param name="articuloId"
+                        value="#{_articulo.id}"/>
+            </s:link>
+            #{' '}
+            <s:link view="/ArticuloEdit.xhtml"
+                   value="Edit"
+             propagation="none"
+                      id="articuloEdit"
+                rendered="#{empty from}">
+                <f:param name="articuloId"
+                        value="#{_articulo.id}"/>
+            </s:link>
+        </rich:column>
+    </rich:dataTable>
+
+    </div>
+    </rich:panel>
+
+    <div class="tableControl">
+
+        <s:link view="/ArticuloList.xhtml"
+            rendered="#{articuloList.previousExists}"
+               value="#{messages.left}#{messages.left} First Page"
+                  id="firstPage">
+          <f:param name="firstResult" value="0"/>
+        </s:link>
+
+        <s:link view="/ArticuloList.xhtml"
+            rendered="#{articuloList.previousExists}"
+               value="#{messages.left} Previous Page"
+                  id="previousPage">
+            <f:param name="firstResult"
+                    value="#{articuloList.previousFirstResult}"/>
+        </s:link>
+
+        <s:link view="/ArticuloList.xhtml"
+            rendered="#{articuloList.nextExists}"
+               value="Next Page #{messages.right}"
+                  id="nextPage">
+            <f:param name="firstResult"
+                    value="#{articuloList.nextFirstResult}"/>
+        </s:link>
+
+        <s:link view="/ArticuloList.xhtml"
+            rendered="#{articuloList.nextExists}"
+               value="Last Page #{messages.right}#{messages.right}"
+                  id="lastPage">
+            <f:param name="firstResult"
+                    value="#{articuloList.lastFirstResult}"/>
+        </s:link>
+
+    </div>
+
+    <s:div styleClass="actionButtons" rendered="#{empty from}">
+        <s:button view="/ArticuloEdit.xhtml"
+                    id="create"
+           propagation="none"
+                 value="Create articulo">
+            <f:param name="articuloId"/>
+        </s:button>
+    </s:div>
+
+</ui:define>
+
+</ui:composition>

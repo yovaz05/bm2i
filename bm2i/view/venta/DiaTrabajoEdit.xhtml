@@ -1,0 +1,212 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="diaTrabajo" styleClass="edit">
+
+        <rich:panel>
+            <f:facet name="header">#{diaTrabajoHome.managed ? 'Edit' : 'Add'} Dia trabajo</f:facet>
+
+
+
+            <s:decorate id="closinDateField" template="layout/edit.xhtml">
+                <ui:define name="label">Closin date</ui:define>
+                <rich:calendar id="closinDate"
+                          value="#{diaTrabajoHome.instance.closinDate}" datePattern="MM/dd/yyyy" />
+            </s:decorate>
+
+
+            <s:decorate id="isClosedField" template="layout/edit.xhtml">
+                <ui:define name="label">Is closed</ui:define>
+                <h:selectBooleanCheckbox id="isClosed"
+                                      value="#{diaTrabajoHome.instance.isClosed}"/>
+            </s:decorate>
+
+
+            <s:decorate id="isOpenField" template="layout/edit.xhtml">
+                <ui:define name="label">Is open</ui:define>
+                <h:selectBooleanCheckbox id="isOpen"
+                                      value="#{diaTrabajoHome.instance.isOpen}"/>
+            </s:decorate>
+
+
+            <s:decorate id="observacionField" template="layout/edit.xhtml">
+                <ui:define name="label">Observacion</ui:define>
+                <h:inputTextarea id="observacion"
+                               cols="80"
+                               rows="3"
+                              value="#{diaTrabajoHome.instance.observacion}"/>
+            </s:decorate>
+
+
+            <s:decorate id="openDateField" template="layout/edit.xhtml">
+                <ui:define name="label">Open date</ui:define>
+                <rich:calendar id="openDate"
+                          value="#{diaTrabajoHome.instance.openDate}" datePattern="MM/dd/yyyy" />
+            </s:decorate>
+
+
+
+            <div style="clear:both">
+                <span class="required">*</span>
+                required fields
+            </div>
+
+        </rich:panel>
+
+        <div class="actionButtons">
+
+            <h:commandButton id="save"
+                          value="Save"
+                         action="#{diaTrabajoHome.persist}"
+                       disabled="#{!diaTrabajoHome.wired}"
+                       rendered="#{!diaTrabajoHome.managed}"/>
+
+            <h:commandButton id="update"
+                          value="Save"
+                         action="#{diaTrabajoHome.update}"
+                       rendered="#{diaTrabajoHome.managed}"/>
+
+            <h:commandButton id="delete"
+                          value="Delete"
+                         action="#{diaTrabajoHome.remove}"
+                      immediate="true"
+                       rendered="#{diaTrabajoHome.managed}"/>
+
+            <s:button id="cancelEdit"
+                   value="Cancel"
+             propagation="end"
+                    view="/DiaTrabajo.xhtml"
+                rendered="#{diaTrabajoHome.managed}"/>
+
+            <s:button id="cancelAdd"
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty diaTrabajoFrom ? 'DiaTrabajoList' : diaTrabajoFrom}.xhtml"
+                rendered="#{!diaTrabajoHome.managed}"/>
+
+        </div>
+    </h:form>
+
+<rich:tabPanel switchType="ajax">
+
+    <rich:tab label="Permisos">
+        <h:form styleClass="association" id="permisosChildren">
+
+            <h:outputText value="There are no permisos associated with this diaTrabajo."
+                       rendered="#{empty diaTrabajoHome.permisos}"/>
+
+            <rich:dataTable value="#{diaTrabajoHome.permisos}"
+                           var="_cajaPermiso"
+                      rendered="#{not empty diaTrabajoHome.permisos}"
+                    rowClasses="rvgRowOne,rvgRowTwo"
+                            id="permisosTable">
+                <rich:column sortBy="#{_cajaPermiso.id}">
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{_cajaPermiso.id}"/>
+                </rich:column>
+                <rich:column sortBy="#{_cajaPermiso.balanceInicial}">
+                    <f:facet name="header">Balance inicial</f:facet>
+                    <h:outputText value="#{_cajaPermiso.balanceInicial}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_cajaPermiso.closingTime}">
+                    <f:facet name="header">Closing time</f:facet>
+                    <h:outputText value="#{_cajaPermiso.closingTime}">
+                        <s:convertDateTime type="date" dateStyle="short"/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_cajaPermiso.isActive}">
+                    <f:facet name="header">Is active</f:facet>
+                    <h:outputText value="#{_cajaPermiso.isActive}"/>
+                </rich:column>
+                <rich:column sortBy="#{_cajaPermiso.openingTime}">
+                    <f:facet name="header">Opening time</f:facet>
+                    <h:outputText value="#{_cajaPermiso.openingTime}">
+                        <s:convertDateTime type="date" dateStyle="short"/>
+                    </h:outputText>
+                </rich:column>
+            </rich:dataTable>
+
+        </h:form>
+
+        <f:subview rendered="#{diaTrabajoHome.managed}" id="permisos">
+        <div class="actionButtons">
+            <s:button id="addcajaPermiso"
+                   value="Add cajaPermiso"
+                    view="/CajaPermisoEdit.xhtml"
+             propagation="none">
+                 <f:param name="diaTrabajoId"
+                         value="#{diaTrabajoHome.instance.id}"/>
+                 <f:param name="cajaPermisoFrom" value="DiaTrabajo"/>
+            </s:button>
+        </div>
+        </f:subview>
+    </rich:tab>
+
+    <rich:tab label="Supervisor">
+    <div class="association" id="supervisorParent">
+
+        <h:outputText value="There is no supervisor associated with this diaTrabajo."
+                   rendered="#{diaTrabajoHome.instance.supervisor == null}"/>
+
+        <rich:dataTable var="_persona"
+                   value="#{diaTrabajoHome.instance.supervisor}"
+                rendered="#{diaTrabajoHome.instance.supervisor != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="supervisorTable">
+            <h:column>
+                <f:facet name="header">Apellidos</f:facet>
+                <h:outputText value="#{_persona.apellidos}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Birthday</f:facet>
+                <h:outputText value="#{_persona.birthday}">
+                    <s:convertDateTime type="date" dateStyle="short"/>
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Estado civil</f:facet>
+                <h:outputText value="#{_persona.estadoCivil}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Genero</f:facet>
+                <h:outputText value="#{_persona.genero}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Is discapacitado</f:facet>
+                <h:outputText value="#{_persona.isDiscapacitado}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nombres</f:facet>
+                <h:outputText value="#{_persona.nombres}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Numero discapacidad</f:facet>
+                <h:outputText value="#{_persona.numeroDiscapacidad}"/>
+            </h:column>
+        </rich:dataTable>
+
+        <div class="actionButtons">
+            <s:button id="#{diaTrabajoHome.instance.supervisor != null ? 'changeParent' : 'selectParent'}" value="#{diaTrabajoHome.instance.supervisor != null ? 'Change' : 'Select'} supervisor"
+                       view="/PersonaList.xhtml">
+                <f:param name="from" value="DiaTrabajoEdit"/>
+            </s:button>
+        </div>
+
+    </div>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

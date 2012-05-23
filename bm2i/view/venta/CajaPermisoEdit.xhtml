@@ -1,0 +1,286 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="cajaPermiso" styleClass="edit">
+
+        <rich:panel>
+            <f:facet name="header">#{cajaPermisoHome.managed ? 'Edit' : 'Add'} Caja permiso</f:facet>
+
+
+
+            <s:decorate id="balanceInicialField" template="layout/edit.xhtml">
+                <ui:define name="label">Balance inicial</ui:define>
+                <h:inputText id="balanceInicial"
+                          value="#{cajaPermisoHome.instance.balanceInicial}"
+                           size="26">
+                    <a:support event="onblur" reRender="balanceInicialField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+
+
+            <s:decorate id="closingTimeField" template="layout/edit.xhtml">
+                <ui:define name="label">Closing time</ui:define>
+                <rich:calendar id="closingTime"
+                          value="#{cajaPermisoHome.instance.closingTime}" datePattern="MM/dd/yyyy" />
+            </s:decorate>
+
+
+
+            <s:decorate id="isActiveField" template="layout/edit.xhtml">
+                <ui:define name="label">Is active</ui:define>
+                <h:selectBooleanCheckbox id="isActive"
+                                      value="#{cajaPermisoHome.instance.isActive}"/>
+            </s:decorate>
+
+
+            <s:decorate id="openingTimeField" template="layout/edit.xhtml">
+                <ui:define name="label">Opening time</ui:define>
+                <rich:calendar id="openingTime"
+                          value="#{cajaPermisoHome.instance.openingTime}" datePattern="MM/dd/yyyy" />
+            </s:decorate>
+
+
+            <div style="clear:both">
+                <span class="required">*</span>
+                required fields
+            </div>
+
+        </rich:panel>
+
+        <div class="actionButtons">
+
+            <h:commandButton id="save"
+                          value="Save"
+                         action="#{cajaPermisoHome.persist}"
+                       disabled="#{!cajaPermisoHome.wired}"
+                       rendered="#{!cajaPermisoHome.managed}"/>
+
+            <h:commandButton id="update"
+                          value="Save"
+                         action="#{cajaPermisoHome.update}"
+                       rendered="#{cajaPermisoHome.managed}"/>
+
+            <h:commandButton id="delete"
+                          value="Delete"
+                         action="#{cajaPermisoHome.remove}"
+                      immediate="true"
+                       rendered="#{cajaPermisoHome.managed}"/>
+
+            <s:button id="cancelEdit"
+                   value="Cancel"
+             propagation="end"
+                    view="/CajaPermiso.xhtml"
+                rendered="#{cajaPermisoHome.managed}"/>
+
+            <s:button id="cancelAdd"
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty cajaPermisoFrom ? 'CajaPermisoList' : cajaPermisoFrom}.xhtml"
+                rendered="#{!cajaPermisoHome.managed}"/>
+
+        </div>
+    </h:form>
+
+<rich:tabPanel switchType="ajax">
+
+    <rich:tab label="Caja">
+    <div class="association" id="cajaParent">
+
+        <h:outputText value="There is no caja associated with this cajaPermiso."
+                   rendered="#{cajaPermisoHome.instance.caja == null}"/>
+
+        <rich:dataTable var="_caja"
+                   value="#{cajaPermisoHome.instance.caja}"
+                rendered="#{cajaPermisoHome.instance.caja != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="cajaTable">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                <h:outputText value="#{_caja.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nombre</f:facet>
+                <h:outputText value="#{_caja.nombre}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Sucursal id</f:facet>
+                <h:outputText value="#{_caja.sucursal.id}"/>
+            </h:column>
+        </rich:dataTable>
+
+        <div class="actionButtons">
+            <s:button id="#{cajaPermisoHome.instance.caja != null ? 'changeParent' : 'selectParent'}" value="#{cajaPermisoHome.instance.caja != null ? 'Change' : 'Select'} caja"
+                       view="/CajaList.xhtml">
+                <f:param name="from" value="CajaPermisoEdit"/>
+            </s:button>
+        </div>
+
+    </div>
+    </rich:tab>
+
+    <rich:tab label="Cajero">
+    <div class="association" id="cajeroParent">
+
+        <h:outputText value="There is no cajero associated with this cajaPermiso."
+                   rendered="#{cajaPermisoHome.instance.cajero == null}"/>
+
+        <rich:dataTable var="_persona"
+                   value="#{cajaPermisoHome.instance.cajero}"
+                rendered="#{cajaPermisoHome.instance.cajero != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="cajeroTable">
+            <h:column>
+                <f:facet name="header">Apellidos</f:facet>
+                <h:outputText value="#{_persona.apellidos}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Birthday</f:facet>
+                <h:outputText value="#{_persona.birthday}">
+                    <s:convertDateTime type="date" dateStyle="short"/>
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Estado civil</f:facet>
+                <h:outputText value="#{_persona.estadoCivil}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Genero</f:facet>
+                <h:outputText value="#{_persona.genero}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Is discapacitado</f:facet>
+                <h:outputText value="#{_persona.isDiscapacitado}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nombres</f:facet>
+                <h:outputText value="#{_persona.nombres}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Numero discapacidad</f:facet>
+                <h:outputText value="#{_persona.numeroDiscapacidad}"/>
+            </h:column>
+        </rich:dataTable>
+
+        <div class="actionButtons">
+            <s:button id="#{cajaPermisoHome.instance.cajero != null ? 'changeParent' : 'selectParent'}" value="#{cajaPermisoHome.instance.cajero != null ? 'Change' : 'Select'} cajero"
+                       view="/PersonaList.xhtml">
+                <f:param name="from" value="CajaPermisoEdit"/>
+            </s:button>
+        </div>
+
+    </div>
+    </rich:tab>
+
+    <rich:tab label="Dia trabajo">
+    <div class="association" id="diaTrabajoParent">
+
+        <h:outputText value="There is no diaTrabajo associated with this cajaPermiso."
+                   rendered="#{cajaPermisoHome.instance.diaTrabajo == null}"/>
+
+        <rich:dataTable var="_diaTrabajo"
+                   value="#{cajaPermisoHome.instance.diaTrabajo}"
+                rendered="#{cajaPermisoHome.instance.diaTrabajo != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="diaTrabajoTable">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                <h:outputText value="#{_diaTrabajo.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Closin date</f:facet>
+                <h:outputText value="#{_diaTrabajo.closinDate}">
+                    <s:convertDateTime type="date" dateStyle="short"/>
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Is closed</f:facet>
+                <h:outputText value="#{_diaTrabajo.isClosed}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Is open</f:facet>
+                <h:outputText value="#{_diaTrabajo.isOpen}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Observacion</f:facet>
+                <h:outputText value="#{_diaTrabajo.observacion}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Open date</f:facet>
+                <h:outputText value="#{_diaTrabajo.openDate}">
+                    <s:convertDateTime type="date" dateStyle="short"/>
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Supervisor id</f:facet>
+                <h:outputText value="#{_diaTrabajo.supervisor.id}"/>
+            </h:column>
+        </rich:dataTable>
+
+        <div class="actionButtons">
+            <s:button id="#{cajaPermisoHome.instance.diaTrabajo != null ? 'changeParent' : 'selectParent'}" value="#{cajaPermisoHome.instance.diaTrabajo != null ? 'Change' : 'Select'} diaTrabajo"
+                       view="/DiaTrabajoList.xhtml">
+                <f:param name="from" value="CajaPermisoEdit"/>
+            </s:button>
+        </div>
+
+    </div>
+    </rich:tab>
+
+    <rich:tab label="Registros">
+        <h:form styleClass="association" id="registrosChildren">
+
+            <h:outputText value="There are no registros associated with this cajaPermiso."
+                       rendered="#{empty cajaPermisoHome.registros}"/>
+
+            <rich:dataTable value="#{cajaPermisoHome.registros}"
+                           var="_registroDinero"
+                      rendered="#{not empty cajaPermisoHome.registros}"
+                    rowClasses="rvgRowOne,rvgRowTwo"
+                            id="registrosTable">
+                <rich:column sortBy="#{_registroDinero.id}">
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{_registroDinero.id}"/>
+                </rich:column>
+                <rich:column sortBy="#{_registroDinero.cantidad}">
+                    <f:facet name="header">Cantidad</f:facet>
+                    <h:outputText value="#{_registroDinero.cantidad}"/>
+                </rich:column>
+                <rich:column sortBy="#{_registroDinero.total}">
+                    <f:facet name="header">Total</f:facet>
+                    <h:outputText value="#{_registroDinero.total}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+            </rich:dataTable>
+
+        </h:form>
+
+        <f:subview rendered="#{cajaPermisoHome.managed}" id="registros">
+        <div class="actionButtons">
+            <s:button id="addregistroDinero"
+                   value="Add registroDinero"
+                    view="/RegistroDineroEdit.xhtml"
+             propagation="none">
+                 <f:param name="cajaPermisoId"
+                         value="#{cajaPermisoHome.instance.id}"/>
+                 <f:param name="registroDineroFrom" value="CajaPermiso"/>
+            </s:button>
+        </div>
+        </f:subview>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

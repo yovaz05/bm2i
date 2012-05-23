@@ -1,0 +1,127 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="persona" styleClass="edit">
+
+        <rich:panel>
+            <f:facet name="header">#{personaHome.managed ? 'Edit' : 'Add'} Persona</f:facet>
+
+
+            <s:decorate id="apellidosField" template="layout/edit.xhtml">
+                <ui:define name="label">Apellidos</ui:define>
+                <h:inputText id="apellidos"
+                           size="50"
+                      maxlength="50"
+                          value="#{personaHome.instance.apellidos}">
+                    <a:support event="onblur" reRender="apellidosField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="birthdayField" template="layout/edit.xhtml">
+                <ui:define name="label">Birthday</ui:define>
+                <rich:calendar id="birthday"
+                          value="#{personaHome.instance.birthday}" datePattern="MM/dd/yyyy" />
+            </s:decorate>
+
+
+            <s:decorate id="estadoCivilField" template="layout/edit.xhtml">
+                <ui:define name="label">Estado civil</ui:define>
+                <h:inputText id="estadoCivil"
+                          value="#{personaHome.instance.estadoCivil}">
+                    <a:support event="onblur" reRender="estadoCivilField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="generoField" template="layout/edit.xhtml">
+                <ui:define name="label">Genero</ui:define>
+                <h:inputText id="genero"
+                          value="#{personaHome.instance.genero}">
+                    <a:support event="onblur" reRender="generoField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="isDiscapacitadoField" template="layout/edit.xhtml">
+                <ui:define name="label">Is discapacitado</ui:define>
+                <h:selectBooleanCheckbox id="isDiscapacitado"
+                                      value="#{personaHome.instance.isDiscapacitado}"/>
+            </s:decorate>
+
+
+            <s:decorate id="nombresField" template="layout/edit.xhtml">
+                <ui:define name="label">Nombres</ui:define>
+                <h:inputText id="nombres"
+                           size="50"
+                      maxlength="50"
+                          value="#{personaHome.instance.nombres}">
+                    <a:support event="onblur" reRender="nombresField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="numeroDiscapacidadField" template="layout/edit.xhtml">
+                <ui:define name="label">Numero discapacidad</ui:define>
+                <h:inputText id="numeroDiscapacidad"
+                           size="20"
+                      maxlength="20"
+                          value="#{personaHome.instance.numeroDiscapacidad}">
+                    <a:support event="onblur" reRender="numeroDiscapacidadField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+            <div style="clear:both">
+                <span class="required">*</span>
+                required fields
+            </div>
+
+        </rich:panel>
+
+        <div class="actionButtons">
+
+            <h:commandButton id="save"
+                          value="Save"
+                         action="#{personaHome.persist}"
+                       disabled="#{!personaHome.wired}"
+                       rendered="#{!personaHome.managed}"/>
+
+            <h:commandButton id="update"
+                          value="Save"
+                         action="#{personaHome.update}"
+                       rendered="#{personaHome.managed}"/>
+
+            <h:commandButton id="delete"
+                          value="Delete"
+                         action="#{personaHome.remove}"
+                      immediate="true"
+                       rendered="#{personaHome.managed}"/>
+
+            <s:button id="cancelEdit"
+                   value="Cancel"
+             propagation="end"
+                    view="/Persona.xhtml"
+                rendered="#{personaHome.managed}"/>
+
+            <s:button id="cancelAdd"
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty personaFrom ? 'PersonaList' : personaFrom}.xhtml"
+                rendered="#{!personaHome.managed}"/>
+
+        </div>
+    </h:form>
+
+</ui:define>
+
+</ui:composition>

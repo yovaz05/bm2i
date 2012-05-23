@@ -1,0 +1,165 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="tipoComprobanteSearch" styleClass="edit">
+
+        <rich:simpleTogglePanel label="TipoComprobante Search Filter" switchType="ajax">
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Descripcion</ui:define>
+                <h:inputText id="descripcion" value="#{tipoComprobanteList.tipoComprobante.descripcion}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Nombre</ui:define>
+                <h:inputText id="nombre" value="#{tipoComprobanteList.tipoComprobante.nombre}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Match</ui:define>
+                <h:selectOneRadio id="logic" value="#{tipoComprobanteList.restrictionLogicOperator}" styleClass="radio">
+                    <f:selectItem itemLabel="All" itemValue="and"/>
+                    <f:selectItem itemLabel="Any" itemValue="or"/>
+                </h:selectOneRadio>
+            </s:decorate>
+
+        </rich:simpleTogglePanel>
+
+        <div class="actionButtons">
+            <h:commandButton id="search" value="Search" action="/TipoComprobanteList.xhtml"/>
+            <s:button id="reset" value="Reset" includePageParams="false"/>
+        </div>
+
+    </h:form>
+
+    <rich:panel>
+        <f:facet name="header">TipoComprobante Search Results (#{empty tipoComprobanteList.resultList ? 0 : (tipoComprobanteList.paginated ? tipoComprobanteList.resultCount : tipoComprobanteList.resultList.size)})</f:facet>
+    <div class="results" id="tipoComprobanteList">
+
+    <h:outputText value="The tipoComprobante search returned no results."
+               rendered="#{empty tipoComprobanteList.resultList}"/>
+
+    <rich:dataTable id="tipoComprobanteList"
+                var="_tipoComprobante"
+              value="#{tipoComprobanteList.resultList}"
+           rendered="#{not empty tipoComprobanteList.resultList}">
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{tipoComprobanteList}"/>
+                    <ui:param name="propertyLabel" value="Id"/>
+                    <ui:param name="propertyPath" value="tipoComprobante.id"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_tipoComprobante.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{tipoComprobanteList}"/>
+                    <ui:param name="propertyLabel" value="Descripcion"/>
+                    <ui:param name="propertyPath" value="tipoComprobante.descripcion"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_tipoComprobante.descripcion}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{tipoComprobanteList}"/>
+                    <ui:param name="propertyLabel" value="Is active"/>
+                    <ui:param name="propertyPath" value="tipoComprobante.isActive"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_tipoComprobante.isActive}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{tipoComprobanteList}"/>
+                    <ui:param name="propertyLabel" value="Nombre"/>
+                    <ui:param name="propertyPath" value="tipoComprobante.nombre"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_tipoComprobante.nombre}"/>
+        </h:column>
+        <rich:column styleClass="action">
+            <f:facet name="header">Action</f:facet>
+            <s:link view="/#{empty from ? 'TipoComprobante' : from}.xhtml"
+                   value="#{empty from ? 'View' : 'Select'}"
+             propagation="#{empty from ? 'none' : 'default'}"
+                      id="tipoComprobanteViewId">
+                <f:param name="tipoComprobanteId"
+                        value="#{_tipoComprobante.id}"/>
+            </s:link>
+            #{' '}
+            <s:link view="/TipoComprobanteEdit.xhtml"
+                   value="Edit"
+             propagation="none"
+                      id="tipoComprobanteEdit"
+                rendered="#{empty from}">
+                <f:param name="tipoComprobanteId"
+                        value="#{_tipoComprobante.id}"/>
+            </s:link>
+        </rich:column>
+    </rich:dataTable>
+
+    </div>
+    </rich:panel>
+
+    <div class="tableControl">
+
+        <s:link view="/TipoComprobanteList.xhtml"
+            rendered="#{tipoComprobanteList.previousExists}"
+               value="#{messages.left}#{messages.left} First Page"
+                  id="firstPage">
+          <f:param name="firstResult" value="0"/>
+        </s:link>
+
+        <s:link view="/TipoComprobanteList.xhtml"
+            rendered="#{tipoComprobanteList.previousExists}"
+               value="#{messages.left} Previous Page"
+                  id="previousPage">
+            <f:param name="firstResult"
+                    value="#{tipoComprobanteList.previousFirstResult}"/>
+        </s:link>
+
+        <s:link view="/TipoComprobanteList.xhtml"
+            rendered="#{tipoComprobanteList.nextExists}"
+               value="Next Page #{messages.right}"
+                  id="nextPage">
+            <f:param name="firstResult"
+                    value="#{tipoComprobanteList.nextFirstResult}"/>
+        </s:link>
+
+        <s:link view="/TipoComprobanteList.xhtml"
+            rendered="#{tipoComprobanteList.nextExists}"
+               value="Last Page #{messages.right}#{messages.right}"
+                  id="lastPage">
+            <f:param name="firstResult"
+                    value="#{tipoComprobanteList.lastFirstResult}"/>
+        </s:link>
+
+    </div>
+
+    <s:div styleClass="actionButtons" rendered="#{empty from}">
+        <s:button view="/TipoComprobanteEdit.xhtml"
+                    id="create"
+           propagation="none"
+                 value="Create tipoComprobante">
+            <f:param name="tipoComprobanteId"/>
+        </s:button>
+    </s:div>
+
+</ui:define>
+
+</ui:composition>

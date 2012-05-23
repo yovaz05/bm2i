@@ -1,0 +1,129 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="institucion" styleClass="edit">
+
+        <rich:panel>
+            <f:facet name="header">#{institucionHome.managed ? 'Edit' : 'Add'} Institucion</f:facet>
+
+
+
+            <s:decorate id="direccionField" template="layout/edit.xhtml">
+                <ui:define name="label">Direccion</ui:define>
+                <h:inputText id="direccion"
+                           size="50"
+                      maxlength="50"
+                          value="#{institucionHome.instance.direccion}">
+                    <a:support event="onblur" reRender="direccionField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="faxField" template="layout/edit.xhtml">
+                <ui:define name="label">Fax</ui:define>
+                <h:inputText id="fax"
+                           size="30"
+                      maxlength="30"
+                          value="#{institucionHome.instance.fax}">
+                    <a:support event="onblur" reRender="faxField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="nombreField" template="layout/edit.xhtml">
+                <ui:define name="label">Nombre</ui:define>
+                <h:inputText id="nombre"
+                           size="50"
+                      maxlength="50"
+                          value="#{institucionHome.instance.nombre}">
+                    <a:support event="onblur" reRender="nombreField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="rucField" template="layout/edit.xhtml">
+                <ui:define name="label">Ruc</ui:define>
+                <h:inputText id="ruc"
+                           size="15"
+                      maxlength="15"
+                          value="#{institucionHome.instance.ruc}">
+                    <a:support event="onblur" reRender="rucField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="sloganField" template="layout/edit.xhtml">
+                <ui:define name="label">Slogan</ui:define>
+                <h:inputText id="slogan"
+                           size="10"
+                      maxlength="10"
+                          value="#{institucionHome.instance.slogan}">
+                    <a:support event="onblur" reRender="sloganField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="telefonoField" template="layout/edit.xhtml">
+                <ui:define name="label">Telefono</ui:define>
+                <h:inputText id="telefono"
+                           size="15"
+                      maxlength="15"
+                          value="#{institucionHome.instance.telefono}">
+                    <a:support event="onblur" reRender="telefonoField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+            <div style="clear:both">
+                <span class="required">*</span>
+                required fields
+            </div>
+
+        </rich:panel>
+
+        <div class="actionButtons">
+
+            <h:commandButton id="save"
+                          value="Save"
+                         action="#{institucionHome.persist}"
+                       disabled="#{!institucionHome.wired}"
+                       rendered="#{!institucionHome.managed}"/>
+
+            <h:commandButton id="update"
+                          value="Save"
+                         action="#{institucionHome.update}"
+                       rendered="#{institucionHome.managed}"/>
+
+            <h:commandButton id="delete"
+                          value="Delete"
+                         action="#{institucionHome.remove}"
+                      immediate="true"
+                       rendered="#{institucionHome.managed}"/>
+
+            <s:button id="cancelEdit"
+                   value="Cancel"
+             propagation="end"
+                    view="/Institucion.xhtml"
+                rendered="#{institucionHome.managed}"/>
+
+            <s:button id="cancelAdd"
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty institucionFrom ? 'InstitucionList' : institucionFrom}.xhtml"
+                rendered="#{!institucionHome.managed}"/>
+
+        </div>
+    </h:form>
+
+</ui:define>
+
+</ui:composition>

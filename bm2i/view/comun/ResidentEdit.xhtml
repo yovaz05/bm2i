@@ -1,0 +1,348 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="resident" styleClass="edit">
+
+        <rich:panel>
+            <f:facet name="header">#{residentHome.managed ? 'Edit' : 'Add'} Resident</f:facet>
+
+
+
+
+
+
+            <s:decorate id="emailField" template="layout/edit.xhtml">
+                <ui:define name="label">Email</ui:define>
+                <h:inputText id="email"
+                           size="50"
+                      maxlength="50"
+                          value="#{residentHome.instance.email}">
+                    <a:support event="onblur" reRender="emailField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="fechaRegistroField" template="layout/edit.xhtml">
+                <ui:define name="label">Fecha registro</ui:define>
+                <rich:calendar id="fechaRegistro"
+                          value="#{residentHome.instance.fechaRegistro}" datePattern="MM/dd/yyyy" />
+            </s:decorate>
+
+
+            <s:decorate id="nombreField" template="layout/edit.xhtml">
+                <ui:define name="label">Nombre</ui:define>
+                <h:inputText id="nombre"
+                           size="50"
+                      maxlength="50"
+                          value="#{residentHome.instance.nombre}">
+                    <a:support event="onblur" reRender="nombreField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="numeroIdentificacionField" template="layout/edit.xhtml">
+                <ui:define name="label">Numero identificacion</ui:define>
+                <h:inputText id="numeroIdentificacion"
+                           size="15"
+                      maxlength="15"
+                          value="#{residentHome.instance.numeroIdentificacion}">
+                    <a:support event="onblur" reRender="numeroIdentificacionField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="tipoIdentificacionField" template="layout/edit.xhtml">
+                <ui:define name="label">Tipo identificacion</ui:define>
+                <h:inputText id="tipoIdentificacion"
+                          value="#{residentHome.instance.tipoIdentificacion}">
+                    <a:support event="onblur" reRender="tipoIdentificacionField" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+            <div style="clear:both">
+                <span class="required">*</span>
+                required fields
+            </div>
+
+        </rich:panel>
+
+        <div class="actionButtons">
+
+            <h:commandButton id="save"
+                          value="Save"
+                         action="#{residentHome.persist}"
+                       disabled="#{!residentHome.wired}"
+                       rendered="#{!residentHome.managed}"/>
+
+            <h:commandButton id="update"
+                          value="Save"
+                         action="#{residentHome.update}"
+                       rendered="#{residentHome.managed}"/>
+
+            <h:commandButton id="delete"
+                          value="Delete"
+                         action="#{residentHome.remove}"
+                      immediate="true"
+                       rendered="#{residentHome.managed}"/>
+
+            <s:button id="cancelEdit"
+                   value="Cancel"
+             propagation="end"
+                    view="/Resident.xhtml"
+                rendered="#{residentHome.managed}"/>
+
+            <s:button id="cancelAdd"
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty residentFrom ? 'ResidentList' : residentFrom}.xhtml"
+                rendered="#{!residentHome.managed}"/>
+
+        </div>
+    </h:form>
+
+<rich:tabPanel switchType="ajax">
+
+    <rich:tab label="Comprobantes compra">
+        <h:form styleClass="association" id="comprobantesCompraChildren">
+
+            <h:outputText value="There are no comprobantesCompra associated with this resident."
+                       rendered="#{empty residentHome.comprobantesCompra}"/>
+
+            <rich:dataTable value="#{residentHome.comprobantesCompra}"
+                           var="_comprobanteCompra"
+                      rendered="#{not empty residentHome.comprobantesCompra}"
+                    rowClasses="rvgRowOne,rvgRowTwo"
+                            id="comprobantesCompraTable">
+                <rich:column sortBy="#{_comprobanteCompra.id}">
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{_comprobanteCompra.id}"/>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteCompra.descuento}">
+                    <f:facet name="header">Descuento</f:facet>
+                    <h:outputText value="#{_comprobanteCompra.descuento}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteCompra.fecha}">
+                    <f:facet name="header">Fecha</f:facet>
+                    <h:outputText value="#{_comprobanteCompra.fecha}">
+                        <s:convertDateTime type="date" dateStyle="short"/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteCompra.guiaRemision}">
+                    <f:facet name="header">Guia remision</f:facet>
+                    <h:outputText value="#{_comprobanteCompra.guiaRemision}"/>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteCompra.isPayed}">
+                    <f:facet name="header">Is payed</f:facet>
+                    <h:outputText value="#{_comprobanteCompra.isPayed}"/>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteCompra.iva}">
+                    <f:facet name="header">Iva</f:facet>
+                    <h:outputText value="#{_comprobanteCompra.iva}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteCompra.numero}">
+                    <f:facet name="header">Numero</f:facet>
+                    <h:outputText value="#{_comprobanteCompra.numero}"/>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteCompra.subTotal}">
+                    <f:facet name="header">Sub total</f:facet>
+                    <h:outputText value="#{_comprobanteCompra.subTotal}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteCompra.subTotalCero}">
+                    <f:facet name="header">Sub total cero</f:facet>
+                    <h:outputText value="#{_comprobanteCompra.subTotalCero}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteCompra.subTotalIva}">
+                    <f:facet name="header">Sub total iva</f:facet>
+                    <h:outputText value="#{_comprobanteCompra.subTotalIva}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteCompra.valorTotal}">
+                    <f:facet name="header">Valor total</f:facet>
+                    <h:outputText value="#{_comprobanteCompra.valorTotal}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+            </rich:dataTable>
+
+        </h:form>
+
+        <f:subview rendered="#{residentHome.managed}" id="comprobantesCompra">
+        <div class="actionButtons">
+            <s:button id="addcomprobanteCompra"
+                   value="Add comprobanteCompra"
+                    view="/ComprobanteCompraEdit.xhtml"
+             propagation="none">
+                 <f:param name="residentId"
+                         value="#{residentHome.instance.id}"/>
+                 <f:param name="comprobanteCompraFrom" value="Resident"/>
+            </s:button>
+        </div>
+        </f:subview>
+    </rich:tab>
+
+    <rich:tab label="Comprobantes venta">
+        <h:form styleClass="association" id="comprobantesVentaChildren">
+
+            <h:outputText value="There are no comprobantesVenta associated with this resident."
+                       rendered="#{empty residentHome.comprobantesVenta}"/>
+
+            <rich:dataTable value="#{residentHome.comprobantesVenta}"
+                           var="_comprobanteVenta"
+                      rendered="#{not empty residentHome.comprobantesVenta}"
+                    rowClasses="rvgRowOne,rvgRowTwo"
+                            id="comprobantesVentaTable">
+                <rich:column sortBy="#{_comprobanteVenta.id}">
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{_comprobanteVenta.id}"/>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteVenta.descuento}">
+                    <f:facet name="header">Descuento</f:facet>
+                    <h:outputText value="#{_comprobanteVenta.descuento}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteVenta.fecha}">
+                    <f:facet name="header">Fecha</f:facet>
+                    <h:outputText value="#{_comprobanteVenta.fecha}">
+                        <s:convertDateTime type="date" dateStyle="short"/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteVenta.guiaRemision}">
+                    <f:facet name="header">Guia remision</f:facet>
+                    <h:outputText value="#{_comprobanteVenta.guiaRemision}"/>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteVenta.isAnulado}">
+                    <f:facet name="header">Is anulado</f:facet>
+                    <h:outputText value="#{_comprobanteVenta.isAnulado}"/>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteVenta.iva}">
+                    <f:facet name="header">Iva</f:facet>
+                    <h:outputText value="#{_comprobanteVenta.iva}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteVenta.numero}">
+                    <f:facet name="header">Numero</f:facet>
+                    <h:outputText value="#{_comprobanteVenta.numero}"/>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteVenta.subTotal}">
+                    <f:facet name="header">Sub total</f:facet>
+                    <h:outputText value="#{_comprobanteVenta.subTotal}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteVenta.subTotalCero}">
+                    <f:facet name="header">Sub total cero</f:facet>
+                    <h:outputText value="#{_comprobanteVenta.subTotalCero}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteVenta.subTotalIva}">
+                    <f:facet name="header">Sub total iva</f:facet>
+                    <h:outputText value="#{_comprobanteVenta.subTotalIva}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+                <rich:column sortBy="#{_comprobanteVenta.valorTotal}">
+                    <f:facet name="header">Valor total</f:facet>
+                    <h:outputText value="#{_comprobanteVenta.valorTotal}">
+                        <f:convertNumber/>
+                    </h:outputText>
+                </rich:column>
+            </rich:dataTable>
+
+        </h:form>
+
+        <f:subview rendered="#{residentHome.managed}" id="comprobantesVenta">
+        <div class="actionButtons">
+            <s:button id="addcomprobanteVenta"
+                   value="Add comprobanteVenta"
+                    view="/ComprobanteVentaEdit.xhtml"
+             propagation="none">
+                 <f:param name="residentId"
+                         value="#{residentHome.instance.id}"/>
+                 <f:param name="comprobanteVentaFrom" value="Resident"/>
+            </s:button>
+        </div>
+        </f:subview>
+    </rich:tab>
+
+    <rich:tab label="Direcciones">
+        <h:form styleClass="association" id="direccionesChildren">
+
+            <h:outputText value="There are no direcciones associated with this resident."
+                       rendered="#{empty residentHome.direcciones}"/>
+
+            <rich:dataTable value="#{residentHome.direcciones}"
+                           var="_direccion"
+                      rendered="#{not empty residentHome.direcciones}"
+                    rowClasses="rvgRowOne,rvgRowTwo"
+                            id="direccionesTable">
+                <rich:column sortBy="#{_direccion.id}">
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{_direccion.id}"/>
+                </rich:column>
+                <rich:column sortBy="#{_direccion.calle}">
+                    <f:facet name="header">Calle</f:facet>
+                    <h:outputText value="#{_direccion.calle}"/>
+                </rich:column>
+                <rich:column sortBy="#{_direccion.cuidad}">
+                    <f:facet name="header">Cuidad</f:facet>
+                    <h:outputText value="#{_direccion.cuidad}"/>
+                </rich:column>
+                <rich:column sortBy="#{_direccion.numero}">
+                    <f:facet name="header">Numero</f:facet>
+                    <h:outputText value="#{_direccion.numero}"/>
+                </rich:column>
+                <rich:column sortBy="#{_direccion.pais}">
+                    <f:facet name="header">Pais</f:facet>
+                    <h:outputText value="#{_direccion.pais}"/>
+                </rich:column>
+                <rich:column sortBy="#{_direccion.telefonoCedular}">
+                    <f:facet name="header">Telefono cedular</f:facet>
+                    <h:outputText value="#{_direccion.telefonoCedular}"/>
+                </rich:column>
+                <rich:column sortBy="#{_direccion.telefonoFijo}">
+                    <f:facet name="header">Telefono fijo</f:facet>
+                    <h:outputText value="#{_direccion.telefonoFijo}"/>
+                </rich:column>
+            </rich:dataTable>
+
+        </h:form>
+
+        <f:subview rendered="#{residentHome.managed}" id="direcciones">
+        <div class="actionButtons">
+            <s:button id="adddireccion"
+                   value="Add direccion"
+                    view="/DireccionEdit.xhtml"
+             propagation="none">
+                 <f:param name="residentId"
+                         value="#{residentHome.instance.id}"/>
+                 <f:param name="direccionFrom" value="Resident"/>
+            </s:button>
+        </div>
+        </f:subview>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

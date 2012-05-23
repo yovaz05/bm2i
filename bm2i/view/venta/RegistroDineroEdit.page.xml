@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd"
+      no-conversation-view-id="/RegistroDineroList.xhtml"
+      login-required="true">
+
+   <begin-conversation join="true" flush-mode="MANUAL"/>
+
+   <action execute="#{registroDineroHome.wire}"/>
+
+   <param name="registroDineroFrom"/>
+   <param name="registroDineroId" value="#{registroDineroHome.registroDineroId}"/>
+   <param name="cajaPermisoFrom"/>
+   <param name="cajaPermisoId" value="#{cajaPermisoHome.cajaPermisoId}"/>
+   <param name="cajaFrom"/>
+   <param name="cajaId" value="#{cajaHome.cajaId}"/>
+   <param name="sucursalFrom"/>
+   <param name="sucursalId" value="#{sucursalHome.sucursalId}"/>
+
+
+   <param name="personaFrom"/>
+   <param name="personaId" value="#{personaHome.personaId}"/>
+
+   <param name="diaTrabajoFrom"/>
+   <param name="diaTrabajoId" value="#{diaTrabajoHome.diaTrabajoId}"/>
+
+
+   <param name="comprobanteVentaFrom"/>
+   <param name="comprobanteVentaId" value="#{comprobanteVentaHome.comprobanteVentaId}"/>
+   <param name="pagoFrom"/>
+   <param name="pagoId" value="#{pagoHome.pagoId}"/>
+   <param name="tipoPagoFrom"/>
+   <param name="tipoPagoId" value="#{tipoPagoHome.tipoPagoId}"/>
+
+
+   <param name="residentFrom"/>
+   <param name="residentId" value="#{residentHome.residentId}"/>
+
+   <param name="tipoComprobanteFrom"/>
+   <param name="tipoComprobanteId" value="#{tipoComprobanteHome.tipoComprobanteId}"/>
+
+
+
+
+   <navigation from-action="#{registroDineroHome.persist}">
+      <rule if-outcome="persisted">
+         <end-conversation/>
+         <redirect view-id="/RegistroDinero.xhtml"/>
+      </rule>
+   </navigation>
+
+   <navigation from-action="#{registroDineroHome.update}">
+      <rule if-outcome="updated">
+         <end-conversation/>
+         <redirect view-id="/RegistroDinero.xhtml"/>
+      </rule>
+   </navigation>
+
+   <navigation from-action="#{registroDineroHome.remove}">
+      <rule if-outcome="removed">
+         <end-conversation/>
+         <redirect view-id="/RegistroDineroList.xhtml"/>
+      </rule>
+   </navigation>
+
+</page>

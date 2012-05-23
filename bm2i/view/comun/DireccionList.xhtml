@@ -1,0 +1,225 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.com/products/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    template="layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="direccionSearch" styleClass="edit">
+
+        <rich:simpleTogglePanel label="Direccion Search Filter" switchType="ajax">
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Calle</ui:define>
+                <h:inputText id="calle" value="#{direccionList.direccion.calle}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Cuidad</ui:define>
+                <h:inputText id="cuidad" value="#{direccionList.direccion.cuidad}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Numero</ui:define>
+                <h:inputText id="numero" value="#{direccionList.direccion.numero}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Pais</ui:define>
+                <h:inputText id="pais" value="#{direccionList.direccion.pais}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Telefono cedular</ui:define>
+                <h:inputText id="telefonoCedular" value="#{direccionList.direccion.telefonoCedular}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Telefono fijo</ui:define>
+                <h:inputText id="telefonoFijo" value="#{direccionList.direccion.telefonoFijo}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">Match</ui:define>
+                <h:selectOneRadio id="logic" value="#{direccionList.restrictionLogicOperator}" styleClass="radio">
+                    <f:selectItem itemLabel="All" itemValue="and"/>
+                    <f:selectItem itemLabel="Any" itemValue="or"/>
+                </h:selectOneRadio>
+            </s:decorate>
+
+        </rich:simpleTogglePanel>
+
+        <div class="actionButtons">
+            <h:commandButton id="search" value="Search" action="/DireccionList.xhtml"/>
+            <s:button id="reset" value="Reset" includePageParams="false"/>
+        </div>
+
+    </h:form>
+
+    <rich:panel>
+        <f:facet name="header">Direccion Search Results (#{empty direccionList.resultList ? 0 : (direccionList.paginated ? direccionList.resultCount : direccionList.resultList.size)})</f:facet>
+    <div class="results" id="direccionList">
+
+    <h:outputText value="The direccion search returned no results."
+               rendered="#{empty direccionList.resultList}"/>
+
+    <rich:dataTable id="direccionList"
+                var="_direccion"
+              value="#{direccionList.resultList}"
+           rendered="#{not empty direccionList.resultList}">
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{direccionList}"/>
+                    <ui:param name="propertyLabel" value="Id"/>
+                    <ui:param name="propertyPath" value="direccion.id"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_direccion.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{direccionList}"/>
+                    <ui:param name="propertyLabel" value="Calle"/>
+                    <ui:param name="propertyPath" value="direccion.calle"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_direccion.calle}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{direccionList}"/>
+                    <ui:param name="propertyLabel" value="Cuidad"/>
+                    <ui:param name="propertyPath" value="direccion.cuidad"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_direccion.cuidad}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{direccionList}"/>
+                    <ui:param name="propertyLabel" value="Numero"/>
+                    <ui:param name="propertyPath" value="direccion.numero"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_direccion.numero}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{direccionList}"/>
+                    <ui:param name="propertyLabel" value="Pais"/>
+                    <ui:param name="propertyPath" value="direccion.pais"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_direccion.pais}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{direccionList}"/>
+                    <ui:param name="propertyLabel" value="Resident id"/>
+                    <ui:param name="propertyPath" value="direccion.resident.id"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_direccion.resident.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{direccionList}"/>
+                    <ui:param name="propertyLabel" value="Telefono cedular"/>
+                    <ui:param name="propertyPath" value="direccion.telefonoCedular"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_direccion.telefonoCedular}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <ui:include src="layout/sort.xhtml">
+                    <ui:param name="entityList" value="#{direccionList}"/>
+                    <ui:param name="propertyLabel" value="Telefono fijo"/>
+                    <ui:param name="propertyPath" value="direccion.telefonoFijo"/>
+                </ui:include>
+            </f:facet>
+            <h:outputText value="#{_direccion.telefonoFijo}"/>
+        </h:column>
+        <rich:column styleClass="action">
+            <f:facet name="header">Action</f:facet>
+            <s:link view="/#{empty from ? 'Direccion' : from}.xhtml"
+                   value="#{empty from ? 'View' : 'Select'}"
+             propagation="#{empty from ? 'none' : 'default'}"
+                      id="direccionViewId">
+                <f:param name="direccionId"
+                        value="#{_direccion.id}"/>
+            </s:link>
+            #{' '}
+            <s:link view="/DireccionEdit.xhtml"
+                   value="Edit"
+             propagation="none"
+                      id="direccionEdit"
+                rendered="#{empty from}">
+                <f:param name="direccionId"
+                        value="#{_direccion.id}"/>
+            </s:link>
+        </rich:column>
+    </rich:dataTable>
+
+    </div>
+    </rich:panel>
+
+    <div class="tableControl">
+
+        <s:link view="/DireccionList.xhtml"
+            rendered="#{direccionList.previousExists}"
+               value="#{messages.left}#{messages.left} First Page"
+                  id="firstPage">
+          <f:param name="firstResult" value="0"/>
+        </s:link>
+
+        <s:link view="/DireccionList.xhtml"
+            rendered="#{direccionList.previousExists}"
+               value="#{messages.left} Previous Page"
+                  id="previousPage">
+            <f:param name="firstResult"
+                    value="#{direccionList.previousFirstResult}"/>
+        </s:link>
+
+        <s:link view="/DireccionList.xhtml"
+            rendered="#{direccionList.nextExists}"
+               value="Next Page #{messages.right}"
+                  id="nextPage">
+            <f:param name="firstResult"
+                    value="#{direccionList.nextFirstResult}"/>
+        </s:link>
+
+        <s:link view="/DireccionList.xhtml"
+            rendered="#{direccionList.nextExists}"
+               value="Last Page #{messages.right}#{messages.right}"
+                  id="lastPage">
+            <f:param name="firstResult"
+                    value="#{direccionList.lastFirstResult}"/>
+        </s:link>
+
+    </div>
+
+    <s:div styleClass="actionButtons" rendered="#{empty from}">
+        <s:button view="/DireccionEdit.xhtml"
+                    id="create"
+           propagation="none"
+                 value="Create direccion">
+            <f:param name="direccionId"/>
+        </s:button>
+    </s:div>
+
+</ui:define>
+
+</ui:composition>
