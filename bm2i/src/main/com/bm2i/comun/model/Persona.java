@@ -2,12 +2,23 @@ package com.bm2i.comun.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Cascade;
+
+import com.bm2i.security.Usuario;
 
 /**
  * @author richard
@@ -15,6 +26,12 @@ import javax.persistence.TemporalType;
  * @created 23-May-2012 10:53:39
  */
 @Entity
+@DiscriminatorValue(value = "N")
+@NamedQueries(value = {
+		@NamedQuery(name = "Persona.findPersona", query = "SELECT p FROM Persona p WHERE lower(p.numeroIdentificacion) LIKE lower(concat(:criteria,'%')) or lower(p.apellidos) like lower(concat(:criteria,'%'))"),
+		@NamedQuery(name = "Persona.findByCriteria", query = "select p from Persona p where "
+				+ "lower(p.apellidos) like lower(concat(:criteria, '%')) or "
+				+ "lower(p.numeroIdentificacion) like lower(concat(:criteria, '%')) ") })
 public class Persona extends Resident {
 
 	@Column(length = 50)
@@ -38,6 +55,11 @@ public class Persona extends Resident {
 	@Enumerated(EnumType.STRING)
 	@Column(length = 15)
 	private EstadoCivil estadoCivil;
+	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.EAGER)
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@JoinColumn(name = "user_id")
+	private Usuario user;
 
 	
 	public Persona() {

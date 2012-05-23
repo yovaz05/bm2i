@@ -3,6 +3,7 @@ package com.bm2i.comun.model;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -15,6 +16,7 @@ import javax.persistence.TemporalType;
  * @created 23-May-2012 10:53:38
  */
 @Entity
+@DiscriminatorValue(value = "J")
 public class EntidadLegal extends Resident {
 
 	@Column(length = 15)
