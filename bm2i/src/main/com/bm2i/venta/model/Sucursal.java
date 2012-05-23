@@ -3,6 +3,7 @@ package com.bm2i.venta.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,9 +26,10 @@ public class Sucursal {
 	@GeneratedValue(generator = "SucursalGenerator", strategy = GenerationType.TABLE)
 	private Long id;
 
+	@Column(length = 30)
 	private String nombre;
 
-	@OneToMany(mappedBy = "", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "sucursal", cascade = CascadeType.ALL)
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<Caja> cajas;
 
@@ -37,5 +39,29 @@ public class Sucursal {
 
 	public void finalize() throws Throwable {
 
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public List<Caja> getCajas() {
+		return cajas;
+	}
+
+	public void setCajas(List<Caja> cajas) {
+		this.cajas = cajas;
 	}
 }// end Sucursal
