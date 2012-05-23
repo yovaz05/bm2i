@@ -6,7 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.TableGenerator;
 
 /**
@@ -18,17 +19,18 @@ import javax.persistence.TableGenerator;
 @TableGenerator(name = "PagoGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "Pago", initialValue = 1, allocationSize = 1)
 public class Pago {
 
-	private BigDecimal cambio;
-
-	private BigDecimal efectivo;
-
 	@Id
 	@GeneratedValue(generator = "PagoGenerator", strategy = GenerationType.TABLE)
 	private Long id;
 
+	private BigDecimal cambio;
+
+	private BigDecimal efectivo;
+
 	private BigDecimal total;
 
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "tipoPago_id")
 	private TipoPago tipoPago;
 
 	public Pago() {

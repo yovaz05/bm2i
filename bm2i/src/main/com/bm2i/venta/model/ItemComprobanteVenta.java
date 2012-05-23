@@ -40,8 +40,11 @@ public class ItemComprobanteVenta {
 	private BigDecimal vUnitario;
 
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name = "articulo_id")
 	private Articulo articulo;
+	
+	@ManyToOne
+	ComprobanteVenta venta;
 
 	public ItemComprobanteVenta() {
 

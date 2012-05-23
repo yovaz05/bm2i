@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,21 +24,25 @@ import com.bm2i.inventario.model.Articulo;
 @TableGenerator(name = "ItemComprobanteCompraGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "ItemComprobanteCompra", initialValue = 1, allocationSize = 1)
 public class ItemComprobanteCompra {
 
+	@Id
+	@GeneratedValue(generator = "ItemComprobanteCompraGenerator", strategy = GenerationType.TABLE)
+	private Long id;
+
 	private Integer cantidad;
 
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 
-	@Id
-	@GeneratedValue(generator = "ItemComprobanteCompraGenerator", strategy = GenerationType.TABLE)
-	private Long id;
+	private BigDecimal vUnitario;
 
 	private BigDecimal vTotal;
 
-	private BigDecimal vUnitario;
-
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "articulo_id")
 	private Articulo articulo;
+
+	@ManyToOne
+	ComprobanteCompra compra;
 
 	public ItemComprobanteCompra() {
 
@@ -45,5 +50,61 @@ public class ItemComprobanteCompra {
 
 	public void finalize() throws Throwable {
 
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Integer getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public BigDecimal getvUnitario() {
+		return vUnitario;
+	}
+
+	public void setvUnitario(BigDecimal vUnitario) {
+		this.vUnitario = vUnitario;
+	}
+
+	public BigDecimal getvTotal() {
+		return vTotal;
+	}
+
+	public void setvTotal(BigDecimal vTotal) {
+		this.vTotal = vTotal;
+	}
+
+	public Articulo getArticulo() {
+		return articulo;
+	}
+
+	public void setArticulo(Articulo articulo) {
+		this.articulo = articulo;
+	}
+
+	public ComprobanteCompra getCompra() {
+		return compra;
+	}
+
+	public void setCompra(ComprobanteCompra compra) {
+		this.compra = compra;
 	}
 }// end ItemComprobanteCompra
