@@ -13,51 +13,52 @@
 
 		<h:form id="tipoRegistro" styleClass="edit">
 
+			<h:outputText styleClass="formTitle"
+				value="#{tipoRegistroHome.managed ? messages['common.edit'] : messages['common.edit']} #{messages['tipoRegistro']}" />
+
 			<rich:panel>
-				<f:facet name="header">#{tipoRegistroHome.managed ? 'Edit' : 'Add'} Tipo registro</f:facet>
-
-
-
-				<s:decorate id="isActiveField" template="../layout/edit.xhtml">
-					<ui:define name="label">Is active</ui:define>
-					<h:selectBooleanCheckbox id="isActive"
-						value="#{tipoRegistroHome.instance.isActive}" />
-				</s:decorate>
-
+				<f:facet name="header">#{messages['tipoRegistro.infoData']}</f:facet>
 
 				<s:decorate id="nombreField" template="../layout/edit.xhtml">
-					<ui:define name="label">Nombre</ui:define>
+					<ui:define name="label">#{messages['tipoRegistro.nombre']}</ui:define>
 					<h:inputText id="nombre" size="30" maxlength="30"
-						value="#{tipoRegistroHome.instance.nombre}">
+						value="#{tipoRegistroHome.instance.nombre}" style="text-transform: uppercase">
 						<a:support event="onblur" reRender="nombreField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>
 				</s:decorate>
 
+				<s:decorate id="isActiveField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['tipoRegistro.isActive']}</ui:define>
+					<h:selectBooleanCheckbox id="isActive"
+						value="#{tipoRegistroHome.instance.isActive}" />
+				</s:decorate>
+
 				<div style="clear: both">
-					<span class="required">*</span> required fields
+					<span class="required">*</span>
+					#{messages['common.requiredFields']}
 				</div>
 
 			</rich:panel>
 
 			<div class="actionButtons">
 
-				<h:commandButton id="save" value="Save"
+				<h:commandButton id="save" value="#{messages['common.save']}"
 					action="#{tipoRegistroHome.persist}"
 					disabled="#{!tipoRegistroHome.wired}"
 					rendered="#{!tipoRegistroHome.managed}" />
 
-				<h:commandButton id="update" value="Save"
+				<h:commandButton id="update" value="#{messages['common.save']}"
 					action="#{tipoRegistroHome.update}"
 					rendered="#{tipoRegistroHome.managed}" />
 
-				<h:commandButton id="delete" value="Delete"
+				<h:commandButton id="delete" value="#{messages['common.delete']}"
 					action="#{tipoRegistroHome.remove}" immediate="true"
 					rendered="#{tipoRegistroHome.managed}" />
-				
-				<s:button id="cancelAdd" value="Cancel" propagation="end"
-					view="/inventario/#{empty tipoRegistroFrom ? 'TipoRegistroList' : tipoRegistroFrom}.xhtml"
-					rendered="#{!tipoRegistroHome.managed}" />
+
+				<s:button id="cancelAdd" value="#{messages['common.cancel']}"
+					propagation="end"
+					view="/inventario/#{empty tipoRegistroFrom ? 'TipoRegistroList' : tipoRegistroFrom}.xhtml" />
 
 			</div>
 		</h:form>

@@ -1,96 +1,80 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:s="http://jboss.com/products/seam/taglib"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:a="http://richfaces.org/a4j"
-    xmlns:rich="http://richfaces.org/rich"
-    template="layout/template.xhtml">
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
 
-<ui:define name="body">
+	<ui:define name="body">
 
-    <h:form id="linea" styleClass="edit">
+		<h:form id="linea" styleClass="edit">
 
-        <rich:panel>
-            <f:facet name="header">#{lineaHome.managed ? 'Edit' : 'Add'} Linea</f:facet>
+			<h:outputText styleClass="formTitle"
+				value="#{lineaHome.managed ? messages['common.edit'] : messages['common.edit']} #{messages['linea']}" />
 
+			<rich:panel>
+				<f:facet name="header">#{messages['linea.infoData']}</f:facet>
 
+				<s:decorate id="codigoField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['linea.codigo']}</ui:define>
+					<h:inputText id="codigo" size="30" maxlength="30"
+						value="#{lineaHome.instance.codigo}"
+						style="text-transform: uppercase">
+						<a:support event="onblur" reRender="codigoField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
 
-            <s:decorate id="codigoField" template="layout/edit.xhtml">
-                <ui:define name="label">Codigo</ui:define>
-                <h:inputText id="codigo"
-                           size="30"
-                      maxlength="30"
-                          value="#{lineaHome.instance.codigo}">
-                    <a:support event="onblur" reRender="codigoField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+				<s:decorate id="nombreField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['linea.nombre']}</ui:define>
+					<h:inputText id="nombre" size="30" maxlength="30"
+						value="#{lineaHome.instance.nombre}"
+						style="text-transform: uppercase">
+						<a:support event="onblur" reRender="nombreField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
 
+				<s:decorate id="detalleField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['linea.detalle']}</ui:define>
+					<h:inputText id="detalle" size="100" maxlength="100"
+						value="#{lineaHome.instance.detalle}">
+						<a:support event="onblur" reRender="detalleField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
 
-            <s:decorate id="detalleField" template="layout/edit.xhtml">
-                <ui:define name="label">Detalle</ui:define>
-                <h:inputText id="detalle"
-                           size="100"
-                      maxlength="100"
-                          value="#{lineaHome.instance.detalle}">
-                    <a:support event="onblur" reRender="detalleField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+				<div style="clear: both">
+					<span class="required">*</span>
+					#{messages['common.requiredFields']}
+				</div>
 
+			</rich:panel>
 
-            <s:decorate id="nombreField" template="layout/edit.xhtml">
-                <ui:define name="label">Nombre</ui:define>
-                <h:inputText id="nombre"
-                           size="30"
-                      maxlength="30"
-                          value="#{lineaHome.instance.nombre}">
-                    <a:support event="onblur" reRender="nombreField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+			<div class="actionButtons">
 
-            <div style="clear:both">
-                <span class="required">*</span>
-                required fields
-            </div>
+				<h:commandButton id="save" value="#{messages['common.save']}"
+					action="#{lineaHome.persist}" disabled="#{!lineaHome.wired}"
+					rendered="#{!lineaHome.managed}" />
 
-        </rich:panel>
+				<h:commandButton id="update" value="#{messages['common.save']}"
+					action="#{lineaHome.update}" rendered="#{lineaHome.managed}" />
 
-        <div class="actionButtons">
+				<h:commandButton id="delete" value="#{messages['common.delete']}"
+					action="#{lineaHome.remove}" immediate="true"
+					rendered="#{lineaHome.managed}" />
 
-            <h:commandButton id="save"
-                          value="Save"
-                         action="#{lineaHome.persist}"
-                       disabled="#{!lineaHome.wired}"
-                       rendered="#{!lineaHome.managed}"/>
+				<s:button id="cancelAdd" value="#{messages['common.cancel']}"
+					propagation="end"
+					view="/inventario/#{empty lineaFrom ? 'LineaList' : lineaFrom}.xhtml" />
 
-            <h:commandButton id="update"
-                          value="Save"
-                         action="#{lineaHome.update}"
-                       rendered="#{lineaHome.managed}"/>
+			</div>
+		</h:form>
 
-            <h:commandButton id="delete"
-                          value="Delete"
-                         action="#{lineaHome.remove}"
-                      immediate="true"
-                       rendered="#{lineaHome.managed}"/>
-
-            <s:button id="cancelEdit"
-                   value="Cancel"
-             propagation="end"
-                    view="/Linea.xhtml"
-                rendered="#{lineaHome.managed}"/>
-
-            <s:button id="cancelAdd"
-                   value="Cancel"
-             propagation="end"
-                    view="/#{empty lineaFrom ? 'LineaList' : lineaFrom}.xhtml"
-                rendered="#{!lineaHome.managed}"/>
-
-        </div>
-    </h:form>
-
-</ui:define>
+	</ui:define>
 
 </ui:composition>
