@@ -27,7 +27,7 @@
 
 			<div class="actionButtons">
 				<h:commandButton id="search" value="#{messages['common.search']}"
-					action="/comun/UserList.xhtml" />
+					action="/security/UserList.xhtml" />
 				<s:button id="reset" value="#{messages['common.reset']}"
 					includePageParams="false" />
 			</div>
@@ -39,7 +39,7 @@
 				<h:panelGrid columns="2" columnClasses="headerTitle,">
 					<h:outputText
 						value="#{messages['user.searchResults']} (#{empty userList.resultList ? 0 : (userList.paginated ? userList.resultCount : userList.resultList.size)})" />
-					<s:button view="/comun/UserEdit.xhtml" id="create"
+					<s:button view="/security/UserEdit.xhtml" id="create"
 						propagation="none" value="#{messages['common.create']}">
 						<f:param name="actionId" />
 					</s:button>
@@ -69,7 +69,7 @@
 					<rich:column styleClass="action">
 						<f:facet name="header">#{messages['action']}</f:facet>
 
-						<s:button view="/comun/UserEdit.xhtml"
+						<s:button view="/security/UserEdit.xhtml"
 							value="#{messages['common.edit']}" propagation="none"
 							id="userEdit" rendered="#{empty from}">
 							<f:param name="userId" value="#{_person.id}" />
@@ -83,28 +83,28 @@
 
 		<div class="tableControl">
 
-			<s:link view="/comun/UserList.xhtml"
+			<s:link view="/security/UserList.xhtml"
 				rendered="#{userList.previousExists}"
 				value="#{messages.left}#{messages.left} #{messages['common.firstPage']}"
 				id="firstPage">
 				<f:param name="firstResult" value="0" />
 			</s:link>
 
-			<s:link view="/comun/UserList.xhtml"
+			<s:link view="/security/UserList.xhtml"
 				rendered="#{userList.previousExists}"
 				value="#{messages.left} #{messages['common.previousPage']}"
 				id="previousPage">
 				<f:param name="firstResult" value="#{userList.previousFirstResult}" />
 			</s:link>
 
-			<s:link view="/comun/UserList.xhtml"
+			<s:link view="/security/UserList.xhtml"
 				rendered="#{userList.nextExists}"
 				value="#{messages['common.nextPage']} #{messages.right}"
 				id="nextPage">
 				<f:param name="firstResult" value="#{userList.nextFirstResult}" />
 			</s:link>
 
-			<s:link view="/comun/UserList.xhtml"
+			<s:link view="/security/UserList.xhtml"
 				rendered="#{userList.nextExists}"
 				value="#{messages['common.lastPage']} #{messages.right}#{messages.right}"
 				id="lastPage">
