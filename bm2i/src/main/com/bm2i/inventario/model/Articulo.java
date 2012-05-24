@@ -13,8 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.TableGenerator;
 
 import org.hibernate.annotations.Cascade;
@@ -28,6 +29,18 @@ import org.hibernate.annotations.Cascade;
  */
 @Entity
 @TableGenerator(name = "ArticuloGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "Articulo", initialValue = 1, allocationSize = 1)
+@NamedQueries(value = {
+		@NamedQuery(name = "Articulo.findByCodigoNombre", query = "select a from Articulo a where "
+				+ "lower(a.nombre) like lower(concat(:criteria, '%')) or "
+				+ "lower(a.codigoBarra) like lower(concat(:criteria, '%')) "
+				+ "order by a.nombre"),
+		@NamedQuery(name = "Articulo.findByCodigoBarra", query = "select a from Articulo a where "
+				+ "lower(a.codigoBarra) like lower(:criteria) "
+				+ "order by a.nombre"),
+		@NamedQuery(name = "Articulo.findByNombre", query = "select a from Articulo a where "
+				+ "lower(a.nombre) = lower(:nombre) " + "order by a.nombre"),
+		@NamedQuery(name = "Articulo.listarExistencias", query = "select a from Articulo a "
+				+ "order by a.cantidad desc") })
 public class Articulo {
 
 	@Id

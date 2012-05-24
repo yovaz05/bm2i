@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.TableGenerator;
 
 /**
@@ -16,6 +18,7 @@ import javax.persistence.TableGenerator;
  */
 @Entity
 @TableGenerator(name = "GananciaGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "Ganancia", initialValue = 1, allocationSize = 1)
+@NamedQueries(value = { @NamedQuery(name = "Ganancia.findAll", query = "select g from Ganancia g order by g.nombre") })
 public class Ganancia {
 
 	@Id

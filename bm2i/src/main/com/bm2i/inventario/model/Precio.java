@@ -1,6 +1,7 @@
 package com.bm2i.inventario.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -114,5 +115,16 @@ public class Precio {
 
 	public void setGanancia(Ganancia ganancia) {
 		this.ganancia = ganancia;
+	}
+
+	public void realizarCalculo() {
+		if (ganancia != null) {
+			double costo = this.costo.doubleValue();
+			double utilidad = ganancia.getPorcentaje().doubleValue();
+			double total = costo + (costo * utilidad / 100);
+			BigDecimal pvp = new BigDecimal(total);
+			pvp = pvp.setScale(2, RoundingMode.HALF_UP);
+			this.setPvp(pvp);
+		}
 	}
 }// end Precio

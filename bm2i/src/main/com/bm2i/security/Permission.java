@@ -15,70 +15,69 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.TableGenerator;
 
-
 @Entity
-@TableGenerator(
-	 name="PermissionGenerator",
-	 table="IdentityGenerator",
-	 pkColumnName="name",
-	 valueColumnName="value",
-	 pkColumnValue="Permission",
-	 initialValue=1, allocationSize=1
-)
-@NamedQueries(value={
-		@NamedQuery(name="Permission.findByRoleIds", 
-					query="select o from Permission o where o.role.id in (:roleIds)") ,
-		@NamedQuery(name="Permission.findRootActionsByRoleIds", 
-				query="select o from Permission o left join fetch o.action a where o.role.id in (:roleIds) and a.parent is null")
-})
+@TableGenerator(name = "PermissionGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "Permission", initialValue = 1, allocationSize = 1)
+@NamedQueries(value = {
+		@NamedQuery(name = "Permission.findByRoleIds", query = "select o from Permission o where o.role.id in (:roleIds)"),
+		@NamedQuery(name = "Permission.findRootActionsByRoleIds", query = "select o from Permission o left join fetch o.action a where o.role.id in (:roleIds) and a.parent is null") })
 public class Permission {
 	@Id
 	@GeneratedValue(generator = "PermissionGenerator", strategy = GenerationType.TABLE)
 	private Long id;
-	private Date expirationDate;
-	@Enumerated(EnumType.STRING)
-	@Column(length=5)
-	private PermissionType permissionType;
 	
+	private Date expirationDate;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(length = 5)
+	private PermissionType permissionType;
+
 	@ManyToOne
 	private Role role;
-	
+
 	@ManyToOne
-	@JoinColumn(name="action_id")
+	@JoinColumn(name = "action_id")
 	private Action action;
-	
-	
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public PermissionType getPermissionType() {
 		return permissionType;
 	}
+
 	public void setPermissionType(PermissionType permissionType) {
 		this.permissionType = permissionType;
 	}
+
 	public Role getRole() {
 		return role;
 	}
+
 	public void setRole(Role role) {
 		this.role = role;
 	}
+
 	public Action getAction() {
 		return action;
 	}
+
 	public void setAction(Action action) {
 		this.action = action;
 	}
+
 	public Date getExpirationDate() {
 		return expirationDate;
 	}
+
 	public void setExpirationDate(Date expirationDate) {
 		this.expirationDate = expirationDate;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hash = 13;
