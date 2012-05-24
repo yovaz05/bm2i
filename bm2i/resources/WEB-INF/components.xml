@@ -22,6 +22,7 @@
 	<core:resource-loader>
 		<core:bundle-names>
 			<value>bm2i</value>
+			<value>bm2i_inventario</value>
 		</core:bundle-names>
 	</core:resource-loader>
 
