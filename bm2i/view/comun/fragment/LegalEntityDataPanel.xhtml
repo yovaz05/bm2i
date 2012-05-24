@@ -1,0 +1,50 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+
+	<rich:panel
+		rendered="#{residentHome.residentType == 'EntidadLegal' ? true : false}">
+		<f:facet name="header">#{messages['resident.legalEntityData']}</f:facet>
+
+		<s:decorate id="nameField" template="../../layout/edit.xhtml">
+			<ui:define name="label">#{messages['resident.businessName']}:</ui:define>
+			<h:inputText id="name" required="true" size="100" maxlength="100"
+				value="#{residentHome.instance.nombre}"
+				style="text-transform: uppercase">
+				<a:support event="onblur" reRender="nameField" bypassUpdates="true"
+					ajaxSingle="true" />
+			</h:inputText>
+		</s:decorate>
+
+		<s:decorate id="constitutionDateField"
+			template="../../layout/edit.xhtml">
+			<ui:define name="label">#{messages['resident.constitutionDate']}:</ui:define>
+			<rich:calendar id="constitutionDate"
+				value="#{residentHome.instance.fechaConstitucion}"
+				datePattern="#{messages['common.datePattern']}" />
+		</s:decorate>
+
+		<s:decorate id="legalEntityTypeField"
+			template="../../layout/edit.xhtml">
+			<ui:define name="label">#{messages['resident.legalEntityType']}:</ui:define>
+			<h:selectOneMenu id="legalEntityType"
+				value="#{residentHome.instance.tipoEntidadLegal}">
+				<s:selectItems value="#{legalEntityTypes}" var="legalEntityType"
+					label="#{messages[legalEntityType.name()]}" />
+				<s:convertEnum />
+			</h:selectOneMenu>
+		</s:decorate>
+		<div style="clear: both">
+			<span class="required">*</span> #{messages['common.requiredFields']}
+		</div>
+
+	</rich:panel>
+
+</ui:composition>

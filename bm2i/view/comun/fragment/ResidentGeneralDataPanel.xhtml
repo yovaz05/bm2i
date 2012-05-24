@@ -1,0 +1,70 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<rich:panel>
+		<f:facet name="header">#{messages['resident.generalData']}</f:facet>
+
+		<s:decorate id="identificationTypeField"
+			template="../../layout/edit.xhtml">
+			<ui:define name="label">#{messages['resident.identificationType']}:</ui:define>
+			<h:selectOneMenu id="identificationType"
+				value="#{residentHome.instance.tipoIdentificacion}"
+				disabled="#{residentHome.managed}">
+				<s:selectItems value="#{residentHome.identificationTypes}"
+					var="identificationType"
+					label="#{messages[identificationType.name()]}" />
+				<s:convertEnum />
+				<a:support event="onselect" ajaxSingle="true" />
+			</h:selectOneMenu>
+		</s:decorate>
+
+		<s:decorate id="identificationNumberField"
+			template="../../layout/edit.xhtml">
+			<ui:define name="label">#{messages['resident.dni']}:</ui:define>
+			<h:inputText id="identificationNumber" required="true" size="15"
+				disabled="#{residentHome.managed}" maxlength="15"
+				value="#{residentHome.instance.numeroIdentificacion}"
+				validator="identificationNumberValidator">
+				<a:support event="onblur" reRender="identificationNumberField"
+					bypassUpdates="true" ajaxSingle="true" />
+				<c:if test="#{!residentHome.managed}">
+					<f:validator validatorId="identificationNumberUniquenessValidator" />
+				</c:if>
+			</h:inputText>
+
+			<a:commandButton rendered="#{residentHome.managed}"
+				reRender="identificationTypeField, identificationNumberField"
+				ajaxSingle="true"
+				oncomplete="Richfaces.showModalPanel('changeIdentificationPanel',{width:400, top:200})"
+				value="#{messages['resident.changeIdentificationNumber']}" />
+
+		</s:decorate>
+
+		<s:decorate id="emailField" template="../../layout/edit.xhtml">
+			<ui:define name="label">#{messages['resident.email']}</ui:define>
+			<h:inputText id="email" size="50"
+				value="#{residentHome.instance.email}" />
+		</s:decorate>
+
+		<s:decorate id="nombreComercialField"
+			template="../../layout/edit.xhtml">
+			<ui:define name="label">Nombre Comercial:</ui:define>
+			<h:inputText id="nombreComercial" size="60" maxlength="80"
+				value="#{residentHome.instance.nombreComercial}"
+				style="text-transform: uppercase" />
+		</s:decorate>
+
+		<div style="clear: both">
+			<span class="required">*</span> #{messages['common.requiredFields']}
+		</div>
+
+	</rich:panel>
+</ui:composition>

@@ -1,0 +1,91 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+
+	<rich:panel
+		rendered="#{residentHome.residentType == 'Persona' ? true : false}">
+		<f:facet name="header">#{messages['resident.personData']}</f:facet>
+
+		<s:decorate id="firstNameField" template="../../layout/edit.xhtml">
+			<ui:define name="label">#{messages['resident.firstName']}:</ui:define>
+			<h:inputText id="firstName" required="true" size="25" maxlength="25"
+				value="#{residentHome.instance.nombres}"
+				style="text-transform: uppercase">
+				<a:support event="onblur" reRender="firstNameField"
+					bypassUpdates="true" ajaxSingle="true" />
+			</h:inputText>
+		</s:decorate>
+
+		<s:decorate id="lastNameField" template="../../layout/edit.xhtml">
+			<ui:define name="label">#{messages['resident.lastName']}:</ui:define>
+			<h:inputText id="lastName" required="true" size="25" maxlength="25"
+				value="#{residentHome.instance.apellidos}"
+				style="text-transform: uppercase">
+				<a:support event="onblur" reRender="lastNameField"
+					bypassUpdates="true" ajaxSingle="true" />
+			</h:inputText>
+		</s:decorate>
+
+		<!-- s:decorate id="birthdayField" template="../../layout/edit.xhtml">
+			<ui:define name="label">#{messages['resident.birthday']}:</ui:define>
+			<rich:calendar id="birthday" enableManualInput="true"
+				value="#{residentHome.instance.birthDay}" required="true" datePattern="#{messages['common.datePattern']}"/>
+		</s:decorate-->
+
+		<s:decorate id="genderField" template="../../layout/edit.xhtml">
+			<ui:define name="label">#{messages['resident.gender']}:</ui:define>
+			<h:selectOneMenu id="gender" value="#{residentHome.instance.genero}">
+				<s:selectItems value="#{genders}" var="gender"
+					label="#{messages[gender.name()]}" />
+				<s:convertEnum />
+			</h:selectOneMenu>
+		</s:decorate>
+
+		<s:decorate id="maritalStatusField" template="../../layout/edit.xhtml">
+			<ui:define name="label">#{messages['resident.maritalStatus']}:</ui:define>
+			<h:selectOneMenu id="maritalStatus"
+				value="#{residentHome.instance.estadoCivil}">
+				<s:selectItems value="#{maritalStatuses}" var="maritalStatus"
+					label="#{messages[maritalStatus.name()]}" />
+				<s:convertEnum />
+			</h:selectOneMenu>
+		</s:decorate>
+
+
+		<s:decorate id="isHandicapedField" template="../../layout/edit.xhtml">
+			<ui:define name="label">#{messages['resident.isHandicaped']}:</ui:define>
+			<h:selectBooleanCheckbox id="isHandicaped"
+				value="#{residentHome.instance.isDiscapacitado}">
+				<a:support event="onclick" reRender="handicapedNumberField"
+					ajaxSingle="true" />
+			</h:selectBooleanCheckbox>
+		</s:decorate>
+
+		<s:decorate id="handicapedNumberField"
+			template="../../layout/edit.xhtml">
+			<ui:define name="label">#{messages['resident.handicapedNumber']}:</ui:define>
+			<h:inputText id="handicapedNumber" size="15" maxlength="15"
+				value="#{residentHome.instance.numeroDiscapacidad}"
+				disabled="#{not residentHome.instance.isDiscapacitado}">
+				<a:support event="onblur" reRender="handicapedNumberField"
+					bypassUpdates="true" ajaxSingle="true" />
+			</h:inputText>
+		</s:decorate>
+
+
+
+		<div style="clear: both">
+			<span class="required">*</span> #{messages['common.requiredFields']}
+		</div>
+
+	</rich:panel>
+
+
+</ui:composition>
