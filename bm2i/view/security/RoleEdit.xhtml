@@ -70,11 +70,11 @@
 					<rich:dataTable value="#{roleHome.instance.users}" var="_user"
 						rendered="#{not empty roleHome.instance.users}"
 						rowClasses="rvgRowOne,rvgRowTwo" id="usersTable">
-						<rich:column >
+						<rich:column>
 							<f:facet name="header">#{messages['user.name']}</f:facet>
 							<h:outputText value="#{_user.name}" />
 						</rich:column>
-						<rich:column >
+						<rich:column>
 							<f:facet name="header">#{messages['person.identificationNumber']}</f:facet>
 							<h:outputText value="#{_user.persona.numeroIdentificacion}" />
 						</rich:column>
@@ -82,9 +82,9 @@
 							<f:facet name="header">#{messages['person.name']}</f:facet>
 							<h:outputText value="#{_user.persona.nombre}" />
 						</rich:column>
-						<rich:column>
-							<f:facet name="header">#{messages['action']}</f:facet>
-							<a:commandLink value="#{messages['remove']}"
+						<rich:column styleClass="action">
+							<f:facet name="header">#{messages['common.action']}</f:facet>
+							<a:commandButton value="#{messages['remove']}"
 								action="#{roleHome.removeUser(_user)}" reRender="usersChildren"
 								ajaxSingle="true" />
 						</rich:column>
@@ -126,9 +126,9 @@
 							<f:facet name="header">#{messages['user.priority']}</f:facet>
 							<h:outputText value="#{_p.action.priority}" />
 						</rich:column>
-						<rich:column>
-							<f:facet name="header">#{messages['action']}</f:facet>
-							<a:commandLink value="#{messages['remove']}"
+						<rich:column styleClass="action">
+							<f:facet name="header">#{messages['common.action']}</f:facet>
+							<a:commandButton value="#{messages['remove']}"
 								action="#{roleHome.removeAction(_p)}"
 								reRender="permissionsTable" ajaxSingle="true" />
 						</rich:column>

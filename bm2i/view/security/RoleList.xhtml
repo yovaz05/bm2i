@@ -19,7 +19,7 @@
 			<rich:simpleTogglePanel label="#{messages['role.searchFilter']}"
 				switchType="ajax">
 				<s:decorate template="../layout/display.xhtml">
-					<ui:define name="label">#{messages[role.name]}</ui:define>
+					<ui:define name="label">#{messages['common.criteria']}</ui:define>
 					<h:inputText id="name" value="#{roleList.role.name}" />
 				</s:decorate>
 
@@ -75,7 +75,7 @@
 						<h:outputText value="#{_role.description}" />
 					</h:column>
 					<rich:column styleClass="action">
-						<f:facet name="header">#{messages['action']}</f:facet>
+							<f:facet name="header">#{messages['common.action']}</f:facet>
 						<s:button view="/security/RoleEdit.xhtml" value="Editar"
 							propagation="none" id="roleEdit" rendered="#{empty from}">
 							<f:param name="roleId" value="#{_role.id}" />

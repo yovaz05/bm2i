@@ -1,91 +1,75 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:s="http://jboss.com/products/seam/taglib"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:a="http://richfaces.org/a4j"
-    xmlns:rich="http://richfaces.org/rich"
-    template="layout/template.xhtml">
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
 
-<ui:define name="body">
+	<ui:define name="body">
 
-    <h:form id="ganancia" styleClass="edit">
+		<h:form id="ganancia" styleClass="edit">
 
-        <rich:panel>
-            <f:facet name="header">#{gananciaHome.managed ? 'Edit' : 'Add'} Ganancia</f:facet>
+			<h:outputText styleClass="formTitle"
+				value="#{gananciaHome.managed ? messages['common.edit'] : messages['common.edit']} #{messages['ganancia']}" />
 
+			<rich:panel>
+				<f:facet name="header">#{messages['ganancia.infoData']}</f:facet>
 
+				<s:decorate id="nombreField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['ganancia.nombre']}</ui:define>
+					<h:inputText id="nombre" size="25" maxlength="25"
+						value="#{gananciaHome.instance.nombre}">
+						<a:support event="onblur" reRender="nombreField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
 
-            <s:decorate id="isActiveField" template="layout/edit.xhtml">
-                <ui:define name="label">Is active</ui:define>
-                <h:selectBooleanCheckbox id="isActive"
-                                      value="#{gananciaHome.instance.isActive}"/>
-            </s:decorate>
+				<s:decorate id="porcentajeField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['ganancia.porcentaje']}</ui:define>
+					<h:inputText id="porcentaje"
+						value="#{gananciaHome.instance.porcentaje}" size="25">
+						<a:support event="onblur" reRender="porcentajeField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
 
+				<s:decorate id="isActiveField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['ganancia.isActive']}</ui:define>
+					<h:selectBooleanCheckbox id="isActive"
+						value="#{gananciaHome.instance.isActive}" />
+				</s:decorate>
 
-            <s:decorate id="nombreField" template="layout/edit.xhtml">
-                <ui:define name="label">Nombre</ui:define>
-                <h:inputText id="nombre"
-                           size="25"
-                      maxlength="25"
-                          value="#{gananciaHome.instance.nombre}">
-                    <a:support event="onblur" reRender="nombreField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+				<div style="clear: both">
+					<span class="required">*</span>
+					#{messages['common.requiredFields']}
+				</div>
 
+			</rich:panel>
 
-            <s:decorate id="porcentajeField" template="layout/edit.xhtml">
-                <ui:define name="label">Porcentaje</ui:define>
-                <h:inputText id="porcentaje"
-                          value="#{gananciaHome.instance.porcentaje}"
-                           size="26">
-                    <a:support event="onblur" reRender="porcentajeField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+			<div class="actionButtons">
 
-            <div style="clear:both">
-                <span class="required">*</span>
-                required fields
-            </div>
+				<h:commandButton id="save" value="#{messages['common.save']}"
+					action="#{gananciaHome.persist}" disabled="#{!gananciaHome.wired}"
+					rendered="#{!gananciaHome.managed}" />
 
-        </rich:panel>
+				<h:commandButton id="update" value="#{messages['common.save']}"
+					action="#{gananciaHome.update}" rendered="#{gananciaHome.managed}" />
 
-        <div class="actionButtons">
+				<h:commandButton id="delete" value="#{messages['common.delete']}"
+					action="#{gananciaHome.remove}" immediate="true"
+					rendered="#{gananciaHome.managed}" />
 
-            <h:commandButton id="save"
-                          value="Save"
-                         action="#{gananciaHome.persist}"
-                       disabled="#{!gananciaHome.wired}"
-                       rendered="#{!gananciaHome.managed}"/>
+				<s:button id="cancelAdd" value="#{messages['common.cancel']}"
+					propagation="end"
+					view="/inventario/#{empty gananciaFrom ? 'GananciaList' : gananciaFrom}.xhtml" />
 
-            <h:commandButton id="update"
-                          value="Save"
-                         action="#{gananciaHome.update}"
-                       rendered="#{gananciaHome.managed}"/>
+			</div>
+		</h:form>
 
-            <h:commandButton id="delete"
-                          value="Delete"
-                         action="#{gananciaHome.remove}"
-                      immediate="true"
-                       rendered="#{gananciaHome.managed}"/>
-
-            <s:button id="cancelEdit"
-                   value="Cancel"
-             propagation="end"
-                    view="/Ganancia.xhtml"
-                rendered="#{gananciaHome.managed}"/>
-
-            <s:button id="cancelAdd"
-                   value="Cancel"
-             propagation="end"
-                    view="/#{empty gananciaFrom ? 'GananciaList' : gananciaFrom}.xhtml"
-                rendered="#{!gananciaHome.managed}"/>
-
-        </div>
-    </h:form>
-
-</ui:define>
+	</ui:define>
 
 </ui:composition>

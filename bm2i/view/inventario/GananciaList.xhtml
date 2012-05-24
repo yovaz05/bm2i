@@ -1,162 +1,149 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:s="http://jboss.com/products/seam/taglib"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:rich="http://richfaces.org/rich"
-    template="layout/template.xhtml">
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
 
-<ui:define name="body">
+	<ui:define name="body">
 
-    <h:form id="gananciaSearch" styleClass="edit">
+		<h:form id="gananciaSearch" styleClass="edit">
+			<h:outputText styleClass="formTitle"
+				value="#{messages['ganancia.manager']}" />
 
-        <rich:simpleTogglePanel label="Ganancia Search Filter" switchType="ajax">
+			<rich:simpleTogglePanel label="#{messages['ganancia.searchFilter']}"
+				switchType="ajax">
 
-            <s:decorate template="layout/display.xhtml">
-                <ui:define name="label">Nombre</ui:define>
-                <h:inputText id="nombre" value="#{gananciaList.ganancia.nombre}"/>
-            </s:decorate>
+				<s:decorate template="../layout/display.xhtml">
+					<ui:define name="label">Nombre</ui:define>
+					<h:inputText id="nombre" value="#{gananciaList.ganancia.nombre}" />
+				</s:decorate>
 
-            <s:decorate template="layout/display.xhtml">
-                <ui:define name="label">Match</ui:define>
-                <h:selectOneRadio id="logic" value="#{gananciaList.restrictionLogicOperator}" styleClass="radio">
-                    <f:selectItem itemLabel="All" itemValue="and"/>
-                    <f:selectItem itemLabel="Any" itemValue="or"/>
-                </h:selectOneRadio>
-            </s:decorate>
+			</rich:simpleTogglePanel>
 
-        </rich:simpleTogglePanel>
+			<div class="actionButtons">
+				<h:commandButton id="search" value="#{messages['common.search']}"
+					action="/inventario/GananciaList.xhtml" />
+				<s:button id="reset" value="#{messages['common.reset']}"
+					includePageParams="false" />
+			</div>
 
-        <div class="actionButtons">
-            <h:commandButton id="search" value="Search" action="/GananciaList.xhtml"/>
-            <s:button id="reset" value="Reset" includePageParams="false"/>
-        </div>
+		</h:form>
 
-    </h:form>
+		<rich:panel>
+			<f:facet name="header">
+				<h:panelGrid columns="2" columnClasses="headerTitle,">
+					<h:outputText
+						value=" #{messages['tipoRegistro.searchResults']} (#{empty gananciaList.resultList ? 0 : (gananciaList.paginated ? gananciaList.resultCount : gananciaList.resultList.size)})" />
+					<s:div styleClass="actionButtons" rendered="#{empty from}">
+						<s:button view="/inventario/GananciaEdit.xhtml" id="create"
+							propagation="none" value="#{messages['common.create']}">
+							<f:param name="gananciaId" />
+						</s:button>
+					</s:div>
+				</h:panelGrid>
+			</f:facet>
+			<div class="results" id="gananciaList">
 
-    <rich:panel>
-        <f:facet name="header">Ganancia Search Results (#{empty gananciaList.resultList ? 0 : (gananciaList.paginated ? gananciaList.resultCount : gananciaList.resultList.size)})</f:facet>
-    <div class="results" id="gananciaList">
+				<h:outputText value="#{messages['action.noresults']}"
+					rendered="#{empty gananciaList.resultList}" />
 
-    <h:outputText value="The ganancia search returned no results."
-               rendered="#{empty gananciaList.resultList}"/>
+				<rich:dataTable id="gananciaList" var="_ganancia"
+					value="#{gananciaList.resultList}"
+					rendered="#{not empty gananciaList.resultList}">
+					<h:column>
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{gananciaList}" />
+								<ui:param name="propertyLabel"
+									value="#{messages['ganancia.id']}" />
+								<ui:param name="propertyPath" value="ganancia.id" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_ganancia.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{gananciaList}" />
+								<ui:param name="propertyLabel"
+									value="#{messages['ganancia.nombre']}" />
+								<ui:param name="propertyPath" value="ganancia.nombre" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_ganancia.nombre}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{gananciaList}" />
+								<ui:param name="propertyLabel"
+									value="#{messages['ganancia.isActive']}" />
+								<ui:param name="propertyPath" value="ganancia.isActive" />
+							</ui:include>
+						</f:facet>
+						<h:selectBooleanCheckbox value="#{_ganancia.isActive}"
+							disabled="true" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{gananciaList}" />
+								<ui:param name="propertyLabel"
+									value="#{messages['ganancia.porcentaje']}" />
+								<ui:param name="propertyPath" value="ganancia.porcentaje" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_ganancia.porcentaje}">
+							<f:convertNumber />
+						</h:outputText>
+					</h:column>
+					<rich:column styleClass="action">
+						<f:facet name="header">#{messages['common.action']}</f:facet>
 
-    <rich:dataTable id="gananciaList"
-                var="_ganancia"
-              value="#{gananciaList.resultList}"
-           rendered="#{not empty gananciaList.resultList}">
-        <h:column>
-            <f:facet name="header">
-                <ui:include src="layout/sort.xhtml">
-                    <ui:param name="entityList" value="#{gananciaList}"/>
-                    <ui:param name="propertyLabel" value="Id"/>
-                    <ui:param name="propertyPath" value="ganancia.id"/>
-                </ui:include>
-            </f:facet>
-            <h:outputText value="#{_ganancia.id}"/>
-        </h:column>
-        <h:column>
-            <f:facet name="header">
-                <ui:include src="layout/sort.xhtml">
-                    <ui:param name="entityList" value="#{gananciaList}"/>
-                    <ui:param name="propertyLabel" value="Is active"/>
-                    <ui:param name="propertyPath" value="ganancia.isActive"/>
-                </ui:include>
-            </f:facet>
-            <h:outputText value="#{_ganancia.isActive}"/>
-        </h:column>
-        <h:column>
-            <f:facet name="header">
-                <ui:include src="layout/sort.xhtml">
-                    <ui:param name="entityList" value="#{gananciaList}"/>
-                    <ui:param name="propertyLabel" value="Nombre"/>
-                    <ui:param name="propertyPath" value="ganancia.nombre"/>
-                </ui:include>
-            </f:facet>
-            <h:outputText value="#{_ganancia.nombre}"/>
-        </h:column>
-        <h:column>
-            <f:facet name="header">
-                <ui:include src="layout/sort.xhtml">
-                    <ui:param name="entityList" value="#{gananciaList}"/>
-                    <ui:param name="propertyLabel" value="Porcentaje"/>
-                    <ui:param name="propertyPath" value="ganancia.porcentaje"/>
-                </ui:include>
-            </f:facet>
-            <h:outputText value="#{_ganancia.porcentaje}">
-                <f:convertNumber/>
-            </h:outputText>
-        </h:column>
-        <rich:column styleClass="action">
-            <f:facet name="header">Action</f:facet>
-            <s:link view="/#{empty from ? 'Ganancia' : from}.xhtml"
-                   value="#{empty from ? 'View' : 'Select'}"
-             propagation="#{empty from ? 'none' : 'default'}"
-                      id="gananciaViewId">
-                <f:param name="gananciaId"
-                        value="#{_ganancia.id}"/>
-            </s:link>
-            #{' '}
-            <s:link view="/GananciaEdit.xhtml"
-                   value="Edit"
-             propagation="none"
-                      id="gananciaEdit"
-                rendered="#{empty from}">
-                <f:param name="gananciaId"
-                        value="#{_ganancia.id}"/>
-            </s:link>
-        </rich:column>
-    </rich:dataTable>
+						<s:button view="/inventario/GananciaEdit.xhtml"
+							value="#{messages['common.edit']}" propagation="none"
+							id="gananciaEdit" rendered="#{empty from}">
+							<f:param name="gananciaId" value="#{_ganancia.id}" />
+						</s:button>
+					</rich:column>
+				</rich:dataTable>
 
-    </div>
-    </rich:panel>
+			</div>
+		</rich:panel>
 
-    <div class="tableControl">
+		<div class="tableControl">
 
-        <s:link view="/GananciaList.xhtml"
-            rendered="#{gananciaList.previousExists}"
-               value="#{messages.left}#{messages.left} First Page"
-                  id="firstPage">
-          <f:param name="firstResult" value="0"/>
-        </s:link>
+			<s:link view="/inventario/GananciaList.xhtml"
+				rendered="#{gananciaList.previousExists}"
+				value="#{messages.left}#{messages.left} First Page" id="firstPage">
+				<f:param name="firstResult" value="0" />
+			</s:link>
 
-        <s:link view="/GananciaList.xhtml"
-            rendered="#{gananciaList.previousExists}"
-               value="#{messages.left} Previous Page"
-                  id="previousPage">
-            <f:param name="firstResult"
-                    value="#{gananciaList.previousFirstResult}"/>
-        </s:link>
+			<s:link view="/inventario/GananciaList.xhtml"
+				rendered="#{gananciaList.previousExists}"
+				value="#{messages.left} Previous Page" id="previousPage">
+				<f:param name="firstResult"
+					value="#{gananciaList.previousFirstResult}" />
+			</s:link>
 
-        <s:link view="/GananciaList.xhtml"
-            rendered="#{gananciaList.nextExists}"
-               value="Next Page #{messages.right}"
-                  id="nextPage">
-            <f:param name="firstResult"
-                    value="#{gananciaList.nextFirstResult}"/>
-        </s:link>
+			<s:link view="/inventario/GananciaList.xhtml"
+				rendered="#{gananciaList.nextExists}"
+				value="Next Page #{messages.right}" id="nextPage">
+				<f:param name="firstResult" value="#{gananciaList.nextFirstResult}" />
+			</s:link>
 
-        <s:link view="/GananciaList.xhtml"
-            rendered="#{gananciaList.nextExists}"
-               value="Last Page #{messages.right}#{messages.right}"
-                  id="lastPage">
-            <f:param name="firstResult"
-                    value="#{gananciaList.lastFirstResult}"/>
-        </s:link>
+			<s:link view="/inventario/GananciaList.xhtml"
+				rendered="#{gananciaList.nextExists}"
+				value="Last Page #{messages.right}#{messages.right}" id="lastPage">
+				<f:param name="firstResult" value="#{gananciaList.lastFirstResult}" />
+			</s:link>
 
-    </div>
+		</div>
 
-    <s:div styleClass="actionButtons" rendered="#{empty from}">
-        <s:button view="/GananciaEdit.xhtml"
-                    id="create"
-           propagation="none"
-                 value="Create ganancia">
-            <f:param name="gananciaId"/>
-        </s:button>
-    </s:div>
-
-</ui:define>
+	</ui:define>
 
 </ui:composition>

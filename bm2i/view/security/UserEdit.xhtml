@@ -184,11 +184,11 @@
 							<f:facet name="header">#{messages['role.description']}</f:facet>
 							<h:outputText value="#{_role.description}" />
 						</rich:column>
-						<rich:column>
+						<rich:column styleClass="action">
 							<f:facet name="header">#{messages['common.action']}</f:facet>
-							<a:commandLink value="#{messages['common.remove']}"
+							<a:commandButton value="#{messages['common.remove']}"
 								action="#{userHome.removeRole(_role)}" reRender="rolesChildren"
-								ajaxSingle="true" />
+								ajaxSingle="true">
 						</rich:column>
 					</rich:dataTable>
 

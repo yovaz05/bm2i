@@ -6,7 +6,7 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:rich="http://richfaces.org/rich"
-    template="layout/template.xhtml">
+    template="../layout/template.xhtml">
 
 <ui:define name="body">
 
@@ -14,7 +14,7 @@
 
         <rich:simpleTogglePanel label="Generico Search Filter" switchType="ajax">
 
-            <s:decorate template="layout/display.xhtml">
+            <s:decorate template="../layout/display.xhtml">
                 <ui:define name="label">Match</ui:define>
                 <h:selectOneRadio id="logic" value="#{genericoList.restrictionLogicOperator}" styleClass="radio">
                     <f:selectItem itemLabel="All" itemValue="and"/>
@@ -44,7 +44,7 @@
            rendered="#{not empty genericoList.resultList}">
         <h:column>
             <f:facet name="header">
-                <ui:include src="layout/sort.xhtml">
+                <ui:include src="../layout/sort.xhtml">
                     <ui:param name="entityList" value="#{genericoList}"/>
                     <ui:param name="propertyLabel" value="Id"/>
                     <ui:param name="propertyPath" value="generico.id"/>
@@ -54,7 +54,7 @@
         </h:column>
         <h:column>
             <f:facet name="header">
-                <ui:include src="layout/sort.xhtml">
+                <ui:include src="../layout/sort.xhtml">
                     <ui:param name="entityList" value="#{genericoList}"/>
                     <ui:param name="propertyLabel" value="Articulo id"/>
                     <ui:param name="propertyPath" value="generico.articulo.id"/>
@@ -64,7 +64,7 @@
         </h:column>
         <h:column>
             <f:facet name="header">
-                <ui:include src="layout/sort.xhtml">
+                <ui:include src="../layout/sort.xhtml">
                     <ui:param name="entityList" value="#{genericoList}"/>
                     <ui:param name="propertyLabel" value="Fecha"/>
                     <ui:param name="propertyPath" value="generico.fecha"/>
@@ -76,7 +76,7 @@
         </h:column>
         <h:column>
             <f:facet name="header">
-                <ui:include src="layout/sort.xhtml">
+                <ui:include src="../layout/sort.xhtml">
                     <ui:param name="entityList" value="#{genericoList}"/>
                     <ui:param name="propertyLabel" value="Generico id"/>
                     <ui:param name="propertyPath" value="generico.generico.id"/>
@@ -86,7 +86,7 @@
         </h:column>
         <h:column>
             <f:facet name="header">
-                <ui:include src="layout/sort.xhtml">
+                <ui:include src="../layout/sort.xhtml">
                     <ui:param name="entityList" value="#{genericoList}"/>
                     <ui:param name="propertyLabel" value="Is active"/>
                     <ui:param name="propertyPath" value="generico.isActive"/>
