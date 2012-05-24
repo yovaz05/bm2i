@@ -25,7 +25,13 @@ public class Direccion {
 	private String calle;
 
 	@Column(length = 30)
-	private String cuidad;
+	private String ciudad;
+
+	@Column(length = 30)
+	private String barrio;
+
+	@Column(length = 30)
+	private String codigoPostal;
 
 	@Column(length = 10)
 	private String numero;
@@ -38,7 +44,7 @@ public class Direccion {
 
 	@Column(length = 15)
 	private String telefonoFijo;
-	
+
 	@ManyToOne
 	private Resident resident;
 
@@ -64,14 +70,6 @@ public class Direccion {
 
 	public void setCalle(String calle) {
 		this.calle = calle;
-	}
-
-	public String getCuidad() {
-		return cuidad;
-	}
-
-	public void setCuidad(String cuidad) {
-		this.cuidad = cuidad;
 	}
 
 	public String getNumero() {
@@ -112,5 +110,29 @@ public class Direccion {
 
 	public void setResident(Resident resident) {
 		this.resident = resident;
+	}
+
+	public String getBarrio() {
+		return barrio;
+	}
+
+	public void setBarrio(String barrio) {
+		this.barrio = barrio;
+	}
+
+	public String getCodigoPostal() {
+		return codigoPostal;
+	}
+
+	public void setCodigoPostal(String codigoPostal) {
+		this.codigoPostal = codigoPostal;
+	}
+
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
 	}
 }// end Direccion
