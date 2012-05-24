@@ -81,17 +81,6 @@
 							<ui:include src="../layout/sort.xhtml">
 								<ui:param name="entityList" value="#{articuloList}" />
 								<ui:param name="propertyLabel"
-									value="#{messages['articulo.cantidad']}" />
-								<ui:param name="propertyPath" value="articulo.cantidad" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_articulo.cantidad}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{articuloList}" />
-								<ui:param name="propertyLabel"
 									value="#{messages['articulo.codigoBarra']}" />
 								<ui:param name="propertyPath" value="articulo.codigoBarra" />
 							</ui:include>
@@ -103,15 +92,38 @@
 							<ui:include src="../layout/sort.xhtml">
 								<ui:param name="entityList" value="#{articuloList}" />
 								<ui:param name="propertyLabel"
+									value="#{messages['articulo.nombre']}" />
+								<ui:param name="propertyPath" value="articulo.nombre" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_articulo.nombre}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{articuloList}" />
+								<ui:param name="propertyLabel"
+									value="#{messages['articulo.cantidad']}" />
+								<ui:param name="propertyPath" value="articulo.cantidad" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_articulo.cantidad}" />
+					</h:column>
+
+					<rich:column style="text-align:right;">
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{articuloList}" />
+								<ui:param name="propertyLabel"
 									value="#{messages['articulo.currentCosto']}" />
 								<ui:param name="propertyPath" value="articulo.currentCosto" />
 							</ui:include>
 						</f:facet>
 						<h:outputText value="#{_articulo.currentCosto}">
-							<f:convertNumber />
+							<f:convertNumber pattern="$####.00" />
 						</h:outputText>
-					</h:column>
-					<h:column>
+					</rich:column>
+					<!-- h:column>
 						<f:facet name="header">
 							<ui:include src="../layout/sort.xhtml">
 								<ui:param name="entityList" value="#{articuloList}" />
@@ -121,13 +133,13 @@
 							</ui:include>
 						</f:facet>
 						<h:outputText value="#{_articulo.descripcion}" />
-					</h:column>
+					</h:column-->
 					<h:column>
 						<f:facet name="header">
 							<ui:include src="../layout/sort.xhtml">
 								<ui:param name="entityList" value="#{articuloList}" />
 								<ui:param name="propertyLabel"
-									value="#{messages['articulo.existMax']}" />
+									value="#{messages['articulo.existenciaMax']}" />
 								<ui:param name="propertyPath" value="articulo.existenciaMax" />
 							</ui:include>
 						</f:facet>
@@ -153,19 +165,9 @@
 								<ui:param name="propertyPath" value="articulo.linea.id" />
 							</ui:include>
 						</f:facet>
-						<h:outputText value="#{_articulo.linea.id}" />
+						<h:outputText value="#{_articulo.linea.nombre}" />
 					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{articuloList}" />
-								<ui:param name="propertyLabel"
-									value="#{messages['articulo.nombre']}" />
-								<ui:param name="propertyPath" value="articulo.nombre" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_articulo.nombre}" />
-					</h:column>
+
 					<h:column>
 						<f:facet name="header">
 							<ui:include src="../layout/sort.xhtml">
@@ -188,17 +190,7 @@
 						</f:facet>
 						<h:outputText value="#{_articulo.ubicacion}" />
 					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{articuloList}" />
-								<ui:param name="propertyLabel"
-									value="#{messages['articulo.unidad']}" />
-								<ui:param name="propertyPath" value="articulo.unidad" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_articulo.unidad}" />
-					</h:column>
+
 					<rich:column styleClass="action">
 						<f:facet name="header">#{messages['common.action']}</f:facet>
 						<s:button view="/inventario/ArticuloEdit.xhtml"

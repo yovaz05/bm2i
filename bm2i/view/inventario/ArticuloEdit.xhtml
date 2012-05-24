@@ -7,6 +7,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:a="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich"
+	xmlns:c="http://java.sun.com/jstl/core"
 	template="../layout/template.xhtml">
 
 	<ui:define name="body">
@@ -43,9 +44,12 @@
 				<s:decorate id="nombreField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['articulo.nombre']}</ui:define>
 					<h:inputText id="nombre" size="60" maxlength="60"
-						value="#{articuloHome.instance.nombre}">
+						value="#{articuloHome.instance.nombre}" required="true">
 						<a:support event="onblur" reRender="nombreField"
 							bypassUpdates="true" ajaxSingle="true" />
+						<c:if test="#{!articuloHome.managed}">
+							<f:validator validatorId="articuloNombreValidator" />
+						</c:if>
 					</h:inputText>
 				</s:decorate>
 
@@ -56,6 +60,9 @@
 						onkeypress="return noEnter(event);">
 						<a:support event="onblur" reRender="codigoBarraField"
 							bypassUpdates="true" ajaxSingle="true" />
+						<c:if test="#{!articuloHome.managed}">
+							<f:validator validatorId="barCodeValidator" />
+						</c:if>
 					</h:inputText>
 				</s:decorate>
 
@@ -71,7 +78,8 @@
 				<s:decorate id="currentCostoField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['articulo.currentCosto']}</ui:define>
 					<h:inputText id="currentCosto"
-						value="#{articuloHome.instance.currentCosto}" size="26">
+						value="#{articuloHome.instance.currentCosto}" size="26"
+						required="true">
 						<a:support event="onblur" reRender="currentCostoField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>
@@ -79,11 +87,12 @@
 
 				<s:decorate id="descripcionField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['articulo.descripcion']}</ui:define>
-					<h:inputText id="descripcion" size="100" maxlength="100"
+					<h:inputTextarea id="descripcion"
 						value="#{articuloHome.instance.descripcion}">
+						<f:validateLength maximum="100"></f:validateLength>
 						<a:support event="onblur" reRender="descripcionField"
 							bypassUpdates="true" ajaxSingle="true" />
-					</h:inputText>
+					</h:inputTextarea>
 				</s:decorate>
 
 				<s:decorate id="existenciaMinField" template="../layout/edit.xhtml">
@@ -126,6 +135,85 @@
 					<span class="required">*</span>
 					#{messages['common.requiredFields']}
 				</div>
+			</rich:panel>
+
+			<rich:panel>
+				<f:facet name="header">
+					<h:panelGrid columns="3" columnClasses="headerTitle,">
+						<h:outputText value="#{messages['precios']}" />
+						<a:commandButton value="Generar"
+							action="#{articuloHome.generarListaPVP()}" ajaxSingle="true"
+							reRender="precioList" />
+						<a:commandButton value="Re-Calcular" />
+					</h:panelGrid>
+				</f:facet>
+
+				<rich:dataTable id="precioList" var="_precio"
+					value="#{articuloHome.instance.precios}">
+					<h:column>
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{precioList}" />
+								<ui:param name="propertyLabel" value="#{messages['precio.id']}" />
+								<ui:param name="propertyPath" value="precio.id" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_precio.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{precioList}" />
+								<ui:param name="propertyLabel"
+									value="#{messages['precio.fecha']}" />
+								<ui:param name="propertyPath" value="precio.fecha" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_precio.fecha}">
+							<s:convertDateTime type="date" dateStyle="short"
+								pattern="#{messages['common.datePattern']}" />
+						</h:outputText>
+					</h:column>
+					<rich:column style="text-align:right;">
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{precioList}" />
+								<ui:param name="propertyLabel"
+									value="#{messages['precio.costo']}" />
+								<ui:param name="propertyPath" value="precio.costo" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_precio.costo}">
+							<f:convertNumber pattern="$####.00" />
+						</h:outputText>
+					</rich:column>
+
+					<rich:column style="text-align:right;">
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{precioList}" />
+								<ui:param name="propertyLabel"
+									value="#{messages['precio.ganancia']}" />
+								<ui:param name="propertyPath" value="precio.ganancia.id" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_precio.ganancia.porcentaje}">
+							<f:convertNumber pattern="%####.00" />
+						</h:outputText>
+					</rich:column>
+					<rich:column style="text-align:right;">
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{precioList}" />
+								<ui:param name="propertyLabel" value="#{messages['precio.pvp']}" />
+								<ui:param name="propertyPath" value="precio.pvp" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_precio.pvp}">
+							<f:convertNumber pattern="$####.00" />
+						</h:outputText>
+					</rich:column>
+				</rich:dataTable>
 
 			</rich:panel>
 
