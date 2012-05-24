@@ -71,7 +71,7 @@
 					<h:inputText id="cantidad"
 						value="#{articuloHome.instance.cantidad}">
 						<a:support event="onblur" reRender="cantidadField"
-							bypassUpdates="true" ajaxSingle="true" />
+							ajaxSingle="true" />
 					</h:inputText>
 				</s:decorate>
 
@@ -116,7 +116,8 @@
 				<s:decorate id="ubicacionField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['articulo.ubicacion']}</ui:define>
 					<h:inputText id="ubicacion" size="50" maxlength="50"
-						value="#{articuloHome.instance.ubicacion}">
+						value="#{articuloHome.instance.ubicacion}"
+						style="text-transform: uppercase">
 						<a:support event="onblur" reRender="ubicacionField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>
@@ -125,7 +126,8 @@
 				<s:decorate id="unidadField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['articulo.unidad']}</ui:define>
 					<h:inputText id="unidad" size="30" maxlength="30"
-						value="#{articuloHome.instance.unidad}">
+						value="#{articuloHome.instance.unidad}"
+						style="text-transform: uppercase">
 						<a:support event="onblur" reRender="unidadField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>
@@ -144,7 +146,9 @@
 						<a:commandButton value="Generar"
 							action="#{articuloHome.generarListaPVP()}" ajaxSingle="true"
 							reRender="precioList" />
-						<a:commandButton value="Re-Calcular" />
+						<a:commandButton value="Re-Calcular"
+							action="#{articuloHome.recalcularPVP()}" ajaxSingle="true"
+							reRender="precioList" />
 					</h:panelGrid>
 				</f:facet>
 
@@ -198,7 +202,7 @@
 							</ui:include>
 						</f:facet>
 						<h:outputText value="#{_precio.ganancia.porcentaje}">
-							<f:convertNumber pattern="%####.00" />
+							<f:convertNumber pattern="####.00" />
 						</h:outputText>
 					</rich:column>
 					<rich:column style="text-align:right;">
