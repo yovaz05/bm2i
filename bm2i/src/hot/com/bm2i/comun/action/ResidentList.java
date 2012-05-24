@@ -5,7 +5,6 @@ import java.util.Arrays;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.framework.EntityQuery;
 
-import com.bm2i.comun.model.Persona;
 import com.bm2i.comun.model.Resident;
 
 @Name("residentList")
@@ -14,11 +13,11 @@ public class ResidentList extends EntityQuery<Resident> {
 	private static final String EJBQL = "select resident from Resident resident";
 
 	private static final String[] RESTRICTIONS = {
-			"lower(resident.email) like lower(concat(#{residentList.resident.email},'%'))",
-			"lower(resident.nombre) like lower(concat(#{residentList.resident.nombre},'%'))",
-			"lower(resident.numeroIdentificacion) like lower(concat(#{residentList.resident.numeroIdentificacion},'%'))",};
+			"lower(resident.nombre) like lower(concat(#{residentList.criteria},'%'))",
+			"lower(resident.numeroIdentificacion) like lower(concat(#{residentList.criteria},'%'))", };
 
-	private Resident resident = new Persona();
+	// private Resident resident = new Persona();
+	String criteria;
 
 	public ResidentList() {
 		setEjbql(EJBQL);
@@ -26,7 +25,16 @@ public class ResidentList extends EntityQuery<Resident> {
 		setMaxResults(25);
 	}
 
-	public Resident getResident() {
-		return resident;
+	@Override
+	public String getRestrictionLogicOperator() {
+		return "or";
+	}
+
+	public String getCriteria() {
+		return criteria;
+	}
+
+	public void setCriteria(String criteria) {
+		this.criteria = criteria;
 	}
 }
