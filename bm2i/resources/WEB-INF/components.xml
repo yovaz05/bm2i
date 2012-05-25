@@ -23,6 +23,7 @@
 		<core:bundle-names>
 			<value>bm2i</value>
 			<value>bm2i_inventario</value>
+			<value>bm2i_venta</value>
 		</core:bundle-names>
 	</core:resource-loader>
 
