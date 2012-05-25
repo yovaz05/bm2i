@@ -87,9 +87,10 @@
 						<h:outputText value="#{_action.priority}" />
 					</h:column>
 					<rich:column styleClass="action">
-						<f:facet name="header">#{messages['action']}</f:facet>
-						<s:button view="/security/ActionEdit.xhtml" value="Editar"
-							propagation="none" id="actionEdit" rendered="#{empty from}">
+						<f:facet name="header">#{messages['common.action']}</f:facet>
+						<s:button view="/security/ActionEdit.xhtml"
+							value="#{messages['common.edit']}" propagation="none"
+							id="actionEdit" rendered="#{empty from}">
 							<f:param name="actionId" value="#{_action.id}" />
 						</s:button>
 

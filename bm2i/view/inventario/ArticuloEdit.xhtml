@@ -81,7 +81,8 @@
 						value="#{articuloHome.instance.currentCosto}" size="26"
 						required="true">
 						<a:support event="onblur" reRender="currentCostoField"
-							bypassUpdates="true" ajaxSingle="true" />
+							ajaxSingle="true" rendered="costoInfoField" />
+						<f:convertNumber pattern="#0.00" />
 					</h:inputText>
 				</s:decorate>
 
@@ -133,6 +134,13 @@
 					</h:inputText>
 				</s:decorate>
 
+				<s:decorate id="isCalculatedIvaField"
+					template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['articulo.isCalculatedIva']}</ui:define>
+					<h:selectBooleanCheckbox id="isCalculatedIva"
+						value="#{articuloHome.instance.isCalculatedIva}" />
+				</s:decorate>
+
 				<div style="clear: both">
 					<span class="required">*</span>
 					#{messages['common.requiredFields']}
@@ -143,81 +151,119 @@
 				<f:facet name="header">
 					<h:panelGrid columns="3" columnClasses="headerTitle,">
 						<h:outputText value="#{messages['precios']}" />
-						<a:commandButton value="Generar"
-							action="#{articuloHome.generarListaPVP()}" ajaxSingle="true"
-							reRender="precioList" />
-						<a:commandButton value="Re-Calcular"
-							action="#{articuloHome.recalcularPVP()}" ajaxSingle="true"
-							reRender="precioList" />
+						<a:commandButton value="Nuevo Precio"
+							action="#{articuloHome.addPrecio()}" ajaxSingle="true"
+							reRender="precioList,costoInfoField,pvpField,utilidadField" />
 					</h:panelGrid>
 				</f:facet>
 
-				<rich:dataTable id="precioList" var="_precio"
-					value="#{articuloHome.instance.precios}">
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{precioList}" />
-								<ui:param name="propertyLabel" value="#{messages['precio.id']}" />
-								<ui:param name="propertyPath" value="precio.id" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_precio.id}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{precioList}" />
-								<ui:param name="propertyLabel"
-									value="#{messages['precio.fecha']}" />
-								<ui:param name="propertyPath" value="precio.fecha" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_precio.fecha}">
-							<s:convertDateTime type="date" dateStyle="short"
-								pattern="#{messages['common.datePattern']}" />
-						</h:outputText>
-					</h:column>
-					<rich:column style="text-align:right;">
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{precioList}" />
-								<ui:param name="propertyLabel"
-									value="#{messages['precio.costo']}" />
-								<ui:param name="propertyPath" value="precio.costo" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_precio.costo}">
-							<f:convertNumber pattern="$####.00" />
-						</h:outputText>
-					</rich:column>
+				<h:panelGrid columns="2" columnClasses="alignTop, alignTop"
+					border="1">
+					<h:panelGrid>
+						<h:outputText value="Precio Actual" />
+					</h:panelGrid>
+					<h:panelGrid>
+						<h:outputText value="Historico" />
+					</h:panelGrid>
+					<h:panelGrid>
+						<s:decorate id="costoInfoField" template="../layout/display.xhtml">
+							<ui:define name="label">#{messages['articulo.costo']}</ui:define>
+							<h:outputText value="#{articuloHome.instance.currentCosto}">
+								<f:convertNumber pattern="#0.00" />
+							</h:outputText>
+						</s:decorate>
 
-					<rich:column style="text-align:right;">
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{precioList}" />
-								<ui:param name="propertyLabel"
-									value="#{messages['precio.ganancia']}" />
-								<ui:param name="propertyPath" value="precio.ganancia.id" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_precio.ganancia.porcentaje}">
-							<f:convertNumber pattern="####.00" />
-						</h:outputText>
-					</rich:column>
-					<rich:column style="text-align:right;">
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{precioList}" />
-								<ui:param name="propertyLabel" value="#{messages['precio.pvp']}" />
-								<ui:param name="propertyPath" value="precio.pvp" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_precio.pvp}">
-							<f:convertNumber pattern="$####.00" />
-						</h:outputText>
-					</rich:column>
-				</rich:dataTable>
+						<s:decorate id="pvpField" template="../layout/edit.xhtml">
+							<ui:define name="label">Pvp</ui:define>
+							<h:inputText id="pvp"
+								value="#{articuloHome.instance.currentPrecio.pvp}">
+								<a:support event="onblur" reRender="pvpField, utilidadField"
+									ajaxSingle="true" action="#{articuloHome.calcularUtilidad()}" />
+
+							</h:inputText>
+						</s:decorate>
+
+						<s:decorate id="utilidadField" template="../layout/edit.xhtml">
+							<ui:define name="label">Utilidad</ui:define>
+							<h:inputText id="utilidad"
+								value="#{articuloHome.instance.currentPrecio.utilidad}">
+								<a:support event="onblur" reRender="utilidadField, pvpField"
+									ajaxSingle="true" action="#{articuloHome.calcularPVP()}" />
+
+							</h:inputText>
+						</s:decorate>
+					</h:panelGrid>
+					<h:panelGrid width="500px">
+						<rich:dataTable id="precioList" var="_precio"
+							value="#{articuloHome.instance.precios}" width="500px">
+							<h:column>
+								<f:facet name="header">
+									<ui:include src="../layout/sort.xhtml">
+										<ui:param name="entityList" value="#{precioList}" />
+										<ui:param name="propertyLabel"
+											value="#{messages['precio.id']}" />
+										<ui:param name="propertyPath" value="precio.id" />
+									</ui:include>
+								</f:facet>
+								<h:outputText value="#{_precio.id}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<ui:include src="../layout/sort.xhtml">
+										<ui:param name="entityList" value="#{precioList}" />
+										<ui:param name="propertyLabel"
+											value="#{messages['precio.fecha']}" />
+										<ui:param name="propertyPath" value="precio.fecha" />
+									</ui:include>
+								</f:facet>
+								<h:outputText value="#{_precio.fecha}">
+									<s:convertDateTime type="date" dateStyle="short"
+										pattern="#{messages['common.datePattern']}" />
+								</h:outputText>
+							</h:column>
+							<rich:column style="text-align:right;">
+								<f:facet name="header">
+									<ui:include src="../layout/sort.xhtml">
+										<ui:param name="entityList" value="#{precioList}" />
+										<ui:param name="propertyLabel"
+											value="#{messages['precio.costo']}" />
+										<ui:param name="propertyPath" value="precio.costo" />
+									</ui:include>
+								</f:facet>
+								<h:outputText value="#{_precio.costo}">
+									<f:convertNumber pattern="$####.00" />
+								</h:outputText>
+							</rich:column>
+
+							<rich:column style="text-align:right;">
+								<f:facet name="header">
+									<ui:include src="../layout/sort.xhtml">
+										<ui:param name="entityList" value="#{precioList}" />
+										<ui:param name="propertyLabel"
+											value="#{messages['precio.ganancia']}" />
+										<ui:param name="propertyPath" value="precio.ganancia.id" />
+									</ui:include>
+								</f:facet>
+								<h:outputText value="#{_precio.utilidad}">
+									<f:convertNumber pattern="####.00" />
+								</h:outputText>
+							</rich:column>
+							<rich:column style="text-align:right;">
+								<f:facet name="header">
+									<ui:include src="../layout/sort.xhtml">
+										<ui:param name="entityList" value="#{precioList}" />
+										<ui:param name="propertyLabel"
+											value="#{messages['precio.pvp']}" />
+										<ui:param name="propertyPath" value="precio.pvp" />
+									</ui:include>
+								</f:facet>
+								<h:outputText value="#{_precio.pvp}">
+									<f:convertNumber pattern="$####.00" />
+								</h:outputText>
+							</rich:column>
+						</rich:dataTable>
+					</h:panelGrid>
+				</h:panelGrid>
 
 			</rich:panel>
 

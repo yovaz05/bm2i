@@ -384,3 +384,7 @@ table.radio input[type=radio] {
 .redFont {
 	color: red;
 }
+
+.alignTop {
+	vertical-align: top;
+}

@@ -75,9 +75,10 @@
 						<h:outputText value="#{_role.description}" />
 					</h:column>
 					<rich:column styleClass="action">
-							<f:facet name="header">#{messages['common.action']}</f:facet>
-						<s:button view="/security/RoleEdit.xhtml" value="Editar"
-							propagation="none" id="roleEdit" rendered="#{empty from}">
+						<f:facet name="header">#{messages['common.action']}</f:facet>
+						<s:button view="/security/RoleEdit.xhtml"
+							value="#{messages['common.edit']}" propagation="none"
+							id="roleEdit" rendered="#{empty from}">
 							<f:param name="roleId" value="#{_role.id}" />
 						</s:button>
 					</rich:column>
