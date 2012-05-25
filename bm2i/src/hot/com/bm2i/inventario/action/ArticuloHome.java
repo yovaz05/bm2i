@@ -1,11 +1,14 @@
 package com.bm2i.inventario.action;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Query;
 
+import org.apache.wicket.util.time.ITimeFrameSource;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.framework.EntityHome;
@@ -21,6 +24,9 @@ public class ArticuloHome extends EntityHome<Articulo> {
 
 	@In(create = true)
 	LineaHome lineaHome;
+
+	@In(create = true)
+	PrecioHome precioHome;
 
 	public void setArticuloId(Long id) {
 		setId(id);
@@ -47,6 +53,10 @@ public class ArticuloHome extends EntityHome<Articulo> {
 		Linea linea = lineaHome.getDefinedInstance();
 		if (linea != null) {
 			getInstance().setLinea(linea);
+		}
+		Precio precio = precioHome.getDefinedInstance();
+		if (precio != null) {
+			getInstance().setCurrentPrecio(precio);
 		}
 	}
 
@@ -75,7 +85,7 @@ public class ArticuloHome extends EntityHome<Articulo> {
 		List<Ganancia> ganancias = q.getResultList();
 		List<Precio> preciosLocal = new ArrayList<Precio>();
 		for (Ganancia g : ganancias) {
-			System.out.println("======>>>>> valores "+g.getNombre());
+			System.out.println("======>>>>> valores " + g.getNombre());
 			Precio p = new Precio();
 			p.setArticulo(this.getInstance());
 			p.setCosto(this.getInstance().getCurrentCosto());
@@ -87,7 +97,68 @@ public class ArticuloHome extends EntityHome<Articulo> {
 		}
 		this.getInstance().setPrecios(preciosLocal);
 	}
-	
-	
+
+	public void recalcularPVP() {
+		for (Precio p : this.getInstance().getPrecios()) {
+			p.setCosto(this.getInstance().getCurrentCosto());
+			p.realizarCalculo();
+		}
+	}
+
+	public void calcularUtilidad() {
+		Precio precio = this.getInstance().getCurrentPrecio();
+		double costo = precio.getCosto().doubleValue();
+		double total = precio.getPvp().doubleValue();
+		double utilidadValor = total - costo;
+		double utilidadPorce = (utilidadValor * 100) / total;
+
+		BigDecimal utilidad = new BigDecimal(utilidadPorce);
+		utilidad = utilidad.setScale(2, RoundingMode.HALF_UP);
+		precio.setUtilidad(utilidad);
+		this.getInstance().getCurrentPrecio().setUtilidad(utilidad);
+		this.getInstance().getCurrentPrecio().setPvp(new BigDecimal(total));
+	}
+
+	public void calcularPVP() {
+		Precio precio = this.getInstance().getCurrentPrecio();
+		double costo = precio.getCosto().doubleValue();
+		double utilidad = precio.getUtilidad().doubleValue();
+		double total = costo + (costo * utilidad / 100);
+		BigDecimal pvp = new BigDecimal(total);
+		pvp = pvp.setScale(2, RoundingMode.HALF_UP);
+		precio.setPvp(pvp);
+		this.getInstance().getCurrentPrecio()
+				.setUtilidad(new BigDecimal(utilidad));
+		this.getInstance().getCurrentPrecio().setPvp(pvp);
+	}
+
+	public void addPrecio() {
+		Precio precio = new Precio();
+		precio.setFecha(new Date());
+		// precio.setUtilidad(this.getInstance().getCurrentCosto());
+		precio.setArticulo(this.getInstance());
+		precio.setCosto(this.getInstance().getCurrentCosto());
+		// this.getInstance().add(precio);
+		this.getInstance().setCurrentPrecio(precio);
+		// disableAddressControls = false;
+	}
+
+	@Override
+	public String persist() {
+		// TODO Auto-generated method stub
+		if (this.getInstance().getCurrentPrecio().getCosto() != null) {
+			this.getInstance().add(this.getInstance().getCurrentPrecio());
+		}
+		return super.persist();
+	}
+
+	@Override
+	public String update() {
+		// TODO Auto-generated method stub
+		if (this.getInstance().getCurrentPrecio().getCosto() != null) {
+			this.getInstance().add(this.getInstance().getCurrentPrecio());
+		}
+		return super.update();
+	}
 
 }

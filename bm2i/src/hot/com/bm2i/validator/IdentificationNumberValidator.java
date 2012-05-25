@@ -30,7 +30,7 @@ public class IdentificationNumberValidator implements
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private String message;
 
 	@Override
@@ -40,10 +40,7 @@ public class IdentificationNumberValidator implements
 		if (value != null) {
 			String nid = value.toString().trim();
 			ResidentHome contribuyenteHome = (ResidentHome) Component
-					.getInstance("ResidentHome");
-			// System.out.println("===> INGRESO A VALOR DIFERENTE DE NULL...... "
-			// + nid + ", Type Identification: " +
-			// ContribuyenteHome.getInstance().getTipoIdentificacion());
+					.getInstance("residentHome");
 			if (contribuyenteHome.getInstance().getTipoIdentificacion() == TipoIdentificacion.CEDULA) {
 				this.validateNationalIdentityDocument(nid);
 			} else if (contribuyenteHome.getInstance().getTipoIdentificacion() == TipoIdentificacion.RUC) {
@@ -58,8 +55,8 @@ public class IdentificationNumberValidator implements
 		}
 
 	}
-	
-	private void verifyNationalIdentityDocument(String nid){
+
+	private void verifyNationalIdentityDocument(String nid) {
 		String wced = nid.substring(0, 9);
 		String verif = nid.substring(9, 10);
 		double wd = 0;
@@ -110,81 +107,84 @@ public class IdentificationNumberValidator implements
 			throw new ValidatorException(new FacesMessage(message));
 		}
 		this.verifyNationalIdentityDocument(nid);
-		
+
 	}
-	
-	private void verifyTaxPayerPrivate(String nid){
-		
-		int[] coeficientes = {4,3,2,7,6,5,4,3,2}; 
+
+	private void verifyTaxPayerPrivate(String nid) {
+
+		int[] coeficientes = { 4, 3, 2, 7, 6, 5, 4, 3, 2 };
 		int module = 11;
-		
+
 		String wced = nid.substring(0, 9);
 		String verif = nid.substring(9, 10);
-		
+
 		int sum_coef = 0;
 		int wa;
-		
-		for (int i=0; i < coeficientes.length; i++){
+
+		for (int i = 0; i < coeficientes.length; i++) {
 			wa = Integer.parseInt(wced.substring(i, i + 1));
-			sum_coef = sum_coef + (wa*coeficientes[i]); 
+			sum_coef = sum_coef + (wa * coeficientes[i]);
 		}
-		
+
 		int residue = sum_coef % module;
-		
+
 		int digit_verify = residue == 0 ? residue : module - residue;
-				
+
 		if (digit_verify != Integer.parseInt(verif)) {
 			message = Interpolator.instance().interpolate(
 					"#{messages['common.invalidIdentificationNumber']}",
-					new Object[0]);
-			throw new ValidatorException(new FacesMessage(message));
-		}
-		
-		String _main = nid.substring(10, nid.length());
-		
-		if (!_main.matches("[0-9]{2}[0-9&&[^0]]")){
-			message = Interpolator.instance().interpolate(
-					"#{messages['common.invalidIdentificationNumberFinished']}",
 					new Object[0]);
 			throw new ValidatorException(new FacesMessage(message));
 		}
 
+		String _main = nid.substring(10, nid.length());
+
+		if (!_main.matches("[0-9]{2}[0-9&&[^0]]")) {
+			message = Interpolator
+					.instance()
+					.interpolate(
+							"#{messages['common.invalidIdentificationNumberFinished']}",
+							new Object[0]);
+			throw new ValidatorException(new FacesMessage(message));
+		}
+
 	}
-	
-	
-	private void verifyTaxPayerPublic(String nid){
-		
-		int[] coeficientes = {3,2,7,6,5,4,3,2 }; 
+
+	private void verifyTaxPayerPublic(String nid) {
+
+		int[] coeficientes = { 3, 2, 7, 6, 5, 4, 3, 2 };
 		int module = 11;
-		
+
 		String wced = nid.trim().substring(0, 8);
 		String verif = nid.trim().substring(8, 9);
-		
+
 		int sum_coef = 0;
 		int wa;
-		
-		for (int i=0; i < coeficientes.length; i++){
+
+		for (int i = 0; i < coeficientes.length; i++) {
 			wa = Integer.parseInt(wced.substring(i, i + 1));
-			sum_coef = sum_coef + (wa*coeficientes[i]); 
+			sum_coef = sum_coef + (wa * coeficientes[i]);
 		}
-		
+
 		int residue = sum_coef % module;
-		
+
 		int digit_verify = residue == 0 ? residue : module - residue;
-				
+
 		if (digit_verify != Integer.parseInt(verif)) {
 			message = Interpolator.instance().interpolate(
 					"#{messages['common.invalidIdentificationNumber']}",
 					new Object[0]);
 			throw new ValidatorException(new FacesMessage(message));
 		}
-		
+
 		String _main = nid.substring(9, nid.length());
-		
-		if (!_main.matches("[0-9]{3}[0-9&&[^0]]")){
-			message = Interpolator.instance().interpolate(
-					"#{messages['common.invalidIdentificationNumberFinished']}",
-					new Object[0]);
+
+		if (!_main.matches("[0-9]{3}[0-9&&[^0]]")) {
+			message = Interpolator
+					.instance()
+					.interpolate(
+							"#{messages['common.invalidIdentificationNumberFinished']}",
+							new Object[0]);
 			throw new ValidatorException(new FacesMessage(message));
 		}
 	}
@@ -198,53 +198,59 @@ public class IdentificationNumberValidator implements
 		}
 		String spatron = "[0-9]{13}";// \\d{10}
 		if (!Pattern.matches(spatron, nid)) {
-			message = Interpolator.instance().interpolate(
-					"#{messages['common.wrongIdentificationNumberLegalEntity']}",
-					new Object[0]);
+			message = Interpolator
+					.instance()
+					.interpolate(
+							"#{messages['common.wrongIdentificationNumberLegalEntity']}",
+							new Object[0]);
 			throw new ValidatorException(new FacesMessage(message));
 		}
-		
+
 		// TODO Chequeo de RUC
-		/** 
-		 * Extraer tercer digito para saber si es:
-		 *  9 para sociedades privadas y extranjeros 
-		 *  6 para sociedades publicas 
-		 *  menor que 6 (0,1,2,3,4,5) para personas naturales
+		/**
+		 * Extraer tercer digito para saber si es: 9 para sociedades privadas y
+		 * extranjeros 6 para sociedades publicas menor que 6 (0,1,2,3,4,5) para
+		 * personas naturales
 		 */
 		nid = nid.trim();
 		char typeRucChar = nid.charAt(2);
-		int typeRuc = Integer.parseInt(typeRucChar+"");
-		if (typeRuc < 6){
+		int typeRuc = Integer.parseInt(typeRucChar + "");
+		if (typeRuc < 6) {
 			this.verifyNationalIdentityDocument(nid);
 			String _main = nid.substring(10, nid.length());
-			
-			if (!_main.matches("[0-9]{2}[0-9&&[^0]]")){
-				message = Interpolator.instance().interpolate(
-						"#{messages['common.invalidIdentificationNumberFinished']}",
-						new Object[0]);
+
+			if (!_main.matches("[0-9]{2}[0-9&&[^0]]")) {
+				message = Interpolator
+						.instance()
+						.interpolate(
+								"#{messages['common.invalidIdentificationNumberFinished']}",
+								new Object[0]);
 				throw new ValidatorException(new FacesMessage(message));
 			}
-		}else if (typeRuc == 6){
+		} else if (typeRuc == 6) {
 			verifyTaxPayerPublic(nid);
-		}else if (typeRuc == 9){
+		} else if (typeRuc == 9) {
 			this.verifyTaxPayerPrivate(nid);
-		}else{
-			message = Interpolator.instance().interpolate(
-					"#{messages['common.wrongTypeIdentificationNumberLegalEntity']}",
-					new Object[0]);
+		} else {
+			message = Interpolator
+					.instance()
+					.interpolate(
+							"#{messages['common.wrongTypeIdentificationNumberLegalEntity']}",
+							new Object[0]);
 			throw new ValidatorException(new FacesMessage(message));
 		}
-		
+
 		String _main = nid.substring(9, nid.length());
-		
-		if (!_main.matches("[0-9]{3}[1-9]")){
-			message = Interpolator.instance().interpolate(
-					"#{messages['common.invalidIdentificationNumberFinished']}",
-					new Object[0]);
+
+		if (!_main.matches("[0-9]{3}[1-9]")) {
+			message = Interpolator
+					.instance()
+					.interpolate(
+							"#{messages['common.invalidIdentificationNumberFinished']}",
+							new Object[0]);
 			throw new ValidatorException(new FacesMessage(message));
 		}
 
 	}
-
 
 }

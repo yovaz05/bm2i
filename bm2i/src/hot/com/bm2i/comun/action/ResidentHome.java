@@ -40,8 +40,10 @@ public class ResidentHome extends EntityHome<Resident> {
 		Resident resident;
 		if (residentType.equalsIgnoreCase("Persona")) {
 			resident = new Persona();
+			System.out.println("========= crea persona");
 		} else {
 			resident = new EntidadLegal();
+			System.out.println("========= crea entidad legal");
 		}
 		return resident;
 	}
@@ -117,8 +119,9 @@ public class ResidentHome extends EntityHome<Resident> {
 	}
 
 	public List<TipoIdentificacion> getIdentificationTypes() {
-		// List<TipoIdentificacion> identificationTypes = new
-		// ArrayList<TipoIdentificacion>();
+
+		List<TipoIdentificacion> identificationTypes = new ArrayList<TipoIdentificacion>();
+		identificationTypes = Arrays.asList(TipoIdentificacion.values());
 		/*
 		 * if (residentType.equalsIgnoreCase("Persona")) {
 		 * identificationTypes.add(TipoIdentificacion.CEDULA);
@@ -127,7 +130,8 @@ public class ResidentHome extends EntityHome<Resident> {
 		 * getInstance().setTipoIdentificacion(identificationTypes.get(0));
 		 */
 		// return identificationTypes;
-		return Arrays.asList(TipoIdentificacion.values());
+		getInstance().setTipoIdentificacion(identificationTypes.get(0));
+		return identificationTypes;
 	}
 
 	public String getResidentType() {

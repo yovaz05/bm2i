@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -78,7 +79,19 @@ public class Articulo {
 	@Column(length = 30)
 	private String unidad;
 
-	@OneToMany(mappedBy = "articulo", cascade = CascadeType.ALL)
+	private Boolean isCalculatedIva;
+
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
+	@JoinColumn(name = "currentPrecio_id")
+	private Precio currentPrecio;
+
+	/*
+	 * @OneToMany(mappedBy = "articulo", cascade = CascadeType.ALL)
+	 * 
+	 * @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+	 */
+	@OneToMany(mappedBy = "articulo", cascade = { CascadeType.PERSIST,
+			CascadeType.MERGE }, fetch = FetchType.LAZY)
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<Precio> precios;
 
@@ -87,7 +100,7 @@ public class Articulo {
 	private List<Generico> genericos;
 
 	public Articulo() {
-
+		this.currentPrecio = new Precio();
 	}
 
 	public void finalize() throws Throwable {
@@ -204,5 +217,31 @@ public class Articulo {
 
 	public void setGenericos(List<Generico> genericos) {
 		this.genericos = genericos;
+	}
+
+	public Boolean getIsCalculatedIva() {
+		return isCalculatedIva;
+	}
+
+	public void setIsCalculatedIva(Boolean isCalculatedIva) {
+		this.isCalculatedIva = isCalculatedIva;
+	}
+
+	public void add(Precio precio) {
+		if (!this.precios.contains(precio)) {
+			this.precios.add(precio);
+		}
+	}
+
+	public void remove(Precio precio) {
+		this.precios.remove(precio);
+	}
+
+	public Precio getCurrentPrecio() {
+		return currentPrecio;
+	}
+
+	public void setCurrentPrecio(Precio currentPrecio) {
+		this.currentPrecio = currentPrecio;
 	}
 }// end Articulo
