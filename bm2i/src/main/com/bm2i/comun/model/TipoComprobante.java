@@ -1,5 +1,6 @@
 package com.bm2i.comun.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,7 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.TableGenerator;
 
 import org.hibernate.annotations.Cascade;
@@ -28,18 +31,26 @@ public class TipoComprobante {
 
 	@Column(length = 50)
 	private String nombre;
-	
+
 	@Column(length = 50)
 	private String descripcion;
 
 	private Boolean isActive;
 
-	@OneToMany(mappedBy = "tipoComprobante", cascade = CascadeType.ALL)
+	/*
+	 * @OneToMany(mappedBy = "tipoComprobante", cascade = CascadeType.ALL)
+	 * 
+	 * @Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	 */
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "impuesto_id")
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OrderBy("nombre")
 	private List<Impuesto> impuestos;
 
 	public TipoComprobante() {
-
+		impuestos = new ArrayList<Impuesto>();
 	}
 
 	public void finalize() throws Throwable {
@@ -67,7 +78,7 @@ public class TipoComprobante {
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre = nombre.toUpperCase();
 	}
 
 	public Boolean getIsActive() {
@@ -85,4 +96,15 @@ public class TipoComprobante {
 	public void setImpuestos(List<Impuesto> impuestos) {
 		this.impuestos = impuestos;
 	}
+
+	public void add(Impuesto impuesto) {
+		if (!this.impuestos.contains(impuesto)) {
+			this.impuestos.add(impuesto);
+		}
+	}
+
+	public void remove(Impuesto impuesto) {
+		this.impuestos.remove(impuesto);
+	}
+
 }// end TipoComprobante

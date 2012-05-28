@@ -1,11 +1,13 @@
 package com.bm2i.comun.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,11 +44,11 @@ public class Impuesto {
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<TasaImpuesto> tasas;
 
-	@ManyToOne
-	TipoComprobante tipoComprobante;
+	/*@ManyToOne
+	TipoComprobante tipoComprobante;*/
 
 	public Impuesto() {
-
+		tasas = new ArrayList<TasaImpuesto>();
 	}
 
 	public void finalize() throws Throwable {
@@ -93,11 +95,23 @@ public class Impuesto {
 		this.tasas = tasas;
 	}
 
-	public TipoComprobante getTipoComprobante() {
+	/*public TipoComprobante getTipoComprobante() {
 		return tipoComprobante;
 	}
 
 	public void setTipoComprobante(TipoComprobante tipoComprobante) {
 		this.tipoComprobante = tipoComprobante;
+	}*/
+
+	public void add(TasaImpuesto tasaImpuesto) {
+		if (!this.tasas.contains(tasaImpuesto)) {
+			tasaImpuesto.setImpuesto(this);
+			this.tasas.add(tasaImpuesto);
+		}
+	}
+
+	public void remove(TasaImpuesto tasaImpuesto) {
+		this.tasas.remove(tasaImpuesto);
+		tasaImpuesto.setImpuesto(null);
 	}
 }// end Impuesto

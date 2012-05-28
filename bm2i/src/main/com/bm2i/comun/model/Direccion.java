@@ -40,7 +40,7 @@ public class Direccion {
 	private String pais;
 
 	@Column(length = 15)
-	private String telefonoCedular;
+	private String telefonoCelular;
 
 	@Column(length = 15)
 	private String telefonoFijo;
@@ -88,14 +88,6 @@ public class Direccion {
 		this.pais = pais;
 	}
 
-	public String getTelefonoCedular() {
-		return telefonoCedular;
-	}
-
-	public void setTelefonoCedular(String telefonoCedular) {
-		this.telefonoCedular = telefonoCedular;
-	}
-
 	public String getTelefonoFijo() {
 		return telefonoFijo;
 	}
@@ -134,5 +126,13 @@ public class Direccion {
 
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
+	}
+
+	public String getTelefonoCelular() {
+		return telefonoCelular;
+	}
+
+	public void setTelefonoCelular(String telefonoCelular) {
+		this.telefonoCelular = telefonoCelular;
 	}
 }// end Direccion
