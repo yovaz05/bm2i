@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.TableGenerator;
 
 import org.hibernate.annotations.Cascade;
@@ -93,6 +94,7 @@ public class Articulo {
 	@OneToMany(mappedBy = "articulo", cascade = { CascadeType.PERSIST,
 			CascadeType.MERGE }, fetch = FetchType.LAZY)
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OrderBy("fecha")
 	private List<Precio> precios;
 
 	@OneToMany(mappedBy = "articulo", cascade = CascadeType.ALL)

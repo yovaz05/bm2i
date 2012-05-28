@@ -30,7 +30,7 @@ public class Caja {
 
 	@Column(length = 30)
 	private String nombre;
-	
+
 	@ManyToOne
 	private Sucursal sucursal;
 
@@ -59,7 +59,7 @@ public class Caja {
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre = nombre.toUpperCase();
 	}
 
 	public Sucursal getSucursal() {

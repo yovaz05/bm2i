@@ -49,4 +49,12 @@ public class SucursalHome extends EntityHome<Sucursal> {
 				.getCajas());
 	}
 
+	public void addCaja() {
+		Caja caja = new Caja();
+		this.getInstance().add(caja);
+	}
+
+	public void removeCaja(Caja caja) {
+		this.getInstance().remove(caja);
+	}
 }

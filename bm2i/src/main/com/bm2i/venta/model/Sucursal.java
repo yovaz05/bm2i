@@ -1,5 +1,6 @@
 package com.bm2i.venta.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -34,7 +35,7 @@ public class Sucursal {
 	private List<Caja> cajas;
 
 	public Sucursal() {
-
+		cajas = new ArrayList<Caja>();
 	}
 
 	public void finalize() throws Throwable {
@@ -54,7 +55,7 @@ public class Sucursal {
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre = nombre.toUpperCase();
 	}
 
 	public List<Caja> getCajas() {
@@ -64,4 +65,18 @@ public class Sucursal {
 	public void setCajas(List<Caja> cajas) {
 		this.cajas = cajas;
 	}
+
+	public void add(Caja caja) {
+		if (!this.cajas.contains(caja)) {
+			this.cajas.add(caja);
+			caja.setSucursal(this);
+		}
+	}
+
+	public void remove(Caja caja) {
+		boolean removed = this.cajas.remove(caja);
+		if (removed)
+			caja.setSucursal(null);
+	}
+
 }// end Sucursal
