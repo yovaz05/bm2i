@@ -1,152 +1,135 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:s="http://jboss.com/products/seam/taglib"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:rich="http://richfaces.org/rich"
-    template="layout/template.xhtml">
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
 
-<ui:define name="body">
+	<ui:define name="body">
 
-    <h:form id="tipoPagoSearch" styleClass="edit">
+		<h:form id="tipoPagoSearch" styleClass="edit">
 
-        <rich:simpleTogglePanel label="TipoPago Search Filter" switchType="ajax">
+			<rich:simpleTogglePanel label="#{messages['tipoPago.searchFilter']}"
+				switchType="ajax">
 
-            <s:decorate template="layout/display.xhtml">
-                <ui:define name="label">Nombre</ui:define>
-                <h:inputText id="nombre" value="#{tipoPagoList.tipoPago.nombre}"/>
-            </s:decorate>
+				<s:decorate template="../layout/display.xhtml">
+					<ui:define name="label">Nombre</ui:define>
+					<h:inputText id="nombre" value="#{tipoPagoList.tipoPago.nombre}" />
+				</s:decorate>
 
-            <s:decorate template="layout/display.xhtml">
-                <ui:define name="label">Match</ui:define>
-                <h:selectOneRadio id="logic" value="#{tipoPagoList.restrictionLogicOperator}" styleClass="radio">
-                    <f:selectItem itemLabel="All" itemValue="and"/>
-                    <f:selectItem itemLabel="Any" itemValue="or"/>
-                </h:selectOneRadio>
-            </s:decorate>
+			</rich:simpleTogglePanel>
 
-        </rich:simpleTogglePanel>
+			<div class="actionButtons">
+				<h:commandButton id="search" value="#{messages['common.search']}"
+					action="/venta/TipoPagoList.xhtml" />
+				<s:button id="reset" value="#{messages['common.reset']}"
+					includePageParams="false" />
+			</div>
 
-        <div class="actionButtons">
-            <h:commandButton id="search" value="Search" action="/TipoPagoList.xhtml"/>
-            <s:button id="reset" value="Reset" includePageParams="false"/>
-        </div>
+		</h:form>
 
-    </h:form>
+		<rich:panel>
+			<f:facet name="header">
+				<h:panelGrid columns="2" columnClasses="headerTitle,">
+					<h:outputText
+						value="#{messages['tipoPago.searchResults']} (#{empty tipoPagoList.resultList ? 0 : (tipoPagoList.paginated ? tipoPagoList.resultCount : tipoPagoList.resultList.size)})" />
+					<s:div styleClass="actionButtons" rendered="#{empty from}">
+						<s:button view="/venta/TipoPagoEdit.xhtml" id="create"
+							propagation="none" value="#{messages['common.create']}">
+							<f:param name="tipoPagoId" />
+						</s:button>
+					</s:div>
 
-    <rich:panel>
-        <f:facet name="header">TipoPago Search Results (#{empty tipoPagoList.resultList ? 0 : (tipoPagoList.paginated ? tipoPagoList.resultCount : tipoPagoList.resultList.size)})</f:facet>
-    <div class="results" id="tipoPagoList">
+				</h:panelGrid>
+			</f:facet>
+			<div class="results" id="tipoPagoList">
 
-    <h:outputText value="The tipoPago search returned no results."
-               rendered="#{empty tipoPagoList.resultList}"/>
+				<h:outputText value="#{messages['action.noresults']}"
+					rendered="#{empty tipoPagoList.resultList}" />
 
-    <rich:dataTable id="tipoPagoList"
-                var="_tipoPago"
-              value="#{tipoPagoList.resultList}"
-           rendered="#{not empty tipoPagoList.resultList}">
-        <h:column>
-            <f:facet name="header">
-                <ui:include src="layout/sort.xhtml">
-                    <ui:param name="entityList" value="#{tipoPagoList}"/>
-                    <ui:param name="propertyLabel" value="Id"/>
-                    <ui:param name="propertyPath" value="tipoPago.id"/>
-                </ui:include>
-            </f:facet>
-            <h:outputText value="#{_tipoPago.id}"/>
-        </h:column>
-        <h:column>
-            <f:facet name="header">
-                <ui:include src="layout/sort.xhtml">
-                    <ui:param name="entityList" value="#{tipoPagoList}"/>
-                    <ui:param name="propertyLabel" value="Fecha"/>
-                    <ui:param name="propertyPath" value="tipoPago.fecha"/>
-                </ui:include>
-            </f:facet>
-            <h:outputText value="#{_tipoPago.fecha}">
-                <s:convertDateTime type="date" dateStyle="short"/>
-            </h:outputText>
-        </h:column>
-        <h:column>
-            <f:facet name="header">
-                <ui:include src="layout/sort.xhtml">
-                    <ui:param name="entityList" value="#{tipoPagoList}"/>
-                    <ui:param name="propertyLabel" value="Nombre"/>
-                    <ui:param name="propertyPath" value="tipoPago.nombre"/>
-                </ui:include>
-            </f:facet>
-            <h:outputText value="#{_tipoPago.nombre}"/>
-        </h:column>
-        <rich:column styleClass="action">
-            <f:facet name="header">Action</f:facet>
-            <s:link view="/#{empty from ? 'TipoPago' : from}.xhtml"
-                   value="#{empty from ? 'View' : 'Select'}"
-             propagation="#{empty from ? 'none' : 'default'}"
-                      id="tipoPagoViewId">
-                <f:param name="tipoPagoId"
-                        value="#{_tipoPago.id}"/>
-            </s:link>
-            #{' '}
-            <s:link view="/TipoPagoEdit.xhtml"
-                   value="Edit"
-             propagation="none"
-                      id="tipoPagoEdit"
-                rendered="#{empty from}">
-                <f:param name="tipoPagoId"
-                        value="#{_tipoPago.id}"/>
-            </s:link>
-        </rich:column>
-    </rich:dataTable>
+				<rich:dataTable id="tipoPagoList" var="_tipoPago"
+					value="#{tipoPagoList.resultList}"
+					rendered="#{not empty tipoPagoList.resultList}">
+					<h:column>
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{tipoPagoList}" />
+								<ui:param name="propertyLabel"
+									value="#{messages['tipoPago.id']}" />
+								<ui:param name="propertyPath" value="tipoPago.id" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_tipoPago.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{tipoPagoList}" />
+								<ui:param name="propertyLabel"
+									value="#{messages['tipoPago.fecha']}" />
+								<ui:param name="propertyPath" value="tipoPago.fecha" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_tipoPago.fecha}">
+							<s:convertDateTime type="date" dateStyle="short" pattern="#{messages['common.datePattern']}"/>
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{tipoPagoList}" />
+								<ui:param name="propertyLabel"
+									value="#{messages['tipoPago.nombre']}" />
+								<ui:param name="propertyPath" value="tipoPago.nombre" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_tipoPago.nombre}" />
+					</h:column>
+					<rich:column styleClass="action">
+						<f:facet name="header">#{messages['common.action']}</f:facet>
+						<s:button view="/venta/TipoPagoEdit.xhtml"
+							value="#{messages['common.edit']}" propagation="none"
+							id="tipoPagoEdit" rendered="#{empty from}">
+							<f:param name="tipoPagoId" value="#{_tipoPago.id}" />
+						</s:button>
+					</rich:column>
+				</rich:dataTable>
 
-    </div>
-    </rich:panel>
+			</div>
+		</rich:panel>
 
-    <div class="tableControl">
+		<div class="tableControl">
 
-        <s:link view="/TipoPagoList.xhtml"
-            rendered="#{tipoPagoList.previousExists}"
-               value="#{messages.left}#{messages.left} First Page"
-                  id="firstPage">
-          <f:param name="firstResult" value="0"/>
-        </s:link>
+			<s:link view="/venta/TipoPagoList.xhtml"
+				rendered="#{tipoPagoList.previousExists}"
+				value="#{messages.left}#{messages.left} First Page" id="firstPage">
+				<f:param name="firstResult" value="0" />
+			</s:link>
 
-        <s:link view="/TipoPagoList.xhtml"
-            rendered="#{tipoPagoList.previousExists}"
-               value="#{messages.left} Previous Page"
-                  id="previousPage">
-            <f:param name="firstResult"
-                    value="#{tipoPagoList.previousFirstResult}"/>
-        </s:link>
+			<s:link view="/venta/TipoPagoList.xhtml"
+				rendered="#{tipoPagoList.previousExists}"
+				value="#{messages.left} Previous Page" id="previousPage">
+				<f:param name="firstResult"
+					value="#{tipoPagoList.previousFirstResult}" />
+			</s:link>
 
-        <s:link view="/TipoPagoList.xhtml"
-            rendered="#{tipoPagoList.nextExists}"
-               value="Next Page #{messages.right}"
-                  id="nextPage">
-            <f:param name="firstResult"
-                    value="#{tipoPagoList.nextFirstResult}"/>
-        </s:link>
+			<s:link view="/venta/TipoPagoList.xhtml"
+				rendered="#{tipoPagoList.nextExists}"
+				value="Next Page #{messages.right}" id="nextPage">
+				<f:param name="firstResult" value="#{tipoPagoList.nextFirstResult}" />
+			</s:link>
 
-        <s:link view="/TipoPagoList.xhtml"
-            rendered="#{tipoPagoList.nextExists}"
-               value="Last Page #{messages.right}#{messages.right}"
-                  id="lastPage">
-            <f:param name="firstResult"
-                    value="#{tipoPagoList.lastFirstResult}"/>
-        </s:link>
+			<s:link view="/venta/TipoPagoList.xhtml"
+				rendered="#{tipoPagoList.nextExists}"
+				value="Last Page #{messages.right}#{messages.right}" id="lastPage">
+				<f:param name="firstResult" value="#{tipoPagoList.lastFirstResult}" />
+			</s:link>
 
-    </div>
+		</div>
 
-    <s:div styleClass="actionButtons" rendered="#{empty from}">
-        <s:button view="/TipoPagoEdit.xhtml"
-                    id="create"
-           propagation="none"
-                 value="Create tipoPago">
-            <f:param name="tipoPagoId"/>
-        </s:button>
-    </s:div>
-
-</ui:define>
+	</ui:define>
 
 </ui:composition>

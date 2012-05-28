@@ -1,81 +1,67 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:s="http://jboss.com/products/seam/taglib"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:a="http://richfaces.org/a4j"
-    xmlns:rich="http://richfaces.org/rich"
-    template="layout/template.xhtml">
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
 
-<ui:define name="body">
+	<ui:define name="body">
 
-    <h:form id="tipoPago" styleClass="edit">
+		<h:form id="tipoPago" styleClass="edit">
 
-        <rich:panel>
-            <f:facet name="header">#{tipoPagoHome.managed ? 'Edit' : 'Add'} Tipo pago</f:facet>
+			<h:outputText styleClass="formTitle"
+				value="#{tipoPagoHome.managed ? messages['common.edit'] : messages['common.create']} #{messages['tipoPago']}" />
 
+			<rich:panel>
+				<f:facet name="header">#{messages['tipoPago.infoData']}</f:facet>
 
+				<s:decorate id="fechaField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['tipoPago.fecha']}</ui:define>
+					<rich:calendar id="fecha" value="#{tipoPagoHome.instance.fecha}"
+						datePattern="#{messages['common.datePattern']}" />
+				</s:decorate>
 
-            <s:decorate id="fechaField" template="layout/edit.xhtml">
-                <ui:define name="label">Fecha</ui:define>
-                <rich:calendar id="fecha"
-                          value="#{tipoPagoHome.instance.fecha}" datePattern="MM/dd/yyyy" />
-            </s:decorate>
+				<s:decorate id="nombreField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['tipoPago.nombre']}</ui:define>
+					<h:inputText id="nombre" size="30" maxlength="30"
+						value="#{tipoPagoHome.instance.nombre}"
+						style="text-transform: uppercase">
+						<a:support event="onblur" reRender="nombreField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
 
+				<div style="clear: both">
+					<span class="required">*</span>
+					#{messages['common.requiredFields']}
+				</div>
 
-            <s:decorate id="nombreField" template="layout/edit.xhtml">
-                <ui:define name="label">Nombre</ui:define>
-                <h:inputText id="nombre"
-                           size="30"
-                      maxlength="30"
-                          value="#{tipoPagoHome.instance.nombre}">
-                    <a:support event="onblur" reRender="nombreField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+			</rich:panel>
 
-            <div style="clear:both">
-                <span class="required">*</span>
-                required fields
-            </div>
+			<div class="actionButtons">
 
-        </rich:panel>
+				<h:commandButton id="save" value="#{messages['common.save']}"
+					action="#{tipoPagoHome.persist}" disabled="#{!tipoPagoHome.wired}"
+					rendered="#{!tipoPagoHome.managed}" />
 
-        <div class="actionButtons">
+				<h:commandButton id="update" value="#{messages['common.save']}"
+					action="#{tipoPagoHome.update}" rendered="#{tipoPagoHome.managed}" />
 
-            <h:commandButton id="save"
-                          value="Save"
-                         action="#{tipoPagoHome.persist}"
-                       disabled="#{!tipoPagoHome.wired}"
-                       rendered="#{!tipoPagoHome.managed}"/>
+				<h:commandButton id="delete" value="#{messages['common.delete']}"
+					action="#{tipoPagoHome.remove}" immediate="true"
+					rendered="#{tipoPagoHome.managed}" />
 
-            <h:commandButton id="update"
-                          value="Save"
-                         action="#{tipoPagoHome.update}"
-                       rendered="#{tipoPagoHome.managed}"/>
+				<s:button id="cancelAdd" value="#{messages['common.cancel']}"
+					propagation="end"
+					view="/venta/#{empty tipoPagoFrom ? 'TipoPagoList' : tipoPagoFrom}.xhtml" />
 
-            <h:commandButton id="delete"
-                          value="Delete"
-                         action="#{tipoPagoHome.remove}"
-                      immediate="true"
-                       rendered="#{tipoPagoHome.managed}"/>
+			</div>
+		</h:form>
 
-            <s:button id="cancelEdit"
-                   value="Cancel"
-             propagation="end"
-                    view="/TipoPago.xhtml"
-                rendered="#{tipoPagoHome.managed}"/>
-
-            <s:button id="cancelAdd"
-                   value="Cancel"
-             propagation="end"
-                    view="/#{empty tipoPagoFrom ? 'TipoPagoList' : tipoPagoFrom}.xhtml"
-                rendered="#{!tipoPagoHome.managed}"/>
-
-        </div>
-    </h:form>
-
-</ui:define>
+	</ui:define>
 
 </ui:composition>

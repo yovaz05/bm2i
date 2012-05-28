@@ -1,142 +1,124 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:s="http://jboss.com/products/seam/taglib"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:a="http://richfaces.org/a4j"
-    xmlns:rich="http://richfaces.org/rich"
-    template="layout/template.xhtml">
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
 
-<ui:define name="body">
+	<ui:define name="body">
 
-    <h:form id="tipoComprobante" styleClass="edit">
+		<h:form id="tipoComprobante" styleClass="edit">
 
-        <rich:panel>
-            <f:facet name="header">#{tipoComprobanteHome.managed ? 'Edit' : 'Add'} Tipo comprobante</f:facet>
+			<rich:panel>
+				<f:facet name="header">#{tipoComprobanteHome.managed ? 'Edit' : 'Add'} Tipo comprobante</f:facet>
 
+				<s:decorate id="nombreField" template="../layout/edit.xhtml">
+					<ui:define name="label">Nombre</ui:define>
+					<h:inputText id="nombre" size="50" maxlength="50"
+						value="#{tipoComprobanteHome.instance.nombre}">
+						<a:support event="onblur" reRender="nombreField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
 
+				<s:decorate id="descripcionField" template="../layout/edit.xhtml">
+					<ui:define name="label">Descripcion</ui:define>
+					<h:inputText id="descripcion" size="50" maxlength="50"
+						value="#{tipoComprobanteHome.instance.descripcion}">
+						<a:support event="onblur" reRender="descripcionField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
 
-            <s:decorate id="descripcionField" template="layout/edit.xhtml">
-                <ui:define name="label">Descripcion</ui:define>
-                <h:inputText id="descripcion"
-                           size="50"
-                      maxlength="50"
-                          value="#{tipoComprobanteHome.instance.descripcion}">
-                    <a:support event="onblur" reRender="descripcionField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+				<s:decorate id="isActiveField" template="../layout/edit.xhtml">
+					<ui:define name="label">Is active</ui:define>
+					<h:selectBooleanCheckbox id="isActive"
+						value="#{tipoComprobanteHome.instance.isActive}" />
+				</s:decorate>
 
+				<div style="clear: both">
+					<span class="required">*</span> required fields
+				</div>
 
+			</rich:panel>
 
-            <s:decorate id="isActiveField" template="layout/edit.xhtml">
-                <ui:define name="label">Is active</ui:define>
-                <h:selectBooleanCheckbox id="isActive"
-                                      value="#{tipoComprobanteHome.instance.isActive}"/>
-            </s:decorate>
+			<div class="actionButtons">
 
+				<h:commandButton id="save" value="Save"
+					action="#{tipoComprobanteHome.persist}"
+					disabled="#{!tipoComprobanteHome.wired}"
+					rendered="#{!tipoComprobanteHome.managed}" />
 
-            <s:decorate id="nombreField" template="layout/edit.xhtml">
-                <ui:define name="label">Nombre</ui:define>
-                <h:inputText id="nombre"
-                           size="50"
-                      maxlength="50"
-                          value="#{tipoComprobanteHome.instance.nombre}">
-                    <a:support event="onblur" reRender="nombreField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+				<h:commandButton id="update" value="Save"
+					action="#{tipoComprobanteHome.update}"
+					rendered="#{tipoComprobanteHome.managed}" />
 
-            <div style="clear:both">
-                <span class="required">*</span>
-                required fields
-            </div>
+				<h:commandButton id="delete" value="Delete"
+					action="#{tipoComprobanteHome.remove}" immediate="true"
+					rendered="#{tipoComprobanteHome.managed}" />
 
-        </rich:panel>
+				<s:button id="cancelEdit" value="Cancel" propagation="end"
+					view="/TipoComprobante.xhtml"
+					rendered="#{tipoComprobanteHome.managed}" />
 
-        <div class="actionButtons">
+				<s:button id="cancelAdd" value="Cancel" propagation="end"
+					view="/#{empty tipoComprobanteFrom ? 'TipoComprobanteList' : tipoComprobanteFrom}.xhtml"
+					rendered="#{!tipoComprobanteHome.managed}" />
 
-            <h:commandButton id="save"
-                          value="Save"
-                         action="#{tipoComprobanteHome.persist}"
-                       disabled="#{!tipoComprobanteHome.wired}"
-                       rendered="#{!tipoComprobanteHome.managed}"/>
+			</div>
+		</h:form>
 
-            <h:commandButton id="update"
-                          value="Save"
-                         action="#{tipoComprobanteHome.update}"
-                       rendered="#{tipoComprobanteHome.managed}"/>
+		<rich:tabPanel switchType="ajax">
 
-            <h:commandButton id="delete"
-                          value="Delete"
-                         action="#{tipoComprobanteHome.remove}"
-                      immediate="true"
-                       rendered="#{tipoComprobanteHome.managed}"/>
+			<rich:tab label="Impuestos">
+				<h:form styleClass="association" id="impuestosChildren">
 
-            <s:button id="cancelEdit"
-                   value="Cancel"
-             propagation="end"
-                    view="/TipoComprobante.xhtml"
-                rendered="#{tipoComprobanteHome.managed}"/>
+					<h:outputText
+						value="There are no impuestos associated with this tipoComprobante."
+						rendered="#{empty tipoComprobanteHome.impuestos}" />
 
-            <s:button id="cancelAdd"
-                   value="Cancel"
-             propagation="end"
-                    view="/#{empty tipoComprobanteFrom ? 'TipoComprobanteList' : tipoComprobanteFrom}.xhtml"
-                rendered="#{!tipoComprobanteHome.managed}"/>
+					<rich:dataTable value="#{tipoComprobanteHome.impuestos}"
+						var="_impuesto"
+						rendered="#{not empty tipoComprobanteHome.impuestos}"
+						rowClasses="rvgRowOne,rvgRowTwo" id="impuestosTable">
+						<rich:column sortBy="#{_impuesto.id}">
+							<f:facet name="header">Id</f:facet>
+							<h:outputText value="#{_impuesto.id}" />
+						</rich:column>
+						<rich:column sortBy="#{_impuesto.fecha}">
+							<f:facet name="header">Fecha</f:facet>
+							<h:outputText value="#{_impuesto.fecha}">
+								<s:convertDateTime type="date" dateStyle="short" />
+							</h:outputText>
+						</rich:column>
+						<rich:column sortBy="#{_impuesto.isActive}">
+							<f:facet name="header">Is active</f:facet>
+							<h:outputText value="#{_impuesto.isActive}" />
+						</rich:column>
+						<rich:column sortBy="#{_impuesto.nombre}">
+							<f:facet name="header">Nombre</f:facet>
+							<h:outputText value="#{_impuesto.nombre}" />
+						</rich:column>
+					</rich:dataTable>
 
-        </div>
-    </h:form>
+				</h:form>
 
-<rich:tabPanel switchType="ajax">
-
-    <rich:tab label="Impuestos">
-        <h:form styleClass="association" id="impuestosChildren">
-
-            <h:outputText value="There are no impuestos associated with this tipoComprobante."
-                       rendered="#{empty tipoComprobanteHome.impuestos}"/>
-
-            <rich:dataTable value="#{tipoComprobanteHome.impuestos}"
-                           var="_impuesto"
-                      rendered="#{not empty tipoComprobanteHome.impuestos}"
-                    rowClasses="rvgRowOne,rvgRowTwo"
-                            id="impuestosTable">
-                <rich:column sortBy="#{_impuesto.id}">
-                    <f:facet name="header">Id</f:facet>
-                    <h:outputText value="#{_impuesto.id}"/>
-                </rich:column>
-                <rich:column sortBy="#{_impuesto.fecha}">
-                    <f:facet name="header">Fecha</f:facet>
-                    <h:outputText value="#{_impuesto.fecha}">
-                        <s:convertDateTime type="date" dateStyle="short"/>
-                    </h:outputText>
-                </rich:column>
-                <rich:column sortBy="#{_impuesto.isActive}">
-                    <f:facet name="header">Is active</f:facet>
-                    <h:outputText value="#{_impuesto.isActive}"/>
-                </rich:column>
-                <rich:column sortBy="#{_impuesto.nombre}">
-                    <f:facet name="header">Nombre</f:facet>
-                    <h:outputText value="#{_impuesto.nombre}"/>
-                </rich:column>
-            </rich:dataTable>
-
-        </h:form>
-
-        <f:subview rendered="#{tipoComprobanteHome.managed}" id="impuestos">
-        <div class="actionButtons">
-            <s:button id="addimpuesto"
-                   value="Add impuesto"
-                    view="/ImpuestoEdit.xhtml"
-             propagation="none">
-                 <f:param name="tipoComprobanteId"
-                         value="#{tipoComprobanteHome.instance.id}"/>
-                 <f:param name="impuestoFrom" value="TipoComprobante"/>
-            </s:button>
-        </div>
-        </f:subview>
-    </rich:tab>
-</rich:tabPanel>
-</ui:define>
+				<f:subview rendered="#{tipoComprobanteHome.managed}" id="impuestos">
+					<div class="actionButtons">
+						<s:button id="addimpuesto" value="Add impuesto"
+							view="/ImpuestoEdit.xhtml" propagation="none">
+							<f:param name="tipoComprobanteId"
+								value="#{tipoComprobanteHome.instance.id}" />
+							<f:param name="impuestoFrom" value="TipoComprobante" />
+						</s:button>
+					</div>
+				</f:subview>
+			</rich:tab>
+		</rich:tabPanel>
+	</ui:define>
 
 </ui:composition>
