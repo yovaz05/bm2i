@@ -1,174 +1,113 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:s="http://jboss.com/products/seam/taglib"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:a="http://richfaces.org/a4j"
-    xmlns:rich="http://richfaces.org/rich"
-    template="layout/template.xhtml">
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
 
-<ui:define name="body">
+	<ui:define name="body">
 
-    <h:form id="impuesto" styleClass="edit">
+		<h:form id="impuesto" styleClass="edit">
 
-        <rich:panel>
-            <f:facet name="header">#{impuestoHome.managed ? 'Edit' : 'Add'} Impuesto</f:facet>
+			<h:outputText styleClass="formTitle"
+				value="#{impuestoHome.managed ? messages['common.edit'] : messages['common.create']} #{messages['impuesto']}" />
 
+			<rich:panel>
+				<f:facet name="header">#{messages['impuesto.infoData']}</f:facet>
 
+				<s:decorate id="nombreField" template="../layout/edit.xhtml">
+					<ui:define name="label">Nombre</ui:define>
+					<h:inputText id="nombre" size="30" maxlength="30"
+						value="#{impuestoHome.instance.nombre}">
+						<a:support event="onblur" reRender="nombreField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
 
-            <s:decorate id="fechaField" template="layout/edit.xhtml">
-                <ui:define name="label">Fecha</ui:define>
-                <rich:calendar id="fecha"
-                          value="#{impuestoHome.instance.fecha}" datePattern="MM/dd/yyyy" />
-            </s:decorate>
-
-
-            <s:decorate id="isActiveField" template="layout/edit.xhtml">
-                <ui:define name="label">Is active</ui:define>
-                <h:selectBooleanCheckbox id="isActive"
-                                      value="#{impuestoHome.instance.isActive}"/>
-            </s:decorate>
-
-
-            <s:decorate id="nombreField" template="layout/edit.xhtml">
-                <ui:define name="label">Nombre</ui:define>
-                <h:inputText id="nombre"
-                           size="30"
-                      maxlength="30"
-                          value="#{impuestoHome.instance.nombre}">
-                    <a:support event="onblur" reRender="nombreField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+				<s:decorate id="fechaField" template="../layout/edit.xhtml">
+					<ui:define name="label">Fecha</ui:define>
+					<rich:calendar id="fecha" value="#{impuestoHome.instance.fecha}"
+						datePattern="#{messages['common.datePattern']}" />
+				</s:decorate>
 
 
+				<s:decorate id="isActiveField" template="../layout/edit.xhtml">
+					<ui:define name="label">Is active</ui:define>
+					<h:selectBooleanCheckbox id="isActive"
+						value="#{impuestoHome.instance.isActive}" />
+				</s:decorate>
 
-            <div style="clear:both">
-                <span class="required">*</span>
-                required fields
-            </div>
+				<div style="clear: both">
+					<span class="required">*</span>
+					#{messages['common.requiredFields']}
+				</div>
 
-        </rich:panel>
+			</rich:panel>
 
-        <div class="actionButtons">
 
-            <h:commandButton id="save"
-                          value="Save"
-                         action="#{impuestoHome.persist}"
-                       disabled="#{!impuestoHome.wired}"
-                       rendered="#{!impuestoHome.managed}"/>
+			<rich:panel>
+				<f:facet name="header">
+					<h:panelGrid columns="2" columnClasses="headerTitle,">
+						<h:outputText value="#{messages['tasaImpuesto.searchResults']}" />
+						<a:commandButton value="#{messages['tasaImpuesto.add']}"
+							reRender="tasaImpuestoList"
+							action="#{impuestoHome.addTasaImpuesto()}" ajaxSingle="true" />
+					</h:panelGrid>
+				</f:facet>
 
-            <h:commandButton id="update"
-                          value="Save"
-                         action="#{impuestoHome.update}"
-                       rendered="#{impuestoHome.managed}"/>
+				<rich:dataTable id="tasaImpuestoList" var="_tasaImpuesto"
+					value="#{impuestoHome.instance.tasas}">
+					<h:column>
+						<f:facet name="header">#{messages['tasaImpuesto.id']}</f:facet>
+						<h:outputText value="#{_tasaImpuesto.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">#{messages['tasaImpuesto.isActive']}</f:facet>
+						<h:selectBooleanCheckbox id="isActive"
+							value="#{_tasaImpuesto.isActive}">
+							<a:support event="onblur" ajaxSingle="true" />
+						</h:selectBooleanCheckbox>
+					</h:column>
+					<h:column>
+						<f:facet name="header">#{messages['tasaImpuesto.valor']}</f:facet>
+						<h:inputText value="#{_tasaImpuesto.valor}">
+							<f:convertNumber />
+							<a:support event="onblur" ajaxSingle="true" />
+						</h:inputText>
+					</h:column>
+					<rich:column styleClass="action">
+						<f:facet name="header">Action</f:facet>
+						<a:commandButton value="#{messages['tasaImpuesto.remove']}"
+							reRender="tasaImpuestoList"
+							action="#{impuestoHome.removeTasaImpuesto(_tasaImpuesto)}"
+							ajaxSingle="true" />
+					</rich:column>
+				</rich:dataTable>
+			</rich:panel>
+			<div class="actionButtons">
 
-            <h:commandButton id="delete"
-                          value="Delete"
-                         action="#{impuestoHome.remove}"
-                      immediate="true"
-                       rendered="#{impuestoHome.managed}"/>
+				<h:commandButton id="save" value="#{messages['common.save']}"
+					action="#{impuestoHome.persist}" disabled="#{!impuestoHome.wired}"
+					rendered="#{!impuestoHome.managed}" />
 
-            <s:button id="cancelEdit"
-                   value="Cancel"
-             propagation="end"
-                    view="/Impuesto.xhtml"
-                rendered="#{impuestoHome.managed}"/>
+				<h:commandButton id="update" value="#{messages['common.save']}"
+					action="#{impuestoHome.update}" rendered="#{impuestoHome.managed}" />
 
-            <s:button id="cancelAdd"
-                   value="Cancel"
-             propagation="end"
-                    view="/#{empty impuestoFrom ? 'ImpuestoList' : impuestoFrom}.xhtml"
-                rendered="#{!impuestoHome.managed}"/>
+				<h:commandButton id="delete" value="#{messages['common.delete']}"
+					action="#{impuestoHome.remove}" immediate="true"
+					rendered="#{impuestoHome.managed}" />
 
-        </div>
-    </h:form>
+				<s:button id="cancelAdd" value="#{messages['common.cancel']}"
+					propagation="end"
+					view="/comun/#{empty impuestoFrom ? 'ImpuestoList' : impuestoFrom}.xhtml" />
 
-<rich:tabPanel switchType="ajax">
+			</div>
+		</h:form>
 
-    <rich:tab label="Tasas">
-        <h:form styleClass="association" id="tasasChildren">
-
-            <h:outputText value="There are no tasas associated with this impuesto."
-                       rendered="#{empty impuestoHome.tasas}"/>
-
-            <rich:dataTable value="#{impuestoHome.tasas}"
-                           var="_tasaImpuesto"
-                      rendered="#{not empty impuestoHome.tasas}"
-                    rowClasses="rvgRowOne,rvgRowTwo"
-                            id="tasasTable">
-                <rich:column sortBy="#{_tasaImpuesto.id}">
-                    <f:facet name="header">Id</f:facet>
-                    <h:outputText value="#{_tasaImpuesto.id}"/>
-                </rich:column>
-                <rich:column sortBy="#{_tasaImpuesto.isActive}">
-                    <f:facet name="header">Is active</f:facet>
-                    <h:outputText value="#{_tasaImpuesto.isActive}"/>
-                </rich:column>
-                <rich:column sortBy="#{_tasaImpuesto.valor}">
-                    <f:facet name="header">Valor</f:facet>
-                    <h:outputText value="#{_tasaImpuesto.valor}">
-                        <f:convertNumber/>
-                    </h:outputText>
-                </rich:column>
-            </rich:dataTable>
-
-        </h:form>
-
-        <f:subview rendered="#{impuestoHome.managed}" id="tasas">
-        <div class="actionButtons">
-            <s:button id="addtasaImpuesto"
-                   value="Add tasaImpuesto"
-                    view="/TasaImpuestoEdit.xhtml"
-             propagation="none">
-                 <f:param name="impuestoId"
-                         value="#{impuestoHome.instance.id}"/>
-                 <f:param name="tasaImpuestoFrom" value="Impuesto"/>
-            </s:button>
-        </div>
-        </f:subview>
-    </rich:tab>
-
-    <rich:tab label="Tipo comprobante">
-    <div class="association" id="tipoComprobanteParent">
-
-        <h:outputText value="There is no tipoComprobante associated with this impuesto."
-                   rendered="#{impuestoHome.instance.tipoComprobante == null}"/>
-
-        <rich:dataTable var="_tipoComprobante"
-                   value="#{impuestoHome.instance.tipoComprobante}"
-                rendered="#{impuestoHome.instance.tipoComprobante != null}"
-              rowClasses="rvgRowOne,rvgRowTwo"
-                      id="tipoComprobanteTable">
-            <h:column>
-                <f:facet name="header">Id</f:facet>
-                <h:outputText value="#{_tipoComprobante.id}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Descripcion</f:facet>
-                <h:outputText value="#{_tipoComprobante.descripcion}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Is active</f:facet>
-                <h:outputText value="#{_tipoComprobante.isActive}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Nombre</f:facet>
-                <h:outputText value="#{_tipoComprobante.nombre}"/>
-            </h:column>
-        </rich:dataTable>
-
-        <div class="actionButtons">
-            <s:button id="#{impuestoHome.instance.tipoComprobante != null ? 'changeParent' : 'selectParent'}" value="#{impuestoHome.instance.tipoComprobante != null ? 'Change' : 'Select'} tipoComprobante"
-                       view="/TipoComprobanteList.xhtml">
-                <f:param name="from" value="ImpuestoEdit"/>
-            </s:button>
-        </div>
-
-    </div>
-    </rich:tab>
-</rich:tabPanel>
-</ui:define>
+	</ui:define>
 
 </ui:composition>

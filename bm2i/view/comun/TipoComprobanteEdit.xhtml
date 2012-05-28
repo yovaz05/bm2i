@@ -13,13 +13,16 @@
 
 		<h:form id="tipoComprobante" styleClass="edit">
 
+			<h:outputText styleClass="formTitle"
+				value="#{tipoComprobanteHome.managed ? messages['common.edit'] : messages['common.create']} #{messages['tipoComprobante']}" />
+
 			<rich:panel>
-				<f:facet name="header">#{tipoComprobanteHome.managed ? 'Edit' : 'Add'} Tipo comprobante</f:facet>
+				<f:facet name="header">#{messages['tipoComprobante.infoData']}</f:facet>
 
 				<s:decorate id="nombreField" template="../layout/edit.xhtml">
 					<ui:define name="label">Nombre</ui:define>
 					<h:inputText id="nombre" size="50" maxlength="50"
-						value="#{tipoComprobanteHome.instance.nombre}">
+						value="#{tipoComprobanteHome.instance.nombre}" style="text-transform: uppercase">
 						<a:support event="onblur" reRender="nombreField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>
@@ -41,84 +44,35 @@
 				</s:decorate>
 
 				<div style="clear: both">
-					<span class="required">*</span> required fields
+					<span class="required">*</span>
+					#{messages['common.requiredFields']}
 				</div>
 
 			</rich:panel>
 
 			<div class="actionButtons">
 
-				<h:commandButton id="save" value="Save"
+				<h:commandButton id="save" value="#{messages['common.save']}"
 					action="#{tipoComprobanteHome.persist}"
 					disabled="#{!tipoComprobanteHome.wired}"
 					rendered="#{!tipoComprobanteHome.managed}" />
 
-				<h:commandButton id="update" value="Save"
+				<h:commandButton id="update" value="#{messages['common.save']}"
 					action="#{tipoComprobanteHome.update}"
 					rendered="#{tipoComprobanteHome.managed}" />
 
-				<h:commandButton id="delete" value="Delete"
+				<h:commandButton id="delete" value="#{messages['common.delete']}"
 					action="#{tipoComprobanteHome.remove}" immediate="true"
 					rendered="#{tipoComprobanteHome.managed}" />
 
-				<s:button id="cancelEdit" value="Cancel" propagation="end"
-					view="/TipoComprobante.xhtml"
-					rendered="#{tipoComprobanteHome.managed}" />
 
-				<s:button id="cancelAdd" value="Cancel" propagation="end"
-					view="/#{empty tipoComprobanteFrom ? 'TipoComprobanteList' : tipoComprobanteFrom}.xhtml"
-					rendered="#{!tipoComprobanteHome.managed}" />
+				<s:button id="cancelAdd" value="#{messages['common.cancel']}"
+					propagation="end"
+					view="/#{empty tipoComprobanteFrom ? 'TipoComprobanteList' : tipoComprobanteFrom}.xhtml" />
 
 			</div>
 		</h:form>
 
-		<rich:tabPanel switchType="ajax">
-
-			<rich:tab label="Impuestos">
-				<h:form styleClass="association" id="impuestosChildren">
-
-					<h:outputText
-						value="There are no impuestos associated with this tipoComprobante."
-						rendered="#{empty tipoComprobanteHome.impuestos}" />
-
-					<rich:dataTable value="#{tipoComprobanteHome.impuestos}"
-						var="_impuesto"
-						rendered="#{not empty tipoComprobanteHome.impuestos}"
-						rowClasses="rvgRowOne,rvgRowTwo" id="impuestosTable">
-						<rich:column sortBy="#{_impuesto.id}">
-							<f:facet name="header">Id</f:facet>
-							<h:outputText value="#{_impuesto.id}" />
-						</rich:column>
-						<rich:column sortBy="#{_impuesto.fecha}">
-							<f:facet name="header">Fecha</f:facet>
-							<h:outputText value="#{_impuesto.fecha}">
-								<s:convertDateTime type="date" dateStyle="short" />
-							</h:outputText>
-						</rich:column>
-						<rich:column sortBy="#{_impuesto.isActive}">
-							<f:facet name="header">Is active</f:facet>
-							<h:outputText value="#{_impuesto.isActive}" />
-						</rich:column>
-						<rich:column sortBy="#{_impuesto.nombre}">
-							<f:facet name="header">Nombre</f:facet>
-							<h:outputText value="#{_impuesto.nombre}" />
-						</rich:column>
-					</rich:dataTable>
-
-				</h:form>
-
-				<f:subview rendered="#{tipoComprobanteHome.managed}" id="impuestos">
-					<div class="actionButtons">
-						<s:button id="addimpuesto" value="Add impuesto"
-							view="/ImpuestoEdit.xhtml" propagation="none">
-							<f:param name="tipoComprobanteId"
-								value="#{tipoComprobanteHome.instance.id}" />
-							<f:param name="impuestoFrom" value="TipoComprobante" />
-						</s:button>
-					</div>
-				</f:subview>
-			</rich:tab>
-		</rich:tabPanel>
 	</ui:define>
 
 </ui:composition>
