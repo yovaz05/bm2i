@@ -102,7 +102,7 @@ public class Articulo {
 	private List<Generico> genericos;
 
 	public Articulo() {
-		this.currentPrecio = new Precio();
+		//this.currentPrecio = new Precio();
 	}
 
 	public void finalize() throws Throwable {

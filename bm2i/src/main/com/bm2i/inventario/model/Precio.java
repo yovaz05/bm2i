@@ -46,7 +46,9 @@ public class Precio {
 	private Ganancia ganancia;
 
 	public Precio() {
-
+		costo=new BigDecimal(0);
+		pvp=new BigDecimal(0);
+		utilidad=new BigDecimal(0);
 	}
 
 	public void finalize() throws Throwable {
