@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.TableGenerator;
 
@@ -21,6 +23,7 @@ import org.hibernate.annotations.Cascade;
  */
 @Entity
 @TableGenerator(name = "SucursalGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "Sucursal", initialValue = 1, allocationSize = 1)
+@NamedQueries(value = { @NamedQuery(name = "Sucursal.findAll", query = "select s from Sucursal s order by s.nombre") })
 public class Sucursal {
 
 	@Id

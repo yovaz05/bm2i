@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.TableGenerator;
@@ -22,6 +24,7 @@ import org.hibernate.annotations.Cascade;
  */
 @Entity
 @TableGenerator(name = "CajaGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "Caja", initialValue = 1, allocationSize = 1)
+@NamedQueries(value = { @NamedQuery(name = "Caja.findBySucursal", query = "select c from Caja c where c.sucursal = :sucursal order by c.nombre") })
 public class Caja {
 
 	@Id

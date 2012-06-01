@@ -9,11 +9,15 @@ import org.jboss.seam.framework.EntityHome;
 
 import com.bm2i.comun.action.PersonaHome;
 import com.bm2i.comun.model.Persona;
+import com.bm2i.security.action.UserSession;
 import com.bm2i.venta.model.CajaPermiso;
 import com.bm2i.venta.model.DiaTrabajo;
 
 @Name("diaTrabajoHome")
 public class DiaTrabajoHome extends EntityHome<DiaTrabajo> {
+
+	@In
+	UserSession userSession;
 
 	@In(create = true)
 	PersonaHome personaHome;
@@ -57,6 +61,18 @@ public class DiaTrabajoHome extends EntityHome<DiaTrabajo> {
 	public List<CajaPermiso> getPermisos() {
 		return getInstance() == null ? null : new ArrayList<CajaPermiso>(
 				getInstance().getPermisos());
+	}
+
+	@Override
+	public String persist() {
+		this.getInstance().setSupervisor(userSession.getPersona());
+		return super.persist();
+	}
+
+	@Override
+	public String update() {
+		this.getInstance().setSupervisor(userSession.getPersona());
+		return super.update();
 	}
 
 }

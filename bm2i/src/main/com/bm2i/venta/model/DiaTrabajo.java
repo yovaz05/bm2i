@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
@@ -26,6 +28,9 @@ import com.bm2i.comun.model.Persona;
  */
 @Entity
 @TableGenerator(name = "DiaTrabajoGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "DiaTrabajo", initialValue = 1, allocationSize = 1)
+@NamedQueries({
+		@NamedQuery(name = "DiaTrabajo.findAll", query = "select dt from DiaTrabajo dt order by dt.openDate"),
+		@NamedQuery(name = "DiaTrabajo.findCurrent", query = "select dt from DiaTrabajo dt where :fActual >= dt.openDate and dt.isOpen = true") })
 public class DiaTrabajo {
 
 	@Id
@@ -53,7 +58,7 @@ public class DiaTrabajo {
 	private List<CajaPermiso> permisos;
 
 	public DiaTrabajo() {
-
+		openDate = new Date();
 	}
 
 	public void finalize() throws Throwable {

@@ -11,6 +11,7 @@ import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.framework.EntityController;
 
+import com.bm2i.comun.model.Impuesto;
 import com.bm2i.inventario.model.Linea;
 import com.bm2i.inventario.model.TipoArticulo;
 
@@ -36,5 +37,12 @@ public class FactoryController extends EntityController {
 	public List<TipoArticulo> findTiposArticulo() {
 		return Arrays.asList(TipoArticulo.values());
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	@Factory("impuestos")
+	public List<Impuesto> findImpuesto() {
+		Query query = this.getEntityManager().createNamedQuery("Impuesto.findAll");
+		return query.getResultList();
+	}
+	
 }

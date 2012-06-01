@@ -12,6 +12,8 @@ import com.bm2i.comun.model.TipoComprobante;
 @Name("tipoComprobanteHome")
 public class TipoComprobanteHome extends EntityHome<TipoComprobante> {
 
+	// private Impuesto impuesto;
+
 	public void setTipoComprobanteId(Long id) {
 		setId(id);
 	}
@@ -47,6 +49,16 @@ public class TipoComprobanteHome extends EntityHome<TipoComprobante> {
 	public List<Impuesto> getImpuestos() {
 		return getInstance() == null ? null : new ArrayList<Impuesto>(
 				getInstance().getImpuestos());
+	}
+
+	public void addImpuesto(Impuesto impuesto) {
+
+		this.getInstance().add(impuesto);
+
+	}
+
+	public void removeImpuesto(Impuesto impuesto) {
+		this.getInstance().remove(impuesto);
 	}
 
 }

@@ -54,6 +54,21 @@ public class UserSession extends EntityController {
 		}
 	}
 
+	@Observer(value = "org.jboss.seam.postCreate.userSession")
+	public void initializeCurrentDiaTrabajo() {
+		logger.info("Inicia el dia de trabajo");
+		Date currentDate = new Date();
+		Query query = getEntityManager().createNamedQuery(
+				"DiaTrabajo.findCurrent");
+		query.setParameter("fActual", currentDate);
+		List<DiaTrabajo> list = query.getResultList();
+		if (list.size() > 0) {
+			diaTrabajo = list.get(0);
+		} else {
+			logger.fatal("=====>>>>> no existe dia de trabajo");
+		}
+	}
+
 	@SuppressWarnings("unchecked")
 	@Factory(value = "periodosFiscales")
 	public List<PeriodoFiscal> findperiodoFiscals() {
