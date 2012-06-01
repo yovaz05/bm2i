@@ -93,13 +93,13 @@
 							<ui:include src="../layout/sort.xhtml">
 								<ui:param name="entityList" value="#{impuestoList}" />
 								<ui:param name="propertyLabel"
-									value="#{messages['impuesto.tipo']}" />
+									value="#{messages['impuesto.nombre']}" />
 								<ui:param name="propertyPath" value="impuesto.nombre" />
 							</ui:include>
 						</f:facet>
 						<h:outputText value="#{_impuesto.nombre}" />
 					</h:column>
-					<h:column>
+					<!-- h:column>
 						<f:facet name="header">
 							<ui:include src="../layout/sort.xhtml">
 								<ui:param name="entityList" value="#{impuestoList}" />
@@ -110,7 +110,7 @@
 							</ui:include>
 						</f:facet>
 						<h:outputText value="#{_impuesto.tipoComprobante.nombre}" />
-					</h:column>
+					</h:column-->
 					<rich:column styleClass="action">
 						<f:facet name="header">Action</f:facet>
 

@@ -20,16 +20,17 @@
 				<f:facet name="header">#{messages['tipoComprobante.infoData']}</f:facet>
 
 				<s:decorate id="nombreField" template="../layout/edit.xhtml">
-					<ui:define name="label">Nombre</ui:define>
+					<ui:define name="label">#{messages['tipoComprobante.nombre']}</ui:define>
 					<h:inputText id="nombre" size="50" maxlength="50"
-						value="#{tipoComprobanteHome.instance.nombre}" style="text-transform: uppercase">
+						value="#{tipoComprobanteHome.instance.nombre}"
+						style="text-transform: uppercase">
 						<a:support event="onblur" reRender="nombreField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>
 				</s:decorate>
 
 				<s:decorate id="descripcionField" template="../layout/edit.xhtml">
-					<ui:define name="label">Descripcion</ui:define>
+					<ui:define name="label">#{messages['tipoComprobante.descripcion']}</ui:define>
 					<h:inputText id="descripcion" size="50" maxlength="50"
 						value="#{tipoComprobanteHome.instance.descripcion}">
 						<a:support event="onblur" reRender="descripcionField"
@@ -38,7 +39,7 @@
 				</s:decorate>
 
 				<s:decorate id="isActiveField" template="../layout/edit.xhtml">
-					<ui:define name="label">Is active</ui:define>
+					<ui:define name="label">#{messages['tipoComprobante.isActive']}</ui:define>
 					<h:selectBooleanCheckbox id="isActive"
 						value="#{tipoComprobanteHome.instance.isActive}" />
 				</s:decorate>
@@ -47,6 +48,79 @@
 					<span class="required">*</span>
 					#{messages['common.requiredFields']}
 				</div>
+
+			</rich:panel>
+
+			<rich:panel>
+				<f:facet name="header">
+					<h:panelGrid columns="2" columnClasses="headerTitle,">
+						<h:outputText value="#{messages['impuesto.searchResults']}" />
+					</h:panelGrid>
+				</f:facet>
+				<h:panelGrid columns="2">
+					<rich:panel style="width:400px">
+						<f:facet name="header">
+							<h:panelGrid columns="2" columnClasses="headerTitle,">
+								<h:outputText value="#{messages['impuestos']}" />
+							</h:panelGrid>
+						</f:facet>
+						<rich:dataTable var="_impuesto" value="#{impuestos}">
+							<h:column>
+								<f:facet name="header">#{messages['impuesto.id']}</f:facet>
+								<h:outputText value="#{_impuesto.id}" />
+							</h:column>
+							<h:column headerClass="action">
+								<f:facet name="header">#{messages['impuesto.isActive']}</f:facet>
+								<h:selectBooleanCheckbox value="#{_impuesto.isActive}"
+									disabled="true" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">#{messages['impuesto.nombre']}</f:facet>
+								<h:outputText value="#{_impuesto.nombre}" />
+							</h:column>
+							<rich:column styleClass="action">
+								<f:facet name="header">#{messages['common.action']}</f:facet>
+								<a:commandButton value="#{messages['common.add']}"
+									ajaxSingle="true" reRender="impuestoList"
+									action="#{tipoComprobanteHome.addImpuesto(_impuesto)}" />
+							</rich:column>
+						</rich:dataTable>
+
+					</rich:panel>
+					<rich:panel style="width:400px">
+						<f:facet name="header">
+							<h:panelGrid columns="2" columnClasses="headerTitle,">
+								<h:outputText value="#{messages['impuestos.asignados']}" />
+							</h:panelGrid>
+						</f:facet>
+						<rich:dataTable id="impuestoList" var="_impuesto"
+							value="#{tipoComprobanteHome.instance.impuestos}">
+							<h:column>
+								<f:facet name="header">#{messages['impuesto.id']}</f:facet>
+								<h:outputText value="#{_impuesto.id}" />
+							</h:column>
+							<h:column headerClass="action">
+								<f:facet name="header">#{messages['impuesto.isActive']}</f:facet>
+								<h:selectBooleanCheckbox value="#{_impuesto.isActive}"
+									disabled="true" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">#{messages['impuesto.nombre']}</f:facet>
+								<h:outputText value="#{_impuesto.nombre}" />
+							</h:column>
+							<rich:column styleClass="action">
+								<f:facet name="header">#{messages['common.action']}</f:facet>
+								<a:commandButton value="#{messages['common.remove']}"
+									action="#{tipoComprobanteHome.remove(_impuesto)}"
+									reRender="impuestoList" ajaxSingle="true" />
+							</rich:column>
+						</rich:dataTable>
+					</rich:panel>
+				</h:panelGrid>
+
+
+
+
 
 			</rich:panel>
 
@@ -68,7 +142,7 @@
 
 				<s:button id="cancelAdd" value="#{messages['common.cancel']}"
 					propagation="end"
-					view="/#{empty tipoComprobanteFrom ? 'TipoComprobanteList' : tipoComprobanteFrom}.xhtml" />
+					view="/comun/#{empty tipoComprobanteFrom ? 'TipoComprobanteList' : tipoComprobanteFrom}.xhtml" />
 
 			</div>
 		</h:form>

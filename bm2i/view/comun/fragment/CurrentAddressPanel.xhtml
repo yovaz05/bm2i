@@ -78,7 +78,7 @@
 		<s:decorate id="mobileNumberField" template="../../layout/edit.xhtml">
 			<ui:define name="label">#{messages['resident.cellphone']}:</ui:define>
 			<h:inputText id="mobileNumber" size="15" maxlength="15"
-				value="#{residentHome.instance.currentDireccion.telefonoCedular}"
+				value="#{residentHome.instance.currentDireccion.telefonoCelular}"
 				style="text-transform: uppercase">
 				<a:support event="onblur" reRender="mobileNumberField"
 					bypassUpdates="true" ajaxSingle="true" />

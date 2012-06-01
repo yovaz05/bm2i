@@ -59,7 +59,7 @@
 							<ui:include src="../layout/sort.xhtml">
 								<ui:param name="entityList" value="#{tipoComprobanteList}" />
 								<ui:param name="propertyLabel"
-									value="#{messages['tipoPago.id']}" />
+									value="#{messages['tipoComprobante.id']}" />
 								<ui:param name="propertyPath" value="tipoComprobante.id" />
 							</ui:include>
 						</f:facet>
@@ -70,7 +70,7 @@
 							<ui:include src="../layout/sort.xhtml">
 								<ui:param name="entityList" value="#{tipoComprobanteList}" />
 								<ui:param name="propertyLabel"
-									value="#{messages['tipoPago.nombre']}" />
+									value="#{messages['tipoComprobante.nombre']}" />
 								<ui:param name="propertyPath" value="tipoComprobante.nombre" />
 							</ui:include>
 						</f:facet>
@@ -81,33 +81,34 @@
 							<ui:include src="../layout/sort.xhtml">
 								<ui:param name="entityList" value="#{tipoComprobanteList}" />
 								<ui:param name="propertyLabel"
-									value="#{messages['tipoPago.descripcion']}" />
+									value="#{messages['tipoComprobante.descripcion']}" />
 								<ui:param name="propertyPath"
 									value="tipoComprobante.descripcion" />
 							</ui:include>
 						</f:facet>
 						<h:outputText value="#{_tipoComprobante.descripcion}" />
 					</h:column>
-					<h:column>
+					<rich:column styleClass="action">
 						<f:facet name="header">
 							<ui:include src="../layout/sort.xhtml">
 								<ui:param name="entityList" value="#{tipoComprobanteList}" />
 								<ui:param name="propertyLabel"
-									value="#{messages['tipoPago.isActive']}" />
+									value="#{messages['tipoComprobante.isActive']}" />
 								<ui:param name="propertyPath" value="tipoComprobante.isActive" />
 							</ui:include>
 						</f:facet>
-						<h:outputText value="#{_tipoComprobante.isActive}" />
-					</h:column>
+						<h:selectBooleanCheckbox disabled="true"
+							value="#{_tipoComprobante.isActive}" />
+					</rich:column>
 
 					<rich:column styleClass="action">
 						<f:facet name="header">#{messages['common.action']}</f:facet>
 
-						<s:link view="/comun/TipoComprobanteEdit.xhtml"
+						<s:button view="/comun/TipoComprobanteEdit.xhtml"
 							value="#{messages['common.edit']}" propagation="none"
 							id="tipoComprobanteEdit" rendered="#{empty from}">
 							<f:param name="tipoComprobanteId" value="#{_tipoComprobante.id}" />
-						</s:link>
+						</s:button>
 					</rich:column>
 				</rich:dataTable>
 

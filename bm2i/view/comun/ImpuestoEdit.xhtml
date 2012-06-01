@@ -20,23 +20,24 @@
 				<f:facet name="header">#{messages['impuesto.infoData']}</f:facet>
 
 				<s:decorate id="nombreField" template="../layout/edit.xhtml">
-					<ui:define name="label">Nombre</ui:define>
+					<ui:define name="label">#{messages['impuesto.nombre']}</ui:define>
 					<h:inputText id="nombre" size="30" maxlength="30"
-						value="#{impuestoHome.instance.nombre}">
+						value="#{impuestoHome.instance.nombre}"
+						style="text-transform: uppercase">
 						<a:support event="onblur" reRender="nombreField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>
 				</s:decorate>
 
 				<s:decorate id="fechaField" template="../layout/edit.xhtml">
-					<ui:define name="label">Fecha</ui:define>
+					<ui:define name="label">#{messages['impuesto.fecha']}</ui:define>
 					<rich:calendar id="fecha" value="#{impuestoHome.instance.fecha}"
 						datePattern="#{messages['common.datePattern']}" />
 				</s:decorate>
 
 
 				<s:decorate id="isActiveField" template="../layout/edit.xhtml">
-					<ui:define name="label">Is active</ui:define>
+					<ui:define name="label">#{messages['impuesto.isActive']}</ui:define>
 					<h:selectBooleanCheckbox id="isActive"
 						value="#{impuestoHome.instance.isActive}" />
 				</s:decorate>
