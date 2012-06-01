@@ -98,7 +98,7 @@
 						</f:facet>
 						<h:outputText value="#{_articulo.nombre}" />
 					</h:column>
-					<h:column>
+					<rich:column style="text-align:right;">
 						<f:facet name="header">
 							<ui:include src="../layout/sort.xhtml">
 								<ui:param name="entityList" value="#{articuloList}" />
@@ -108,7 +108,7 @@
 							</ui:include>
 						</f:facet>
 						<h:outputText value="#{_articulo.cantidad}" />
-					</h:column>
+					</rich:column>
 
 					<rich:column style="text-align:right;">
 						<f:facet name="header">
@@ -120,7 +120,7 @@
 							</ui:include>
 						</f:facet>
 						<h:outputText value="#{_articulo.currentCosto}">
-							<f:convertNumber pattern="$#0.00"/>
+							<f:convertNumber pattern="$#0.00" />
 						</h:outputText>
 					</rich:column>
 					<!-- h:column>
@@ -134,7 +134,7 @@
 						</f:facet>
 						<h:outputText value="#{_articulo.descripcion}" />
 					</h:column-->
-					<h:column>
+					<rich:column style="text-align:right;">
 						<f:facet name="header">
 							<ui:include src="../layout/sort.xhtml">
 								<ui:param name="entityList" value="#{articuloList}" />
@@ -144,8 +144,8 @@
 							</ui:include>
 						</f:facet>
 						<h:outputText value="#{_articulo.existenciaMax}" />
-					</h:column>
-					<h:column>
+					</rich:column>
+					<rich:column style="text-align:right;">
 						<f:facet name="header">
 							<ui:include src="../layout/sort.xhtml">
 								<ui:param name="entityList" value="#{articuloList}" />
@@ -155,7 +155,7 @@
 							</ui:include>
 						</f:facet>
 						<h:outputText value="#{_articulo.existenciaMin}" />
-					</h:column>
+					</rich:column>
 					<h:column>
 						<f:facet name="header">
 							<ui:include src="../layout/sort.xhtml">

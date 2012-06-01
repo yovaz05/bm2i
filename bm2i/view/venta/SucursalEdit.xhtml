@@ -23,7 +23,7 @@
 					<ui:define name="label">#{messages['sucursal.nombre']}</ui:define>
 					<h:inputText id="nombre" size="30" maxlength="30"
 						value="#{sucursalHome.instance.nombre}"
-						style="text-transform: uppercase">
+						style="text-transform: uppercase" required="true">
 						<a:support event="onblur" reRender="nombreField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>

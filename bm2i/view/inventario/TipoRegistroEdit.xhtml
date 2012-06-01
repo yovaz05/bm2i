@@ -22,7 +22,7 @@
 				<s:decorate id="nombreField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['tipoRegistro.nombre']}</ui:define>
 					<h:inputText id="nombre" size="30" maxlength="30"
-						value="#{tipoRegistroHome.instance.nombre}" style="text-transform: uppercase">
+						value="#{tipoRegistroHome.instance.nombre}" style="text-transform: uppercase" required="true">
 						<a:support event="onblur" reRender="nombreField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>

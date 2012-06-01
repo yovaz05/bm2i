@@ -23,7 +23,7 @@
 					<ui:define name="label">#{messages['linea.codigo']}</ui:define>
 					<h:inputText id="codigo" size="30" maxlength="30"
 						value="#{lineaHome.instance.codigo}"
-						style="text-transform: uppercase">
+						style="text-transform: uppercase" required="true">
 						<a:support event="onblur" reRender="codigoField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>
@@ -33,7 +33,7 @@
 					<ui:define name="label">#{messages['linea.nombre']}</ui:define>
 					<h:inputText id="nombre" size="30" maxlength="30"
 						value="#{lineaHome.instance.nombre}"
-						style="text-transform: uppercase">
+						style="text-transform: uppercase" required="true">
 						<a:support event="onblur" reRender="nombreField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>
@@ -41,11 +41,12 @@
 
 				<s:decorate id="detalleField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['linea.detalle']}</ui:define>
-					<h:inputText id="detalle" size="100" maxlength="100"
-						value="#{lineaHome.instance.detalle}">
+					<h:inputTextarea id="descripcion"
+						value="#{lineaHome.instance.detalle}" cols="60" rows="3">
+						<f:validateLength maximum="100"></f:validateLength>
 						<a:support event="onblur" reRender="detalleField"
 							bypassUpdates="true" ajaxSingle="true" />
-					</h:inputText>
+					</h:inputTextarea>
 				</s:decorate>
 
 				<div style="clear: both">
