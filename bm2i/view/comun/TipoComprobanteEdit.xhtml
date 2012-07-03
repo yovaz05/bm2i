@@ -111,16 +111,12 @@
 							<rich:column styleClass="action">
 								<f:facet name="header">#{messages['common.action']}</f:facet>
 								<a:commandButton value="#{messages['common.remove']}"
-									action="#{tipoComprobanteHome.remove(_impuesto)}"
+									action="#{tipoComprobanteHome.removeImpuesto(_impuesto)}"
 									reRender="impuestoList" ajaxSingle="true" />
 							</rich:column>
 						</rich:dataTable>
 					</rich:panel>
 				</h:panelGrid>
-
-
-
-
 
 			</rich:panel>
 
