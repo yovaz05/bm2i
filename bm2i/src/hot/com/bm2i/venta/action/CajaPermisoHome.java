@@ -12,7 +12,9 @@ import javax.persistence.Query;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.core.Interpolator;
+import org.jboss.seam.faces.FacesMessages;
 import org.jboss.seam.framework.EntityHome;
+import org.jboss.seam.international.StatusMessage.Severity;
 
 import com.bm2i.comun.action.PersonaHome;
 import com.bm2i.comun.model.Persona;
@@ -38,6 +40,9 @@ public class CajaPermisoHome extends EntityHome<CajaPermiso> {
 
 	private Sucursal sucursal;
 	private Caja caja;
+	
+	@In(create = true)
+	private FacesMessages facesMessages;
 
 	public void setCajaPermisoId(Long id) {
 		setId(id);
@@ -105,22 +110,36 @@ public class CajaPermisoHome extends EntityHome<CajaPermiso> {
 	public String persist() {
 		if (sucursal != null) {
 			if (caja != null) {
-				this.getInstance().setCaja(caja);
-				this.getInstance().setHoraOpening(
-						new SimpleDateFormat("HH:mm").format(new Date()));
-				this.getInstance().setCajero(userSession.getPersona());
-				return super.persist();
+				if (userSession.getDiaTrabajo() != null) {
+					this.getInstance().setCaja(caja);
+					this.getInstance().setHoraOpening(
+							new SimpleDateFormat("HH:mm").format(new Date()));
+					this.getInstance().setCajero(userSession.getPersona());
+					System.out
+							.println("disq entra a guardar la apertura de caja");
+					return super.persist();
+				} else {
+					System.out.println("entra a no hay dia de trabajo");
+					facesMessages.addFromResourceBundle(Severity.ERROR,
+							"#{messages['diaTrabajo.noOpen']}");		
+					return null;
+				}
 			} else {
-				String message = Interpolator.instance().interpolate(
-						"#{messages['caja.seleccionaunacaja']}", new Object[0]);
-				throw new ValidatorException(new FacesMessage(message));
-				// return null;
+				facesMessages.addFromResourceBundle(Severity.ERROR,
+				"#{messages['caja.seleccionaunacaja']}");
+				/*String message = Interpolator.instance().interpolate(
+						"", new Object[0]);
+				throw new ValidatorException(new FacesMessage(message));*/
+				return null;
 			}
 		} else {
 			// return null;
-			String message = Interpolator.instance().interpolate(
+			/*String message = Interpolator.instance().interpolate(
 					"#{messages['caja.seleccionaunacaja']}", new Object[0]);
-			throw new ValidatorException(new FacesMessage(message));
+			throw new ValidatorException(new FacesMessage(message));*/
+			facesMessages.addFromResourceBundle(Severity.ERROR,
+			"#{messages['caja.seleccionaunacaja']}");
+			return null;
 		}
 	}
 
