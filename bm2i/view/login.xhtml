@@ -24,14 +24,14 @@
 						</h:panelGrid>
 						<h:panelGrid columns="2" rowClasses="prop"
 							columnClasses="name,value">
-							<h:outputLabel for="username">Username</h:outputLabel>
+							<h:outputLabel for="username">#{messages['login.username']}:</h:outputLabel>
 							<h:inputText id="username" value="#{credentials.username}" />
-							<h:outputLabel for="password">Password</h:outputLabel>
+							<h:outputLabel for="password">#{messages['login.password']}:</h:outputLabel>
 							<h:inputSecret id="password" value="#{credentials.password}" />
-							<h:outputLabel for="rememberMe">Remember me</h:outputLabel>
+							<h:outputLabel for="rememberMe">#{messages['login.rememberMe']}:</h:outputLabel>
 							<h:selectBooleanCheckbox id="rememberMe"
 								value="#{rememberMe.enabled}" />
-							<h:commandButton id="submit" value="Login"
+							<h:commandButton id="submit" value="#{messages['login.action']}"
 								action="#{identity.login}" />
 						</h:panelGrid>
 					</h:panelGrid>
