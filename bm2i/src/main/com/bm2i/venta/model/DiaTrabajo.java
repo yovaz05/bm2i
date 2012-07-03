@@ -30,7 +30,7 @@ import com.bm2i.comun.model.Persona;
 @TableGenerator(name = "DiaTrabajoGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "DiaTrabajo", initialValue = 1, allocationSize = 1)
 @NamedQueries({
 		@NamedQuery(name = "DiaTrabajo.findAll", query = "select dt from DiaTrabajo dt order by dt.openDate"),
-		@NamedQuery(name = "DiaTrabajo.findCurrent", query = "select dt from DiaTrabajo dt where :fActual >= dt.openDate and dt.isOpen = true") })
+		@NamedQuery(name = "DiaTrabajo.findCurrent", query = "select dt from DiaTrabajo dt where dt.openDate = :fActual and dt.isOpen = true") })
 public class DiaTrabajo {
 
 	@Id

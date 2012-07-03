@@ -190,11 +190,14 @@ public abstract class Resident {
 	public void add(Direccion address) {
 		if (!this.direcciones.contains(address)) {
 			this.direcciones.add(address);
+			address.setResident(this);
 		}
 	}
 
 	public void remove(Direccion address) {
-		this.direcciones.remove(address);
+		if (this.direcciones.remove(address)) {
+			address.setResident(null);
+		}
 	}
 
 	@Override
