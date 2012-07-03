@@ -21,7 +21,7 @@
 
 				<s:decorate id="supervisorField" template="../layout/display.xhtml">
 					<ui:define name="label">#{messages['diaTrabajo.supervisor']}</ui:define>
-					<h:outputText value="#{userSession.persona.nombre}" />
+					<h:inputText value="#{userSession.persona.nombre}" disabled="true" />
 				</s:decorate>
 
 				<s:decorate id="openDateField" template="../layout/edit.xhtml">
