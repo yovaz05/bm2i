@@ -1,6 +1,7 @@
 package com.bm2i.comun.action;
 
 import java.util.ArrayList;
+import javax.persistence.Query;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class ResidentHome extends EntityHome<Resident> {
 	@In(create = true)
 	DireccionHome direccionHome;
 	private String residentType = "Persona";
+	private Boolean panelNatural = new Boolean(true);
 
 	public void setResidentId(Long id) {
 		setId(id);
@@ -40,10 +42,10 @@ public class ResidentHome extends EntityHome<Resident> {
 		Resident resident;
 		if (residentType.equalsIgnoreCase("Persona")) {
 			resident = new Persona();
-			System.out.println("========= crea persona");
+			System.out.println("=========>>>>>>> crea persona");
 		} else {
 			resident = new EntidadLegal();
-			System.out.println("========= crea entidad legal");
+			System.out.println("=========>>>>>>> crea entidad legal");
 		}
 		return resident;
 	}
@@ -130,7 +132,8 @@ public class ResidentHome extends EntityHome<Resident> {
 		 * getInstance().setTipoIdentificacion(identificationTypes.get(0));
 		 */
 		// return identificationTypes;
-		getInstance().setTipoIdentificacion(identificationTypes.get(0));
+		System.out.println("entra a cargar y select cedual por default");
+		//getInstance().setTipoIdentificacion(identificationTypes.get(0));
 		return identificationTypes;
 	}
 
@@ -147,6 +150,70 @@ public class ResidentHome extends EntityHome<Resident> {
 		this.getInstance().add(address);
 		this.getInstance().setCurrentDireccion(address);
 		// disableAddressControls = false;
+	}
+
+	public void crearReisdent() {
+		if (this.getInstance().getTipoIdentificacion()
+				.equals(TipoIdentificacion.CEDULA)) {
+			this.setInstance(new Persona());
+			this.getInstance().setTipoIdentificacion(TipoIdentificacion.CEDULA);
+			System.out.println("========= crea natural");
+			panelNatural = new Boolean(true);
+		}
+		if (this.getInstance().getTipoIdentificacion()
+				.equals(TipoIdentificacion.PASAPORTE)) {
+			this.setInstance(new Persona());
+			this.getInstance().setTipoIdentificacion(
+					TipoIdentificacion.PASAPORTE);
+			System.out.println("========= crea natural");
+			panelNatural = new Boolean(true);
+		}
+		if (this.getInstance().getTipoIdentificacion()
+				.equals(TipoIdentificacion.RUC)) {
+			this.setInstance(new EntidadLegal());
+			this.getInstance().setTipoIdentificacion(TipoIdentificacion.RUC);
+			System.out.println("========= crea entidad legal");
+			panelNatural = new Boolean(false);
+		}
+
+		/*
+		 * if (this.getInstance().getTipoIdentificacion()
+		 * .equals(TipoIdentificacion.CEDULA) ||
+		 * this.getInstance().getTipoIdentificacion()
+		 * .equals(TipoIdentificacion.PASAPORTE)) { this.setInstance(new
+		 * Persona()); if (this.getInstance().getTipoIdentificacion()
+		 * .equals(TipoIdentificacion.CEDULA)) {
+		 * this.getInstance().setTipoIdentificacion( TipoIdentificacion.CEDULA);
+		 * } if (this.getInstance().getTipoIdentificacion()
+		 * .equals(TipoIdentificacion.PASAPORTE)) {
+		 * this.getInstance().setTipoIdentificacion(
+		 * TipoIdentificacion.PASAPORTE); }
+		 * System.out.println("========= crea persona"); panelNatural = new
+		 * Boolean(true); } else {
+		 * 
+		 * }
+		 */
+		System.out.println("panel natural " + panelNatural);
+	}
+
+	public Boolean getPanelNatural() {
+		return panelNatural;
+	}
+
+	public void setPanelNatural(Boolean panelNatural) {
+		this.panelNatural = panelNatural;
+	}
+
+	public void buscarCliente() {
+		String nid = this.getInstance().getNumeroIdentificacion();
+		if (nid != null) {
+			Query q = this.getEntityManager().createNamedQuery(
+					"Resident.findByIdentificationNumber");
+			q.setParameter("identificationNumber", nid);
+			if (q.getResultList().size() > 0) {
+				this.setInstance((Resident) q.getSingleResult());
+			}
+		}
 	}
 
 }
