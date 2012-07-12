@@ -1,13 +1,11 @@
 package com.bm2i.comun.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.framework.EntityHome;
 
 import com.bm2i.comun.model.Impuesto;
 import com.bm2i.comun.model.TipoComprobante;
+import com.bm2i.comun.model.TipoComprobateImpuesto;
 
 @Name("tipoComprobanteHome")
 public class TipoComprobanteHome extends EntityHome<TipoComprobante> {
@@ -46,19 +44,20 @@ public class TipoComprobanteHome extends EntityHome<TipoComprobante> {
 		return isIdDefined() ? getInstance() : null;
 	}
 
-	public List<Impuesto> getImpuestos() {
-		return getInstance() == null ? null : new ArrayList<Impuesto>(
-				getInstance().getImpuestos());
+	/*
+	 * public List<TipoComprobateImpuesto> getComprobateImpuestos() { return
+	 * getInstance() == null ? null : new ArrayList<TipoComprobateImpuesto>(
+	 * getInstance().get); }
+	 */
+
+	public void addImpuesto(Impuesto imp) {
+		TipoComprobateImpuesto tipoComprobanteImpuesto = new TipoComprobateImpuesto();
+		tipoComprobanteImpuesto.setImpuesto(imp);
+		this.getInstance().add(tipoComprobanteImpuesto);
 	}
 
-	public void addImpuesto(Impuesto impuesto) {
-
-		this.getInstance().add(impuesto);
-
-	}
-
-	public void removeImpuesto(Impuesto impuesto) {
-		this.getInstance().remove(impuesto);
+	public void removeImpuesto(TipoComprobateImpuesto tipoComprobanteImpuesto) {
+		this.getInstance().remove(tipoComprobanteImpuesto);
 	}
 
 }

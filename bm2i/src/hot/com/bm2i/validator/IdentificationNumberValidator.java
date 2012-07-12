@@ -42,12 +42,16 @@ public class IdentificationNumberValidator implements
 			ResidentHome contribuyenteHome = (ResidentHome) Component
 					.getInstance("residentHome");
 			if (contribuyenteHome.getInstance().getTipoIdentificacion() == TipoIdentificacion.CEDULA) {
+				System.out.println("es cedula");
 				this.validateNationalIdentityDocument(nid);
+				
 			} else if (contribuyenteHome.getInstance().getTipoIdentificacion() == TipoIdentificacion.RUC) {
+				System.out.println("es RUC");
 				this.validateTaxpayerDocument(nid);
 			}
 
 		} else {
+			System.out.println("no es correcto");
 			message = Interpolator.instance().interpolate(
 					"#{messages['common.requiredIdentificationNumber']}",
 					new Object[0]);

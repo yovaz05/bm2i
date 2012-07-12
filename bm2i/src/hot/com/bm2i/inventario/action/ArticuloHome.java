@@ -124,6 +124,7 @@ public class ArticuloHome extends EntityHome<Articulo> {
 		double costo = precio.getCosto().doubleValue();
 		double utilidad = precio.getUtilidad().doubleValue();
 		double total = costo + (costo * utilidad / 100);
+		
 		BigDecimal pvp = new BigDecimal(total);
 		pvp = pvp.setScale(2, RoundingMode.HALF_UP);
 		precio.setPvp(pvp);
@@ -146,9 +147,9 @@ public class ArticuloHome extends EntityHome<Articulo> {
 	@Override
 	public String persist() {
 		// TODO Auto-generated method stub
-		if (this.getInstance().getCurrentPrecio().getCosto() != null) {
-			this.getInstance().add(this.getInstance().getCurrentPrecio());
-		}
+		//if (this.getInstance().getCurrentPrecio().getCosto() != null) {
+			//this.getInstance().add(this.getInstance().getCurrentPrecio());
+		//}
 		return super.persist();
 	}
 

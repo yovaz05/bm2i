@@ -80,6 +80,25 @@ public class CajaPermisoHome extends EntityHome<CajaPermiso> {
 		}
 		cargarAperturaCaja();
 	}
+	
+	
+	public void wireCierre() {
+		getInstance();
+		Caja caja = cajaHome.getDefinedInstance();
+		if (caja != null) {
+			getInstance().setCaja(caja);
+		}
+		Persona cajero = personaHome.getDefinedInstance();
+		if (cajero != null) {
+			getInstance().setCajero(cajero);
+		}
+		DiaTrabajo diaTrabajo = diaTrabajoHome.getDefinedInstance();
+		if (diaTrabajo != null) {
+			getInstance().setDiaTrabajo(diaTrabajo);
+		}
+		//cargarAperturaCaja();
+		cargarCajaParaCierre();
+	}
 
 	public boolean isWired() {
 		return true;
@@ -172,6 +191,19 @@ public class CajaPermisoHome extends EntityHome<CajaPermiso> {
 		q.setParameter("cajero", userSession.getPersona());
 		if (q.getResultList().size() > 0) {
 			this.setInstance((CajaPermiso) q.getSingleResult());
+			System.out
+					.println("=======>>>> entra a cargar la paertura de caja");
+		}
+	}
+	
+	public void cargarCajaParaCierre() {
+		Query q = this.getEntityManager().createNamedQuery(
+				"CajaPermiso.findCurrent");
+		q.setParameter("fechaApertura", new Date());
+		q.setParameter("cajero", userSession.getPersona());
+		if (q.getResultList().size() > 0) {
+			this.setInstance((CajaPermiso) q.getSingleResult());
+			this.sucursal=this.getInstance().getCaja().getSucursal();
 			System.out
 					.println("=======>>>> entra a cargar la paertura de caja");
 		}
