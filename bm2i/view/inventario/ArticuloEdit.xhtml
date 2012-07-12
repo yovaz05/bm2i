@@ -34,10 +34,10 @@
 				<s:decorate id="lineaField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['articulo.linea']}</ui:define>
 					<h:selectOneMenu id="linea" value="#{articuloHome.instance.linea}">
-						<s:selectItems value="#{lineas}" var="linea"
-							label="#{linea.nombre}" />
+						<s:selectItems value="#{lineas}" var="lineaRow"
+							label="#{lineaRow.nombre}" />
 						<s:convertEntity />
-						<a:support event="onselect" ajaxSingle="true" />
+						<a:support event="onchange" ajaxSingle="true" />
 					</h:selectOneMenu>
 				</s:decorate>
 

@@ -93,25 +93,25 @@
 								<h:outputText value="#{messages['impuestos.asignados']}" />
 							</h:panelGrid>
 						</f:facet>
-						<rich:dataTable id="impuestoList" var="_impuesto"
-							value="#{tipoComprobanteHome.instance.impuestos}">
+						<rich:dataTable id="impuestoList" var="_tci"
+							value="#{tipoComprobanteHome.instance.tipoComprobateImpuestos}">
 							<h:column>
 								<f:facet name="header">#{messages['impuesto.id']}</f:facet>
-								<h:outputText value="#{_impuesto.id}" />
+								<h:outputText value="#{_tci.id}" />
 							</h:column>
 							<h:column headerClass="action">
 								<f:facet name="header">#{messages['impuesto.isActive']}</f:facet>
-								<h:selectBooleanCheckbox value="#{_impuesto.isActive}"
+								<h:selectBooleanCheckbox value="#{_tci.impuesto.isActive}"
 									disabled="true" />
 							</h:column>
 							<h:column>
 								<f:facet name="header">#{messages['impuesto.nombre']}</f:facet>
-								<h:outputText value="#{_impuesto.nombre}" />
+								<h:outputText value="#{_tci.impuesto.nombre}" />
 							</h:column>
 							<rich:column styleClass="action">
 								<f:facet name="header">#{messages['common.action']}</f:facet>
 								<a:commandButton value="#{messages['common.remove']}"
-									action="#{tipoComprobanteHome.removeImpuesto(_impuesto)}"
+									action="#{tipoComprobanteHome.removeImpuesto(_tci)}"
 									reRender="impuestoList" ajaxSingle="true" />
 							</rich:column>
 						</rich:dataTable>

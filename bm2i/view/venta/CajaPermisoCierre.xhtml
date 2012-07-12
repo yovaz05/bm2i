@@ -14,50 +14,42 @@
 		<h:form id="cajaPermiso" styleClass="edit">
 
 			<h:outputText styleClass="formTitle"
-				value="#{cajaPermisoHome.managed ? messages['common.edit'] : messages['common.create']} #{messages['aperturaCaja']}" />
+				value="#{messages['cierreCaja']}" />
+				<br/>
+			<h:outputText styleClass="formTitle"
+				value="#{messages['cajaPermisoHome.noExisteApertura']}"
+				rendered="#{!cajaPermisoHome.managed}" />
 
-			<rich:panel>
+			<rich:panel rendered="#{cajaPermisoHome.managed}">
 				<f:facet name="header">
 					<h:panelGrid columns="2" columnClasses="headerTitle,">
 						<h:outputText value="#{messages['cajaPermiso.infoData']}" />
-						<a:commandButton value="#{messages['diaTrabajo.load']}"
-							action="#{cajaPermisoHome.recargarDiaTrabajo()}"
-							reRender="supervisorField" />
 					</h:panelGrid>
 				</f:facet>
 
 				<s:decorate id="tipoSucursalField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['sucursal']}:</ui:define>
-					<h:selectOneMenu id="tipoSucursal"
-						value="#{cajaPermisoHome.sucursal}">
-						<s:selectItems value="#{cajaPermisoHome.sucursales}"
-							var="sucursal" label="#{sucursal.nombre}" />
-						<s:convertEntity />
-						<a:support event="onchange" ajaxSingle="true" reRender="cajaField"
-							action="#{cajaPermisoHome.evtCargarCajas()}" />
-					</h:selectOneMenu>
+					<h:inputText value="#{cajaPermisoHome.sucursal.nombre}"
+						disabled="true" size="35" />
 				</s:decorate>
 
 				<s:decorate id="cajaField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['caja']}:</ui:define>
-					<h:selectOneMenu id="caja" value="#{cajaPermisoHome.caja}">
-						<s:selectItems value="#{cajaPermisoHome.cajas}" var="caja"
-							label="#{caja.nombre}" />
-						<s:convertEntity />
-						<a:support event="onchange" ajaxSingle="true" />
-					</h:selectOneMenu>
+					<h:inputText value="#{cajaPermisoHome.instance.caja.nombre}"
+						disabled="true" size="35" />
 				</s:decorate>
 
 				<s:decorate id="supervisorField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['diaTrabajo.supervisor']}</ui:define>
-					<h:inputText value="#{userSession.diaTrabajo.supervisor.nombre}"
+					<h:inputText
+						value="#{cajaPermisoHome.instance.diaTrabajo.supervisor.nombre}"
 						disabled="true" size="35" />
 				</s:decorate>
 
 				<s:decorate id="cajeroField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['cajaPermiso.cajero']}</ui:define>
-					<h:inputText value="#{userSession.persona.nombre}" disabled="true"
-						size="35" />
+					<h:inputText value="#{cajaPermisoHome.instance.cajero.nombre}"
+						disabled="true" size="35" />
 				</s:decorate>
 
 				<s:decorate id="openingTimeField" template="../layout/edit.xhtml">
@@ -79,18 +71,19 @@
 				<s:decorate id="balanceInicialField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['cajaPermiso.balanceInicial']}</ui:define>
 					<h:inputText id="balanceInicial"
-						value="#{cajaPermisoHome.instance.balanceInicial}" size="26">
+						value="#{cajaPermisoHome.instance.balanceInicial}" size="26"
+						disabled="true">
 						<a:support event="onblur" reRender="balanceInicialField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>
 				</s:decorate>
 
-				<!-- s:decorate id="closingTimeField" template="../layout/edit.xhtml">
-					<ui:define name="label">Closing time</ui:define>
-					<rich:calendar id="closingTime"
+				<s:decorate id="closingTimeField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['cajaPermiso.closingTime']}</ui:define>
+					<rich:calendar id="closingTime" required="true"
 						value="#{cajaPermisoHome.instance.closingTime}"
 						datePattern="#{messages['common.datePattern']}" />
-				</s:decorate-->
+				</s:decorate>
 
 				<div style="clear: both">
 					<span class="required">*</span>
@@ -101,14 +94,14 @@
 
 			<div class="actionButtons">
 
-				<h:commandButton id="save" value="#{messages['common.save']}"
-					action="#{cajaPermisoHome.persist}"
+				<!-- h:commandButton id="save" value="#{messages['common.save']}"
+					action=" # { cajaPermisoHome.persist}"
 					disabled="#{!cajaPermisoHome.wired}"
-					rendered="#{!cajaPermisoHome.managed}" />
+					rendered="#{!cajaPermisoHome.managed}" /-->
 
-				<!-- h:commandButton id="update" value="#{messages['common.save']}"
+				<h:commandButton id="update" value="#{messages['common.save']}"
 					action=" # { cajaPermisoHome.update}"
-					rendered="#{cajaPermisoHome.managed}" /-->
+					rendered="#{cajaPermisoHome.managed}" />
 
 				<!-- h:commandButton id="delete" value="#{messages['common.delete']}"
 					action=" # { cajaPermisoHome.remove}" immediate="true"
@@ -116,8 +109,7 @@
 
 
 				<s:button id="cancelAdd" value="#{messages['common.cancel']}"
-					propagation="end"
-					view="/home.xhtml" />
+					propagation="end" view="/home.xhtml" />
 
 			</div>
 		</h:form>

@@ -21,9 +21,7 @@
    <param name="residentId" value="#{residentHome.residentId}"/>
 
    <param name="tipoComprobanteFrom"/>
-   <param name="tipoComprobanteId" value="#{tipoComprobanteHome.tipoComprobanteId}"/>
-
-
+   <param name="tipoComprobanteId" value="#{tipoComprobanteHome.tipoComprobanteId}"/>	
 
    <navigation from-action="#{comprobanteVentaHome.persist}">
       <rule if-outcome="persisted">

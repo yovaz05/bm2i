@@ -132,7 +132,7 @@ select {
 	/*width: 115px;*/
 	float: left;
 	/*padding: 5px;*/
-	margin-top: 5px;
+	margin-top: 2px;
 	clear: both;
 }
 
@@ -387,4 +387,28 @@ table.radio input[type=radio] {
 
 .alignTop {
 	vertical-align: top;
+}
+
+.colStyle1 {
+	width: 210px;
+
+}
+
+.colStyle2 {
+	width: 210px;
+
+}
+
+.colStyle3 {
+	width: 210px;
+
+}
+
+.colStyle4 {
+	width: 210px;
+
+}
+
+.alignRight {
+	text-align: right;
 }
