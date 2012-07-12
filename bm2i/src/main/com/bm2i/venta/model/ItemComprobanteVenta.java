@@ -9,11 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.bm2i.inventario.model.Articulo;
 
@@ -42,15 +41,104 @@ public class ItemComprobanteVenta {
 	@ManyToOne
 	@JoinColumn(name = "articulo_id")
 	private Articulo articulo;
-	
+
 	@ManyToOne
-	ComprobanteVenta venta;
+	private ComprobanteVenta venta;
+
+	private Boolean conPerdida;
+
+	@Transient
+	private Boolean isValid;
+	@Transient
+	private String codigoBarra;
 
 	public ItemComprobanteVenta() {
-
+		fecha = new Date();
+		isValid = new Boolean(true);
+		conPerdida = new Boolean(false);
 	}
 
 	public void finalize() throws Throwable {
 
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public BigDecimal getvTotal() {
+		return vTotal;
+	}
+
+	public void setvTotal(BigDecimal vTotal) {
+		this.vTotal = vTotal;
+	}
+
+	public BigDecimal getvUnitario() {
+		return vUnitario;
+	}
+
+	public void setvUnitario(BigDecimal vUnitario) {
+		this.vUnitario = vUnitario;
+	}
+
+	public Articulo getArticulo() {
+		return articulo;
+	}
+
+	public void setArticulo(Articulo articulo) {
+		this.articulo = articulo;
+	}
+
+	public ComprobanteVenta getVenta() {
+		return venta;
+	}
+
+	public void setVenta(ComprobanteVenta venta) {
+		this.venta = venta;
+	}
+
+	public Boolean getIsValid() {
+		return isValid;
+	}
+
+	public void setIsValid(Boolean isValid) {
+		this.isValid = isValid;
+	}
+
+	public String getCodigoBarra() {
+		return codigoBarra;
+	}
+
+	public void setCodigoBarra(String codigoBarra) {
+		this.codigoBarra = codigoBarra;
+	}
+
+	public Boolean getConPerdida() {
+		return conPerdida;
+	}
+
+	public void setConPerdida(Boolean conPerdida) {
+		this.conPerdida = conPerdida;
 	}
 }// end ItemComprobanteVenta

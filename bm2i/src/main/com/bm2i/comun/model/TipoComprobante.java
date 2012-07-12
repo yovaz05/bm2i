@@ -9,9 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import javax.persistence.TableGenerator;
 
 import org.hibernate.annotations.Cascade;
@@ -23,6 +23,9 @@ import org.hibernate.annotations.Cascade;
  */
 @Entity
 @TableGenerator(name = "TipoComprobanteGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "TipoComprobante", initialValue = 1, allocationSize = 1)
+@NamedQueries(value = {
+		@NamedQuery(name = "TipoComprobante.findAll", query = "select o from TipoComprobante o order by o.nombre"),
+		@NamedQuery(name = "TipoComprobante.findById", query = "select o from TipoComprobante o where o.id = :id") })
 public class TipoComprobante {
 
 	@Id
@@ -37,20 +40,12 @@ public class TipoComprobante {
 
 	private Boolean isActive;
 
-	/*
-	 * @OneToMany(mappedBy = "tipoComprobante", cascade = CascadeType.ALL)
-	 * 
-	 * @Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
-	 */
-
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "impuesto_id")
+	@OneToMany(mappedBy = "tipoComprobante", cascade = CascadeType.ALL)
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
-	@OrderBy("nombre")
-	private List<Impuesto> impuestos;
+	private List<TipoComprobateImpuesto> tipoComprobateImpuestos;
 
 	public TipoComprobante() {
-		impuestos = new ArrayList<Impuesto>();
+		tipoComprobateImpuestos = new ArrayList<TipoComprobateImpuesto>();
 	}
 
 	public void finalize() throws Throwable {
@@ -89,22 +84,30 @@ public class TipoComprobante {
 		this.isActive = isActive;
 	}
 
-	public List<Impuesto> getImpuestos() {
-		return impuestos;
-	}
+	public void add(TipoComprobateImpuesto tipoComprobateImpuesto) {
 
-	public void setImpuestos(List<Impuesto> impuestos) {
-		this.impuestos = impuestos;
-	}
-
-	public void add(Impuesto impuesto) {
-		if (!this.impuestos.contains(impuesto)) {
-			this.impuestos.add(impuesto);
+		if (!this.tipoComprobateImpuestos.contains(tipoComprobateImpuesto)) {
+			this.tipoComprobateImpuestos.add(tipoComprobateImpuesto);
+			tipoComprobateImpuesto.setTipoComprobante(this);
 		}
 	}
 
-	public void remove(Impuesto impuesto) {
-		this.impuestos.remove(impuesto);
+	public void remove(TipoComprobateImpuesto tipoComprobateImpuesto) {
+		boolean removed = this.tipoComprobateImpuestos
+				.remove(tipoComprobateImpuesto);
+		if (removed) {
+			tipoComprobateImpuesto.setTipoComprobante(null);
+		}
+
+	}
+
+	public List<TipoComprobateImpuesto> getTipoComprobateImpuestos() {
+		return tipoComprobateImpuestos;
+	}
+
+	public void setTipoComprobateImpuestos(
+			List<TipoComprobateImpuesto> tipoComprobateImpuestos) {
+		this.tipoComprobateImpuestos = tipoComprobateImpuestos;
 	}
 
 }// end TipoComprobante

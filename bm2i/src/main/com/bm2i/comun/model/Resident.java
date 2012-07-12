@@ -93,6 +93,7 @@ public abstract class Resident {
 		comprobantesVenta = new ArrayList<ComprobanteVenta>();
 		this.currentDireccion = new Direccion();
 		this.add(currentDireccion);
+		tipoIdentificacion = TipoIdentificacion.CEDULA;
 	}
 
 	public void finalize() throws Throwable {

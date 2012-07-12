@@ -100,6 +100,10 @@ public class Articulo {
 	@OneToMany(mappedBy = "articulo", cascade = CascadeType.ALL)
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<Generico> genericos;
+	
+	@OneToMany(mappedBy = "articulo", cascade = CascadeType.ALL)
+	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	private List<Lote> lotes;
 
 	public Articulo() {
 		//this.currentPrecio = new Precio();

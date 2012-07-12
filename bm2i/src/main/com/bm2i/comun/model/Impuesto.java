@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -26,7 +27,9 @@ import org.hibernate.annotations.Cascade;
  */
 @Entity
 @TableGenerator(name = "ImpuestoGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "Impuesto", initialValue = 1, allocationSize = 1)
-@NamedQueries(value = { @NamedQuery(name = "Impuesto.findAll", query = "select imp from Impuesto imp order by imp.nombre") })
+@NamedQueries(value = {
+		@NamedQuery(name = "Impuesto.findAll", query = "select imp from Impuesto imp order by imp.nombre"),
+		 })
 public class Impuesto {
 
 	@Id
@@ -45,9 +48,8 @@ public class Impuesto {
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<TasaImpuesto> tasas;
 
-	/*
-	 * @ManyToOne TipoComprobante tipoComprobante;
-	 */
+	/*@ManyToOne
+	TipoComprobante tipoComprobante;*/
 
 	public Impuesto() {
 		tasas = new ArrayList<TasaImpuesto>();
@@ -115,4 +117,5 @@ public class Impuesto {
 		this.tasas.remove(tasaImpuesto);
 		tasaImpuesto.setImpuesto(null);
 	}
+	
 }// end Impuesto

@@ -1,10 +1,13 @@
 package com.bm2i.venta.model;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,6 +38,8 @@ public class ComprobanteVenta {
 	private Long id;
 
 	private Integer numero;
+
+	@Column(length = 25)
 	private String guiaRemision;
 
 	@Temporal(TemporalType.DATE)
@@ -54,6 +59,11 @@ public class ComprobanteVenta {
 
 	private BigDecimal valorTotal;
 
+	@Column(length = 15)
+	private String hora;
+
+	private Boolean desgloceImpuesto;
+
 	@OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<ItemComprobanteVenta> items;
@@ -70,7 +80,18 @@ public class ComprobanteVenta {
 	private Resident resident;
 
 	public ComprobanteVenta() {
+		items = new ArrayList<ItemComprobanteVenta>();
+		fecha = new Date();
+		hora = new SimpleDateFormat("HH:mm").format(new Date());
+		desgloceImpuesto = new Boolean(false);
+		iniciarItemsCompra();
+	}
 
+	public void iniciarItemsCompra() {
+		for (int i = 0; i < 10; i++) {
+			ItemComprobanteVenta itemLocal = new ItemComprobanteVenta();
+			this.items.add(itemLocal);
+		}
 	}
 
 	public void finalize() throws Throwable {
@@ -195,5 +216,34 @@ public class ComprobanteVenta {
 
 	public void setResident(Resident resident) {
 		this.resident = resident;
+	}
+
+	public String getHora() {
+		return hora;
+	}
+
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+
+	public void add(ItemComprobanteVenta item) {
+		if (!this.items.contains(item)) {
+			this.items.add(item);
+			item.setVenta(this);
+		}
+	}
+
+	public void remove(ItemComprobanteVenta item) {
+		boolean removed = this.items.remove(item);
+		if (removed)
+			item.setVenta(null);
+	}
+
+	public Boolean getDesgloceImpuesto() {
+		return desgloceImpuesto;
+	}
+
+	public void setDesgloceImpuesto(Boolean desgloceImpuesto) {
+		this.desgloceImpuesto = desgloceImpuesto;
 	}
 }// end ComprobanteVenta
