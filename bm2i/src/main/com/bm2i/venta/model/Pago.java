@@ -40,4 +40,44 @@ public class Pago {
 	public void finalize() throws Throwable {
 
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public BigDecimal getCambio() {
+		return cambio;
+	}
+
+	public void setCambio(BigDecimal cambio) {
+		this.cambio = cambio;
+	}
+
+	public BigDecimal getEfectivo() {
+		return efectivo;
+	}
+
+	public void setEfectivo(BigDecimal efectivo) {
+		this.efectivo = efectivo;
+	}
+
+	public BigDecimal getTotal() {
+		return total;
+	}
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
+
+	public TipoPago getTipoPago() {
+		return tipoPago;
+	}
+
+	public void setTipoPago(TipoPago tipoPago) {
+		this.tipoPago = tipoPago;
+	}
 }// end Pago

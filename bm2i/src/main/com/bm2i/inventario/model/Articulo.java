@@ -42,7 +42,12 @@ import org.hibernate.annotations.Cascade;
 		@NamedQuery(name = "Articulo.findByNombre", query = "select a from Articulo a where "
 				+ "lower(a.nombre) = lower(:nombre) " + "order by a.nombre"),
 		@NamedQuery(name = "Articulo.listarExistencias", query = "select a from Articulo a "
-				+ "order by a.cantidad desc") })
+				+ "order by a.cantidad desc"),
+		@NamedQuery(name = "Articulo.findByCriteria", query = "select a from Articulo a where "
+				+ "lower(a.codigoBarra) like lower(concat(:codigoBarra,'%')) or "
+				+ "lower(a.nombre) like lower(concat(:nombre,'%')) or "
+				+ "lower(a.ubicacion) like lower(concat(:ubicacion,'%')) "
+				+ "order by a.nombre desc") })
 public class Articulo {
 
 	@Id
@@ -100,13 +105,13 @@ public class Articulo {
 	@OneToMany(mappedBy = "articulo", cascade = CascadeType.ALL)
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<Generico> genericos;
-	
+
 	@OneToMany(mappedBy = "articulo", cascade = CascadeType.ALL)
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<Lote> lotes;
 
 	public Articulo() {
-		//this.currentPrecio = new Precio();
+		// this.currentPrecio = new Precio();
 	}
 
 	public void finalize() throws Throwable {
