@@ -31,10 +31,14 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	ResidentHome residentHome;
 	@In(create = true)
 	TipoComprobanteHome tipoComprobanteHome;
-	
-	TasaImpuesto ti;
 
+	private TasaImpuesto ti;
 	private Integer maxRows = new Integer(10);
+	private int actualRow;
+
+	// para el panel de busqueda de articulos
+	private List<Articulo> articulos;
+	private String criteriaArticulo;
 
 	public void setComprobanteVentaId(Long id) {
 		setId(id);
@@ -86,16 +90,15 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 				: new ArrayList<ItemComprobanteVenta>(getInstance().getItems());
 	}
 
-	/*public void generarItem() {
-		System.out.println("======>>>>>>>>>> entra a cargar los items");
-		if (this.getInstance().getItems().size() <= maxRows) {
-			ItemComprobanteVenta itemLocal = new ItemComprobanteVenta();
-			this.instance.add(itemLocal);
-		} else {
-
-		}
-		// calculoComprobanteVenta();
-	}*/
+	/*
+	 * public void generarItem() {
+	 * System.out.println("======>>>>>>>>>> entra a cargar los items"); if
+	 * (this.getInstance().getItems().size() <= maxRows) { ItemComprobanteVenta
+	 * itemLocal = new ItemComprobanteVenta(); this.instance.add(itemLocal); }
+	 * else {
+	 * 
+	 * } // calculoComprobanteVenta(); }
+	 */
 
 	public Integer getMaxRows() {
 		return maxRows;
@@ -113,36 +116,70 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 				q.setParameter("criteria", itemLocal.getCodigoBarra());
 				if (q.getResultList().size() > 0) {
 					System.out.println("entra a asignar");
-					Articulo art=(Articulo) q.getResultList().get(0);
-					itemLocal.setArticulo(art);
-					itemLocal.setvUnitario(art.getCurrentPrecio().getPvp());
-					itemLocal.setvUnitario(art.getCurrentPrecio().getCosto());
+					Articulo art = (Articulo) q.getResultList().get(0);
+					if (!existeArticuloEnItems(art)) {
+						itemLocal.setArticulo(art);
+						itemLocal.setvUnitario(art.getCurrentPrecio().getPvp());
+						actualRow++;
+					} else {
+						itemLocal.setCodigoBarra("");
+					}
 				}
 			}
 		}
 	}
-	
-	public void editarValoresItem(ItemComprobanteVenta it) {
-		double costo = it.getvUnitario().doubleValue();
-		double pvp = it.getvUnitario().doubleValue();
-		int cantidad = it.getCantidad();
-		double pvpTotal = pvp * cantidad;
-		BigDecimal totalbd = new BigDecimal(pvpTotal);
-		totalbd = totalbd.setScale(2, RoundingMode.HALF_UP);
-		it.setvTotal(null);
-		it.setvTotal(totalbd);
-		if (it.getConPerdida()) {
-			it.setIsValid(new Boolean(true));
-		} else {
-			if (pvp > costo) {
-				it.setIsValid(new Boolean(true));
-			} else {
-				it.setIsValid(new Boolean(false));
+
+	/**
+	 * determina si el articulo ya existe en los items de la factura si ya
+	 * existe se agrega 1 en la cantidad de vendida
+	 * 
+	 * @param nuevoArticulo
+	 * @return true si ya ha sido agregado el articulo
+	 */
+	public boolean existeArticuloEnItems(Articulo nuevoArticulo) {
+		boolean ban = false;
+		for (ItemComprobanteVenta icv : this.getInstance().getItems()) {
+			if (icv.getArticulo() != null) {
+				if (icv.getArticulo().getId() == nuevoArticulo.getId()) {
+					ban = true;
+					// agrego 1
+					icv.setCantidad(icv.getCantidad() + 1);
+					editarValoresItem(icv);
+				}
 			}
 		}
-		//calculoComprobanteVenta();
+		return ban;
 	}
-	
+
+	public void editarValoresItem(ItemComprobanteVenta it) {
+		if (it.getArticulo() != null) {
+			double costo = it.getArticulo().getCurrentPrecio().getCosto()
+					.doubleValue();
+			double pvp = it.getvUnitario().doubleValue();
+			int cantidad = it.getCantidad();
+			double pvpTotal = pvp * cantidad;
+			BigDecimal totalbd = new BigDecimal(pvpTotal);
+			totalbd = totalbd.setScale(2, RoundingMode.HALF_UP);
+			it.setvTotal(null);
+			it.setvTotal(totalbd);
+			if (it.getConPerdida()) {
+				it.setIsValid(new Boolean(true));
+			} else {
+				if (pvp > costo) {
+					it.setIsValid(new Boolean(true));
+				} else {
+					it.setIsValid(new Boolean(false));
+				}
+			}
+		} else {
+			it.setIsValid(new Boolean(true));
+			it.setvTotal(null);
+			it.setCantidad(0);
+		}
+
+		// calculoComprobanteVenta();
+	}
+
 	public void calculoComprobanteVenta() {
 		identificarDesgloce();
 		double subTotalIva = 0;
@@ -152,11 +189,11 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		double total = 0;
 		for (ItemComprobanteVenta it : this.getInstance().getItems()) {
 			if (this.getInstance().getDesgloceImpuesto()) {
-				/*if (it.getArticulo().getIva()) {
-					subTotalIva = subTotalIva + it.getvTotal().doubleValue();
-				} else {
-					subTotalCero = subTotalCero + it.getvTotal().doubleValue();
-				}*/
+				/*
+				 * if (it.getArticulo().getIva()) { subTotalIva = subTotalIva +
+				 * it.getvTotal().doubleValue(); } else { subTotalCero =
+				 * subTotalCero + it.getvTotal().doubleValue(); }
+				 */
 			}
 			// total = total + it.getvTotal().doubleValue();
 			System.out.println("=====el total ======>>>>>>> " + total);
@@ -225,5 +262,66 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	public void setTi(TasaImpuesto ti) {
 		this.ti = ti;
 	}
-	
+
+	public void removeArticuloItem(ItemComprobanteVenta it) {
+		it.setArticulo(null);
+		it.setvUnitario(null);
+		it.setCodigoBarra("");
+		editarValoresItem(it);
+		if (actualRow > 0) {
+			actualRow--;
+		}
+
+	}
+
+	public List<Articulo> getArticulos() {
+		return articulos;
+	}
+
+	public void setArticulos(List<Articulo> articulos) {
+		this.articulos = articulos;
+	}
+
+	public String getCriteriaArticulo() {
+		return criteriaArticulo;
+	}
+
+	public void setCriteriaArticulo(String criteriaArticulo) {
+		this.criteriaArticulo = criteriaArticulo;
+	}
+
+	@SuppressWarnings("unchecked")
+	public void buscarArticulos() {
+		System.out.println(">>>>>>>>>>>>>> el valor del criterio "
+				+ criteriaArticulo);
+		Query q = this.getEntityManager().createNamedQuery(
+				"Articulo.findByCriteria");
+		q.setParameter("codigoBarra", criteriaArticulo);
+		q.setParameter("nombre", criteriaArticulo);
+		q.setParameter("ubicacion", criteriaArticulo);
+		articulos = q.getResultList();
+	}
+
+	public void seleccionarArticulo(Articulo articulo) {
+		ItemComprobanteVenta itemLocal = this.getInstance().getItems()
+				.get(actualRow);
+		if (!existeArticuloEnItems(articulo)) {
+			itemLocal.setCodigoBarra(articulo.getCodigoBarra());
+			itemLocal.setArticulo(articulo);
+			itemLocal.setvUnitario(articulo.getCurrentPrecio().getPvp());
+			actualRow++;
+		} else {
+			itemLocal.setCodigoBarra("");
+		}
+
+	}
+
+	public int getActualRow() {
+		return actualRow;
+	}
+
+	public void setActualRow(int actualRow) {
+		this.actualRow = actualRow;
+	}
+
 }

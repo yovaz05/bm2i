@@ -1,5 +1,8 @@
 package com.bm2i.comun.action;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.framework.EntityHome;
 
@@ -44,11 +47,10 @@ public class TipoComprobanteHome extends EntityHome<TipoComprobante> {
 		return isIdDefined() ? getInstance() : null;
 	}
 
-	/*
-	 * public List<TipoComprobateImpuesto> getComprobateImpuestos() { return
-	 * getInstance() == null ? null : new ArrayList<TipoComprobateImpuesto>(
-	 * getInstance().get); }
-	 */
+	public List<TipoComprobateImpuesto> getTipoComprobateImpuestos() {
+		return getInstance() == null ? null
+				: new ArrayList<TipoComprobateImpuesto>(getInstance().getTipoComprobateImpuestos());
+	}
 
 	public void addImpuesto(Impuesto imp) {
 		TipoComprobateImpuesto tipoComprobanteImpuesto = new TipoComprobateImpuesto();
