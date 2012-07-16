@@ -12,6 +12,10 @@
 
 	<ui:define name="body">
 
+		<ui:include src="fragmento/PagoModalPanel.xhtml" />
+		<ui:include src="fragmento/BuscarArticuloPanel.xhtml" />
+
+
 		<h:form id="comprobanteVenta" styleClass="edit">
 			<div align="center">
 
@@ -203,9 +207,9 @@
 						<h:panelGrid columns="3" columnClasses="headerTitle,">
 							<h:outputText id="itemsCount"
 								value="Items (#{comprobanteVentaHome.items.size})" />
-							<a:commandButton value="Buscar Artículos"
-								action="#{comprobanteVentaHome.generarItem()}" ajaxSingle="true"
-								reRender="itemComprobanteVentaList" />
+							<a:commandButton ajaxSingle="true"
+								oncomplete="Richfaces.showModalPanel('buscarArticuloPanel',{width:600, top:200})"
+								value="Buscar Artículos" />
 						</h:panelGrid>
 					</f:facet>
 
@@ -213,43 +217,44 @@
 						var="_itemComprobanteVenta" value="#{comprobanteVentaHome.items}"
 						width="100%">
 						<rich:column styleClass="action">
-							<f:facet name="header">Cod. Barra</f:facet>
+							<f:facet name="header">#{messages['articulo.codigoBarra']}</f:facet>
 							<h:inputText value="#{_itemComprobanteVenta.codigoBarra}"
 								onkeypress="return noEnter(event);" id="codigoBarra" size="15">
 								<a:support event="onblur" ajaxSingle="true"
 									action="#{comprobanteVentaHome.buscarCodigoBarra(_itemComprobanteVenta)}"
 									reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores, 
-									itemComprobanteVentaList, nombreArticuloField, subTotalItemField, cantidadItemField, totalItemField, articuloCodigoField, itemsCount, totalField, panelValores, codigoBarra" />
+									itemComprobanteVentaList, subTotalItemField, cantidadItemField, totalItemField, articuloCodigoField, itemsCount, totalField, panelValores, codigoBarra" />
 							</h:inputText>
 						</rich:column>
 						<rich:column>
-							<f:facet name="header">Articulo</f:facet>
+							<f:facet name="header">#{messages['articulo']}</f:facet>
 							<h:outputText value="#{_itemComprobanteVenta.articulo.nombre}" />
 						</rich:column>
 						<rich:column style="text-align: right;" width="7%">
-							<f:facet name="header">Costo</f:facet>
-							<h:outputText value="#{_itemComprobanteVenta.vUnitario}">
+							<f:facet name="header">#{messages['articulo.nombre']}</f:facet>
+							<h:outputText
+								value="#{_itemComprobanteVenta.articulo.currentPrecio.costo}">
 								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
 									minFractionDigits="2" type="currency" />
 							</h:outputText>
 						</rich:column>
-						<rich:column styleClass="action" width="7%">
-							<f:facet name="header">Cantidad</f:facet>
+						<rich:column styleClass="action" width="6%">
+							<f:facet name="header">#{messages['articulo.cantidad']}</f:facet>
 							<h:inputText value="#{_itemComprobanteVenta.cantidad}"
 								style="text-align: right;" size="7">
 								<a:support event="onblur" ajaxSingle="true"
 									reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores, 
-									itemComprobanteVentaList, nombreArticuloField, subTotalItemField, cantidadItemField, totalItemField, articuloCodigoField, itemsCount, totalField, panelValores"
+									itemComprobanteVentaList, subTotalItemField, cantidadItemField, totalItemField, articuloCodigoField, itemsCount, totalField, panelValores,codigoBarra"
 									action="#{comprobanteVentaHome.editarValoresItem(_itemComprobanteVenta)}" />
 							</h:inputText>
 						</rich:column>
-						<rich:column styleClass="action" width="10%">
-							<f:facet name="header">Valor Unitario</f:facet>
+						<rich:column styleClass="action" width="6%">
+							<f:facet name="header">#{messages['articulo.valorUnitario']}</f:facet>
 							<h:inputText value="#{_itemComprobanteVenta.vUnitario}"
 								style="text-align: right;" size="7">
 								<a:support event="onblur" ajaxSingle="true"
 									reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores,
-									itemComprobanteVentaList, nombreArticuloField, subTotalItemField, cantidadItemField, totalItemField, articuloCodigoField, itemsCount, totalField, panelValores"
+									itemComprobanteVentaList, subTotalItemField, cantidadItemField, totalItemField, articuloCodigoField, itemsCount, totalField, panelValores,codigoBarra"
 									action="#{comprobanteVentaHome.editarValoresItem(_itemComprobanteVenta)}"
 									focus="valorTotalField" />
 							</h:inputText>
@@ -257,7 +262,7 @@
 						<rich:column
 							style="text-align: right; background-color: #{_itemComprobanteVenta.isValid ? 'white' : 'red'};"
 							id="colVtotal" width="10%">
-							<f:facet name="header">Valor Total</f:facet>
+							<f:facet name="header">#{messages['articulo.valorTotal']}</f:facet>
 							<h:outputText value="#{_itemComprobanteVenta.vTotal}"
 								id="itemValorTotal">
 								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
@@ -285,10 +290,10 @@
 						</rich:column>
 
 						<rich:column styleClass="action" width="7%">
-							<f:facet name="header">Acciones</f:facet>
+							<f:facet name="header">#{messages['common.action']}</f:facet>
 							<a:commandButton id="btRemoveItem" value="Quitar"
-								action="#{comprobanteVentaHome.removeItem(_itemComprobanteVenta)}"
-								reRender="itemComprobanteVentaList, articuloCodigoName, itemsCount, totalField, panelValores"
+								action="#{comprobanteVentaHome.removeArticuloItem(_itemComprobanteVenta)}"
+								reRender="itemComprobanteVentaList, itemsCount, totalField, panelValores,codigoBarra"
 								ajaxSingle="true" />
 
 						</rich:column>
@@ -301,56 +306,68 @@
 					<h:panelGrid columnClasses="alignRight" id="panelValores">
 
 						<s:decorate id="subTotalIvaField" template="../layout/edit.xhtml">
-							<ui:define name="label">Sub total iva</ui:define>
+							<ui:define name="label">#{messages['comprobanteVenta.subTotalIva']}</ui:define>
 							<h:inputText id="subTotalIva"
-								value="#{comprobanteVentaHome.instance.subTotalIva}" size="26">
+								value="#{comprobanteVentaHome.instance.subTotalIva}" size="15"
+								disabled="true" style="text-align: right;">
 								<a:support event="onblur" reRender="subTotalIvaField"
 									bypassUpdates="true" ajaxSingle="true" />
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 							</h:inputText>
 						</s:decorate>
 
 						<s:decorate id="subTotalCeroField" template="../layout/edit.xhtml">
-							<ui:define name="label">Sub total cero</ui:define>
+							<ui:define name="label">#{messages['comprobanteVenta.subTotalCero']}</ui:define>
 							<h:inputText id="subTotalCero"
-								value="#{comprobanteVentaHome.instance.subTotalCero}" size="26">
+								value="#{comprobanteVentaHome.instance.subTotalCero}" size="15"
+								disabled="true" style="text-align: right;">
 								<a:support event="onblur" reRender="subTotalCeroField"
 									bypassUpdates="true" ajaxSingle="true" />
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 							</h:inputText>
 						</s:decorate>
 
 						<s:decorate id="descuentoField" template="../layout/edit.xhtml">
-							<ui:define name="label">Descuento</ui:define>
+							<ui:define name="label">#{messages['comprobanteVenta.descuento']}</ui:define>
 							<h:inputText id="descuento"
-								value="#{comprobanteVentaHome.instance.descuento}" size="26">
+								value="#{comprobanteVentaHome.instance.descuento}" size="15"
+								disabled="true" style="text-align: right;">
 								<a:support event="onblur" reRender="descuentoField"
 									bypassUpdates="true" ajaxSingle="true" />
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 							</h:inputText>
 						</s:decorate>
 
 						<s:decorate id="subTotalField" template="../layout/edit.xhtml">
-							<ui:define name="label">Sub total</ui:define>
+							<ui:define name="label">#{messages['comprobanteVenta.subTotal']}</ui:define>
 							<h:inputText id="subTotal"
-								value="#{comprobanteVentaHome.instance.subTotal}" size="26">
+								value="#{comprobanteVentaHome.instance.subTotal}" size="15"
+								disabled="true" style="text-align: right;">
 								<a:support event="onblur" reRender="subTotalField"
 									bypassUpdates="true" ajaxSingle="true" />
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 							</h:inputText>
 						</s:decorate>
 
 						<s:decorate id="ivaField" template="../layout/edit.xhtml">
-							<ui:define name="label">Iva</ui:define>
+							<ui:define name="label">#{messages['comprobanteVenta.iva']}</ui:define>
 							<h:inputText id="iva"
-								value="#{comprobanteVentaHome.instance.iva}" size="26">
+								value="#{comprobanteVentaHome.instance.iva}" size="15"
+								disabled="true" style="text-align: right;">
 								<a:support event="onblur" reRender="ivaField"
 									bypassUpdates="true" ajaxSingle="true" />
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 							</h:inputText>
 						</s:decorate>
 
 						<s:decorate id="valorTotalField" template="../layout/edit.xhtml">
-							<ui:define name="label">Valor total</ui:define>
+							<ui:define name="label">#{messages['comprobanteVenta.valorTotal']}</ui:define>
 							<h:inputText id="valorTotal"
-								value="#{comprobanteVentaHome.instance.valorTotal}" size="26">
+								value="#{comprobanteVentaHome.instance.valorTotal}" size="15"
+								disabled="true" style="text-align: right;">
 								<a:support event="onblur" reRender="valorTotalField"
 									bypassUpdates="true" ajaxSingle="true" />
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 							</h:inputText>
 						</s:decorate>
 					</h:panelGrid>
@@ -359,26 +376,25 @@
 
 			<div class="actionButtons">
 
-				<h:commandButton id="save" value="Save"
-					action="#{comprobanteVentaHome.persist}"
-					disabled="#{!comprobanteVentaHome.wired}"
-					rendered="#{!comprobanteVentaHome.managed}" />
+				<a:commandButton ajaxSingle="true"
+					oncomplete="Richfaces.showModalPanel('pagoModalPanel',{width:400, top:200})"
+					value="#{messages['common.save']}" focus="efectivoField" />
 
-				<h:commandButton id="update" value="Save"
-					action="#{comprobanteVentaHome.update}"
+				<!--h:commandButton id="update" value="#{messages['common.save']}"
+					action=" # { comprobanteVentaHome.update}"
 					rendered="#{comprobanteVentaHome.managed}" />
 
 				<h:commandButton id="delete" value="Delete"
-					action="#{comprobanteVentaHome.remove}" immediate="true"
+					action=" # { comprobanteVentaHome.remove}" immediate="true"
 					rendered="#{comprobanteVentaHome.managed}" />
 
 				<s:button id="cancelEdit" value="Cancel" propagation="end"
 					view="/ComprobanteVenta.xhtml"
-					rendered="#{comprobanteVentaHome.managed}" />
+					rendered="#{comprobanteVentaHome.managed}" /-->
 
-				<s:button id="cancelAdd" value="Cancel" propagation="end"
-					view="/#{empty comprobanteVentaFrom ? 'ComprobanteVentaList' : comprobanteVentaFrom}.xhtml"
-					rendered="#{!comprobanteVentaHome.managed}" />
+				<s:button id="cancelAdd" value="#{messages['common.cancel']}"
+					propagation="end"
+					view="/#{empty comprobanteVentaFrom ? 'ComprobanteVentaList' : comprobanteVentaFrom}.xhtml" />
 
 			</div>
 		</h:form>
