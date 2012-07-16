@@ -1,0 +1,90 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<rich:modalPanel id="pagoModalPanel" width="300" height="250">
+		<f:facet name="header">
+			<h:panelGroup>
+				<h:outputText value="PAGO"></h:outputText>
+			</h:panelGroup>
+		</f:facet>
+		<f:facet name="controls">
+			<h:panelGroup>
+				<h:graphicImage value="/img/error.gif" style="cursor:pointer"
+					id="hidelink" />
+				<rich:componentControl for="pagoModalPanel" attachTo="hidelink"
+					operation="hide" event="onclick" />
+			</h:panelGroup>
+		</f:facet>
+
+		<h:form id="pagoForm">
+
+			<h:panelGrid width="100%">
+				<s:decorate id="tipoPagoField" template="../../layout/edit.xhtml">
+					<ui:define name="label">Tipo Pago</ui:define>
+					<h:selectOneMenu id="tipoPago"
+						value="#{pagoHome.instance.tipoPago}">
+						<s:selectItems value="#{pagoHome.tiposPago}" var="tipoP"
+							label="#{tipoP.nombre}" />
+						<s:convertEntity />
+						<a:support event="onchange" reRender="tipoPagoField"
+							ajaxSingle="true" />
+					</h:selectOneMenu>
+				</s:decorate>
+
+				<s:decorate id="totalField" template="../../layout/edit.xhtml">
+					<ui:define name="label">Total</ui:define>
+					<h:inputText id="total" value="#{pagoHome.instance.total}"
+						disabled="true" style="text-align: right;">
+						<a:support event="onblur" reRender="totalField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
+				<s:decorate id="efectivoField" template="../../layout/edit.xhtml">
+					<ui:define name="label">Efectivo</ui:define>
+					<h:inputText id="efectivo" value="#{pagoHome.instance.efectivo}"
+						style="text-align: right;">
+						<a:support event="onblur" reRender="efectivoField, cambioField"
+							ajaxSingle="true" action="#{pagoHome.calcularCambio()}" />
+					</h:inputText>
+				</s:decorate>
+
+				<s:decorate id="cambioField" template="../../layout/edit.xhtml">
+					<ui:define name="label">Cambio</ui:define>
+					<h:inputText id="cambio" value="#{pagoHome.instance.cambio}"
+						style="text-align: right;" disabled="true">
+						<a:support event="onblur" reRender="cambioField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+			</h:panelGrid>
+			<h:panelGrid columns="4" style="text-align:center">
+
+				<h:commandButton id="save" value="#{messages['common.save']}"
+					action="#{comprobanteVentaHome.persist}"
+					disabled="#{!comprobanteVentaHome.wired}"
+					rendered="#{!comprobanteVentaHome.managed}" />
+
+				<a:commandButton value="#{messages['common.save']}"
+					ajaxSingle="true"
+					action="#{comprobanteVentaHome.guardarComprobante()}" />
+				<a:commandButton value="#{messages['common.print']}"
+					ajaxSingle="true" />
+				<s:button id="nuevoPagoModalPanel" value="Nuevo" propagation="end"
+					view="/ComprobanteVentaEdit.xhtml"
+					action="#{comprobanteVentaHome.nuevoComprobante()}" />
+				<a:commandButton value="#{messages['common.quit']}"
+					action="#{pagoHome.cerrar()}" reRender="cambioField,efectivoField"
+					oncomplete="Richfaces.hideModalPanel('pagoModalPanel');"
+					bypassUpdates="true" />
+			</h:panelGrid>
+		</h:form>
+	</rich:modalPanel>
+</ui:composition>
