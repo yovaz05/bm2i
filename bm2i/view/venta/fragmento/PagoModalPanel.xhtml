@@ -61,8 +61,8 @@
 						style="text-align: right;">
 						<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 						<a:support event="onblur"
-							reRender="efectivo,cambioField,panelError"
-							ajaxSingle="true" action="#{pagoHome.calcularCambio()}" />
+							reRender="efectivo,cambioField,panelError" ajaxSingle="true"
+							action="#{pagoHome.calcularCambio()}" />
 					</h:inputText>
 				</s:decorate>
 
@@ -75,17 +75,22 @@
 					</h:inputText>
 				</s:decorate>
 			</h:panelGrid>
-			<h:panelGrid columns="4" style="text-align:center">
+			<div align="center" style="width: 100%;">
+				<h:panelGrid columns="4" style="text-align:center">
 
-				<a:commandButton value="#{messages['common.save']}"
-					ajaxSingle="true" action="#{comprobanteVentaHome.guardar()}" />
-				<a:commandButton value="#{messages['common.print']}"
-					ajaxSingle="true" />
-				<a:commandButton value="#{messages['common.quit']}"
-					action="#{pagoHome.cerrar()}" reRender="cambioField,efectivoField"
-					oncomplete="Richfaces.hideModalPanel('pagoModalPanel');"
-					bypassUpdates="true" />
-			</h:panelGrid>
+					<a:commandButton value="#{messages['common.save']}" id="btSave"
+						ajaxSingle="true" action="#{comprobanteVentaHome.guardar()}"
+						disabled="#{comprobanteVentaHome.managed}" reRender="btSave" />
+
+					<a:commandButton value="#{messages['common.print']}"
+						ajaxSingle="true" />
+					<a:commandButton value="#{messages['common.quit']}"
+						action="#{pagoHome.cerrar()}" reRender="cambioField,efectivoField"
+						oncomplete="Richfaces.hideModalPanel('pagoModalPanel');"
+						bypassUpdates="true" />
+				</h:panelGrid>
+			</div>
+
 		</h:form>
 	</rich:modalPanel>
 </ui:composition>

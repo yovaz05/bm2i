@@ -42,9 +42,10 @@
 							template="../layout/vertical-edit.xhtml">
 							<ui:define name="label">Numero</ui:define>
 							<h:inputText id="numero"
-								value="#{comprobanteVentaHome.instance.numero}" required="true">
+								value="#{comprobanteVentaHome.instance.numero}" required="true"
+								validator="numberIncoiceValidator">
 								<a:support event="onblur" reRender="numeroField"
-									bypassUpdates="true" ajaxSingle="true" />
+									ajaxSingle="true" />
 							</h:inputText>
 						</s:decorate>
 
@@ -63,7 +64,7 @@
 							<h:inputText id="guiaRemision" size="25" maxlength="25"
 								value="#{comprobanteVentaHome.instance.guiaRemision}">
 								<a:support event="onblur" reRender="guiaRemisionField"
-									bypassUpdates="true" ajaxSingle="true" />
+									ajaxSingle="true" />
 							</h:inputText>
 						</s:decorate>
 
@@ -105,7 +106,7 @@
 									value="#{residentHome.instance.nombre}"
 									style="text-transform: uppercase">
 									<a:support event="onblur" reRender="nameField"
-										bypassUpdates="true" ajaxSingle="true" />
+										ajaxSingle="true" />
 								</h:inputText>
 							</s:decorate>
 						</rich:column>
@@ -118,7 +119,7 @@
 								maxlength="25" value="#{residentHome.instance.nombres}"
 								style="text-transform: uppercase">
 								<a:support event="onblur" reRender="firstNameField"
-									bypassUpdates="true" ajaxSingle="true" />
+									ajaxSingle="true" />
 							</h:inputText>
 						</s:decorate>
 
@@ -130,7 +131,7 @@
 								maxlength="25" value="#{residentHome.instance.apellidos}"
 								style="text-transform: uppercase">
 								<a:support event="onblur" reRender="lastNameField"
-									bypassUpdates="true" ajaxSingle="true" />
+									ajaxSingle="true" />
 							</h:inputText>
 						</s:decorate>
 
@@ -150,7 +151,7 @@
 								value="#{residentHome.instance.currentDireccion.calle}"
 								style="text-transform: uppercase">
 								<a:support event="onblur" reRender="streetField"
-									bypassUpdates="true" ajaxSingle="true" />
+									ajaxSingle="true" />
 							</h:inputText>
 						</s:decorate>
 
@@ -160,8 +161,7 @@
 							<h:inputText id="city" required="true" size="24" maxlength="25"
 								value="#{residentHome.instance.currentDireccion.ciudad}"
 								style="text-transform: uppercase">
-								<a:support event="onblur" reRender="cityField"
-									bypassUpdates="true" ajaxSingle="true" />
+								<a:support event="onblur" reRender="cityField" ajaxSingle="true" />
 							</h:inputText>
 						</s:decorate>
 
@@ -172,7 +172,7 @@
 								value="#{residentHome.instance.currentDireccion.telefonoFijo}"
 								style="text-transform: uppercase">
 								<a:support event="onblur" reRender="phoneNumberField"
-									bypassUpdates="true" ajaxSingle="true" />
+									ajaxSingle="true" />
 							</h:inputText>
 						</s:decorate>
 
@@ -183,7 +183,7 @@
 								value="#{residentHome.instance.currentDireccion.telefonoCelular}"
 								style="text-transform: uppercase">
 								<a:support event="onblur" reRender="mobileNumberField"
-									bypassUpdates="true" ajaxSingle="true" />
+									ajaxSingle="true" />
 							</h:inputText>
 						</s:decorate>
 
@@ -387,18 +387,21 @@
 					action=" # { comprobanteVentaHome.update}"
 					rendered="#{comprobanteVentaHome.managed}" />
 
-				<h:commandButton id="delete" value="Delete"
-					action=" # { comprobanteVentaHome.remove}" immediate="true"
-					rendered="#{comprobanteVentaHome.managed}" />
+					<h:commandButton id="delete" value="Delete"
+						action=" # { comprobanteVentaHome.remove}" immediate="true"
+						rendered="#{comprobanteVentaHome.managed}" />
+	
+					<s:button id="cancelEdit" value="Cancel" propagation="end"
+						view="/ComprobanteVenta.xhtml"
+						rendered="#{comprobanteVentaHome.managed}" /-->
 
-				<s:button id="cancelEdit" value="Cancel" propagation="end"
-					view="/ComprobanteVenta.xhtml"
-					rendered="#{comprobanteVentaHome.managed}" /-->
+					<s:button value="#{messages['common.new']}" propagation="end"
+						view="/venta/ComprobanteVentaEdit.xhtml"
+						action="#{comprobanteVentaHome.nuevoComprobante()}" />
 
 					<s:button id="cancelAdd" value="#{messages['common.cancel']}"
 						propagation="end"
 						view="/#{empty comprobanteVentaFrom ? 'ComprobanteVentaList' : comprobanteVentaFrom}.xhtml" />
-
 				</div>
 			</div>
 		</h:form>
