@@ -47,12 +47,6 @@ public class FactoryController extends EntityController {
 		return query.getResultList();
 	}
 
-	@SuppressWarnings("unchecked")
-	@Factory("tiposComprobante")
-	public List<TipoComprobante> findTiposComprobante() {
-		Query q = this.getEntityManager().createNamedQuery(
-				"TipoComprobante.findAll");
-		return q.getResultList();
-	}
+	
 
 }

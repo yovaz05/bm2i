@@ -3,6 +3,7 @@ package com.bm2i.comun.action;
 import java.util.ArrayList;
 import javax.persistence.Query;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.jboss.seam.annotations.Factory;
@@ -42,10 +43,8 @@ public class ResidentHome extends EntityHome<Resident> {
 		Resident resident;
 		if (residentType.equalsIgnoreCase("Persona")) {
 			resident = new Persona();
-			System.out.println("=========>>>>>>> crea persona");
 		} else {
 			resident = new EntidadLegal();
-			System.out.println("=========>>>>>>> crea entidad legal");
 		}
 		return resident;
 	}
@@ -132,7 +131,7 @@ public class ResidentHome extends EntityHome<Resident> {
 		 * getInstance().setTipoIdentificacion(identificationTypes.get(0));
 		 */
 		// return identificationTypes;
-		System.out.println("entra a cargar y select cedual por default");
+		
 		// getInstance().setTipoIdentificacion(identificationTypes.get(0));
 		return identificationTypes;
 	}
@@ -157,7 +156,6 @@ public class ResidentHome extends EntityHome<Resident> {
 				.equals(TipoIdentificacion.CEDULA)) {
 			this.setInstance(new Persona());
 			this.getInstance().setTipoIdentificacion(TipoIdentificacion.CEDULA);
-			System.out.println("========= crea natural");
 			panelNatural = new Boolean(true);
 		}
 		if (this.getInstance().getTipoIdentificacion()
@@ -165,14 +163,12 @@ public class ResidentHome extends EntityHome<Resident> {
 			this.setInstance(new Persona());
 			this.getInstance().setTipoIdentificacion(
 					TipoIdentificacion.PASAPORTE);
-			System.out.println("========= crea natural");
 			panelNatural = new Boolean(true);
 		}
 		if (this.getInstance().getTipoIdentificacion()
 				.equals(TipoIdentificacion.RUC)) {
 			this.setInstance(new EntidadLegal());
 			this.getInstance().setTipoIdentificacion(TipoIdentificacion.RUC);
-			System.out.println("========= crea entidad legal");
 			panelNatural = new Boolean(false);
 		}
 
@@ -193,7 +189,6 @@ public class ResidentHome extends EntityHome<Resident> {
 		 * 
 		 * }
 		 */
-		System.out.println("panel natural " + panelNatural);
 	}
 
 	public Boolean getPanelNatural() {
@@ -216,14 +211,19 @@ public class ResidentHome extends EntityHome<Resident> {
 		}
 	}
 
-	public void savaOrUpdate() {
-		if (this.getInstance().getId() != null) {
-			System.out.println("update resident");
-			this.update();
+	public boolean savaOrUpdate() {
+		if (this.getInstance().getNumeroIdentificacion() != null) {
+			if (this.getInstance().getId() != null) {
+				this.update();
+				return true;
+			} else {
+				this.getInstance().setFechaRegistro(new Date());
+				this.getInstance().getCurrentDireccion().setPais("ECUADOR");
+				this.persist();
+				return true;
+			}
 		} else {
-			System.out.println("save resident");
-			this.persist();
+			return false;
 		}
 	}
-
 }

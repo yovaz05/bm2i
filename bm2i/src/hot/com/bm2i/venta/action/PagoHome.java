@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
+import org.jboss.seam.faces.FacesMessages;
 import org.jboss.seam.framework.EntityHome;
 
 import com.bm2i.venta.model.Pago;
@@ -17,6 +18,10 @@ public class PagoHome extends EntityHome<Pago> {
 
 	@In(create = true)
 	TipoPagoHome tipoPagoHome;
+
+	@In
+	FacesMessages facesMessages;
+
 	private Boolean anyError = new Boolean(false);
 	private String errorValue;
 
@@ -68,7 +73,6 @@ public class PagoHome extends EntityHome<Pago> {
 	}
 
 	public void calcularCambio() {
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>><anyError " + anyError);
 		if (this.getInstance().getTotal() != null) {
 			this.getInstance().setCambio(
 					this.getInstance().getEfectivo()
@@ -78,9 +82,10 @@ public class PagoHome extends EntityHome<Pago> {
 		} else {
 			this.anyError = new Boolean(true);
 			this.errorValue = "Debe agregar Articulos al comprobante";
-			addFacesMessage("Debe agregar Articulos al comprobante");
+			facesMessages.addToControl("",
+					org.jboss.seam.international.StatusMessage.Severity.ERROR,
+					"Debe agregar Articulos al comprobante");
 		}
-		System.out.println("easdasdasdasdasd " + errorValue);
 	}
 
 	public Boolean getAnyError() {

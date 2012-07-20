@@ -7,18 +7,22 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.jboss.seam.ScopeType;
+import org.jboss.seam.annotations.Factory;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
+import org.jboss.seam.faces.FacesMessages;
 import org.jboss.seam.framework.EntityHome;
 
 import com.bm2i.comun.action.ResidentHome;
 import com.bm2i.comun.action.TipoComprobanteHome;
 import com.bm2i.comun.model.Impuesto;
+import com.bm2i.comun.model.Persona;
 import com.bm2i.comun.model.Resident;
 import com.bm2i.comun.model.TasaImpuesto;
 import com.bm2i.comun.model.TipoComprobante;
-import com.bm2i.comun.model.TipoComprobateImpuesto;
 import com.bm2i.inventario.model.Articulo;
+import com.bm2i.security.action.UserSession;
 import com.bm2i.venta.model.ComprobanteVenta;
 import com.bm2i.venta.model.ItemComprobanteVenta;
 import com.bm2i.venta.model.Pago;
@@ -34,6 +38,12 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 
 	@In(create = true)
 	TipoComprobanteHome tipoComprobanteHome;
+
+	@In
+	FacesMessages facesMessages;
+
+	@In(scope = ScopeType.SESSION, value = "userSession")
+	UserSession userSession;
 
 	private TasaImpuesto ti;
 	private Integer maxRows = new Integer(10);
@@ -80,7 +90,6 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 			getInstance().setTipoComprobante(tipoComprobante);
 		}
 		if (itemAux.size() <= 0) {
-			System.out.println("=========>>> crea los items para la factura");
 			for (int i = 0; i < 10; i++) {
 				ItemComprobanteVenta icv = new ItemComprobanteVenta();
 				icv.setCantidad(1);
@@ -110,6 +119,16 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		this.maxRows = maxRows;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Factory("tiposComprobante")
+	public List<TipoComprobante> findTiposComprobante() {
+		Query q = this.getEntityManager().createNamedQuery(
+				"TipoComprobante.findAll");
+		List<TipoComprobante> list = q.getResultList();
+		this.getInstance().setTipoComprobante(list.get(0));
+		return list;
+	}
+
 	public void buscarCodigoBarra(ItemComprobanteVenta itemLocal) {
 		if (itemLocal.getCodigoBarra() != null) {
 			if (!itemLocal.getCodigoBarra().equals("")) {
@@ -117,11 +136,11 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 						"Articulo.findByCodigoBarra");
 				q.setParameter("criteria", itemLocal.getCodigoBarra());
 				if (q.getResultList().size() > 0) {
-					System.out.println("entra a asignar");
 					Articulo art = (Articulo) q.getResultList().get(0);
 					if (!existeArticuloEnItems(art)) {
 						itemLocal.setArticulo(art);
 						itemLocal.setvUnitario(art.getCurrentPrecio().getPvp());
+						itemLocal.setCodigoBarra(art.getCodigoBarra());
 						editarValoresItem(itemLocal);
 						actualRow++;
 					} else {
@@ -187,6 +206,12 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	public void calculoComprobanteVenta() {
 		// identificarDesgloce();
 		// for (ItemComprobanteVenta it : this.getInstance().getItems()) {
+		this.getInstance().setIva(new BigDecimal(0));
+		this.getInstance().setSubTotalIva(new BigDecimal(0));
+		this.getInstance().setSubTotalCero(new BigDecimal(0));
+		this.getInstance().setValorTotal(new BigDecimal(0));
+		this.pagoHome.getInstance().setTotal(new BigDecimal(0));
+
 		int cantArticulosIVA = 0;
 		int cantArticulosSINIVA = 0;
 		for (ItemComprobanteVenta it : this.itemAux) {
@@ -204,17 +229,19 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 				}
 			}
 		}
-		if (cantArticulosSINIVA == 0) {
-			this.getInstance().setSubTotalCero(new BigDecimal(0));
-		}
-		if (cantArticulosIVA == 0) {
-			this.getInstance().setSubTotalIva(new BigDecimal(0));
-		}
+		/*
+		 * if (cantArticulosSINIVA == 0) {
+		 * this.getInstance().setSubTotalCero(new BigDecimal(0)); } if
+		 * (cantArticulosIVA == 0) { this.getInstance().setSubTotalIva(new
+		 * BigDecimal(0)); }
+		 */
 		// calculo de iva
 		if (this.getInstance().getSubTotalIva() != null) {
+
+			BigDecimal baseIva = this.getInstance().getSubTotalIva()
+					.divide(new BigDecimal(1.12), RoundingMode.HALF_UP);
 			this.getInstance().setIva(
-					this.getInstance().getSubTotalIva()
-							.multiply(new BigDecimal(0.12)));
+					this.getInstance().getSubTotalIva().subtract(baseIva));
 		}
 
 		this.getInstance().setValorTotal(
@@ -238,9 +265,8 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		if (q.getResultList().size() > 0) {
 			// todo
 			// se debe tener mayo control revisar
-			TipoComprobateImpuesto tci = (TipoComprobateImpuesto) q
-					.getSingleResult();
-
+			// TipoComprobateImpuesto tci = (TipoComprobateImpuesto) q
+			// .getSingleResult();
 			return new BigDecimal(0);
 		} else
 			return new BigDecimal(0);
@@ -274,13 +300,10 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 					q2.setParameter("impuesto", impuesto);
 					if (q2.getResultList().size() > 0) {
 						ti = (TasaImpuesto) q2.getResultList().get(0);
-						System.out.println("====> con desgloce de "
-								+ ti.getValor());
 					}
 				}
 			} else {
 				this.getInstance().setDesgloceImpuesto(new Boolean(false));
-				System.out.println("====> sin desgloce");
 			}
 
 		}
@@ -347,6 +370,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 			itemLocal.setCodigoBarra(articulo.getCodigoBarra());
 			itemLocal.setArticulo(articulo);
 			itemLocal.setvUnitario(articulo.getCurrentPrecio().getPvp());
+			editarValoresItem(itemLocal);
 			actualRow++;
 		} else {
 			itemLocal.setCodigoBarra("");
@@ -376,16 +400,29 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	}
 
 	public void guardar() {
-		this.residentHome.savaOrUpdate();
-		for (ItemComprobanteVenta icv : this.itemAux) {
-			if (icv.getArticulo() != null) {
-				System.out.println("entra a guardar");
-				this.getInstance().add(icv);
+		if (this.residentHome.savaOrUpdate()) {
+			this.getInstance().setResident(this.residentHome.getInstance());
+			this.getInstance().setRegistrador(this.userSession.getPersona());
+			this.getInstance().setPago(this.pagoHome.getInstance());
+			for (ItemComprobanteVenta icv : this.itemAux) {
+				if (icv.getArticulo() != null) {
+					this.getInstance().add(icv);
+				}
 			}
+			this.persist();
+		} else {
+			facesMessages.addToControl("",
+					org.jboss.seam.international.StatusMessage.Severity.ERROR,
+					"Revise los datos del contribuyente");
 		}
-		// super.persist();
 	}
-	
-	
+
+	public String nuevoComprobante() {
+		itemAux = new ArrayList<ItemComprobanteVenta>();
+		this.setInstance(new ComprobanteVenta());
+		this.residentHome.setInstance(new Persona());
+		actualRow = 0;
+		return "nuevo";
+	}
 
 }
