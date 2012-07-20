@@ -208,14 +208,14 @@
 							<h:outputText id="itemsCount"
 								value="Items (#{comprobanteVentaHome.items.size})" />
 							<a:commandButton ajaxSingle="true"
-								oncomplete="Richfaces.showModalPanel('buscarArticuloPanel',{width:600, top:200})"
+								oncomplete="Richfaces.showModalPanel('buscarArticuloPanel',{width:600, top:150})"
 								value="Buscar Artículos" />
 						</h:panelGrid>
 					</f:facet>
 
 					<rich:dataTable id="itemComprobanteVentaList"
-						var="_itemComprobanteVenta" value="#{comprobanteVentaHome.items}"
-						width="100%">
+						var="_itemComprobanteVenta"
+						value="#{comprobanteVentaHome.itemAux}" width="100%">
 						<rich:column styleClass="action">
 							<f:facet name="header">#{messages['articulo.codigoBarra']}</f:facet>
 							<h:inputText value="#{_itemComprobanteVenta.codigoBarra}"
@@ -223,7 +223,7 @@
 								<a:support event="onblur" ajaxSingle="true"
 									action="#{comprobanteVentaHome.buscarCodigoBarra(_itemComprobanteVenta)}"
 									reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores, 
-									itemComprobanteVentaList, subTotalItemField, cantidadItemField, totalItemField, articuloCodigoField, itemsCount, totalField, panelValores, codigoBarra" />
+									itemComprobanteVentaList,itemsCount, totalField, panelValores, codigoBarra, subTotalIvaField,subTotalCeroField,descuentoField,subTotalField,ivaField,valorTotalField" />
 							</h:inputText>
 						</rich:column>
 						<rich:column>
@@ -244,7 +244,7 @@
 								style="text-align: right;" size="7">
 								<a:support event="onblur" ajaxSingle="true"
 									reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores, 
-									itemComprobanteVentaList, subTotalItemField, cantidadItemField, totalItemField, articuloCodigoField, itemsCount, totalField, panelValores,codigoBarra"
+									itemComprobanteVentaList, itemsCount, totalField, panelValores,codigoBarra,subTotalIvaField,subTotalCeroField,descuentoField,subTotalField,ivaField,valorTotalField"
 									action="#{comprobanteVentaHome.editarValoresItem(_itemComprobanteVenta)}" />
 							</h:inputText>
 						</rich:column>
@@ -254,7 +254,7 @@
 								style="text-align: right;" size="7">
 								<a:support event="onblur" ajaxSingle="true"
 									reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores,
-									itemComprobanteVentaList, subTotalItemField, cantidadItemField, totalItemField, articuloCodigoField, itemsCount, totalField, panelValores,codigoBarra"
+									itemComprobanteVentaList,itemsCount, totalField, panelValores,codigoBarra,subTotalIvaField,subTotalCeroField,descuentoField,subTotalField,ivaField,valorTotalField"
 									action="#{comprobanteVentaHome.editarValoresItem(_itemComprobanteVenta)}"
 									focus="valorTotalField" />
 							</h:inputText>
@@ -291,11 +291,12 @@
 
 						<rich:column styleClass="action" width="7%">
 							<f:facet name="header">#{messages['common.action']}</f:facet>
-							<a:commandButton id="btRemoveItem" value="Quitar"
+							<a:commandLink id="btRemoveItem"
 								action="#{comprobanteVentaHome.removeArticuloItem(_itemComprobanteVenta)}"
 								reRender="itemComprobanteVentaList, itemsCount, totalField, panelValores,codigoBarra"
-								ajaxSingle="true" />
-
+								ajaxSingle="true">
+								<h:graphicImage url="/img/delete.png" />
+							</a:commandLink>
 						</rich:column>
 					</rich:dataTable>
 				</rich:panel>
@@ -331,7 +332,7 @@
 							<ui:define name="label">#{messages['comprobanteVenta.descuento']}</ui:define>
 							<h:inputText id="descuento"
 								value="#{comprobanteVentaHome.instance.descuento}" size="15"
-								disabled="true" style="text-align: right;">
+								style="text-align: right;">
 								<a:support event="onblur" reRender="descuentoField"
 									bypassUpdates="true" ajaxSingle="true" />
 								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
@@ -374,13 +375,15 @@
 				</div>
 			</div>
 
-			<div class="actionButtons">
+			<div align="center" style="width: 90%">
 
-				<a:commandButton ajaxSingle="true"
-					oncomplete="Richfaces.showModalPanel('pagoModalPanel',{width:400, top:200})"
-					value="#{messages['common.save']}" focus="efectivoField" />
+				<div class="actionButtons">
 
-				<!--h:commandButton id="update" value="#{messages['common.save']}"
+					<a:commandButton ajaxSingle="true"
+						oncomplete="Richfaces.showModalPanel('pagoModalPanel',{width:400, top:200})"
+						value="#{messages['common.save']}" focus="efectivoField" />
+
+					<!--h:commandButton id="update" value="#{messages['common.save']}"
 					action=" # { comprobanteVentaHome.update}"
 					rendered="#{comprobanteVentaHome.managed}" />
 
@@ -392,10 +395,11 @@
 					view="/ComprobanteVenta.xhtml"
 					rendered="#{comprobanteVentaHome.managed}" /-->
 
-				<s:button id="cancelAdd" value="#{messages['common.cancel']}"
-					propagation="end"
-					view="/#{empty comprobanteVentaFrom ? 'ComprobanteVentaList' : comprobanteVentaFrom}.xhtml" />
+					<s:button id="cancelAdd" value="#{messages['common.cancel']}"
+						propagation="end"
+						view="/#{empty comprobanteVentaFrom ? 'ComprobanteVentaList' : comprobanteVentaFrom}.xhtml" />
 
+				</div>
 			</div>
 		</h:form>
 
