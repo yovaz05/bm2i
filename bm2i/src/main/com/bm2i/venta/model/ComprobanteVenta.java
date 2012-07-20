@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
@@ -31,6 +33,8 @@ import com.bm2i.comun.model.TipoComprobante;
  */
 @Entity
 @TableGenerator(name = "ComprobanteVentaGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "ComprobanteVenta", initialValue = 1, allocationSize = 1)
+@NamedQueries(value = { @NamedQuery(name = "ComprobanteVenta.findByNumero", query = "select c from ComprobanteVenta c where "
+		+ "c.numero = :numero") })
 public class ComprobanteVenta {
 
 	@Id
@@ -68,7 +72,7 @@ public class ComprobanteVenta {
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<ItemComprobanteVenta> items;
 
-	@ManyToOne
+	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
 	@JoinColumn(name = "pago_id")
 	private Pago pago;
 
@@ -76,15 +80,18 @@ public class ComprobanteVenta {
 	@JoinColumn(name = "tipoComprobante_id")
 	private TipoComprobante tipoComprobante;
 
-	@ManyToOne
+	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
 	private Resident resident;
+	
+	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+	private Resident registrador;
 
 	public ComprobanteVenta() {
 		items = new ArrayList<ItemComprobanteVenta>();
 		fecha = new Date();
 		hora = new SimpleDateFormat("HH:mm").format(new Date());
 		desgloceImpuesto = new Boolean(false);
-		//iniciarItemsCompra();
+		// iniciarItemsCompra();
 		descuento = new BigDecimal(0);
 		iva = new BigDecimal(0);
 		subTotal = new BigDecimal(0);
@@ -251,5 +258,13 @@ public class ComprobanteVenta {
 
 	public void setDesgloceImpuesto(Boolean desgloceImpuesto) {
 		this.desgloceImpuesto = desgloceImpuesto;
+	}
+
+	public Resident getRegistrador() {
+		return registrador;
+	}
+
+	public void setRegistrador(Resident registrador) {
+		this.registrador = registrador;
 	}
 }// end ComprobanteVenta
