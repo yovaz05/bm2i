@@ -45,7 +45,7 @@ import org.hibernate.annotations.Cascade;
 				+ "order by a.cantidad desc"),
 		@NamedQuery(name = "Articulo.findByCriteria", query = "select a from Articulo a where "
 				+ "lower(a.codigoBarra) like lower(concat(:codigoBarra,'%')) or "
-				+ "lower(a.nombre) like lower(concat(:nombre,'%')) or "
+				+ "lower(a.nombre) like lower(concat('%',:nombre,'%')) or "
 				+ "lower(a.ubicacion) like lower(concat(:ubicacion,'%')) "
 				+ "order by a.nombre desc") })
 public class Articulo {

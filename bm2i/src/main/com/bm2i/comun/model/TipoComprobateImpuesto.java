@@ -8,12 +8,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @TableGenerator(name = "TipoComprobateImpuestoGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "TipoComprobateImpuesto", initialValue = 1, allocationSize = 1)
+@NamedQueries(value = { @NamedQuery(name = "TipoComprobateImpuesto.findImpuesto", query = "select tci from TipoComprobateImpuesto tci where "
+		+ "tci.tipoComprobante = :tipoComprobante") })
 public class TipoComprobateImpuesto {
 
 	@Id

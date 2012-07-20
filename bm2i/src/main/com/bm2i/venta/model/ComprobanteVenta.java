@@ -84,7 +84,13 @@ public class ComprobanteVenta {
 		fecha = new Date();
 		hora = new SimpleDateFormat("HH:mm").format(new Date());
 		desgloceImpuesto = new Boolean(false);
-		iniciarItemsCompra();
+		//iniciarItemsCompra();
+		descuento = new BigDecimal(0);
+		iva = new BigDecimal(0);
+		subTotal = new BigDecimal(0);
+		subTotalCero = new BigDecimal(0);
+		subTotalIva = new BigDecimal(0);
+		valorTotal = new BigDecimal(0);
 	}
 
 	public void iniciarItemsCompra() {
