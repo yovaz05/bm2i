@@ -133,7 +133,7 @@ public class ResidentHome extends EntityHome<Resident> {
 		 */
 		// return identificationTypes;
 		System.out.println("entra a cargar y select cedual por default");
-		//getInstance().setTipoIdentificacion(identificationTypes.get(0));
+		// getInstance().setTipoIdentificacion(identificationTypes.get(0));
 		return identificationTypes;
 	}
 
@@ -213,6 +213,16 @@ public class ResidentHome extends EntityHome<Resident> {
 			if (q.getResultList().size() > 0) {
 				this.setInstance((Resident) q.getSingleResult());
 			}
+		}
+	}
+
+	public void savaOrUpdate() {
+		if (this.getInstance().getId() != null) {
+			System.out.println("update resident");
+			this.update();
+		} else {
+			System.out.println("save resident");
+			this.persist();
 		}
 	}
 
