@@ -26,6 +26,14 @@
 		<h:form id="pagoForm">
 
 			<h:panelGrid width="100%">
+
+				<rich:panel style="height:50px; width:100%; overflow:auto;">
+					<a:outputPanel styleClass="results" id="panelError">
+						<rich:messages errorClass="errors" />
+					</a:outputPanel>
+					<div style="clear: both" />
+				</rich:panel>
+
 				<s:decorate id="tipoPagoField" template="../../layout/edit.xhtml">
 					<ui:define name="label">Tipo Pago</ui:define>
 					<h:selectOneMenu id="tipoPago"
@@ -51,7 +59,9 @@
 					<ui:define name="label">Efectivo</ui:define>
 					<h:inputText id="efectivo" value="#{pagoHome.instance.efectivo}"
 						style="text-align: right;">
-						<a:support event="onblur" reRender="efectivoField, cambioField"
+						<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+						<a:support event="onblur"
+							reRender="efectivo,cambioField,panelError"
 							ajaxSingle="true" action="#{pagoHome.calcularCambio()}" />
 					</h:inputText>
 				</s:decorate>
@@ -67,19 +77,10 @@
 			</h:panelGrid>
 			<h:panelGrid columns="4" style="text-align:center">
 
-				<h:commandButton id="save" value="#{messages['common.save']}"
-					action="#{comprobanteVentaHome.persist}"
-					disabled="#{!comprobanteVentaHome.wired}"
-					rendered="#{!comprobanteVentaHome.managed}" />
-
 				<a:commandButton value="#{messages['common.save']}"
-					ajaxSingle="true"
-					action="#{comprobanteVentaHome.guardarComprobante()}" />
+					ajaxSingle="true" action="#{comprobanteVentaHome.guardar()}" />
 				<a:commandButton value="#{messages['common.print']}"
 					ajaxSingle="true" />
-				<s:button id="nuevoPagoModalPanel" value="Nuevo" propagation="end"
-					view="/ComprobanteVentaEdit.xhtml"
-					action="#{comprobanteVentaHome.nuevoComprobante()}" />
 				<a:commandButton value="#{messages['common.quit']}"
 					action="#{pagoHome.cerrar()}" reRender="cambioField,efectivoField"
 					oncomplete="Richfaces.hideModalPanel('pagoModalPanel');"

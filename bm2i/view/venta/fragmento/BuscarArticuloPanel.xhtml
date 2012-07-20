@@ -8,10 +8,11 @@
 	xmlns:s="http://jboss.com/products/seam/taglib"
 	xmlns:rich="http://richfaces.org/rich">
 
-	<rich:modalPanel id="buscarArticuloPanel" width="600" height="300">
+	<rich:modalPanel id="buscarArticuloPanel" width="600" height="400">
 		<f:facet name="header">
 			<h:panelGroup>
-				<h:outputText value="#{messages['articulo.buscar']}"></h:outputText>
+				<h:outputText
+					value="#{messages['articulo.buscar']} - (#{messages['articulo.busquedaMinChar']})"></h:outputText>
 			</h:panelGroup>
 		</f:facet>
 		<f:facet name="controls">
@@ -25,49 +26,53 @@
 
 		<h:form id="buscarArticuloForm">
 			<h:panelGrid width="100%">
-				<h:panelGrid columns="3">
+
+				<h:panelGrid columns="4">
 					<h:outputText value="#{messages['articulo.searchCriteria']}:" />
 					<h:inputText value="#{comprobanteVentaHome.criteriaArticulo}"
-						id="txtCriteria">
+						id="txtCriteria" onkeypress="return noEnter(event);">
 						<a:support event="onblur" reRender="txtCriteria" ajaxSingle="true" />
 					</h:inputText>
 					<a:commandButton value="#{messages['common.search']}"
 						ajaxSingle="true"
 						action="#{comprobanteVentaHome.buscarArticulos()}"
 						reRender="articuloTable" />
+					<a:commandButton value="#{messages['common.quit']}"
+						reRender="articuloTable,txtCriteria"
+						oncomplete="Richfaces.hideModalPanel('buscarArticuloPanel');"
+						ajaxSingle="true"
+						action="#{comprobanteVentaHome.limpiarPanelBusqueda()}" />
 				</h:panelGrid>
 				<rich:dataTable id="articuloTable" var="_articulo"
-					value="#{comprobanteVentaHome.articulos}" rows="10">
-					<h:column>
+					value="#{comprobanteVentaHome.articulos}" rows="5">
+					<rich:column width="20%">
 						<f:facet name="header">#{messages['articulo.codigoBarra']}</f:facet>
 						<h:outputText value="#{_articulo.codigoBarra}" />
-					</h:column>
-					<h:column>
+					</rich:column>
+
+					<rich:column width="35%">
 						<f:facet name="header">#{messages['articulo.nombre']}</f:facet>
 						<h:outputText value="#{_articulo.nombre}" />
-					</h:column>
+					</rich:column>
 
-					<h:column>
+					<rich:column width="25%">
 						<f:facet name="header">#{messages['articulo.ubicacion']}</f:facet>
 						<h:outputText value="#{_articulo.ubicacion}" />
-					</h:column>
+					</rich:column>
 
-					<rich:column styleClass="action">
+					<rich:column styleClass="action" width="10%">
 						<f:facet name="header">#{messages['common.action']}</f:facet>
-						<a:commandButton value="#{messages['common.select']}"
+						<a:commandLink
 							action="#{comprobanteVentaHome.seleccionarArticulo(_articulo)}"
 							ajaxSingle="true" reRender="itemComprobanteVentaList" />
+						<h:graphicImage url="/img/select.png" />
 					</rich:column>
+
 				</rich:dataTable>
 				<rich:datascroller align="center" for="articuloTable" maxPages="10"
 					id="sc2" />
 			</h:panelGrid>
-			<h:panelGrid columns="4" style="text-align:center">
-				<a:commandButton value="#{messages['common.quit']}"
-					reRender="cambioField,efectivoField"
-					oncomplete="Richfaces.hideModalPanel('buscarArticuloPanel');"
-					bypassUpdates="true" />
-			</h:panelGrid>
+
 		</h:form>
 	</rich:modalPanel>
 </ui:composition>
