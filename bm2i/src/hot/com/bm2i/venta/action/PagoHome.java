@@ -1,7 +1,6 @@
 package com.bm2i.venta.action;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -18,6 +17,8 @@ public class PagoHome extends EntityHome<Pago> {
 
 	@In(create = true)
 	TipoPagoHome tipoPagoHome;
+	private Boolean anyError = new Boolean(false);
+	private String errorValue;
 
 	public void setPagoId(Long id) {
 		setId(id);
@@ -54,7 +55,7 @@ public class PagoHome extends EntityHome<Pago> {
 	public Pago getDefinedInstance() {
 		return isIdDefined() ? getInstance() : null;
 	}
-	
+
 	public void cerrar() {
 		this.getInstance().setCambio(new BigDecimal(0));
 		this.getInstance().setEfectivo(new BigDecimal(0));
@@ -65,14 +66,36 @@ public class PagoHome extends EntityHome<Pago> {
 		this.getInstance().setTipoPago((TipoPago) q.getResultList().get(0));
 		return q.getResultList();
 	}
-	
+
 	public void calcularCambio() {
-		/*double cambio = this.getInstance().getEfectivo().doubleValue()
-				- this.getInstance().getTotal().doubleValue();
-		BigDecimal cambiobd = new BigDecimal(cambio);
-		cambiobd = cambiobd.setScale(2, RoundingMode.HALF_UP);*/
-		this.getInstance().setCambio(this.getInstance().getEfectivo().subtract(this.getInstance().getTotal()));
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>><anyError " + anyError);
+		if (this.getInstance().getTotal() != null) {
+			this.getInstance().setCambio(
+					this.getInstance().getEfectivo()
+							.subtract(this.getInstance().getTotal()));
+			this.anyError = new Boolean(false);
+			this.errorValue = null;
+		} else {
+			this.anyError = new Boolean(true);
+			this.errorValue = "Debe agregar Articulos al comprobante";
+			addFacesMessage("Debe agregar Articulos al comprobante");
+		}
+		System.out.println("easdasdasdasdasd " + errorValue);
 	}
 
+	public Boolean getAnyError() {
+		return anyError;
+	}
 
+	public void setAnyError(Boolean anyError) {
+		this.anyError = anyError;
+	}
+
+	public String getErrorValue() {
+		return errorValue;
+	}
+
+	public void setErrorValue(String errorValue) {
+		this.errorValue = errorValue;
+	}
 }
