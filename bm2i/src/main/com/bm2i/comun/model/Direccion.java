@@ -69,7 +69,7 @@ public class Direccion {
 	}
 
 	public void setCalle(String calle) {
-		this.calle = calle;
+		this.calle = calle.toUpperCase();
 	}
 
 	public String getNumero() {
@@ -85,7 +85,7 @@ public class Direccion {
 	}
 
 	public void setPais(String pais) {
-		this.pais = pais;
+		this.pais = pais.toUpperCase();
 	}
 
 	public String getTelefonoFijo() {

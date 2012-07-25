@@ -202,6 +202,6 @@ public class Persona extends Resident {
 	
 	@Override
 	public String toString() {
-		return this.getApellidos() + " " + this.getNombres();
+		return this.getApellidos().toUpperCase() + " " + this.getNombres().toUpperCase();
 	}
 }// end Persona
