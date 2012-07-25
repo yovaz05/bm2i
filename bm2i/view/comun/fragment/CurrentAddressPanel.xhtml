@@ -49,7 +49,8 @@
 		<s:decorate id="countryField" template="../../layout/edit.xhtml">
 			<ui:define name="label">#{messages['resident.country']}:</ui:define>
 			<h:inputText id="country" required="true" size="25" maxlength="25"
-				value="#{residentHome.instance.currentDireccion.pais}">
+				value="#{residentHome.instance.currentDireccion.pais}"
+				style="text-transform: uppercase">
 				<a:support event="onblur" reRender="countryField"
 					bypassUpdates="true" ajaxSingle="true" />
 			</h:inputText>
