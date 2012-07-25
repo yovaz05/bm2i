@@ -1,5 +1,5 @@
 /**
- * 
+ * evitar enter en campos
  */
 function noEnter(event) {
 	// alert("el codigo es "+event.keyCode);
