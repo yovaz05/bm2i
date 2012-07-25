@@ -44,7 +44,8 @@
 				<s:decorate id="nombreField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['articulo.nombre']}</ui:define>
 					<h:inputText id="nombre" size="60" maxlength="60"
-						value="#{articuloHome.instance.nombre}" required="true">
+						value="#{articuloHome.instance.nombre}" required="true"
+						style="text-transform: uppercase">
 						<a:support event="onblur" reRender="nombreField"
 							bypassUpdates="true" ajaxSingle="true" />
 						<c:if test="#{!articuloHome.managed}">
@@ -69,7 +70,8 @@
 				<s:decorate id="cantidadField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['articulo.cantidad']}</ui:define>
 					<h:inputText id="cantidad"
-						value="#{articuloHome.instance.cantidad}">
+						value="#{articuloHome.instance.cantidad}"
+						onkeypress="return noEnter(event);">
 						<a:support event="onblur" reRender="cantidadField"
 							ajaxSingle="true" />
 					</h:inputText>
@@ -79,15 +81,15 @@
 					<ui:define name="label">#{messages['articulo.currentCosto']}</ui:define>
 					<h:inputText id="currentCosto"
 						value="#{articuloHome.instance.currentCosto}" size="26"
-						required="true">
+						required="true" onkeypress="return noEnter(event);">
 						<a:support event="onblur"
 							reRender="currentCostoField,outCurrentCosto" ajaxSingle="true" />
 						<f:convertNumber pattern="#0.00" />
 					</h:inputText>
 				</s:decorate>
 
+				<ui:define name="label">#{messages['articulo.descripcion']}</ui:define>
 				<s:decorate id="descripcionField" template="../layout/edit.xhtml">
-					<ui:define name="label">#{messages['articulo.descripcion']}</ui:define>
 					<h:inputTextarea id="descripcion"
 						value="#{articuloHome.instance.descripcion}" cols="60" rows="3">
 						<f:validateLength maximum="100"></f:validateLength>
@@ -99,7 +101,8 @@
 				<s:decorate id="existenciaMinField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['articulo.existenciaMin']}</ui:define>
 					<h:inputText id="existenciaMin"
-						value="#{articuloHome.instance.existenciaMin}">
+						value="#{articuloHome.instance.existenciaMin}"
+						onkeypress="return noEnter(event);">
 						<a:support event="onblur" reRender="existenciaMinField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>
@@ -108,7 +111,8 @@
 				<s:decorate id="existenciaMaxField" template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['articulo.existenciaMax']}</ui:define>
 					<h:inputText id="existenciaMax"
-						value="#{articuloHome.instance.existenciaMax}">
+						value="#{articuloHome.instance.existenciaMax}"
+						onkeypress="return noEnter(event);">
 						<a:support event="onblur" reRender="existenciaMaxField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>
@@ -118,7 +122,8 @@
 					<ui:define name="label">#{messages['articulo.ubicacion']}</ui:define>
 					<h:inputText id="ubicacion" size="50" maxlength="50"
 						value="#{articuloHome.instance.ubicacion}"
-						style="text-transform: uppercase">
+						style="text-transform: uppercase"
+						onkeypress="return noEnter(event);">
 						<a:support event="onblur" reRender="ubicacionField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>
@@ -128,7 +133,8 @@
 					<ui:define name="label">#{messages['articulo.unidad']}</ui:define>
 					<h:inputText id="unidad" size="30" maxlength="30"
 						value="#{articuloHome.instance.unidad}"
-						style="text-transform: uppercase">
+						style="text-transform: uppercase"
+						onkeypress="return noEnter(event);">
 						<a:support event="onblur" reRender="unidadField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>
@@ -172,7 +178,7 @@
 								template="../layout/display.xhtml">
 								<ui:define name="label">#{messages['articulo.costo']}</ui:define>
 								<h:outputText value="#{articuloHome.instance.currentCosto}"
-									id="outCurrentCosto">
+									id="outCurrentCosto" onkeypress="return noEnter(event);">
 									<f:convertNumber pattern="#0.00" />
 								</h:outputText>
 							</s:decorate>
@@ -180,7 +186,8 @@
 							<s:decorate id="pvpField" template="../layout/edit.xhtml">
 								<ui:define name="label">Pvp</ui:define>
 								<h:inputText id="pvp"
-									value="#{articuloHome.instance.currentPrecio.pvp}">
+									value="#{articuloHome.instance.currentPrecio.pvp}"
+									onkeypress="return noEnter(event);">
 									<a:support event="onblur" reRender="pvpField, utilidadField"
 										ajaxSingle="true" action="#{articuloHome.calcularUtilidad()}" />
 
@@ -190,7 +197,8 @@
 							<s:decorate id="utilidadField" template="../layout/edit.xhtml">
 								<ui:define name="label">Utilidad</ui:define>
 								<h:inputText id="utilidad"
-									value="#{articuloHome.instance.currentPrecio.utilidad}">
+									value="#{articuloHome.instance.currentPrecio.utilidad}"
+									onkeypress="return noEnter(event);">
 									<a:support event="onblur" reRender="utilidadField, pvpField"
 										ajaxSingle="true" action="#{articuloHome.calcularPVP()}" />
 
