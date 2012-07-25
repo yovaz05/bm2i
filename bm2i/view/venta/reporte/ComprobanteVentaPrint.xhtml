@@ -1,0 +1,101 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<head>
+<script type="text/javascript">
+	function cerrar(){
+	    try {
+	        window.opener.focus();
+	        this.close();
+	    } catch (e) {
+	        alert("error al cerrar la ventan");
+	    }
+	}
+	function doPrint(){
+	    try{
+	        document.getElementById("noprint").style.visibility='hidden';
+	        window.print();
+	        window.opener.focus();
+	        this.close();
+	    }catch(e){
+	        alert(e);
+	    }
+	}
+</script>
+<style>
+.alignTop {
+	vertical-align: top;
+}
+</style>
+
+</head>
+<body>
+	<h:form id="diaTrabajo" styleClass="edit">
+		<div align="center" style="width: 585.82px">
+
+			<table width="100%" border="1">
+				<tr>
+					<td width="70%"><h:outputText
+							value="#{comprobanteVentaHome.instance.fecha}">
+							<f:convertDateTime pattern="yyyy - MMMM - dd" locale="es" />
+						</h:outputText>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan="2"><h:outputText
+							value="#{residentHome.instance.nombre}" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><h:outputText
+							value="#{residentHome.instance.currentDireccion.calle}" />
+					</td>
+				</tr>
+				<tr>
+					<td width="60%"><h:outputText
+							value="#{residentHome.instance.numeroIdentificacion}" />
+					</td>
+					<td><h:outputText
+							value="#{residentHome.instance.currentDireccion.telefonoFijo}" />
+					</td>
+				</tr>
+
+			</table>
+
+		</div>
+
+		<div class="actionButtons">
+			<div align="center">
+				<div align="center" id="noprint">
+					<table width="100%">
+						<tr align="center">
+							<td align="right"><table>
+									<tr>
+										<td align="center"><a:commandButton id="bt_imprimir"
+												onclick="doPrint();return false;" value="Imprimir" />
+										</td>
+										<td align="center"><a:commandButton id="bt_cerrar"
+												onclick="cerrar();return false;" value="Cerrar" />
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+		</div>
+	</h:form>
+
+
+</body>
+</html>
