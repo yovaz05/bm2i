@@ -25,6 +25,31 @@
 
 		<h:form id="pagoForm">
 
+			<script type="text/javascript">
+		
+				function abrirImprimirFactura(conversationId){
+				    x2=800;
+				    y2=400;
+				    x=screen.width;
+				    x=(x-x2)/2;
+				    y=screen.height;
+				    y=(y-y2)/2;
+				
+				    var wi=x2;
+				    var he=y2;
+				    opts = 'width='+wi + ',height=' + he + ',location=no,menubar=no,toolbars=no,scrollbars=yes,status=no,titlebar=no,resizable=no,top=+'+y+',left='+x;
+				    try {
+				        var la_url=document.URL;
+				        var el_host=la_url.indexOf("ingresos",0)+8;
+				        var fin_url=la_url.substr(0, el_host);
+				        var v = window.open('reporte/ComprobanteVentaPrint.seam'+ '?cid=' + conversationId, "bm2i-factura",opts);
+				        v.focus();
+				    } catch (e) {
+				        alert("Se ha impedido abrir la ventana por algún programa de bloqueo de ventanas emergentes...");
+				    }
+				}
+			</script>
+			
 			<h:panelGrid width="100%">
 
 				<rich:panel style="height:50px; width:100%; overflow:auto;">
@@ -83,7 +108,9 @@
 						disabled="#{comprobanteVentaHome.managed}" reRender="btSave" />
 
 					<a:commandButton value="#{messages['common.print']}"
+						onclick="abrirImprimirFactura('#{conversation.id}');return false;"
 						ajaxSingle="true" />
+
 					<a:commandButton value="#{messages['common.quit']}"
 						action="#{pagoHome.cerrar()}" reRender="cambioField,efectivoField"
 						oncomplete="Richfaces.hideModalPanel('pagoModalPanel');"

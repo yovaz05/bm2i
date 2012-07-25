@@ -64,7 +64,9 @@
 						<f:facet name="header">#{messages['common.action']}</f:facet>
 						<a:commandLink
 							action="#{comprobanteVentaHome.seleccionarArticulo(_articulo)}"
-							ajaxSingle="true" reRender="itemComprobanteVentaList">
+							ajaxSingle="true"
+							reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores, 
+									itemComprobanteVentaList,itemsCount, totalField, panelValores, codigoBarra, subTotalIvaField,subTotalCeroField,descuentoField,subTotalField,ivaField,valorTotalField">
 							<h:graphicImage url="/img/select.png" />
 						</a:commandLink>
 
