@@ -19,6 +19,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.TableGenerator;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Cascade;
 
@@ -109,6 +110,9 @@ public class Articulo {
 	@OneToMany(mappedBy = "articulo", cascade = CascadeType.ALL)
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<Lote> lotes;
+	
+	@Transient
+	private BigDecimal pvpCorrecto;
 
 	public Articulo() {
 		// this.currentPrecio = new Precio();
@@ -155,7 +159,7 @@ public class Articulo {
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre = nombre.toUpperCase();
 	}
 
 	public Integer getCantidad() {
@@ -254,5 +258,21 @@ public class Articulo {
 
 	public void setCurrentPrecio(Precio currentPrecio) {
 		this.currentPrecio = currentPrecio;
+	}
+
+	public List<Lote> getLotes() {
+		return lotes;
+	}
+
+	public void setLotes(List<Lote> lotes) {
+		this.lotes = lotes;
+	}
+
+	public BigDecimal getPvpCorrecto() {
+		return pvpCorrecto;
+	}
+
+	public void setPvpCorrecto(BigDecimal pvpCorrecto) {
+		this.pvpCorrecto = pvpCorrecto;
 	}
 }// end Articulo
