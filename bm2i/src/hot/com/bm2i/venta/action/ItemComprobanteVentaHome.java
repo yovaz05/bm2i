@@ -41,11 +41,11 @@ public class ItemComprobanteVentaHome extends EntityHome<ItemComprobanteVenta> {
 		getInstance();
 		Articulo articulo = articuloHome.getDefinedInstance();
 		if (articulo != null) {
-			//getInstance().setArticulo(articulo);
+			getInstance().setArticulo(articulo);
 		}
 		ComprobanteVenta venta = comprobanteVentaHome.getDefinedInstance();
 		if (venta != null) {
-			//getInstance().setVenta(venta);
+			getInstance().setVenta(venta);
 		}
 	}
 

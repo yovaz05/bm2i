@@ -4,14 +4,15 @@ import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.framework.EntityHome;
 
+import com.bm2i.venta.model.CajaPermiso;
 import com.bm2i.venta.model.ComprobanteVenta;
 import com.bm2i.venta.model.RegistroDinero;
 
 @Name("registroDineroHome")
 public class RegistroDineroHome extends EntityHome<RegistroDinero> {
 
-	/*@In(create = true)
-	CajaPermisoHome cajaPermisoHome;*/
+	@In(create = true)
+	CajaPermisoHome cajaPermisoHome;
 	@In(create = true)
 	ComprobanteVentaHome comprobanteVentaHome;
 
@@ -37,10 +38,10 @@ public class RegistroDineroHome extends EntityHome<RegistroDinero> {
 
 	public void wire() {
 		getInstance();
-		/*CajaPermiso cajaPermiso = cajaPermisoHome.getDefinedInstance();
+		CajaPermiso cajaPermiso = cajaPermisoHome.getDefinedInstance();
 		if (cajaPermiso != null) {
 			getInstance().setCajaPermiso(cajaPermiso);
-		}*/
+		}
 		ComprobanteVenta compVenta = comprobanteVentaHome.getDefinedInstance();
 		if (compVenta != null) {
 			getInstance().setCompVenta(compVenta);

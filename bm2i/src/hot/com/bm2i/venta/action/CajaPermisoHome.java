@@ -114,6 +114,7 @@ public class CajaPermisoHome extends EntityHome<CajaPermiso> {
 	}
 
 	public void recargarDiaTrabajo() {
+		System.out.println("Recargar Dia de Trabajo ");
 		Date currentDate = new Date();
 		Query query = getEntityManager().createNamedQuery(
 				"DiaTrabajo.findCurrent");
@@ -122,6 +123,7 @@ public class CajaPermisoHome extends EntityHome<CajaPermiso> {
 		if (list.size() > 0) {
 			DiaTrabajo diaTrabajo = list.get(0);
 			this.userSession.setDiaTrabajo(diaTrabajo);
+			System.out.println("sssssssssss "+diaTrabajo.getId());
 		}
 	}
 
