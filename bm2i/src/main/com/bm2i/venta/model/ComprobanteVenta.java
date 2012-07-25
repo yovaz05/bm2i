@@ -33,8 +33,12 @@ import com.bm2i.comun.model.TipoComprobante;
  */
 @Entity
 @TableGenerator(name = "ComprobanteVentaGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "ComprobanteVenta", initialValue = 1, allocationSize = 1)
-@NamedQueries(value = { @NamedQuery(name = "ComprobanteVenta.findByNumero", query = "select c from ComprobanteVenta c where "
-		+ "c.numero = :numero") })
+@NamedQueries(value = {
+		@NamedQuery(name = "ComprobanteVenta.findByNumero", query = "select c from ComprobanteVenta c where "
+				+ "c.numero = :numero"),
+		@NamedQuery(name = "ComprobanteVenta.findByDate", query = "select c from ComprobanteVenta c where "
+				+ "c.fecha between :fechaDesde and :fechaHasta "
+				+ "order by c.fecha") })
 public class ComprobanteVenta {
 
 	@Id
@@ -82,7 +86,7 @@ public class ComprobanteVenta {
 
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
 	private Resident resident;
-	
+
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
 	private Resident registrador;
 
