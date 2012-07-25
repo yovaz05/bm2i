@@ -206,7 +206,7 @@
 					<f:facet name="header">
 						<h:panelGrid columns="3" columnClasses="headerTitle,">
 							<h:outputText id="itemsCount"
-								value="Items (#{comprobanteVentaHome.items.size})" />
+								value="Items (#{comprobanteVentaHome.itemAux.size})" />
 							<a:commandButton ajaxSingle="true"
 								oncomplete="Richfaces.showModalPanel('buscarArticuloPanel',{width:600, top:150})"
 								value="Buscar Artículos" />
@@ -231,7 +231,7 @@
 							<h:outputText value="#{_itemComprobanteVenta.articulo.nombre}" />
 						</rich:column>
 						<rich:column style="text-align: right;" width="7%">
-							<f:facet name="header">#{messages['articulo.nombre']}</f:facet>
+							<f:facet name="header">#{messages['costo']}</f:facet>
 							<h:outputText
 								value="#{_itemComprobanteVenta.articulo.currentPrecio.costo}">
 								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
@@ -317,17 +317,6 @@
 							</h:inputText>
 						</s:decorate>
 
-						<s:decorate id="subTotalCeroField" template="../layout/edit.xhtml">
-							<ui:define name="label">#{messages['comprobanteVenta.subTotalCero']}</ui:define>
-							<h:inputText id="subTotalCero"
-								value="#{comprobanteVentaHome.instance.subTotalCero}" size="15"
-								disabled="true" style="text-align: right;">
-								<a:support event="onblur" reRender="subTotalCeroField"
-									bypassUpdates="true" ajaxSingle="true" />
-								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
-							</h:inputText>
-						</s:decorate>
-
 						<s:decorate id="descuentoField" template="../layout/edit.xhtml">
 							<ui:define name="label">#{messages['comprobanteVenta.descuento']}</ui:define>
 							<h:inputText id="descuento"
@@ -339,7 +328,20 @@
 							</h:inputText>
 						</s:decorate>
 
-						<s:decorate id="subTotalField" template="../layout/edit.xhtml">
+						<s:decorate id="subTotalCeroField" template="../layout/edit.xhtml">
+							<ui:define name="label">#{messages['comprobanteVenta.subTotalCero']}</ui:define>
+							<h:inputText id="subTotalCero"
+								value="#{comprobanteVentaHome.instance.subTotalCero}" size="15"
+								disabled="true" style="text-align: right;">
+								<a:support event="onblur" reRender="subTotalCeroField"
+									bypassUpdates="true" ajaxSingle="true" />
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+							</h:inputText>
+						</s:decorate>
+
+
+
+						<!-- s:decorate id="subTotalField" template="../layout/edit.xhtml">
 							<ui:define name="label">#{messages['comprobanteVenta.subTotal']}</ui:define>
 							<h:inputText id="subTotal"
 								value="#{comprobanteVentaHome.instance.subTotal}" size="15"
@@ -348,7 +350,7 @@
 									bypassUpdates="true" ajaxSingle="true" />
 								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 							</h:inputText>
-						</s:decorate>
+						</s:decorate-->
 
 						<s:decorate id="ivaField" template="../layout/edit.xhtml">
 							<ui:define name="label">#{messages['comprobanteVenta.iva']}</ui:define>
