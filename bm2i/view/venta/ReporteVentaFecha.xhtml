@@ -1,0 +1,144 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" template="../layout/template.xhtml">
+
+	<ui:define name="body">
+		<h:form id="comprobanteVenta" styleClass="edit">
+			<rich:panel>
+				<f:facet name="header">Reporte de Ventas</f:facet>
+				<div align="center">
+
+					<h:panelGrid columns="3">
+						<s:decorate id="fechaDesde" template="../layout/edit.xhtml">
+							<ui:define name="label">Fecha Desde</ui:define>
+							<rich:calendar id="fecha" value="#{comprobanteVentaHome.desde}"
+								datePattern="#{messages['common.datePattern']}"
+								ajaxSingle="true" />
+						</s:decorate>
+
+						<s:decorate id="fechaHasta" template="../layout/edit.xhtml">
+							<ui:define name="label">Fecha Hasta</ui:define>
+							<rich:calendar id="fecha" value="#{comprobanteVentaHome.hasta}"
+								datePattern="#{messages['common.datePattern']}"
+								ajaxSingle="true" />
+						</s:decorate>
+						<h:commandButton action="#{comprobanteVentaHome.buscarFecha()}"
+							value="Buscar">
+							<a:support reRender="comprobanteVentaList" event="onclick" />
+						</h:commandButton>
+					</h:panelGrid>
+
+				</div>
+				<div style="clear: both" />
+			</rich:panel>
+
+			<rich:panel>
+				<f:facet name="header">Ventas</f:facet>
+				<div class="results" id="comprobanteVentaList">
+
+					<rich:dataTable id="comprobanteVentaList" var="_comprobanteVenta"
+						value="#{comprobanteVentaHome.comprobantes}">
+						<rich:column>
+							<f:facet name="header">Cliente</f:facet>
+							<h:outputText
+								value="#{_comprobanteVenta.cliente.nombres} #{_comprobanteVenta.cliente.apellidos}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">Fecha</f:facet>
+							<h:outputText value="#{_comprobanteVenta.fecha}">
+								<s:convertDateTime type="date" dateStyle="short"
+									pattern="#{messages['common.datePattern']}" />
+							</h:outputText>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">Tipo Comprobante</f:facet>
+							<h:outputText value="#{_comprobanteVenta.tipoComprobante.nombre}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">N° Comprobante</f:facet>
+							<h:outputText
+								value="#{_comprobanteVenta.numeroComprobante}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">Tipo Pago</f:facet>
+							<h:outputText value="#{_comprobanteVenta.pago.tipoPago.nombre}" />
+						</rich:column>
+						<rich:column style="text-align:right;">
+							<f:facet name="header">IVA</f:facet>
+							<h:outputText value="#{_comprobanteVenta.iva}">
+								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
+									minFractionDigits="2" type="currency" />
+							</h:outputText>
+						</rich:column>
+						<rich:column style="text-align:right;">
+							<f:facet name="header">SubTotal</f:facet>
+							<h:outputText value="#{_comprobanteVenta.subTotal}">
+								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
+									minFractionDigits="2" type="currency" />
+							</h:outputText>
+						</rich:column>
+						<rich:column style="text-align:right;">
+							<f:facet name="header">Descuento</f:facet>
+							<h:outputText value="#{_comprobanteVenta.descuento}">
+								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
+									minFractionDigits="2" type="currency" />
+							</h:outputText>
+						</rich:column>
+						<rich:column style="text-align:right;">
+							<f:facet name="header">SubTotal Cero</f:facet>
+							<h:outputText value="#{_comprobanteVenta.subTotalCero}">
+								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
+									minFractionDigits="2" type="currency" />
+							</h:outputText>
+						</rich:column>
+						<rich:column style="text-align:right;">
+							<f:facet name="header">SubTotal Iva</f:facet>
+							<h:outputText value="#{_comprobanteVenta.subTotalIva}">
+								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
+									minFractionDigits="2" type="currency" />
+							</h:outputText>
+						</rich:column>
+
+						<rich:column style="text-align:right;">
+							<f:facet name="header">Valor Total</f:facet>
+							<h:outputText value="#{_comprobanteVenta.valorTotal}">
+								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
+									minFractionDigits="2" type="currency" />
+							</h:outputText>
+						</rich:column>
+						<rich:column styleClass="action">
+							<f:facet name="header">Acciones</f:facet>
+
+							<s:link view="/ComprobanteVentaEdit.xhtml" value="Edit"
+								propagation="none" id="comprobanteVentaEdit"
+								rendered="#{empty from}">
+								<f:param name="comprobanteVentaId"
+									value="#{_comprobanteVenta.id}" />
+							</s:link>
+						</rich:column>
+					</rich:dataTable>
+
+				</div>
+			</rich:panel>
+
+			<div class="actionButtons">
+
+
+
+				<s:button view="/ComprobanteVentaEdit.xhtml" id="edit" value="Edit" />
+
+				<s:button
+					view="/#{empty comprobanteVentaFrom ? 'ComprobanteVentaList' : comprobanteVentaFrom}.xhtml"
+					id="done" value="Done" />
+
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

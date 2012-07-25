@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.2.xsd"
+	no-conversation-view-id="/venta/RegistroVentaList.xhtml"
+	login-required="true">
+
+	<begin-conversation join="true" flush-mode="MANUAL" />
+
+	<action execute="#{registroVentaHome.wire}" />
+
+	<param name="registroVentaFrom" />
+	<param name="registroVentaId" value="#{registroVentaHome.registroVentaId}" />
+	<param name="articuloFrom" />
+	<param name="articuloId" value="#{articuloHome.articuloId}" />
+
+	<param name="precioFrom" />
+	<param name="precioId" value="#{precioHome.precioId}" />
+
+	<param name="usuarioFrom" />
+	<param name="usuarioId" value="#{usuarioHome.usuarioId}" />
+	<param name="clienteFrom" />
+	<param name="clienteId" value="#{clienteHome.clienteId}" />
+
+
+
+
+	<navigation from-action="#{registroVentaHome.persist}">
+		<rule if-outcome="persisted">
+			<end-conversation />
+			<redirect view-id="/venta/RegistroVentaList.xhtml" />
+		</rule>
+	</navigation>
+
+	<navigation from-action="#{registroVentaHome.update}">
+		<rule if-outcome="updated">
+			<end-conversation />
+			<redirect view-id="/venta/RegistroVentaList.xhtml" />
+		</rule>
+	</navigation>
+
+	<navigation from-action="#{registroVentaHome.remove}">
+		<rule if-outcome="removed">
+			<end-conversation />
+			<redirect view-id="/venta/RegistroVentaList.xhtml" />
+		</rule>
+	</navigation>
+
+</page>

@@ -1,0 +1,209 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" template="../layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:form id="registroVenta" styleClass="edit">
+
+			<rich:panel>
+				<f:facet name="header">
+					<h:panelGrid columns="3" columnClasses="headerTitle,">
+						<h:outputText value="Registro Ventas" />
+						<h:panelGrid columns="4" width="400px">
+							<h:outputText value="Fecha:" />
+							<rich:calendar id="fecha"
+								value="#{registroVentaHome.instance.fecha}"
+								datePattern="#{messages['common.datePattern']}"
+								ajaxSingle="true" inputSize="10"/>
+							<h:outputText value="Hora:" />
+							<h:inputText id="hora" size="10" maxlength="10"
+								value="#{registroVentaHome.instance.hora}">
+								<a:support event="onblur" reRender="horaField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</h:panelGrid>
+					</h:panelGrid>
+
+
+				</f:facet>
+
+				<s:decorate id="articuloField" template="../layout/edit.xhtml">
+					<ui:define name="label">Articulo</ui:define>
+					<h:inputText id="articuloName"
+						value="#{registroVentaHome.art.codigoBarra}" focus="cantidadField">
+					</h:inputText>
+					<rich:suggestionbox id="suggestionBox" for="articuloName"
+						suggestionAction="#{registroVentaHome.autoComplete}" var="art"
+						minChars="2" ajaxSingle="true">
+
+						<h:column>
+							<h:outputText value="#{art.nombre}" />
+						</h:column>
+						<h:column>
+							<h:outputText value="#{art.codigoBarra}" />
+						</h:column>
+						<h:column>
+							<h:outputText value="#{art.unidad}" />
+						</h:column>
+
+						<a:support event="onselect"
+							action="#{registroVentaHome.selectArticulo(art)}"
+							ajaxSingle="true"
+							reRender="articuloField, subTotalField, nombreArticuloField, codigoBarraField"
+							focus="cantidad" />
+						<a:support event="onobjectchange"
+							action="#{registroVentaHome.selectArticulo(art)}"
+							ajaxSingle="true"
+							reRender="articuloField, subTotalField, nombreArticuloField, codigoBarraField"
+							focus="cantidad" />
+					</rich:suggestionbox>
+				</s:decorate>
+
+				<s:decorate id="codigoBarraField" template="../layout/edit.xhtml">
+					<ui:define name="label">Codigo barra</ui:define>
+					<h:inputText id="codigoBarra" size="40" maxlength="60"
+						value="#{registroVentaHome.instance.articulo.codigoBarra}"
+						disabled="true">
+					</h:inputText>
+				</s:decorate>
+
+				<s:decorate id="nombreArticuloField" template="../layout/edit.xhtml">
+					<ui:define name="label">Articulo</ui:define>
+					<h:inputText id="nombreArticulo" size="40" maxlength="50"
+						value="#{registroVentaHome.instance.articulo.nombre}"
+						style="text-transform: uppercase" required="true" disabled="true">
+					</h:inputText>
+				</s:decorate>
+				<s:decorate id="subTotalField" template="../layout/edit.xhtml">
+					<ui:define name="label">SubTotal</ui:define>
+					<h:inputText id="subTotal"
+						value="#{registroVentaHome.instance.subTotal}" required="true"
+						style="text-align: right;">
+						<a:support event="onblur" reRender="subTotalField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
+				<s:decorate id="cantidadField" template="../layout/edit.xhtml">
+					<ui:define name="label">Cantidad</ui:define>
+					<h:inputText id="cantidad"
+						value="#{registroVentaHome.instance.cantidad}" required="true"
+						style="text-align: right;">
+						<a:support event="onblur"
+							reRender="cantidadField, subTotalField, totalField"
+							ajaxSingle="true" action="#{registroVentaHome.realizarCalculo()}" />
+					</h:inputText>
+				</s:decorate>
+
+				<s:decorate id="totalField" template="../layout/edit.xhtml">
+					<ui:define name="label">Total</ui:define>
+					<h:inputText id="total" value="#{registroVentaHome.instance.total}"
+						required="true" style="text-align: right;">
+						<a:support event="onblur" reRender="totalField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
+				<div style="clear: both">
+					<span class="required">*</span>
+					#{messages['common.requiredFields']}
+				</div>
+
+			</rich:panel>
+
+			<div class="actionButtons">
+				<a:commandButton value="#{messages['common.add']}"
+					action="#{registroVentaHome.guardar()}"
+					reRender="registroVentaList, articuloField, subTotalField, nombreArticuloField, codigoBarraField, subTotalField, totalField, hora, cantidadField"
+					ajaxSingle="true" focus="articuloName"/>
+				<a:commandButton value="#{messages['common.new']}"
+					action="#{registroVentaHome.nuevo()}"
+					reRender="registroVentaList, articuloField, subTotalField, nombreArticuloField, codigoBarraField, subTotalField, totalField, hora, cantidadField"
+					ajaxSingle="true" focus="articuloName"/>
+			</div>
+
+			<rich:panel>
+				<f:facet name="header">Registro de Ventas </f:facet>
+				<div class="results" id="registroVentaList">
+
+					<rich:dataTable id="registroVentaList" var="_registroVenta"
+						value="#{registroVentaHome.registroVentas}">
+						<rich:column>
+							<f:facet name="header">Id</f:facet>
+							<h:outputText value="#{_registroVenta.id}" />
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">Articulo</f:facet>
+							<h:outputText value="#{_registroVenta.articulo.nombre}" />
+						</rich:column>
+						<rich:column style="text-align:right;">
+							<f:facet name="header">SubTotal</f:facet>
+							<h:outputText value="#{_registroVenta.subTotal}">
+								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
+									minFractionDigits="2" type="currency" />
+							</h:outputText>
+						</rich:column>
+
+						<rich:column style="text-align:right;">
+							<f:facet name="header">Cantidad</f:facet>
+							<h:outputText value="#{_registroVenta.cantidad}" />
+						</rich:column>
+
+
+						<rich:column style="text-align:right;">
+							<f:facet name="header">Total</f:facet>
+							<h:outputText value="#{_registroVenta.total}">
+								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
+									minFractionDigits="2" type="currency" />
+							</h:outputText>
+						</rich:column>
+						<rich:column styleClass="action">
+							<f:facet name="header">Fecha</f:facet>
+							<h:outputText value="#{_registroVenta.fecha}">
+								<s:convertDateTime type="date" dateStyle="short"
+									pattern="#{messages['common.datePattern']}" />
+							</h:outputText>
+						</rich:column>
+						<rich:column styleClass="action">
+							<f:facet name="header">Hora</f:facet>
+							<h:outputText value="#{_registroVenta.hora}" />
+						</rich:column>
+
+
+						<rich:column>
+							<f:facet name="header">Usuario</f:facet>
+							<h:outputText value="#{_registroVenta.user.name}" />
+						</rich:column>
+						<rich:column styleClass="action">
+							<f:facet name="header">Acciones</f:facet>
+							<a:commandButton value="#{messages['common.delete']}"
+								action="#{registroVentaHome.borrar(_registroVenta)}"
+								reRender="registroVentaList" ajaxSingle="true" />
+						</rich:column>
+
+						<f:facet name="footer">
+							<rich:columnGroup>
+								<rich:column colspan="4" style="text-align:right;">Total</rich:column>
+								<rich:column style="text-align:right;">
+									<h:outputText value="#{registroVentaHome.total}">
+										<f:convertNumber pattern="$####.00" />
+									</h:outputText>
+								</rich:column>
+							</rich:columnGroup>
+						</f:facet>
+					</rich:dataTable>
+
+				</div>
+			</rich:panel>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
