@@ -88,8 +88,9 @@
 					</h:inputText>
 				</s:decorate>
 
-				<ui:define name="label">#{messages['articulo.descripcion']}</ui:define>
+				
 				<s:decorate id="descripcionField" template="../layout/edit.xhtml">
+				<ui:define name="label">#{messages['articulo.descripcion']}</ui:define>
 					<h:inputTextarea id="descripcion"
 						value="#{articuloHome.instance.descripcion}" cols="60" rows="3">
 						<f:validateLength maximum="100"></f:validateLength>
