@@ -38,7 +38,8 @@
 </head>
 <body>
 	<h:form id="diaTrabajo" styleClass="edit">
-		<div align="center" style="width: 585.82px">
+		<div style="width: 585.82px">
+
 
 			<table width="100%" border="1">
 				<tr>
@@ -69,7 +70,93 @@
 				</tr>
 
 			</table>
+			<div align="center">
+				<div align="center">
 
+					<rich:panel style="width:90%">
+						<f:facet name="header">
+							<h:panelGrid columns="3" columnClasses="headerTitle,">
+								<h:outputText id="itemsCount"
+									value="Items (#{comprobanteVentaHome.itemAux.size})" />
+							</h:panelGrid>
+						</f:facet>
+
+						<rich:dataTable id="itemComprobanteVentaList"
+							var="_itemComprobanteVenta"
+							value="#{comprobanteVentaHome.itemAux}" width="100%">
+
+							<rich:column styleClass="action" width="6%">
+								<f:facet name="header">#{messages['articulo.cantidad']}</f:facet>
+								<h:outputText value="#{_itemComprobanteVenta.cantidad}" />
+							</rich:column>
+
+
+							<rich:column>
+								<f:facet name="header">#{messages['articulo']}</f:facet>
+								<h:outputText value="#{_itemComprobanteVenta.articulo.nombre}" />
+							</rich:column>
+
+
+							<rich:column styleClass="action" width="6%">
+								<f:facet name="header">#{messages['articulo.valorUnitario']}</f:facet>
+								<h:outputText value="#{_itemComprobanteVenta.vUnitario}" />
+							</rich:column>
+							<rich:column
+								style="text-align: right; background-color: #{_itemComprobanteVenta.isValid ? 'white' : 'red'};"
+								id="colVtotal" width="10%">
+								<f:facet name="header">#{messages['articulo.valorTotal']}</f:facet>
+								<h:outputText value="#{_itemComprobanteVenta.vTotal}" />
+							</rich:column>
+						</rich:dataTable>
+					</rich:panel>
+				</div>
+
+
+				<div align="center">
+					<div align="right" style="width: 100%">
+
+						<table>
+							<tr>
+								<td><h:outputText
+										value="#{comprobanteVentaHome.instance.subTotalIva}">
+										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+									</h:outputText>
+								</td>
+							</tr>
+							<tr>
+								<td><h:outputText
+										value="#{comprobanteVentaHome.instance.descuento}">
+										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+									</h:outputText>
+								</td>
+							</tr>
+							<tr>
+								<td><h:outputText
+										value="#{comprobanteVentaHome.instance.subTotalCero}">
+										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+									</h:outputText>
+								</td>
+							</tr>
+							<tr>
+								<td><h:outputText
+										value="#{comprobanteVentaHome.instance.iva}">
+										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+									</h:outputText>
+								</td>
+							</tr>
+							<tr>
+								<td><h:outputText
+										value="#{comprobanteVentaHome.instance.valorTotal}">
+										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+									</h:outputText>
+								</td>
+							</tr>
+						</table>
+
+					</div>
+				</div>
+
+			</div>
 		</div>
 
 		<div class="actionButtons">
