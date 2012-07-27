@@ -383,7 +383,8 @@
 
 					<a:commandButton ajaxSingle="true"
 						oncomplete="Richfaces.showModalPanel('pagoModalPanel',{width:350, top:100})"
-						value="#{messages['common.save']}" focus="efectivoField" reRender="btPrint"/>
+						value="#{messages['common.save']}" focus="efectivoField"
+						reRender="btPrint" />
 
 					<!--h:commandButton id="update" value="#{messages['common.save']}"
 					action=" # { comprobanteVentaHome.update}"
@@ -396,10 +397,17 @@
 					<s:button id="cancelEdit" value="Cancel" propagation="end"
 						view="/ComprobanteVenta.xhtml"
 						rendered="#{comprobanteVentaHome.managed}" /-->
+					
+
+					<h:commandButton value="Newaaaa probale"
+						action="#{comprobanteVentaHome.news()}"
+						immediate="true" />
 
 					<s:button value="#{messages['common.new']}" propagation="end"
 						view="/venta/ComprobanteVentaEdit.xhtml"
-						action="#{comprobanteVentaHome.nuevoComprobante()}" />
+						action="#{comprobanteVentaHome.nuevoComprobante()}" immediate="true">
+
+					</s:button>
 
 					<s:button id="cancelAdd" value="#{messages['common.cancel']}"
 						propagation="end"
