@@ -8,7 +8,6 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import org.apache.wicket.util.time.ITimeFrameSource;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.framework.EntityHome;
@@ -107,10 +106,13 @@ public class ArticuloHome extends EntityHome<Articulo> {
 
 	public void calcularUtilidad() {
 		Precio precio = this.getInstance().getCurrentPrecio();
+		
 		double costo = precio.getCosto().doubleValue();
 		double total = precio.getPvp().doubleValue();
-		double utilidadValor = total - costo;
-		double utilidadPorce = (utilidadValor * 100) / total;
+		
+		/*double utilidadValor = total - costo;
+		double utilidadPorce = (utilidadValor * 100) / total;*/
+		double utilidadPorce = ((total/costo)*100)-100;
 
 		BigDecimal utilidad = new BigDecimal(utilidadPorce);
 		utilidad = utilidad.setScale(2, RoundingMode.HALF_UP);
