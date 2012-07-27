@@ -46,24 +46,20 @@
 					<td width="70%"><h:outputText
 							value="#{comprobanteVentaHome.instance.fecha}">
 							<f:convertDateTime pattern="yyyy - MMMM - dd" locale="es" />
-						</h:outputText>
-					</td>
+						</h:outputText></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td colspan="2"><h:outputText
-							value="#{residentHome.instance.nombre}" />
-					</td>
+							value="#{residentHome.instance.nombre}" /></td>
 				</tr>
 				<tr>
 					<td colspan="2"><h:outputText
-							value="#{residentHome.instance.currentDireccion.calle}" />
-					</td>
+							value="#{residentHome.instance.currentDireccion.calle}" /></td>
 				</tr>
 				<tr>
 					<td width="60%"><h:outputText
-							value="#{residentHome.instance.numeroIdentificacion}" />
-					</td>
+							value="#{residentHome.instance.numeroIdentificacion}" /></td>
 					<td><h:outputText
 							value="#{residentHome.instance.currentDireccion.telefonoFijo}" />
 					</td>
@@ -83,7 +79,7 @@
 
 						<rich:dataTable id="itemComprobanteVentaList"
 							var="_itemComprobanteVenta"
-							value="#{comprobanteVentaHome.itemAux}" width="100%">
+							value="#{comprobanteVentaHome.instance.items}" width="100%">
 
 							<rich:column styleClass="action" width="6%">
 								<f:facet name="header">#{messages['articulo.cantidad']}</f:facet>
@@ -120,36 +116,31 @@
 								<td><h:outputText
 										value="#{comprobanteVentaHome.instance.subTotalIva}">
 										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
-									</h:outputText>
-								</td>
+									</h:outputText></td>
 							</tr>
 							<tr>
 								<td><h:outputText
 										value="#{comprobanteVentaHome.instance.descuento}">
 										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
-									</h:outputText>
-								</td>
+									</h:outputText></td>
 							</tr>
 							<tr>
 								<td><h:outputText
 										value="#{comprobanteVentaHome.instance.subTotalCero}">
 										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
-									</h:outputText>
-								</td>
+									</h:outputText></td>
 							</tr>
 							<tr>
 								<td><h:outputText
 										value="#{comprobanteVentaHome.instance.iva}">
 										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
-									</h:outputText>
-								</td>
+									</h:outputText></td>
 							</tr>
 							<tr>
 								<td><h:outputText
 										value="#{comprobanteVentaHome.instance.valorTotal}">
 										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
-									</h:outputText>
-								</td>
+									</h:outputText></td>
 							</tr>
 						</table>
 
@@ -167,14 +158,11 @@
 							<td align="right"><table>
 									<tr>
 										<td align="center"><a:commandButton id="bt_imprimir"
-												onclick="doPrint();return false;" value="Imprimir" />
-										</td>
+												onclick="doPrint();return false;" value="Imprimir" /></td>
 										<td align="center"><a:commandButton id="bt_cerrar"
-												onclick="cerrar();return false;" value="Cerrar" />
-										</td>
+												onclick="cerrar();return false;" value="Cerrar" /></td>
 									</tr>
-								</table>
-							</td>
+								</table></td>
 						</tr>
 					</table>
 				</div>
