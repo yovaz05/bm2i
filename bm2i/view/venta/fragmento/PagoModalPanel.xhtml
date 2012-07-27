@@ -109,11 +109,11 @@
 
 					<a:commandButton value="#{messages['common.save']}" id="btSave"
 						ajaxSingle="true" action="#{comprobanteVentaHome.guardar()}"
-						disabled="#{comprobanteVentaHome.managed}" reRender="btSave" />
+						disabled="#{comprobanteVentaHome.managed}" reRender="btSave,btPrint" />
 
-					<a:commandButton value="#{messages['common.print']}"
+					<a:commandButton value="#{messages['common.print']}" id="btPrint"
 						onclick="abrirImprimirFactura('#{conversation.id}');return false;"
-						ajaxSingle="true" />
+						ajaxSingle="true" disabled="#{!comprobanteVentaHome.managed}" />
 
 					<a:commandButton value="#{messages['common.quit']}"
 						action="#{pagoHome.cerrar()}" reRender="cambioField,efectivoField"
