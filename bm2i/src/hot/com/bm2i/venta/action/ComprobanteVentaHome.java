@@ -5,8 +5,12 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.persistence.Query;
+import javax.servlet.http.HttpServletRequest;
 
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Factory;
@@ -55,11 +59,10 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	private List<ItemComprobanteVenta> itemAux = new ArrayList<ItemComprobanteVenta>();
 	private String criteriaArticulo;
 
-	////para reportes
+	// //para reportes
 	private Date desde = new Date();
 	private Date hasta = new Date();
 	private List<ComprobanteVenta> comprobantes;
-	
 
 	public void setComprobanteVentaId(Long id) {
 		setId(id);
@@ -103,7 +106,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 				itemAux.add(icv);
 			}
 		}
-		
+
 	}
 
 	public boolean isWired() {
@@ -149,10 +152,15 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 						itemLocal.setArticulo(art);
 
 						if (art.getIsCalculatedIva()) {
-							//calculo el valor sin iva
-							itemLocal.setvUnitario(art.getCurrentPrecio().getPvp().divide(new BigDecimal(1.12),RoundingMode.HALF_UP));
-						}else{
-							itemLocal.setvUnitario(art.getCurrentPrecio().getPvp());
+							// calculo el valor sin iva
+							itemLocal.setvUnitario(art
+									.getCurrentPrecio()
+									.getPvp()
+									.divide(new BigDecimal(1.12),
+											RoundingMode.HALF_UP));
+						} else {
+							itemLocal.setvUnitario(art.getCurrentPrecio()
+									.getPvp());
 						}
 						itemLocal.setCodigoBarra(art.getCodigoBarra());
 						editarValoresItem(itemLocal);
@@ -204,7 +212,8 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 
 		// por defecto se va a cargar factura con desgloce
 		if (it.getArticulo() != null) {
-			double costo = it.getArticulo().getCurrentPrecio().getCosto().doubleValue();
+			double costo = it.getArticulo().getCurrentPrecio().getCosto()
+					.doubleValue();
 			double pvp = it.getvUnitario().doubleValue();
 			int cantidad = it.getCantidad();
 			double pvpTotal = 0;
@@ -239,7 +248,8 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	public void calculoComprobanteVenta() {
 		// identificarDesgloce();
 		// for (ItemComprobanteVenta it : this.getInstance().getItems()) {
-		System.out.println(">>>>>>>>>>>>>>>> entra a realizar el calculo final<<<<<<<<<<<<<<<");
+		System.out
+				.println(">>>>>>>>>>>>>>>> entra a realizar el calculo final<<<<<<<<<<<<<<<");
 		this.getInstance().setIva(new BigDecimal(0));
 		this.getInstance().setSubTotalIva(new BigDecimal(0));
 		this.getInstance().setSubTotalCero(new BigDecimal(0));
@@ -252,13 +262,17 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 			if (it.getArticulo() != null) {
 				System.out.println("esta en el forssssss");
 				if (it.getArticulo().getIsCalculatedIva()) {
-					this.getInstance().setSubTotalIva(this.getInstance().getSubTotalIva().add(it.getvTotal()));
-					System.out.println("con iva "+cantArticulosIVA);
+					this.getInstance().setSubTotalIva(
+							this.getInstance().getSubTotalIva()
+									.add(it.getvTotal()));
+					System.out.println("con iva " + cantArticulosIVA);
 					cantArticulosIVA++;
-					
+
 				} else {
-					this.getInstance().setSubTotalCero(this.getInstance().getSubTotalCero().add(it.getvTotal()));
-					System.out.println("sin iva "+cantArticulosSINIVA);
+					this.getInstance().setSubTotalCero(
+							this.getInstance().getSubTotalCero()
+									.add(it.getvTotal()));
+					System.out.println("sin iva " + cantArticulosSINIVA);
 					cantArticulosSINIVA++;
 				}
 			}
@@ -271,17 +285,18 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		 */
 		// calculo de iva
 		if (this.getInstance().getSubTotalIva() != null) {
-			BigDecimal baseIva = this.getInstance().getSubTotalIva().multiply(new BigDecimal(0.12));
+			BigDecimal baseIva = this.getInstance().getSubTotalIva()
+					.multiply(new BigDecimal(0.12));
 			this.getInstance().setIva(baseIva);
-			System.out.println("hace el calculo del iva "+baseIva);
+			System.out.println("hace el calculo del iva " + baseIva);
 		}
 
 		this.getInstance().setValorTotal(
 				this.getInstance()
 						.getSubTotalIva()
 						.add(this.getInstance().getSubTotalCero()
-								.add(this.getInstance().getIva())));		
-		
+								.add(this.getInstance().getIva())));
+
 		this.pagoHome.getInstance()
 				.setTotal(this.getInstance().getValorTotal());
 	}
@@ -403,17 +418,18 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		if (!existeArticuloEnItems(articulo)) {
 			itemLocal.setCodigoBarra(articulo.getCodigoBarra());
 			itemLocal.setArticulo(articulo);
-			//itemLocal.setvUnitario(articulo.getCurrentPrecio().getPvp());
+			// itemLocal.setvUnitario(articulo.getCurrentPrecio().getPvp());
 			if (articulo.getIsCalculatedIva()) {
-				//calculo el valor sin iva
-				
-				itemLocal.setvUnitario(articulo.getCurrentPrecio().getPvp().divide(new BigDecimal(1.12),RoundingMode.HALF_UP));
-			}else{
+				// calculo el valor sin iva
+
+				itemLocal.setvUnitario(articulo.getCurrentPrecio().getPvp()
+						.divide(new BigDecimal(1.12), RoundingMode.HALF_UP));
+			} else {
 				itemLocal.setvUnitario(articulo.getCurrentPrecio().getPvp());
 			}
 			editarValoresItem(itemLocal);
 			actualRow++;
-			
+
 		} else {
 			itemLocal.setCodigoBarra("");
 		}
@@ -465,7 +481,32 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		this.residentHome.setInstance(new Persona());
 		this.pagoHome.setInstance(new Pago());
 		actualRow = 0;
+
+		/**
+		 * corregir no es correcto
+		 */
+		Query q = this.getEntityManager().createNamedQuery(
+				"TipoComprobante.findAll");
+		List<TipoComprobante> list = q.getResultList();
+		this.getInstance().setTipoComprobante(list.get(0));
+					
 		return "nuevo";
+	}
+	
+	public void news(){
+		itemAux = new ArrayList<ItemComprobanteVenta>();
+		this.setInstance(new ComprobanteVenta());
+		this.residentHome.setInstance(new Persona());
+		this.pagoHome.setInstance(new Pago());
+		actualRow = 0;
+
+		/**
+		 * corregir no es correcto
+		 */
+		Query q = this.getEntityManager().createNamedQuery(
+				"TipoComprobante.findAll");
+		List<TipoComprobante> list = q.getResultList();
+		this.getInstance().setTipoComprobante(list.get(0));
 	}
 
 	public Date getDesde() {
@@ -491,7 +532,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	public void setComprobantes(List<ComprobanteVenta> comprobantes) {
 		this.comprobantes = comprobantes;
 	}
-	
+
 	public void buscarFecha() {
 		comprobantes = new ArrayList<ComprobanteVenta>();
 		Query q = this.getEntityManager().createNamedQuery(
@@ -503,6 +544,5 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		System.out.println();
 		System.out.println(hasta);
 	}
-
 
 }
