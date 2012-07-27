@@ -279,8 +279,8 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 				this.getInstance()
 						.getSubTotalIva()
 						.add(this.getInstance().getSubTotalCero()
-								.add(this.getInstance().getIva())));
-
+								.add(this.getInstance().getIva())));		
+		
 		this.pagoHome.getInstance()
 				.setTotal(this.getInstance().getValorTotal());
 	}

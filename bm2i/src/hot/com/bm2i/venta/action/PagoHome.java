@@ -74,14 +74,23 @@ public class PagoHome extends EntityHome<Pago> {
 
 	public void calcularCambio() {
 		if (this.getInstance().getTotal() != null) {
-			this.getInstance().setCambio(
-					this.getInstance().getEfectivo()
-							.subtract(this.getInstance().getTotal()));
-			this.anyError = new Boolean(false);
-			this.errorValue = null;
+			int comp = this.getInstance().getEfectivo()
+					.compareTo(this.getInstance().getTotal());
+			if (comp > 0) {
+				this.getInstance().setCambio(
+						this.getInstance().getEfectivo()
+								.subtract(this.getInstance().getTotal()));
+				this.anyError = new Boolean(false);
+			} else {
+				this.anyError = new Boolean(true);
+				facesMessages
+						.addToControl(
+								"",
+								org.jboss.seam.international.StatusMessage.Severity.ERROR,
+								"El efectivo no puede ser menor al total");
+			}
 		} else {
 			this.anyError = new Boolean(true);
-			this.errorValue = "Debe agregar Articulos al comprobante";
 			facesMessages.addToControl("",
 					org.jboss.seam.international.StatusMessage.Severity.ERROR,
 					"Debe agregar Articulos al comprobante");
