@@ -103,6 +103,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 				itemAux.add(icv);
 			}
 		}
+		
 	}
 
 	public boolean isWired() {
@@ -462,6 +463,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		itemAux = new ArrayList<ItemComprobanteVenta>();
 		this.setInstance(new ComprobanteVenta());
 		this.residentHome.setInstance(new Persona());
+		this.pagoHome.setInstance(new Pago());
 		actualRow = 0;
 		return "nuevo";
 	}
