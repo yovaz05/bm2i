@@ -23,6 +23,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cascade;
 
+import com.bm2i.comun.model.Persona;
 import com.bm2i.comun.model.Resident;
 import com.bm2i.comun.model.TipoComprobante;
 
@@ -87,8 +88,9 @@ public class ComprobanteVenta {
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
 	private Resident resident;
 
-	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
-	private Resident registrador;
+	@ManyToOne
+	@JoinColumn(name = "registrador_id")
+	private Persona registrador;
 
 	public ComprobanteVenta() {
 		items = new ArrayList<ItemComprobanteVenta>();
@@ -264,11 +266,12 @@ public class ComprobanteVenta {
 		this.desgloceImpuesto = desgloceImpuesto;
 	}
 
-	public Resident getRegistrador() {
+	public Persona getRegistrador() {
 		return registrador;
 	}
 
-	public void setRegistrador(Resident registrador) {
+	public void setRegistrador(Persona registrador) {
 		this.registrador = registrador;
 	}
+	
 }// end ComprobanteVenta
