@@ -93,9 +93,9 @@
 							</h:inputText>
 						</s:decorate>
 
-						<s:decorate template="../layout/vertical-edit.xhtml">
+						<s:decorate template="../layout/display.xhtml">
 						</s:decorate>
-						<s:decorate template="../layout/vertical-edit.xhtml">
+						<s:decorate template="../layout/display.xhtml">
 						</s:decorate>
 
 						<rich:column colspan="4" rendered="#{!residentHome.panelNatural}">
@@ -106,7 +106,7 @@
 									value="#{residentHome.instance.nombre}"
 									style="text-transform: uppercase">
 									<a:support event="onblur" reRender="nameField"
-										ajaxSingle="true" />
+										ajaxSingle="true" action="#{comprobanteVentaHome.metodos()}"/>
 								</h:inputText>
 							</s:decorate>
 						</rich:column>
@@ -135,13 +135,13 @@
 							</h:inputText>
 						</s:decorate>
 
-						<s:decorate template="../layout/vertical-edit.xhtml"
+						<s:decorate template="../layout/display.xhtml"
 							rendered="#{!residentHome.panelNatural}">
 						</s:decorate>
 
-						<s:decorate template="../layout/vertical-edit.xhtml">
+						<s:decorate template="../layout/display.xhtml">
 						</s:decorate>
-						<s:decorate template="../layout/vertical-edit.xhtml">
+						<s:decorate template="../layout/display.xhtml">
 						</s:decorate>
 
 						<s:decorate id="streetField"
@@ -223,7 +223,7 @@
 								<a:support event="onblur" ajaxSingle="true"
 									action="#{comprobanteVentaHome.buscarCodigoBarra(_itemComprobanteVenta)}"
 									reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores, 
-									itemComprobanteVentaList,itemsCount, totalField, panelValores, codigoBarra, subTotalIvaField,subTotalCeroField,descuentoField,subTotalField,ivaField,valorTotalField" />
+									itemComprobanteVentaList,itemsCount, totalField, panelValores, codigoBarra, subTotalIvaField,subTotalCeroField,descuentoField,ivaField,valorTotalField" />
 							</h:inputText>
 						</rich:column>
 						<rich:column>
@@ -244,7 +244,7 @@
 								style="text-align: right;" size="7">
 								<a:support event="onblur" ajaxSingle="true"
 									reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores, 
-									itemComprobanteVentaList, itemsCount, totalField, panelValores,codigoBarra,subTotalIvaField,subTotalCeroField,descuentoField,subTotalField,ivaField,valorTotalField"
+									itemComprobanteVentaList, itemsCount, totalField, panelValores,codigoBarra,subTotalIvaField,subTotalCeroField,descuentoField,ivaField,valorTotalField"
 									action="#{comprobanteVentaHome.editarValoresItem(_itemComprobanteVenta)}" />
 							</h:inputText>
 						</rich:column>
@@ -254,7 +254,7 @@
 								style="text-align: right;" size="7">
 								<a:support event="onblur" ajaxSingle="true"
 									reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores,
-									itemComprobanteVentaList,itemsCount, totalField, panelValores,codigoBarra,subTotalIvaField,subTotalCeroField,descuentoField,subTotalField,ivaField,valorTotalField"
+									itemComprobanteVentaList,itemsCount, totalField, panelValores,codigoBarra,subTotalIvaField,subTotalCeroField,descuentoField,ivaField,valorTotalField"
 									action="#{comprobanteVentaHome.editarValoresItem(_itemComprobanteVenta)}"
 									focus="valorTotalField" />
 							</h:inputText>
@@ -397,11 +397,6 @@
 					<s:button id="cancelEdit" value="Cancel" propagation="end"
 						view="/ComprobanteVenta.xhtml"
 						rendered="#{comprobanteVentaHome.managed}" /-->
-					
-
-					<h:commandButton value="Newaaaa probale"
-						action="#{comprobanteVentaHome.news()}"
-						immediate="true" />
 
 					<s:button value="#{messages['common.new']}" propagation="end"
 						view="/venta/ComprobanteVentaEdit.xhtml"
