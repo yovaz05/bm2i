@@ -13,11 +13,7 @@
             </rule>
         </navigation>
     </page>
-    
-    <page view-id="/venta/ComprobanteVentaEdit.xhtml" action="#{comprobanteVentaHome.news()}" >
-     <end-conversation/>
-    </page>
-
+        
     <exception class="org.jboss.seam.framework.EntityNotFoundException">
         <redirect view-id="/error.xhtml">
             <message severity="warn">Record not found</message>
