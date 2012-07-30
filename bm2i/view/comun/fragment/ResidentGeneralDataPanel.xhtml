@@ -53,15 +53,7 @@
 			<h:inputText id="email" size="50"
 				value="#{residentHome.instance.email}" />
 		</s:decorate>
-
-		<s:decorate id="nombreComercialField"
-			template="../../layout/edit.xhtml">
-			<ui:define name="label">Nombre Comercial:</ui:define>
-			<h:inputText id="nombreComercial" size="60" maxlength="80"
-				value="#{residentHome.instance.nombreComercial}"
-				style="text-transform: uppercase" />
-		</s:decorate>
-
+		
 		<div style="clear: both">
 			<span class="required">*</span> #{messages['common.requiredFields']}
 		</div>
