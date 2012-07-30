@@ -60,6 +60,8 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	private Date hasta = new Date();
 	private List<ComprobanteVenta> comprobantes;
 
+	private ComprobanteVenta anularCV;
+
 	public void setComprobanteVentaId(Long id) {
 		setId(id);
 	}
@@ -541,6 +543,30 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	public void metodos() {
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>><< "
 				+ this.residentHome.getInstance().getNombre());
+	}
+
+	public void selectAnularComprobante(ComprobanteVenta cv) {
+		this.anularCV = cv;
+	}
+
+	public void anularComprobante(ComprobanteVenta cv) {
+		
+		//this.anularCV.setIsAnulado(new Boolean(true));
+		this.setInstance(cv);
+		this.getInstance().setIsAnulado(new Boolean(true));
+		this.update();
+	}
+
+	public void cerrarAnular() {
+		this.anularCV = null;
+	}
+
+	public ComprobanteVenta getAnularCV() {
+		return anularCV;
+	}
+
+	public void setAnularCV(ComprobanteVenta anularCV) {
+		this.anularCV = anularCV;
 	}
 
 }

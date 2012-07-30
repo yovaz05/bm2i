@@ -12,9 +12,12 @@ public class ComprobanteVentaList extends EntityQuery<ComprobanteVenta> {
 
 	private static final String EJBQL = "select comprobanteVenta from ComprobanteVenta comprobanteVenta";
 
-	private static final String[] RESTRICTIONS = {"lower(comprobanteVenta.guiaRemision) like lower(concat(#{comprobanteVentaList.comprobanteVenta.guiaRemision},'%'))",};
+	private static final String[] RESTRICTIONS = {
+			"comprobanteVenta.numero = #{comprobanteVentaList.comprobanteVenta.numero}",
+			"lower(comprobanteVenta.resident.nombre) like lower(concat('%',#{comprobanteVentaList.residentName}, '%'))", };
 
 	private ComprobanteVenta comprobanteVenta = new ComprobanteVenta();
+	private String residentName;
 
 	public ComprobanteVentaList() {
 		setEjbql(EJBQL);
@@ -25,4 +28,18 @@ public class ComprobanteVentaList extends EntityQuery<ComprobanteVenta> {
 	public ComprobanteVenta getComprobanteVenta() {
 		return comprobanteVenta;
 	}
+
+	public String getResidentName() {
+		return residentName;
+	}
+
+	public void setResidentName(String residentName) {
+		this.residentName = residentName;
+	}
+
+	@Override
+	public String getRestrictionLogicOperator() {
+		return "or";
+	}
+
 }
