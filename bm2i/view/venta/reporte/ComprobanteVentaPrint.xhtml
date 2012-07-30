@@ -43,12 +43,12 @@
 </head>
 <body>
 	<h:form id="diaTrabajo" styleClass="edit">
-		<div style="width: 585.82px">
+		<div style="width: 585.82px" >
 
 
-			<table width="100%" border="1">
-				<tr>
-					<td width="70%"><h:outputText
+			<table width="100%" border="1" >
+				<tr >
+					<td width="70%" ><h:outputText
 							value="#{comprobanteVentaHome.instance.fecha}">
 							<f:convertDateTime pattern="yyyy - MMMM - dd" locale="es" />
 						</h:outputText>
@@ -76,7 +76,8 @@
 
 			</table>
 			<div align="center">
-				<div align="center">
+
+				<div align="center" style="height: 500px">
 					<rich:dataTable id="itemComprobanteVentaList"
 						var="_itemComprobanteVenta"
 						value="#{comprobanteVentaHome.instance.items}" width="100%" >
