@@ -22,7 +22,7 @@ public class PagoHome extends EntityHome<Pago> {
 	@In
 	FacesMessages facesMessages;
 
-	private Boolean anyError = new Boolean(false);
+	private Boolean anyError = new Boolean(true);
 	private String errorValue;
 
 	public void setPagoId(Long id) {

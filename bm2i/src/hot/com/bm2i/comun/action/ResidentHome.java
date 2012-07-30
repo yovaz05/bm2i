@@ -1,10 +1,11 @@
 package com.bm2i.comun.action;
 
 import java.util.ArrayList;
-import javax.persistence.Query;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Query;
 
 import org.jboss.seam.annotations.Factory;
 import org.jboss.seam.annotations.In;
@@ -220,6 +221,7 @@ public class ResidentHome extends EntityHome<Resident> {
 				this.getInstance().setFechaRegistro(new Date());
 				this.getInstance().getCurrentDireccion().setPais("ECUADOR");
 				this.persist();
+				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<< . . .  "+this.getInstance().getNombre());
 				return true;
 			}
 		} else {

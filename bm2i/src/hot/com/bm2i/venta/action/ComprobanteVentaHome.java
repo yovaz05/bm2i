@@ -5,12 +5,8 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import javax.persistence.Query;
-import javax.servlet.http.HttpServletRequest;
 
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Factory;
@@ -248,8 +244,6 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	public void calculoComprobanteVenta() {
 		// identificarDesgloce();
 		// for (ItemComprobanteVenta it : this.getInstance().getItems()) {
-		System.out
-				.println(">>>>>>>>>>>>>>>> entra a realizar el calculo final<<<<<<<<<<<<<<<");
 		this.getInstance().setIva(new BigDecimal(0));
 		this.getInstance().setSubTotalIva(new BigDecimal(0));
 		this.getInstance().setSubTotalCero(new BigDecimal(0));
@@ -260,19 +254,16 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		int cantArticulosSINIVA = 0;
 		for (ItemComprobanteVenta it : this.itemAux) {
 			if (it.getArticulo() != null) {
-				System.out.println("esta en el forssssss");
 				if (it.getArticulo().getIsCalculatedIva()) {
 					this.getInstance().setSubTotalIva(
 							this.getInstance().getSubTotalIva()
 									.add(it.getvTotal()));
-					System.out.println("con iva " + cantArticulosIVA);
 					cantArticulosIVA++;
 
 				} else {
 					this.getInstance().setSubTotalCero(
 							this.getInstance().getSubTotalCero()
 									.add(it.getvTotal()));
-					System.out.println("sin iva " + cantArticulosSINIVA);
 					cantArticulosSINIVA++;
 				}
 			}
@@ -288,7 +279,6 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 			BigDecimal baseIva = this.getInstance().getSubTotalIva()
 					.multiply(new BigDecimal(0.12));
 			this.getInstance().setIva(baseIva);
-			System.out.println("hace el calculo del iva " + baseIva);
 		}
 
 		this.getInstance().setValorTotal(
@@ -458,16 +448,34 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	}
 
 	public void guardar() {
-		if (this.residentHome.savaOrUpdate()) {
-			this.getInstance().setResident(this.residentHome.getInstance());
-			this.getInstance().setRegistrador(this.userSession.getPersona());
-			this.getInstance().setPago(this.pagoHome.getInstance());
-			for (ItemComprobanteVenta icv : this.itemAux) {
-				if (icv.getArticulo() != null) {
-					this.getInstance().add(icv);
+		if (this.residentHome.getInstance().getNumeroIdentificacion() != null) {
+			if (!this.pagoHome.getAnyError()) {
+				if (actualRow > 0) {
+					this.getInstance().setResident(
+							this.residentHome.getInstance());
+					this.getInstance().setRegistrador(
+							this.userSession.getPersona());
+					this.getInstance().setPago(this.pagoHome.getInstance());
+					for (ItemComprobanteVenta icv : this.itemAux) {
+						if (icv.getArticulo() != null) {
+							this.getInstance().add(icv);
+						}
+					}
+					this.persist();
+				} else {
+					facesMessages
+							.addToControl(
+									"",
+									org.jboss.seam.international.StatusMessage.Severity.ERROR,
+									"Debe agregar articulos al comprobate");
 				}
+			} else {
+				facesMessages
+						.addToControl(
+								"",
+								org.jboss.seam.international.StatusMessage.Severity.ERROR,
+								"Por favor registre el pago");
 			}
-			this.persist();
 		} else {
 			facesMessages.addToControl("",
 					org.jboss.seam.international.StatusMessage.Severity.ERROR,
@@ -480,6 +488,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		this.setInstance(new ComprobanteVenta());
 		this.residentHome.setInstance(new Persona());
 		this.pagoHome.setInstance(new Pago());
+		this.pagoHome.setAnyError(true);
 		actualRow = 0;
 
 		/**
@@ -489,24 +498,8 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 				"TipoComprobante.findAll");
 		List<TipoComprobante> list = q.getResultList();
 		this.getInstance().setTipoComprobante(list.get(0));
-					
+
 		return "nuevo";
-	}
-	
-	public void news(){
-		itemAux = new ArrayList<ItemComprobanteVenta>();
-		this.setInstance(new ComprobanteVenta());
-		this.residentHome.setInstance(new Persona());
-		this.pagoHome.setInstance(new Pago());
-		actualRow = 0;
-
-		/**
-		 * corregir no es correcto
-		 */
-		Query q = this.getEntityManager().createNamedQuery(
-				"TipoComprobante.findAll");
-		List<TipoComprobante> list = q.getResultList();
-		this.getInstance().setTipoComprobante(list.get(0));
 	}
 
 	public Date getDesde() {
@@ -543,6 +536,11 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		System.out.println("las fechas sons");
 		System.out.println();
 		System.out.println(hasta);
+	}
+
+	public void metodos() {
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>><< "
+				+ this.residentHome.getInstance().getNombre());
 	}
 
 }
