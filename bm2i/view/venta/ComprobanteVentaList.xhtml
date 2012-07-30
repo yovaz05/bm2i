@@ -62,7 +62,9 @@
 
 					<rich:dataTable id="comprobanteVentaList" var="_comprobanteVenta"
 						value="#{comprobanteVentaList.resultList}"
-						rendered="#{not empty comprobanteVentaList.resultList}">
+						rendered="#{not empty comprobanteVentaList.resultList}"
+						onRowMouseOver="this.style.backgroundColor='#9EBAC7'"
+						onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'">
 						<rich:column>
 							<f:facet name="header">
 								<ui:include src="../layout/sort.xhtml">
