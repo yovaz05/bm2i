@@ -61,10 +61,7 @@ public abstract class Resident {
 
 	@Column(length = 50)
 	private String nombre;
-
-	@Column(length = 60)
-	private String nombreComercial;
-
+	
 	@Column(length = 50)
 	private String email;
 
@@ -129,7 +126,7 @@ public abstract class Resident {
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre = nombre.toUpperCase();
 	}
 
 	public String getEmail() {
@@ -179,15 +176,7 @@ public abstract class Resident {
 	public void setCurrentDireccion(Direccion currentDireccion) {
 		this.currentDireccion = currentDireccion;
 	}
-
-	public String getNombreComercial() {
-		return nombreComercial;
-	}
-
-	public void setNombreComercial(String nombreComercial) {
-		this.nombreComercial = nombreComercial;
-	}
-
+	
 	public void add(Direccion address) {
 		if (!this.direcciones.contains(address)) {
 			this.direcciones.add(address);
