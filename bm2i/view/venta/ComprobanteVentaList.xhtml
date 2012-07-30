@@ -6,9 +6,11 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:rich="http://richfaces.org/rich"
-	template="../layout/template.xhtml">
+	xmlns:a="http://richfaces.org/a4j" template="../layout/template.xhtml">
 
 	<ui:define name="body">
+
+		<ui:include src="fragmento/AnularModalPanel.xhtml" />
 
 		<h:form id="comprobanteVentaSearch" styleClass="edit">
 
@@ -17,9 +19,15 @@
 				switchType="ajax">
 
 				<s:decorate template="../layout/display.xhtml">
-					<ui:define name="label">Guia remision</ui:define>
-					<h:inputText id="guiaRemision"
-						value="#{comprobanteVentaList.comprobanteVenta.guiaRemision}" />
+					<ui:define name="label">#{messages['comprobanteVenta.numero']}</ui:define>
+					<h:inputText id="numero"
+						value="#{comprobanteVentaList.comprobanteVenta.numero}" />
+				</s:decorate>
+
+				<s:decorate template="../layout/display.xhtml">
+					<ui:define name="label">#{messages['resident.name']}</ui:define>
+					<h:inputText id="residentName"
+						value="#{comprobanteVentaList.residentName}" />
 				</s:decorate>
 
 
@@ -32,223 +40,222 @@
 					includePageParams="false" />
 			</div>
 
-		</h:form>
-
-		<rich:panel>
-			<f:facet name="header">
-				<h:panelGrid columns="2" columnClasses="headerTitle,">
-					<h:outputText
-						value="#{messages['comprobanteVenta.searchResults']} (#{empty comprobanteVentaList.resultList ? 0 : (comprobanteVentaList.paginated ? comprobanteVentaList.resultCount : comprobanteVentaList.resultList.size)})" />
-					<s:div styleClass="actionButtons" rendered="#{empty from}">
-						<s:button view="/venta/ComprobanteVentaEdit.xhtml" id="create"
-							propagation="none" value="Create comprobanteVenta">
-							<f:param name="comprobanteVentaId" />
-						</s:button>
-					</s:div>
-				</h:panelGrid>
-			</f:facet>
-			<div class="results" id="comprobanteVentaList">
-
-				<h:outputText value="#{messages['action.noresults']}"
-					rendered="#{empty comprobanteVentaList.resultList}" />
-
-				<rich:dataTable id="comprobanteVentaList" var="_comprobanteVenta"
-					value="#{comprobanteVentaList.resultList}"
-					rendered="#{not empty comprobanteVentaList.resultList}">
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{comprobanteVentaList}" />
-								<ui:param name="propertyLabel" value="Id" />
-								<ui:param name="propertyPath" value="comprobanteVenta.id" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_comprobanteVenta.id}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{comprobanteVentaList}" />
-								<ui:param name="propertyLabel" value="Fecha" />
-								<ui:param name="propertyPath" value="comprobanteVenta.fecha" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_comprobanteVenta.fecha}">
-							<s:convertDateTime type="date" dateStyle="short" />
-						</h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{comprobanteVentaList}" />
-								<ui:param name="propertyLabel" value="Numero" />
-								<ui:param name="propertyPath" value="comprobanteVenta.numero" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_comprobanteVenta.numero}" />
-					</h:column>
-
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{comprobanteVentaList}" />
-								<ui:param name="propertyLabel" value="Descuento" />
-								<ui:param name="propertyPath" value="comprobanteVenta.descuento" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_comprobanteVenta.descuento}">
-							<f:convertNumber />
-						</h:outputText>
-					</h:column>
 
 
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{comprobanteVentaList}" />
-								<ui:param name="propertyLabel" value="Iva" />
-								<ui:param name="propertyPath" value="comprobanteVenta.iva" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_comprobanteVenta.iva}">
-							<f:convertNumber />
-						</h:outputText>
-					</h:column>
+			<rich:panel>
+				<f:facet name="header">
+					<h:panelGrid columns="2" columnClasses="headerTitle,">
+						<h:outputText
+							value="#{messages['comprobanteVenta.searchResults']} (#{empty comprobanteVentaList.resultList ? 0 : (comprobanteVentaList.paginated ? comprobanteVentaList.resultCount : comprobanteVentaList.resultList.size)})" />
+						<s:div styleClass="actionButtons" rendered="#{empty from}">
+							<s:button view="/venta/ComprobanteVentaEdit.xhtml" id="create"
+								propagation="none" value="Create comprobanteVenta">
+								<f:param name="comprobanteVentaId" />
+							</s:button>
+						</s:div>
+					</h:panelGrid>
+				</f:facet>
+				<div class="results" id="comprobanteVentaList">
 
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{comprobanteVentaList}" />
-								<ui:param name="propertyLabel" value="Pago id" />
-								<ui:param name="propertyPath" value="comprobanteVenta.pago.id" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_comprobanteVenta.pago.id}" />
-					</h:column>
+					<h:outputText value="#{messages['action.noresults']}"
+						rendered="#{empty comprobanteVentaList.resultList}" />
 
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{comprobanteVentaList}" />
-								<ui:param name="propertyLabel" value="Resident id" />
-								<ui:param name="propertyPath"
-									value="comprobanteVenta.resident.nombre" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_comprobanteVenta.resident.nombre}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{comprobanteVentaList}" />
-								<ui:param name="propertyLabel" value="Sub total" />
-								<ui:param name="propertyPath" value="comprobanteVenta.subTotal" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_comprobanteVenta.subTotal}">
-							<f:convertNumber />
-						</h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{comprobanteVentaList}" />
-								<ui:param name="propertyLabel" value="Sub total cero" />
-								<ui:param name="propertyPath"
-									value="comprobanteVenta.subTotalCero" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_comprobanteVenta.subTotalCero}">
-							<f:convertNumber />
-						</h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{comprobanteVentaList}" />
-								<ui:param name="propertyLabel" value="Sub total iva" />
-								<ui:param name="propertyPath"
-									value="comprobanteVenta.subTotalIva" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_comprobanteVenta.subTotalIva}">
-							<f:convertNumber />
-						</h:outputText>
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{comprobanteVentaList}" />
-								<ui:param name="propertyLabel" value="Tipo comprobante id" />
-								<ui:param name="propertyPath"
-									value="comprobanteVenta.tipoComprobante.id" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_comprobanteVenta.tipoComprobante.id}" />
-					</h:column>
-					<h:column>
-						<f:facet name="header">
-							<ui:include src="../layout/sort.xhtml">
-								<ui:param name="entityList" value="#{comprobanteVentaList}" />
-								<ui:param name="propertyLabel" value="Valor total" />
-								<ui:param name="propertyPath"
-									value="comprobanteVenta.valorTotal" />
-							</ui:include>
-						</f:facet>
-						<h:outputText value="#{_comprobanteVenta.valorTotal}">
-							<f:convertNumber />
-						</h:outputText>
-					</h:column>
-					<rich:column styleClass="action">
-						<f:facet name="header">#{messages['common.action']}</f:facet>
+					<rich:dataTable id="comprobanteVentaList" var="_comprobanteVenta"
+						value="#{comprobanteVentaList.resultList}"
+						rendered="#{not empty comprobanteVentaList.resultList}">
+						<rich:column>
+							<f:facet name="header">
+								<ui:include src="../layout/sort.xhtml">
+									<ui:param name="entityList" value="#{comprobanteVentaList}" />
+									<ui:param name="propertyLabel" value="Id" />
+									<ui:param name="propertyPath" value="comprobanteVenta.id" />
+								</ui:include>
+							</f:facet>
+							<h:outputText value="#{_comprobanteVenta.id}" />
+						</rich:column>
 
-						<s:link view="/ComprobanteVentaEdit.xhtml" value="Edit"
-							propagation="none" id="comprobanteVentaEdit"
-							rendered="#{empty from}">
-							<f:param name="comprobanteVentaId"
-								value="#{_comprobanteVenta.id}" />
-						</s:link>
-					</rich:column>
-				</rich:dataTable>
+						<rich:column>
+							<f:facet name="header">
+								<ui:include src="../layout/sort.xhtml">
+									<ui:param name="entityList" value="#{comprobanteVentaList}" />
+									<ui:param name="propertyLabel"
+										value="#{messages['tipoComprobante']}" />
+									<ui:param name="propertyPath"
+										value="comprobanteVenta.tipoComprobante.nombre" />
+								</ui:include>
+							</f:facet>
+							<h:outputText value="#{_comprobanteVenta.tipoComprobante.nombre}" />
+						</rich:column>
+
+						<rich:column>
+							<f:facet name="header">
+								<ui:include src="../layout/sort.xhtml">
+									<ui:param name="entityList" value="#{comprobanteVentaList}" />
+									<ui:param name="propertyLabel"
+										value="#{messages['comprobanteVenta.fecha']}" />
+									<ui:param name="propertyPath" value="comprobanteVenta.fecha" />
+								</ui:include>
+							</f:facet>
+							<h:outputText value="#{_comprobanteVenta.fecha}">
+								<s:convertDateTime type="date" dateStyle="short"
+									pattern="#{messages['common.datePattern']}" />
+							</h:outputText>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<ui:include src="../layout/sort.xhtml">
+									<ui:param name="entityList" value="#{comprobanteVentaList}" />
+									<ui:param name="propertyLabel"
+										value="#{messages['comprobanteVenta.numero']}" />
+									<ui:param name="propertyPath" value="comprobanteVenta.numero" />
+								</ui:include>
+							</f:facet>
+							<h:outputText value="#{_comprobanteVenta.numero}" />
+						</rich:column>
+
+						<rich:column>
+							<f:facet name="header">
+								<ui:include src="../layout/sort.xhtml">
+									<ui:param name="entityList" value="#{comprobanteVentaList}" />
+									<ui:param name="propertyLabel"
+										value="#{messages['resident.name']}" />
+									<ui:param name="propertyPath"
+										value="comprobanteVenta.resident.nombre" />
+								</ui:include>
+							</f:facet>
+							<h:outputText value="#{_comprobanteVenta.resident.nombre}" />
+						</rich:column>
+
+						<rich:column style="text-align: right;">
+							<f:facet name="header">
+								<ui:include src="../layout/sort.xhtml">
+									<ui:param name="entityList" value="#{comprobanteVentaList}" />
+									<ui:param name="propertyLabel"
+										value="#{messages['comprobanteVenta.subTotalIva']}" />
+									<ui:param name="propertyPath"
+										value="comprobanteVenta.subTotalIva" />
+								</ui:include>
+							</f:facet>
+							<h:outputText value="#{_comprobanteVenta.subTotalIva}">
+								<f:convertNumber />
+							</h:outputText>
+						</rich:column>
+
+						<rich:column style="text-align: right;">
+							<f:facet name="header">
+								<ui:include src="../layout/sort.xhtml">
+									<ui:param name="entityList" value="#{comprobanteVentaList}" />
+									<ui:param name="propertyLabel"
+										value="#{messages['comprobanteVenta.descuento']}" />
+									<ui:param name="propertyPath"
+										value="comprobanteVenta.descuento" />
+								</ui:include>
+							</f:facet>
+							<h:outputText value="#{_comprobanteVenta.descuento}">
+								<f:convertNumber />
+							</h:outputText>
+						</rich:column>
+
+						<rich:column style="text-align: right;">
+							<f:facet name="header">
+								<ui:include src="../layout/sort.xhtml">
+									<ui:param name="entityList" value="#{comprobanteVentaList}" />
+									<ui:param name="propertyLabel"
+										value="#{messages['comprobanteVenta.subTotalCero']}" />
+									<ui:param name="propertyPath"
+										value="comprobanteVenta.subTotalCero" />
+								</ui:include>
+							</f:facet>
+							<h:outputText value="#{_comprobanteVenta.subTotalCero}">
+								<f:convertNumber />
+							</h:outputText>
+						</rich:column>
+
+						<rich:column style="text-align: right;">
+							<f:facet name="header">
+								<ui:include src="../layout/sort.xhtml">
+									<ui:param name="entityList" value="#{comprobanteVentaList}" />
+									<ui:param name="propertyLabel"
+										value="#{messages['comprobanteVenta.iva']}" />
+									<ui:param name="propertyPath" value="comprobanteVenta.iva" />
+								</ui:include>
+							</f:facet>
+							<h:outputText value="#{_comprobanteVenta.iva}">
+								<f:convertNumber />
+							</h:outputText>
+						</rich:column>
+
+						<rich:column style="text-align: right;">
+							<f:facet name="header">
+								<ui:include src="../layout/sort.xhtml">
+									<ui:param name="entityList" value="#{comprobanteVentaList}" />
+									<ui:param name="propertyLabel"
+										value="#{messages['comprobanteVenta.valorTotal']}" />
+									<ui:param name="propertyPath"
+										value="comprobanteVenta.valorTotal" />
+								</ui:include>
+							</f:facet>
+							<h:outputText value="#{_comprobanteVenta.valorTotal}">
+								<f:convertNumber />
+							</h:outputText>
+						</rich:column>
+
+						<rich:column styleClass="action">
+							<f:facet name="header">#{messages['comprobanteVenta.isAnulado']}</f:facet>
+							<h:selectBooleanCheckbox value="#{_comprobanteVenta.isAnulado}"
+								disabled="true" />
+						</rich:column>
+
+						<rich:column styleClass="action">
+							<f:facet name="header">#{messages['common.action']}</f:facet>
+							<a:commandButton value="Anular" ajaxSingle="true"
+								action="#{comprobanteVentaHome.anularComprobante(_comprobanteVenta)}"
+								reRender="comprobanteVentaList" />
+							<!-- a:commandButton value="Anular" ajaxSingle="true"
+								action=" # {comprobanteVentaHome.selectAnularComprobante(_comprobanteVenta)}"
+								oncomplete="Richfaces.showModalPanel('anularModalPanel',{width:450, top:100})"
+								reRender="panelAnualComprobante" bypassUpdates="true"/-->
+						</rich:column>
+					</rich:dataTable>
+
+				</div>
+			</rich:panel>
+
+			<div class="tableControl">
+
+				<s:link view="/venta/ComprobanteVentaList.xhtml"
+					rendered="#{comprobanteVentaList.previousExists}"
+					value="#{messages.left}#{messages.left} #{messages['common.firstPage']}"
+					id="firstPage">
+					<f:param name="firstResult" value="0" />
+				</s:link>
+
+				<s:link view="/venta/ComprobanteVentaList.xhtml"
+					rendered="#{comprobanteVentaList.previousExists}"
+					value="#{messages.left} #{messages['common.previousPage']}"
+					id="previousPage">
+					<f:param name="firstResult"
+						value="#{comprobanteVentaList.previousFirstResult}" />
+				</s:link>
+
+				<s:link view="/venta/ComprobanteVentaList.xhtml"
+					rendered="#{comprobanteVentaList.nextExists}"
+					value="#{messages['common.nextPage']} #{messages.right}"
+					id="nextPage">
+					<f:param name="firstResult"
+						value="#{comprobanteVentaList.nextFirstResult}" />
+				</s:link>
+
+				<s:link view="/venta/ComprobanteVentaList.xhtml"
+					rendered="#{comprobanteVentaList.nextExists}"
+					value="#{messages['common.lastPage']} #{messages.right}#{messages.right}"
+					id="lastPage">
+					<f:param name="firstResult"
+						value="#{comprobanteVentaList.lastFirstResult}" />
+				</s:link>
 
 			</div>
-		</rich:panel>
-
-		<div class="tableControl">
-
-			<s:link view="/venta/ComprobanteVentaList.xhtml"
-				rendered="#{comprobanteVentaList.previousExists}"
-				value="#{messages.left}#{messages.left} #{messages['common.firstPage']}"
-				id="firstPage">
-				<f:param name="firstResult" value="0" />
-			</s:link>
-
-			<s:link view="/venta/ComprobanteVentaList.xhtml"
-				rendered="#{comprobanteVentaList.previousExists}"
-				value="#{messages.left} #{messages['common.previousPage']}"
-				id="previousPage">
-				<f:param name="firstResult"
-					value="#{comprobanteVentaList.previousFirstResult}" />
-			</s:link>
-
-			<s:link view="/venta/ComprobanteVentaList.xhtml"
-				rendered="#{comprobanteVentaList.nextExists}"
-				value="#{messages['common.nextPage']} #{messages.right}"
-				id="nextPage">
-				<f:param name="firstResult"
-					value="#{comprobanteVentaList.nextFirstResult}" />
-			</s:link>
-
-			<s:link view="/venta/ComprobanteVentaList.xhtml"
-				rendered="#{comprobanteVentaList.nextExists}"
-				value="#{messages['common.lastPage']} #{messages.right}#{messages.right}"
-				id="lastPage">
-				<f:param name="firstResult"
-					value="#{comprobanteVentaList.lastFirstResult}" />
-			</s:link>
-
-		</div>
-
+		</h:form>
 	</ui:define>
 
 </ui:composition>
