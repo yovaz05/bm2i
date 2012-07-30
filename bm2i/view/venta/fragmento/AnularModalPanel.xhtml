@@ -1,0 +1,93 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<rich:modalPanel id="anularModalPanel" width="450" height="300">
+		<f:facet name="header">
+			<h:panelGroup>
+				<h:outputText value="Anular Comprobante Venta"></h:outputText>
+			</h:panelGroup>
+		</f:facet>
+		<f:facet name="controls">
+			<h:panelGroup>
+				<h:graphicImage value="/img/error.gif" style="cursor:pointer"
+					id="hidelink" />
+				<rich:componentControl for="anularModalPanel" attachTo="hidelink"
+					operation="hide" event="onclick" />
+			</h:panelGroup>
+		</f:facet>
+
+		<h:form id="pagoForm">
+
+			<h:panelGrid width="100%">
+
+				<rich:panel style="width:100%; " id="panelAnualComprobante">
+
+					<s:decorate id="tipoComprobanteField"
+						template="../../layout/vertical-edit.xhtml">
+						<ui:define name="label">Tipo Comprobante</ui:define>
+
+						<h:inputText
+							value="#{comprobanteVentaHome.anularCV.tipoComprobante.nombre}"
+							required="true" disabled="true">
+						</h:inputText>
+					</s:decorate>
+
+					<s:decorate id="numeroField"
+						template="../../layout/vertical-edit.xhtml">
+						<ui:define name="label">Numero</ui:define>
+						<h:inputText id="numero"
+							value="#{comprobanteVentaHome.anularCV.numero}" required="true"
+							disabled="true">
+						</h:inputText>
+					</s:decorate>
+
+					<s:decorate id="fechaField"
+						template="../../layout/vertical-edit.xhtml">
+						<ui:define name="label">Fecha</ui:define>
+						<rich:calendar id="fecha"
+							value="#{comprobanteVentaHome.anularCV.fecha}"
+							datePattern="#{messages['common.datePattern']}" required="true"
+							inputSize="15" disabled="true" />
+					</s:decorate>
+
+
+					<s:decorate id="nameField"
+						template="../../layout/vertical-edit.xhtml">
+						<ui:define name="label">#{messages['resident.name']}:</ui:define>
+						<h:inputText id="name" required="true" size="50" maxlength="70"
+							value="#{comprobanteVentaHome.anularCV.resident.nombre}"
+							style="text-transform: uppercase" disabled="true">
+						</h:inputText>
+					</s:decorate>
+
+
+					<div style="clear: both">
+						<span class="required"></span>
+					</div>
+				</rich:panel>
+
+			</h:panelGrid>
+			<div align="center" style="width: 100%;">
+				<h:panelGrid columns="4" style="text-align:center">
+
+					<a:commandButton value="#{messages['common.anular']}" id="btAnular"
+						ajaxSingle="true"
+						action="#{comprobanteVentaHome.anularComprobante()}"
+						oncomplete="Richfaces.hideModalPanel('anularModalPanel');" />
+
+					<a:commandButton value="#{messages['common.quit']}"
+						oncomplete="Richfaces.hideModalPanel('anularModalPanel');"
+						ajaxSingle="true" />
+				</h:panelGrid>
+			</div>
+
+		</h:form>
+	</rich:modalPanel>
+</ui:composition>
