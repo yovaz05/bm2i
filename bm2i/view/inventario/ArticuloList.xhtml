@@ -64,7 +64,9 @@
 
 				<rich:dataTable id="articuloList" var="_articulo"
 					value="#{articuloList.resultList}"
-					rendered="#{not empty articuloList.resultList}">
+					rendered="#{not empty articuloList.resultList}"
+					onRowMouseOver="this.style.backgroundColor='#9EBAC7'"
+					onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'">
 					<h:column>
 						<f:facet name="header">
 							<ui:include src="../layout/sort.xhtml">
