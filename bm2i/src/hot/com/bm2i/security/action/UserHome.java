@@ -20,12 +20,10 @@ public class UserHome extends EntityHome<Usuario> {
 	@In(create = true)
 	PasswordManager passwordManager;
 	private Persona persona = new Persona();
-	
+
 	@In(create = true)
 	ResidentHome residentHome;
-	
-	
-	
+
 	private String password;
 
 	public void setUserId(Long id) {
@@ -128,21 +126,33 @@ public class UserHome extends EntityHome<Usuario> {
 		Query q = this.getEntityManager().createNamedQuery(
 				"Persona.findPersonaByCedula");
 		q.setParameter("cedula", this.persona.getNumeroIdentificacion());
-		
+
 		if (q.getResultList().size() > 0) {
 			this.persona = (Persona) q.getSingleResult();
-			
+
 			Query q2 = this.getEntityManager().createNamedQuery(
 					"Usuario.findUsuarioByPersona");
 			q2.setParameter("persona", this.persona);
-			
+
 			if (q2.getResultList().size() > 0) {
-				this.setInstance((Usuario)q2.getSingleResult());
+				this.setInstance((Usuario) q2.getSingleResult());
 			}
 		}
 		System.out.println("===================== " + q.getResultList().size()
 				+ "    " + this.persona.getNumeroIdentificacion());
-		
+
+	}
+
+	@Override
+	public String persist() {
+		this.persona.setNombre(this.persona.toString());
+		return super.persist();
+	}
+
+	@Override
+	public String update() {
+		this.persona.setNombre(this.persona.toString());
+		return super.update();
 	}
 
 }
