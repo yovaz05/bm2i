@@ -12,6 +12,7 @@ import org.jboss.seam.framework.EntityHome;
 import com.bm2i.comun.model.Persona;
 import com.bm2i.security.Role;
 import com.bm2i.security.Usuario;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 @Name("userHome")
 public class UserHome extends EntityHome<Usuario> {
@@ -19,6 +20,12 @@ public class UserHome extends EntityHome<Usuario> {
 	@In(create = true)
 	PasswordManager passwordManager;
 	private Persona persona = new Persona();
+	
+	@In(create = true)
+	ResidentHome residentHome;
+	
+	
+	
 	private String password;
 
 	public void setUserId(Long id) {
@@ -81,21 +88,17 @@ public class UserHome extends EntityHome<Usuario> {
 		getInstance().remove(role);
 	}
 
-	/*@Override
-	public String persist() {
-		String pass = password.trim();
-		//getInstance().setPassword(passwordManager.hash(pass));
-
-		return super.persist();
-	}
-
-	@Override
-	public String update() {
-		String pass = password.trim();
-		//getInstance().setPassword(passwordManager.hash(pass));
-
-		return super.update();
-	}*/
+	/*
+	 * @Override public String persist() { String pass = password.trim();
+	 * //getInstance().setPassword(passwordManager.hash(pass));
+	 * 
+	 * return super.persist(); }
+	 * 
+	 * @Override public String update() { String pass = password.trim();
+	 * //getInstance().setPassword(passwordManager.hash(pass));
+	 * 
+	 * return super.update(); }
+	 */
 
 	@SuppressWarnings("unchecked")
 	public List<Persona> findPersona(Object suggest) {
@@ -119,6 +122,25 @@ public class UserHome extends EntityHome<Usuario> {
 
 	public void setPersona(Persona persona) {
 		this.persona = persona;
+	}
+
+	public void buscarCedula() {
+		Query q = this.getEntityManager().createNamedQuery(
+				"Persona.findPersonaByCedula");
+		q.setParameter("cedula", this.persona.getNumeroIdentificacion());
+		if (q.getResultList().size() > 0) {
+			this.persona = (Persona) q.getSingleResult();
+			
+			Query q2 = this.getEntityManager().createNamedQuery(
+					"Usuario.findUsuarioByPersona");
+			q2.setParameter("persona", this.persona);
+			
+			if (q2.getResultList().size() > 0) {
+				this.setInstance((Usuario)q2.getSingleResult());
+			}
+		}
+		System.out.println("===================== " + q.getResultList().size()
+				+ "    " + this.persona.getNumeroIdentificacion());
 	}
 
 }
