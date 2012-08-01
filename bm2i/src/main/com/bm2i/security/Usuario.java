@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,16 +20,16 @@ import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Cascade;
+
 import com.bm2i.comun.model.Persona;
-
-
 
 @Entity
 @TableGenerator(name = "UsuarioGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "Usuario", initialValue = 1, allocationSize = 1)
 @NamedQueries(value = {
 		@NamedQuery(name = "Usuario.findByUsernameAndPassword", query = "select u from Usuario u where u.name = :name and u.password = :password"),
 		@NamedQuery(name = "Usuario.findPersonByUserId", query = "select u.persona from Usuario u where u.id = :userId"),
-		@NamedQuery(name = "Usuario.findUsuarioByPersona", query = "select u from Usuario u where u.persona = :persona")})
+		@NamedQuery(name = "Usuario.findUsuarioByPersona", query = "select u from Usuario u where u.persona = :persona") })
 public class Usuario {
 	@Id
 	@GeneratedValue(generator = "UsuarioGenerator", strategy = GenerationType.TABLE)
@@ -42,7 +43,8 @@ public class Usuario {
 	@Temporal(TemporalType.DATE)
 	private Date expirationDate;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE,
+			CascadeType.REFRESH })
 	@JoinColumn(name = "person_id")
 	private Persona persona;
 

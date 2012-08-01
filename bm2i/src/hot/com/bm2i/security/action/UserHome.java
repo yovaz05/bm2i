@@ -9,10 +9,10 @@ import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.framework.EntityHome;
 
+import com.bm2i.comun.action.ResidentHome;
 import com.bm2i.comun.model.Persona;
 import com.bm2i.security.Role;
 import com.bm2i.security.Usuario;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 @Name("userHome")
 public class UserHome extends EntityHome<Usuario> {
@@ -128,6 +128,7 @@ public class UserHome extends EntityHome<Usuario> {
 		Query q = this.getEntityManager().createNamedQuery(
 				"Persona.findPersonaByCedula");
 		q.setParameter("cedula", this.persona.getNumeroIdentificacion());
+		
 		if (q.getResultList().size() > 0) {
 			this.persona = (Persona) q.getSingleResult();
 			
@@ -141,6 +142,7 @@ public class UserHome extends EntityHome<Usuario> {
 		}
 		System.out.println("===================== " + q.getResultList().size()
 				+ "    " + this.persona.getNumeroIdentificacion());
+		
 	}
 
 }
