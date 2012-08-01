@@ -27,7 +27,8 @@ import com.bm2i.comun.model.Persona;
 @TableGenerator(name = "UsuarioGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "Usuario", initialValue = 1, allocationSize = 1)
 @NamedQueries(value = {
 		@NamedQuery(name = "Usuario.findByUsernameAndPassword", query = "select u from Usuario u where u.name = :name and u.password = :password"),
-		@NamedQuery(name = "Usuario.findPersonByUserId", query = "select u.persona from Usuario u where u.id = :userId") })
+		@NamedQuery(name = "Usuario.findPersonByUserId", query = "select u.persona from Usuario u where u.id = :userId"),
+		@NamedQuery(name = "Usuario.findUsuarioByPersona", query = "select u from Usuario u where u.persona = :persona")})
 public class Usuario {
 	@Id
 	@GeneratedValue(generator = "UsuarioGenerator", strategy = GenerationType.TABLE)
