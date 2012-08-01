@@ -1,0 +1,286 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:form id="user" styleClass="edit">
+
+			<h:outputText styleClass="formTitle"
+				value="#{userHome.managed ? messages['common.edit'] : messages['common.create']} #{messages['user.tittle']}" />
+
+
+
+
+
+			<rich:panel>
+				<f:facet name="header">#{messages['resident.generalData']}</f:facet>
+
+				<s:decorate id="identificationTypeField"
+					template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['resident.identificationType']}:</ui:define>
+					<h:selectOneMenu id="identificationType"
+						value="#{residentHome.instance.tipoIdentificacion}"
+						disabled="#{residentHome.managed}">
+						<s:selectItems value="#{residentHome.identificationTypes}"
+							var="identificationType"
+							label="#{messages[identificationType.name()]}" />
+						<s:convertEnum />
+						<a:support event="onselect" ajaxSingle="true" />
+					</h:selectOneMenu>
+				</s:decorate>
+
+				<s:decorate id="identificationNumberField"
+					template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['resident.dni']}:</ui:define>
+					<h:inputText id="identificationNumber" required="true" size="15"
+						maxlength="15" value="#{userHome.persona.numeroIdentificacion}"
+						validator="identificationNumberValidator">
+						<a:support event="onblur"
+							reRender="identificationNumberField,emailField,panelPersona,panelUsuario,rolesChildren,save,update"
+							ajaxSingle="true" action="#{userHome.buscarCedula()}" />
+
+					</h:inputText>
+
+					<a:commandButton rendered="#{residentHome.managed}"
+						reRender="identificationTypeField, identificationNumberField"
+						ajaxSingle="true"
+						oncomplete="Richfaces.showModalPanel('changeIdentificationPanel',{width:400, top:200})"
+						value="#{messages['resident.changeIdentificationNumber']}" />
+
+				</s:decorate>
+
+				<s:decorate id="emailField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['resident.email']}</ui:define>
+					<h:inputText id="email" size="50" value="#{userHome.persona.email}" />
+				</s:decorate>
+
+				<s:decorate id="nombreComercialField"
+					template="../layout/edit.xhtml">
+					<ui:define name="label">Nombre Comercial:</ui:define>
+					<h:inputText id="nombreComercial" size="60" maxlength="80"
+						value="#{userHome.persona.nombreComercial}"
+						style="text-transform: uppercase" />
+				</s:decorate>
+
+				<div style="clear: both">
+					<span class="required">*</span>
+					#{messages['common.requiredFields']}
+				</div>
+
+			</rich:panel>
+
+			<rich:panel id="panelPersona">
+				<f:facet name="header">#{messages['resident.personData']}</f:facet>
+
+				<s:decorate id="firstNameField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['resident.firstName']}:</ui:define>
+					<h:inputText id="firstName" required="true" size="25"
+						maxlength="25" value="#{userHome.persona.nombres}"
+						style="text-transform: uppercase">
+						<a:support event="onblur" reRender="firstNameField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
+				<s:decorate id="lastNameField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['resident.lastName']}:</ui:define>
+					<h:inputText id="lastName" required="true" size="25" maxlength="25"
+						value="#{userHome.persona.apellidos}"
+						style="text-transform: uppercase">
+						<a:support event="onblur" reRender="lastNameField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
+				<!-- s:decorate id="birthdayField" template="../layout/edit.xhtml">
+			<ui:define name="label">#{messages['resident.birthday']}:</ui:define>
+			<rich:calendar id="birthday" enableManualInput="true"
+				value="#{residentHome.instance.birthDay}" required="true" datePattern="#{messages['common.datePattern']}"/>
+		</s:decorate-->
+
+				<s:decorate id="genderField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['resident.gender']}:</ui:define>
+					<h:selectOneMenu id="gender" value="#{userHome.persona.genero}">
+						<s:selectItems value="#{genders}" var="gender"
+							label="#{messages[gender.name()]}" />
+						<s:convertEnum />
+					</h:selectOneMenu>
+				</s:decorate>
+
+				<s:decorate id="maritalStatusField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['resident.maritalStatus']}:</ui:define>
+					<h:selectOneMenu id="maritalStatus"
+						value="#{userHome.persona.estadoCivil}">
+						<s:selectItems value="#{maritalStatuses}" var="maritalStatus"
+							label="#{messages[maritalStatus.name()]}" />
+						<s:convertEnum />
+					</h:selectOneMenu>
+				</s:decorate>
+
+
+				<s:decorate id="isHandicapedField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['resident.isHandicaped']}:</ui:define>
+					<h:selectBooleanCheckbox id="isHandicaped"
+						value="#{userHome.persona.isDiscapacitado}">
+						<a:support event="onclick" reRender="handicapedNumberField"
+							ajaxSingle="true" />
+					</h:selectBooleanCheckbox>
+				</s:decorate>
+
+				<s:decorate id="handicapedNumberField"
+					template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['resident.handicapedNumber']}:</ui:define>
+					<h:inputText id="handicapedNumber" size="15" maxlength="15"
+						value="#{userHome.persona.numeroDiscapacidad}"
+						disabled="#{not residentHome.instance.isDiscapacitado}">
+						<a:support event="onblur" reRender="handicapedNumberField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
+
+
+				<div style="clear: both">
+					<span class="required">*</span>
+					#{messages['common.requiredFields']}
+				</div>
+
+			</rich:panel>
+
+
+
+
+
+
+			<rich:panel id="panelUsuario">
+				<f:facet name="header">Usuario</f:facet>
+				<s:decorate id="nombreField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['user.name']}</ui:define>
+					<h:inputText id="nombre" value="#{userHome.instance.name}"
+						required="true">
+						<a:support event="onblur" reRender="nombreField" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
+				<s:decorate id="claveField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['user.password']}</ui:define>
+					<h:inputText id="clavePassword" required="true"
+						value="#{userHome.instance.password}">
+						<a:support event="onblur" reRender="claveField" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
+				<!-- s:decorate id="passwordConfirmField"
+					template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['user.passwordConfirm']}</ui:define>
+					<h:inputSecret id="passwordConfirm" required="true">
+						<s:validateEquality for=": # { rich:clientId('newPassword')}"
+							message="#{messages['passwordsMismatch']}" />
+					</h:inputSecret>
+				</s:decorate-->
+
+				<s:decorate id="activeField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['user.isActive']}</ui:define>
+					<h:selectBooleanCheckbox id="active"
+						value="#{userHome.instance.isActive}">
+						<a:support event="onblur" reRender="activeField" ajaxSingle="true" />
+					</h:selectBooleanCheckbox>
+				</s:decorate>
+
+				<s:decorate id="expirationDateField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['user.expirationDate']}</ui:define>
+					<rich:calendar id="expirationDate"
+						value="#{userHome.instance.expirationDate}"
+						datePattern="dd/MM/yyyy">
+						<a:support event="onblur" reRender="expirationDateField"
+							ajaxSingle="true" />
+					</rich:calendar>
+				</s:decorate>
+
+
+				<div style="clear: both">
+					<span class="required">*</span>
+					#{messages['common.requiredFields']}
+				</div>
+
+			</rich:panel>
+
+			<rich:tabPanel id="rolesChildren">
+
+				<rich:tab label="#{messages['roles']}">
+
+					<h:outputText value="#{messages['roles.noResults']}"
+						rendered="#{empty userHome.instance.roles}" />
+
+					<h:panelGrid width="100%" id="pnlAddRole"
+						style="FONT-SIZE: xx-small;">
+						<s:decorate template="../layout/display.xhtml">
+
+							<ui:define name="label">#{messages['addRole']}:</ui:define>
+							<h:inputText id="value" label="#{messages['criteria']}"
+								styleClass="uppercase" size="100">
+							</h:inputText>
+
+							<rich:suggestionbox for="value"
+								suggestionAction="#{userHome.searchRoleByName}" var="roleItem"
+								height="150" width="250">
+								<f:facet name="nothingLabel">
+									<h:outputText value="#{messages['nothingRoles']}" />
+								</f:facet>
+								<a:support event="onselect" reRender="rolesChildren"
+									action="#{userHome.addRole(roleItem)}" />
+								<h:column>
+									<h:outputText
+										value=" #{roleItem.name}  #{roleItem.description}" />
+								</h:column>
+							</rich:suggestionbox>
+						</s:decorate>
+					</h:panelGrid>
+
+					<rich:dataTable value="#{userHome.instance.roles}" var="_role"
+						rendered="#{not empty userHome.instance.roles}"
+						rowClasses="rvgRowOne,rvgRowTwo" id="rolesTable">
+						<rich:column sortBy="#{_role.name}">
+							<f:facet name="header">#{messages['role.name']}</f:facet>
+							<h:outputText value="#{_role.name}" />
+						</rich:column>
+						<rich:column sortBy="#{_role.description}">
+							<f:facet name="header">#{messages['role.description']}</f:facet>
+							<h:outputText value="#{_role.description}" />
+						</rich:column>
+						<rich:column styleClass="action">
+							<f:facet name="header">#{messages['common.action']}</f:facet>
+							<a:commandButton value="#{messages['common.remove']}"
+								action="#{userHome.removeRole(_role)}" reRender="rolesChildren"
+								ajaxSingle="true" />
+						</rich:column>
+					</rich:dataTable>
+
+				</rich:tab>
+			</rich:tabPanel>
+
+			<div class="actionButtons">
+
+				<h:commandButton id="save" value="#{messages['guardar']}"
+					action="#{userHome.persist}" disabled="#{!userHome.wired}"
+					rendered="#{!userHome.managed}" />
+
+				<h:commandButton id="update" value="#{messages['modificar']}"
+					action="#{userHome.update}" rendered="#{userHome.managed}" />
+
+				<s:button id="cancelEdit" value="#{messages['common.cancel']}"
+					propagation="end" view="/security/UserList.xhtml" />
+			</div>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

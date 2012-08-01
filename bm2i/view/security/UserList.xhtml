@@ -36,13 +36,24 @@
 
 		<rich:panel>
 			<f:facet name="header">
-				<h:panelGrid columns="2" columnClasses="headerTitle,">
+				<h:panelGrid columns="3" columnClasses="headerTitle,">
 					<h:outputText
 						value="#{messages['user.searchResults']} (#{empty userList.resultList ? 0 : (userList.paginated ? userList.resultCount : userList.resultList.size)})" />
 					<s:button view="/security/UserEdit.xhtml" id="create"
 						propagation="none" value="#{messages['common.create']}">
 						<f:param name="actionId" />
 					</s:button>
+										
+					<s:button view="/security/UserEdit1.xhtml" id="createPerson"
+						propagation="none" value="new"
+						rendered="#{empty from}">
+						<f:param name="residentId" />
+						<f:param name="residentType" value="Persona" />
+					</s:button>
+					
+					
+					
+					
 				</h:panelGrid>
 			</f:facet>
 			<div class="results" id="userList">
@@ -72,6 +83,12 @@
 						<s:button view="/security/UserEdit.xhtml"
 							value="#{messages['common.edit']}" propagation="none"
 							id="userEdit" rendered="#{empty from}">
+							<f:param name="userId" value="#{_person.id}" />
+						</s:button>
+						
+						<s:button view="/security/UserEdit1.xhtml"
+							value="New" propagation="none"
+							id="userEdit1" rendered="#{empty from}">
 							<f:param name="userId" value="#{_person.id}" />
 						</s:button>
 
