@@ -24,7 +24,7 @@
 			</rich:simpleTogglePanel>
 
 			<div class="actionButtons">
-				<h:commandButton id="search" value="#{messages['common.search']}"
+				<h:commandButton id="search" value="Buscar"
 					action="/comun/ResidentList.xhtml" />
 				<s:button id="reset" value="#{messages['common.reset']}"
 					includePageParams="false" />
@@ -56,14 +56,14 @@
 				<h:outputText value="#{messages['common.noResultsReturned']}"
 					rendered="#{empty residentList.resultList}" />
 
-				<rich:dataTable id="contribuyenteList" var="_contribuyente"
+				<rich:dataTable  var="_contribuyente"
 					value="#{residentList.resultList}"
 					rendered="#{not empty residentList.resultList}"
 					onRowMouseOver="this.style.backgroundColor='#9EBAC7'"
 					onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'">
 					<h:column>
 						<f:facet name="header">
-							<f:facet name="header">#{messages['resident.id']}</f:facet>
+							<f:facet name="header">Identificador</f:facet>
 						</f:facet>
 						<h:outputText value="#{_contribuyente.id}" />
 					</h:column>
