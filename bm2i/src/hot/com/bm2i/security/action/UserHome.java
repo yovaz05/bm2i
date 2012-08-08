@@ -149,12 +149,14 @@ public class UserHome extends EntityHome<Usuario> {
 	@Override
 	public String persist() {
 		this.persona.setNombre(this.persona.toString());
+		this.getInstance().setPersona(persona);
 		return super.persist();
 	}
 
 	@Override
 	public String update() {
 		this.persona.setNombre(this.persona.toString());
+		this.getInstance().setPersona(persona);
 		return super.update();
 	}
 

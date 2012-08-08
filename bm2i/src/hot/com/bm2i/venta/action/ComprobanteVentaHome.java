@@ -453,10 +453,8 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		if (this.residentHome.getInstance().getNumeroIdentificacion() != null) {
 			if (!this.pagoHome.getAnyError()) {
 				if (actualRow > 0) {
-					this.getInstance().setResident(
-							this.residentHome.getInstance());
-					this.getInstance().setRegistrador(
-							this.userSession.getPersona());
+					this.getInstance().setResident(this.residentHome.getInstance());
+					this.getInstance().setRegistrador(this.userSession.getPersona());
 					this.getInstance().setPago(this.pagoHome.getInstance());
 					for (ItemComprobanteVenta icv : this.itemAux) {
 						if (icv.getArticulo() != null) {
