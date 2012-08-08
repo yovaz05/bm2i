@@ -56,6 +56,9 @@ public class UserHome extends EntityHome<Usuario> {
 
 	public void wire() {
 		getInstance();
+		if (this.getInstance().getId() != null) {
+			persona=this.getInstance().getPersona();
+		}
 	}
 
 	public boolean isWired() {
