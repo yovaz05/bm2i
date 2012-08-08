@@ -6,7 +6,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:a="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich" template="../layout/template.xhtml">
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
 
 	<ui:define name="body">
 
@@ -21,7 +22,7 @@
 							<rich:calendar id="fecha"
 								value="#{registroVentaHome.instance.fecha}"
 								datePattern="#{messages['common.datePattern']}"
-								ajaxSingle="true" inputSize="10"/>
+								ajaxSingle="true" inputSize="10" />
 							<h:outputText value="Hora:" />
 							<h:inputText id="hora" size="10" maxlength="10"
 								value="#{registroVentaHome.instance.hora}">
@@ -38,6 +39,7 @@
 					<ui:define name="label">Articulo</ui:define>
 					<h:inputText id="articuloName"
 						value="#{registroVentaHome.art.codigoBarra}" focus="cantidadField">
+						<a:support event="onblur" ajaxSingle="true"/>
 					</h:inputText>
 					<rich:suggestionbox id="suggestionBox" for="articuloName"
 						suggestionAction="#{registroVentaHome.autoComplete}" var="art"
@@ -122,11 +124,11 @@
 				<a:commandButton value="#{messages['common.add']}"
 					action="#{registroVentaHome.guardar()}"
 					reRender="registroVentaList, articuloField, subTotalField, nombreArticuloField, codigoBarraField, subTotalField, totalField, hora, cantidadField"
-					ajaxSingle="true" focus="articuloName"/>
+					ajaxSingle="true" focus="articuloName" />
 				<a:commandButton value="#{messages['common.new']}"
 					action="#{registroVentaHome.nuevo()}"
 					reRender="registroVentaList, articuloField, subTotalField, nombreArticuloField, codigoBarraField, subTotalField, totalField, hora, cantidadField"
-					ajaxSingle="true" focus="articuloName"/>
+					ajaxSingle="true" focus="articuloName" />
 			</div>
 
 			<rich:panel>
