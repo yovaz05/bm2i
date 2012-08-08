@@ -55,6 +55,7 @@ public class RoleHome extends EntityHome<Role> {
 	}
 
 	public void addUser(Usuario user) {
+		System.out.println("entra a agregrar user");
 		getInstance().add(user);
 	}
 
@@ -71,8 +72,8 @@ public class RoleHome extends EntityHome<Role> {
 			Object suggest) {
 		String q = "SELECT user FROM Usuario user "
 				+ "WHERE LOWER(user.name)LIKE CONCAT(LOWER(:suggest),'%') "
-				+ " OR LOWER(user.person.nombre) LIKE CONCAT(lower(:suggest),'%') "
-				+ " OR LOWER(user.person.identificationNumber) LIKE CONCAT(lower(:suggest),'%'))";
+				+ " OR LOWER(user.persona.nombre) LIKE CONCAT(lower(:suggest),'%') "
+				+ " OR LOWER(user.persona.numeroIdentificacion) LIKE CONCAT(lower(:suggest),'%'))";
 		Query e = entityManager.createQuery(q);
 		e.setParameter("suggest", (String) suggest);
 		return (List<Usuario>) e.getResultList();

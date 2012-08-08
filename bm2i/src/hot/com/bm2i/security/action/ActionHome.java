@@ -12,7 +12,6 @@ import com.bm2i.security.Action;
 @Name("actionHome")
 public class ActionHome extends EntityHome<Action> {
 
-	
 	private String crite;
 
 	public void setActionId(Long id) {
@@ -47,12 +46,10 @@ public class ActionHome extends EntityHome<Action> {
 		return isIdDefined() ? getInstance() : null;
 	}
 
-	public List<Action> searchActionByName(Object suggest) {
-		System.out.println("entra a consultar????????????????????????????????????????????");
-		String q = "SELECT a FROM Action a "
-				+ "WHERE LOWER(a.name)LIKE CONCAT(LOWER(:suggest),'%') ";
-		Query e = this.getEntityManager().createQuery(q);
-		e.setParameter("suggest", (String) suggest);
+	@SuppressWarnings("unchecked")
+	public List<Action> buscarPorNombre(Object suggest) {
+		Query e = this.getEntityManager().createNamedQuery("Action.findByName");
+		e.setParameter("sugerencia", (String) suggest);
 		return (List<Action>) e.getResultList();
 	}
 

@@ -3,6 +3,8 @@ package com.bm2i.compra.action;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.framework.EntityHome;
@@ -66,6 +68,12 @@ public class ComprobanteCompraHome extends EntityHome<ComprobanteCompra> {
 		return getInstance() == null
 				? null
 				: new ArrayList<ItemComprobanteCompra>(getInstance().getItems());
+	}
+	
+	public List<TipoPago> getTiposPago() {
+		Query q = this.getEntityManager().createNamedQuery("TipoPago.findAll");
+		this.getInstance().setTipoPago((TipoPago) q.getResultList().get(0));
+		return q.getResultList();
 	}
 
 }
