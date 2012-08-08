@@ -1,301 +1,294 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:s="http://jboss.com/products/seam/taglib"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:a="http://richfaces.org/a4j"
-    xmlns:rich="http://richfaces.org/rich"
-    template="layout/template.xhtml">
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
 
-<ui:define name="body">
+	<ui:define name="body">
 
-    <h:form id="comprobanteCompra" styleClass="edit">
+		<h:form id="comprobanteCompra" styleClass="edit">
 
-        <rich:panel>
-            <f:facet name="header">#{comprobanteCompraHome.managed ? 'Edit' : 'Add'} Comprobante compra</f:facet>
+			<div align="center">
+				<rich:panel style="width:90%" id="panelRoot">
+					<f:facet name="header">#{messages['comprobanteCompra.infoData']}</f:facet>
 
+					<h:panelGrid columns="4"
+						columnClasses="colStyle1,colStyle2,colStyle3,colStyle4"
+						cellpadding="0" cellspacing="0" width="100%">
 
+						<s:decorate id="tipoPagoField" template="../layout/vertical-edit.xhtml">
+							<ui:define name="label">Tipo Pago</ui:define>
+							<h:selectOneMenu id="tipoPago"
+								value="#{comprobanteCompraHome.instance.tipoPago}">
+								<s:selectItems value="#{comprobanteCompraHome.tiposPago}" var="tipoP"
+									label="#{tipoP.nombre}" />
+								<s:convertEntity />
+								<a:support event="onchange" reRender="tipoPagoField"
+									ajaxSingle="true" />
+							</h:selectOneMenu>
+						</s:decorate>
 
-            <s:decorate id="descuentoField" template="layout/edit.xhtml">
-                <ui:define name="label">Descuento</ui:define>
-                <h:inputText id="descuento"
-                          value="#{comprobanteCompraHome.instance.descuento}"
-                           size="26">
-                    <a:support event="onblur" reRender="descuentoField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+						<s:decorate id="numeroField"
+							template="../layout/vertical-edit.xhtml">
+							<ui:define name="label">Numero</ui:define>
+							<h:inputText id="numero"
+								value="#{comprobanteCompraHome.instance.numero}">
+								<a:support event="onblur" reRender="numeroField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate>
 
+						<s:decorate id="fechaField"
+							template="../layout/vertical-edit.xhtml">
+							<ui:define name="label">Fecha</ui:define>
+							<rich:calendar id="fecha"
+								value="#{comprobanteCompraHome.instance.fecha}"
+								datePattern="#{messages['common.datePattern']}" inputSize="15" />
+						</s:decorate>
 
-            <s:decorate id="fechaField" template="layout/edit.xhtml">
-                <ui:define name="label">Fecha</ui:define>
-                <rich:calendar id="fecha"
-                          value="#{comprobanteCompraHome.instance.fecha}" datePattern="MM/dd/yyyy" />
-            </s:decorate>
+						<s:decorate id="guiaRemisionField"
+							template="../layout/vertical-edit.xhtml">
+							<ui:define name="label">Guia remision</ui:define>
+							<h:inputText id="guiaRemision" size="25" maxlength="25"
+								value="#{comprobanteCompraHome.instance.guiaRemision}">
+								<a:support event="onblur" reRender="guiaRemisionField"
+									ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate>
 
+						<s:decorate id="identificationTypeField"
+							template="../layout/vertical-edit.xhtml">
+							<ui:define name="label">#{messages['resident.identificationType']}:</ui:define>
+							<h:selectOneMenu id="identificationType"
+								value="#{residentHome.instance.tipoIdentificacion}">
+								<s:selectItems value="#{residentHome.identificationTypes}"
+									var="identificationType"
+									label="#{messages[identificationType.name()]}" />
+								<s:convertEnum />
+								<a:support event="onchange" ajaxSingle="true"
+									reRender="panelRoot" action="#{residentHome.crearReisdent()}" />
+							</h:selectOneMenu>
+						</s:decorate>
 
-            <s:decorate id="guiaRemisionField" template="layout/edit.xhtml">
-                <ui:define name="label">Guia remision</ui:define>
-                <h:inputTextarea id="guiaRemision"
-                               cols="80"
-                               rows="3"
-                              value="#{comprobanteCompraHome.instance.guiaRemision}"/>
-            </s:decorate>
+						<s:decorate id="identificationNumberField"
+							template="../layout/vertical-edit.xhtml">
+							<ui:define name="label">#{messages['resident.dni']}:</ui:define>
+							<h:inputText id="identificationNumber" required="true" size="15"
+								maxlength="15" validator="identificationNumberValidator"
+								value="#{residentHome.instance.numeroIdentificacion}">
+								<a:support event="onblur" reRender="panelRoot" ajaxSingle="true"
+									action="#{residentHome.buscarCliente()}" />
+							</h:inputText>
+						</s:decorate>
 
+						<s:decorate template="../layout/display.xhtml">
+						</s:decorate>
+						
+						<s:decorate id="isPayedField"
+							template="../layout/vertical-edit.xhtml">
+							<ui:define name="label">#{messages['comprobanteCompra.isPayed']}</ui:define>
+							<h:selectBooleanCheckbox id="isPayed"
+								value="#{comprobanteCompraHome.instance.isPayed}" />
+						</s:decorate>
 
-            <s:decorate id="isPayedField" template="layout/edit.xhtml">
-                <ui:define name="label">Is payed</ui:define>
-                <h:selectBooleanCheckbox id="isPayed"
-                                      value="#{comprobanteCompraHome.instance.isPayed}"/>
-            </s:decorate>
+						<rich:column colspan="4" rendered="#{!residentHome.panelNatural}">
+							<s:decorate id="nameField"
+								template="../layout/vertical-edit.xhtml">
+								<ui:define name="label">#{messages['resident.businessName']}:</ui:define>
+								<h:inputText id="name" required="true" size="80" maxlength="100"
+									value="#{residentHome.instance.nombre}"
+									style="text-transform: uppercase">
+									<a:support event="onblur" reRender="nameField"
+										ajaxSingle="true" action="#{comprobanteVentaHome.metodos()}" />
+								</h:inputText>
+							</s:decorate>
+						</rich:column>
 
+						<s:decorate id="firstNameField"
+							template="../layout/vertical-edit.xhtml"
+							rendered="#{residentHome.panelNatural}">
+							<ui:define name="label">#{messages['resident.firstName']}:</ui:define>
+							<h:inputText id="firstName" required="true" size="24"
+								maxlength="25" value="#{residentHome.instance.nombres}"
+								style="text-transform: uppercase">
+								<a:support event="onblur" reRender="firstNameField"
+									ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate>
 
+						<s:decorate id="lastNameField"
+							template="../layout/vertical-edit.xhtml"
+							rendered="#{residentHome.panelNatural}">
+							<ui:define name="label">#{messages['resident.lastName']}:</ui:define>
+							<h:inputText id="lastName" required="true" size="24"
+								maxlength="25" value="#{residentHome.instance.apellidos}"
+								style="text-transform: uppercase">
+								<a:support event="onblur" reRender="lastNameField"
+									ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate>
 
-            <s:decorate id="ivaField" template="layout/edit.xhtml">
-                <ui:define name="label">Iva</ui:define>
-                <h:inputText id="iva"
-                          value="#{comprobanteCompraHome.instance.iva}"
-                           size="26">
-                    <a:support event="onblur" reRender="ivaField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+						<s:decorate template="../layout/display.xhtml"
+							rendered="#{!residentHome.panelNatural}">
+						</s:decorate>
 
+						<s:decorate template="../layout/display.xhtml">
+						</s:decorate>
+						<s:decorate template="../layout/display.xhtml">
+						</s:decorate>
 
-            <s:decorate id="numeroField" template="layout/edit.xhtml">
-                <ui:define name="label">Numero</ui:define>
-                <h:inputText id="numero"
-                          value="#{comprobanteCompraHome.instance.numero}">
-                    <a:support event="onblur" reRender="numeroField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+						<s:decorate id="streetField"
+							template="../layout/vertical-edit.xhtml">
+							<ui:define name="label">#{messages['resident.street']}:</ui:define>
+							<h:inputText id="street" required="true" size="24" maxlength="40"
+								value="#{residentHome.instance.currentDireccion.calle}"
+								style="text-transform: uppercase">
+								<a:support event="onblur" reRender="streetField"
+									ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate>
 
+						<s:decorate id="cityField"
+							template="../layout/vertical-edit.xhtml">
+							<ui:define name="label">#{messages['resident.city']}:</ui:define>
+							<h:inputText id="city" required="true" size="24" maxlength="25"
+								value="#{residentHome.instance.currentDireccion.ciudad}"
+								style="text-transform: uppercase">
+								<a:support event="onblur" reRender="cityField" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate>
 
+						<s:decorate id="phoneNumberField"
+							template="../layout/vertical-edit.xhtml">
+							<ui:define name="label">#{messages['resident.phone']}:</ui:define>
+							<h:inputText id="phoneNumber" size="15" maxlength="15"
+								value="#{residentHome.instance.currentDireccion.telefonoFijo}"
+								style="text-transform: uppercase">
+								<a:support event="onblur" reRender="phoneNumberField"
+									ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate>
 
-            <s:decorate id="subTotalField" template="layout/edit.xhtml">
-                <ui:define name="label">Sub total</ui:define>
-                <h:inputText id="subTotal"
-                          value="#{comprobanteCompraHome.instance.subTotal}"
-                           size="26">
-                    <a:support event="onblur" reRender="subTotalField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+						<s:decorate id="mobileNumberField"
+							template="../layout/vertical-edit.xhtml">
+							<ui:define name="label">#{messages['resident.cellphone']}:</ui:define>
+							<h:inputText id="mobileNumber" size="15" maxlength="15"
+								value="#{residentHome.instance.currentDireccion.telefonoCelular}"
+								style="text-transform: uppercase">
+								<a:support event="onblur" reRender="mobileNumberField"
+									ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate>
 
+					</h:panelGrid>
 
-            <s:decorate id="subTotalCeroField" template="layout/edit.xhtml">
-                <ui:define name="label">Sub total cero</ui:define>
-                <h:inputText id="subTotalCero"
-                          value="#{comprobanteCompraHome.instance.subTotalCero}"
-                           size="26">
-                    <a:support event="onblur" reRender="subTotalCeroField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+					<div style="clear: both">
+						<span class="required">*</span>
+						#{messages['common.requiredFields']}
+					</div>
 
+				</rich:panel>
+			</div>
 
-            <s:decorate id="subTotalIvaField" template="layout/edit.xhtml">
-                <ui:define name="label">Sub total iva</ui:define>
-                <h:inputText id="subTotalIva"
-                          value="#{comprobanteCompraHome.instance.subTotalIva}"
-                           size="26">
-                    <a:support event="onblur" reRender="subTotalIvaField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+			<div align="center">
+				<div align="right" style="width: 90%">
+					<h:panelGrid columnClasses="alignRight" id="panelValores">
 
+						<s:decorate id="subTotalIvaField" template="../layout/edit.xhtml">
+							<ui:define name="label">#{messages['comprobanteCompra.subTotalIva']}</ui:define>
+							<h:inputText id="subTotalIva"
+								value="#{comprobanteCompraHome.instance.subTotalIva}" size="15"
+								style="text-align: right;">
+								<a:support event="onblur" reRender="subTotalIvaField"
+									bypassUpdates="true" ajaxSingle="true" />
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+							</h:inputText>
+						</s:decorate>
 
+						<s:decorate id="descuentoField" template="../layout/edit.xhtml">
+							<ui:define name="label">#{messages['comprobanteCompra.descuento']}</ui:define>
+							<h:inputText id="descuento"
+								value="#{comprobanteCompraHome.instance.descuento}" size="15"
+								style="text-align: right;">
+								<a:support event="onblur" reRender="descuentoField"
+									bypassUpdates="true" ajaxSingle="true" />
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+							</h:inputText>
+						</s:decorate>
 
-            <s:decorate id="valorTotalField" template="layout/edit.xhtml">
-                <ui:define name="label">Valor total</ui:define>
-                <h:inputText id="valorTotal"
-                          value="#{comprobanteCompraHome.instance.valorTotal}"
-                           size="26">
-                    <a:support event="onblur" reRender="valorTotalField" bypassUpdates="true" ajaxSingle="true"/>
-                </h:inputText>
-            </s:decorate>
+						<s:decorate id="subTotalCeroField" template="../layout/edit.xhtml">
+							<ui:define name="label">#{messages['comprobanteCompra.subTotalCero']}</ui:define>
+							<h:inputText id="subTotalCero"
+								value="#{comprobanteCompraHome.instance.subTotalCero}" size="15"
+								style="text-align: right;">
+								<a:support event="onblur" reRender="subTotalCeroField"
+									bypassUpdates="true" ajaxSingle="true" />
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+							</h:inputText>
+						</s:decorate>
 
-            <div style="clear:both">
-                <span class="required">*</span>
-                required fields
-            </div>
+						<s:decorate id="ivaField" template="../layout/edit.xhtml">
+							<ui:define name="label">#{messages['comprobanteCompra.iva']}</ui:define>
+							<h:inputText id="iva"
+								value="#{comprobanteCompraHome.instance.iva}" size="15"
+								style="text-align: right;">
+								<a:support event="onblur" reRender="ivaField"
+									bypassUpdates="true" ajaxSingle="true" />
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+							</h:inputText>
+						</s:decorate>
 
-        </rich:panel>
+						<!-- s:decorate id="subTotalField" template="../layout/edit.xhtml">
+							<ui:define name="label">Sub total</ui:define>
+							<h:inputText id="subTotal"
+								value="#{comprobanteCompraHome.instance.subTotal}" size="15">
+								<a:support event="onblur" reRender="subTotalField"
+									bypassUpdates="true" ajaxSingle="true" />
+							</h:inputText>
+						</s:decorate-->
 
-        <div class="actionButtons">
+						<s:decorate id="valorTotalField" template="../layout/edit.xhtml">
+							<ui:define name="label">#{messages['comprobanteCompra.valorTotal']}</ui:define>
+							<h:inputText id="valorTotal"
+								value="#{comprobanteCompraHome.instance.valorTotal}" size="15"
+								style="text-align: right;">
+								<a:support event="onblur" reRender="valorTotalField"
+									bypassUpdates="true" ajaxSingle="true" />
+								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+							</h:inputText>
+						</s:decorate>
+					</h:panelGrid>
+				</div>
+			</div>
 
-            <h:commandButton id="save"
-                          value="Save"
-                         action="#{comprobanteCompraHome.persist}"
-                       disabled="#{!comprobanteCompraHome.wired}"
-                       rendered="#{!comprobanteCompraHome.managed}"/>
+			<div align="center" style="width: 90%">
+				<div class="actionButtons">
 
-            <h:commandButton id="update"
-                          value="Save"
-                         action="#{comprobanteCompraHome.update}"
-                       rendered="#{comprobanteCompraHome.managed}"/>
+					<h:commandButton id="save" value="Save"
+						action="#{comprobanteCompraHome.persist}"
+						disabled="#{!comprobanteCompraHome.wired}"
+						rendered="#{!comprobanteCompraHome.managed}" />
 
-            <h:commandButton id="delete"
-                          value="Delete"
-                         action="#{comprobanteCompraHome.remove}"
-                      immediate="true"
-                       rendered="#{comprobanteCompraHome.managed}"/>
+					<h:commandButton id="update" value="Save"
+						action="#{comprobanteCompraHome.update}"
+						rendered="#{comprobanteCompraHome.managed}" />
 
-            <s:button id="cancelEdit"
-                   value="Cancel"
-             propagation="end"
-                    view="/ComprobanteCompra.xhtml"
-                rendered="#{comprobanteCompraHome.managed}"/>
+					<h:commandButton id="delete" value="Delete"
+						action="#{comprobanteCompraHome.remove}" immediate="true"
+						rendered="#{comprobanteCompraHome.managed}" />
 
-            <s:button id="cancelAdd"
-                   value="Cancel"
-             propagation="end"
-                    view="/#{empty comprobanteCompraFrom ? 'ComprobanteCompraList' : comprobanteCompraFrom}.xhtml"
-                rendered="#{!comprobanteCompraHome.managed}"/>
+					<s:button id="cancelAdd" value="Cancel" propagation="end"
+						view="/compra/#{empty comprobanteCompraFrom ? 'ComprobanteCompraList' : comprobanteCompraFrom}.xhtml" />
 
-        </div>
-    </h:form>
+				</div>
+			</div>
+		</h:form>
 
-<rich:tabPanel switchType="ajax">
-
-    <rich:tab label="Items">
-        <h:form styleClass="association" id="itemsChildren">
-
-            <h:outputText value="There are no items associated with this comprobanteCompra."
-                       rendered="#{empty comprobanteCompraHome.items}"/>
-
-            <rich:dataTable value="#{comprobanteCompraHome.items}"
-                           var="_itemComprobanteCompra"
-                      rendered="#{not empty comprobanteCompraHome.items}"
-                    rowClasses="rvgRowOne,rvgRowTwo"
-                            id="itemsTable">
-                <rich:column sortBy="#{_itemComprobanteCompra.id}">
-                    <f:facet name="header">Id</f:facet>
-                    <h:outputText value="#{_itemComprobanteCompra.id}"/>
-                </rich:column>
-                <rich:column sortBy="#{_itemComprobanteCompra.cantidad}">
-                    <f:facet name="header">Cantidad</f:facet>
-                    <h:outputText value="#{_itemComprobanteCompra.cantidad}"/>
-                </rich:column>
-                <rich:column sortBy="#{_itemComprobanteCompra.fecha}">
-                    <f:facet name="header">Fecha</f:facet>
-                    <h:outputText value="#{_itemComprobanteCompra.fecha}">
-                        <s:convertDateTime type="date" dateStyle="short"/>
-                    </h:outputText>
-                </rich:column>
-                <rich:column sortBy="#{_itemComprobanteCompra.vTotal}">
-                    <f:facet name="header">V total</f:facet>
-                    <h:outputText value="#{_itemComprobanteCompra.vTotal}">
-                        <f:convertNumber/>
-                    </h:outputText>
-                </rich:column>
-                <rich:column sortBy="#{_itemComprobanteCompra.vUnitario}">
-                    <f:facet name="header">V unitario</f:facet>
-                    <h:outputText value="#{_itemComprobanteCompra.vUnitario}">
-                        <f:convertNumber/>
-                    </h:outputText>
-                </rich:column>
-            </rich:dataTable>
-
-        </h:form>
-
-        <f:subview rendered="#{comprobanteCompraHome.managed}" id="items">
-        <div class="actionButtons">
-            <s:button id="additemComprobanteCompra"
-                   value="Add itemComprobanteCompra"
-                    view="/ItemComprobanteCompraEdit.xhtml"
-             propagation="none">
-                 <f:param name="comprobanteCompraId"
-                         value="#{comprobanteCompraHome.instance.id}"/>
-                 <f:param name="itemComprobanteCompraFrom" value="ComprobanteCompra"/>
-            </s:button>
-        </div>
-        </f:subview>
-    </rich:tab>
-
-    <rich:tab label="Preveedor">
-    <div class="association" id="preveedorParent">
-
-        <h:outputText value="There is no preveedor associated with this comprobanteCompra."
-                   rendered="#{comprobanteCompraHome.instance.preveedor == null}"/>
-
-        <rich:dataTable var="_resident"
-                   value="#{comprobanteCompraHome.instance.preveedor}"
-                rendered="#{comprobanteCompraHome.instance.preveedor != null}"
-              rowClasses="rvgRowOne,rvgRowTwo"
-                      id="preveedorTable">
-            <h:column>
-                <f:facet name="header">Id</f:facet>
-                <h:outputText value="#{_resident.id}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Email</f:facet>
-                <h:outputText value="#{_resident.email}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Fecha registro</f:facet>
-                <h:outputText value="#{_resident.fechaRegistro}">
-                    <s:convertDateTime type="date" dateStyle="short"/>
-                </h:outputText>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Nombre</f:facet>
-                <h:outputText value="#{_resident.nombre}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Numero identificacion</f:facet>
-                <h:outputText value="#{_resident.numeroIdentificacion}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Tipo identificacion</f:facet>
-                <h:outputText value="#{_resident.tipoIdentificacion}"/>
-            </h:column>
-        </rich:dataTable>
-
-        <div class="actionButtons">
-            <s:button id="#{comprobanteCompraHome.instance.preveedor != null ? 'changeParent' : 'selectParent'}" value="#{comprobanteCompraHome.instance.preveedor != null ? 'Change' : 'Select'} preveedor"
-                       view="/ResidentList.xhtml">
-                <f:param name="from" value="ComprobanteCompraEdit"/>
-            </s:button>
-        </div>
-
-    </div>
-    </rich:tab>
-
-    <rich:tab label="Tipo pago">
-    <div class="association" id="tipoPagoParent">
-
-        <h:outputText value="There is no tipoPago associated with this comprobanteCompra."
-                   rendered="#{comprobanteCompraHome.instance.tipoPago == null}"/>
-
-        <rich:dataTable var="_tipoPago"
-                   value="#{comprobanteCompraHome.instance.tipoPago}"
-                rendered="#{comprobanteCompraHome.instance.tipoPago != null}"
-              rowClasses="rvgRowOne,rvgRowTwo"
-                      id="tipoPagoTable">
-            <h:column>
-                <f:facet name="header">Id</f:facet>
-                <h:outputText value="#{_tipoPago.id}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Fecha</f:facet>
-                <h:outputText value="#{_tipoPago.fecha}">
-                    <s:convertDateTime type="date" dateStyle="short"/>
-                </h:outputText>
-            </h:column>
-            <h:column>
-                <f:facet name="header">Nombre</f:facet>
-                <h:outputText value="#{_tipoPago.nombre}"/>
-            </h:column>
-        </rich:dataTable>
-
-        <div class="actionButtons">
-            <s:button id="#{comprobanteCompraHome.instance.tipoPago != null ? 'changeParent' : 'selectParent'}" value="#{comprobanteCompraHome.instance.tipoPago != null ? 'Change' : 'Select'} tipoPago"
-                       view="/TipoPagoList.xhtml">
-                <f:param name="from" value="ComprobanteCompraEdit"/>
-            </s:button>
-        </div>
-
-    </div>
-    </rich:tab>
-</rich:tabPanel>
-</ui:define>
+	</ui:define>
 
 </ui:composition>

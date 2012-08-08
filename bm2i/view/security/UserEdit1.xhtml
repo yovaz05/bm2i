@@ -16,10 +16,6 @@
 			<h:outputText styleClass="formTitle"
 				value="#{userHome.managed ? messages['common.edit'] : messages['common.create']} #{messages['user.tittle']}" />
 
-
-
-
-
 			<rich:panel>
 				<f:facet name="header">#{messages['resident.generalData']}</f:facet>
 
@@ -262,11 +258,11 @@
 			<div class="actionButtons">
 
 				<rich:panel id="panelBotones">
-					<h:commandButton id="save" value="#{messages['guardar']}"
+					<h:commandButton id="save" value="#{messages['common.save']}"
 						action="#{userHome.persist}" disabled="#{!userHome.wired}"
 						rendered="#{!userHome.managed}" />
 
-					<h:commandButton id="update" value="#{messages['modificar']}"
+					<h:commandButton id="update" value="#{messages['common.save']}"
 						action="#{userHome.update}" rendered="#{userHome.managed}" />
 
 					<s:button id="cancelEdit" value="#{messages['common.cancel']}"

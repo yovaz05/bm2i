@@ -57,11 +57,15 @@
 								<f:facet name="nothingLabel">
 									<h:outputText value="#{messages['user.nothingUsers']}" />
 								</f:facet>
-								<a:support event="onselect" reRender="usersChildren"
-									action="#{roleHome.addUser(userItem)}" />
+								<a:support event="onselect" reRender="usersTable"
+									action="#{roleHome.addUser(userItem)}" ajaxSingle="true"/>
+								<h:column>
+									<h:outputText value="#{userItem.name}" />
+								</h:column>
+
 								<h:column>
 									<h:outputText
-										value=" #{userItem.name} #{userItem.person.identificationNumber} #{userItem.person.name}" />
+										value="#{userItem.persona.numeroIdentificacion} #{userItem.persona.nombre}" />
 								</h:column>
 							</rich:suggestionbox>
 						</s:decorate>

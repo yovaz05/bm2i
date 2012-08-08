@@ -16,7 +16,6 @@
 			<h:outputText styleClass="formTitle"
 				value="#{actionHome.managed ? messages['common.edit'] : messages['common.create']} #{messages['action.tittle']}" />
 
-
 			<rich:panel>
 				<f:facet name="header">Acciones</f:facet>
 
@@ -97,14 +96,13 @@
 						</rich:column>
 						<rich:column styleClass="action">
 							<f:facet name="header">#{messages['common.action']}</f:facet>
-							<a:commandButton value="#{messages['remove']}"
+							<a:commandButton value="#{messages['common.remove']}"
 								action="#{actionHome.removeAction(_p)}"
 								reRender="permissionsTable" ajaxSingle="true" />
 						</rich:column>
 					</rich:dataTable>
 				</rich:tab>
 			</rich:tabPanel>
-
 
 			<div class="actionButtons">
 
