@@ -20,17 +20,22 @@
 				value="#{messages['cajaPermisoHome.noExisteDiaTrabajo']}"
 				rendered="#{userSession.diaTrabajo==null}" id="outCierreCaja" />
 
-			<rich:panel>
+			<h:outputText styleClass="formTitle"
+				value="#{messages['cajaPermisoHome.cajaYaAperturada']}"
+				rendered="#{cajaPermisoHome.managed}"
+				id="outCajaOpen" />
+
+			<rich:panel id="panelContenedor">
 				<f:facet name="header">
 					<h:panelGrid columns="2" columnClasses="headerTitle,">
 						<h:outputText value="#{messages['cajaPermiso.infoData']}" />
 						<a:commandButton value="#{messages['diaTrabajo.load']}"
 							action="#{cajaPermisoHome.recargarDiaTrabajo()}"
-							reRender="supervisorField,panelAperturaCaja,outCierreCaja,panelBotones" />
+							reRender="panelContenedor,panelBotones,formTitle" />
 					</h:panelGrid>
 				</f:facet>
 
-				<rich:panel rendered="#{userSession.diaTrabajo!=null}"
+				<h:panelGrid rendered="#{userSession.diaTrabajo!=null}"
 					id="panelAperturaCaja">
 
 					<s:decorate id="tipoSucursalField" template="../layout/edit.xhtml">
@@ -91,6 +96,7 @@
 							value="#{cajaPermisoHome.instance.balanceInicial}" size="26">
 							<a:support event="onblur" reRender="balanceInicialField"
 								bypassUpdates="true" ajaxSingle="true" />
+							<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 						</h:inputText>
 					</s:decorate>
 
@@ -101,8 +107,9 @@
 						datePattern="#{messages['common.datePattern']}" />
 				</s:decorate-->
 
-					<div style="clear: both"></div>
-				</rich:panel>
+					
+				</h:panelGrid>
+				
 
 				<div style="clear: both">
 					<span class="required">*</span>
@@ -113,11 +120,13 @@
 
 			<div class="actionButtons">
 
-				<h:panelGrid rendered="#{cajaPermisoHome.managed}" id="panelBotones">
+				<h:panelGrid id="panelBotones" columns="2">
 					<h:commandButton id="save" value="#{messages['common.save']}"
 						action="#{cajaPermisoHome.persist}"
 						disabled="#{!cajaPermisoHome.wired}"
-						rendered="#{userSession.diaTrabajo==null}" />
+						rendered="#{userSession.diaTrabajo!=null and !cajaPermisoHome.managed}" />
+					<s:button id="cancelAdd" value="#{messages['common.cancel']}"
+						propagation="end" view="/home.xhtml" />
 				</h:panelGrid>
 
 				<!-- h:commandButton id="update" value="#{messages['common.save']}"
@@ -129,8 +138,7 @@
 					rendered="#{cajaPermisoHome.managed}" /-->
 
 
-				<s:button id="cancelAdd" value="#{messages['common.cancel']}"
-					propagation="end" view="/home.xhtml" />
+
 
 			</div>
 		</h:form>
