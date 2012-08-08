@@ -63,7 +63,7 @@ public class Persona extends Resident {
 	@Enumerated(EnumType.STRING)
 	@Column(length = 15)
 	private EstadoCivil estadoCivil;
-
+	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.EAGER)
 	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@JoinColumn(name = "user_id")

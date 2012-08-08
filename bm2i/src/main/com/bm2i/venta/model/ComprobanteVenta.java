@@ -85,7 +85,7 @@ public class ComprobanteVenta {
 	@JoinColumn(name = "tipoComprobante_id")
 	private TipoComprobante tipoComprobante;
 
-	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Resident resident;
 
 	@ManyToOne
