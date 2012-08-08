@@ -11,11 +11,11 @@
 
 	<ui:define name="body">
 
-		<h:form id="action" styleClass="edit">
-
+		<h:form id="role" styleClass="edit">
 
 			<h:outputText styleClass="formTitle"
 				value="#{actionHome.managed ? messages['common.edit'] : messages['common.create']} #{messages['action.tittle']}" />
+
 
 			<rich:panel>
 				<f:facet name="header">Acciones</f:facet>
@@ -48,38 +48,42 @@
 				</s:decorate>
 
 
+
 				<div style="clear: both">
 					<span class="required">*</span>
 					#{messages['common.requiredFields']}
 				</div>
-
 			</rich:panel>
+
+
 
 			<rich:tabPanel id="usersChildren">
 				<rich:tab label="#{messages['permissions.tittle']}">
 
 					<h:panelGrid width="100%" id="pnlAddPermission"
 						style="FONT-SIZE: xx-small;">
+
 						<s:decorate template="../layout/display.xhtml">
 
-							<ui:define name="label">#{messages['actions']}:</ui:define>
-							<h:inputText id="value1" label="#{messages['criteria']}"
+							<ui:define name="label">#{messages['action']}:</ui:define>
+							<h:inputText id="value" label="#{messages['criteria']}"
 								styleClass="uppercase" size="100">
 							</h:inputText>
 
-							<rich:suggestionbox for="value1"
-								suggestionAction="#{actionHome.searchActionByNameNuevo}"
-								var="actionItem" height="150" width="250">
+							<rich:suggestionbox for="value"
+								suggestionAction="#{actionHome.buscarPorNombre}" var="action"
+								height="150" width="250">
 								<f:facet name="nothingLabel">
 									<h:outputText value="#{messages['user.nothingUsers']}" />
 								</f:facet>
-								<a:support event="onselect" reRender="usersChildren"
-									action="#{actionHome.addAction(actionItem)}" />
+								<a:support event="onselect" reRender="permissionsTable"
+									action="#{actionHome.addAction(action)}" ajaxSingle="true" />
 								<h:column>
-									<h:outputText value="#{actionItem.name}" />
+									<h:outputText value="#{action.name}" />
 								</h:column>
 							</rich:suggestionbox>
 						</s:decorate>
+
 					</h:panelGrid>
 					<rich:dataTable value="#{actionHome.instance.actions}" var="_p"
 						rowClasses="rvgRowOne,rvgRowTwo" id="permissionsTable">
@@ -100,6 +104,8 @@
 					</rich:dataTable>
 				</rich:tab>
 			</rich:tabPanel>
+
+
 			<div class="actionButtons">
 
 				<h:commandButton id="save" value="#{messages['common.save']}"
@@ -116,6 +122,7 @@
 				<s:button id="cancelEdit" value="#{messages['common.cancel']}"
 					propagation="end" view="/security/ActionList.xhtml" />
 			</div>
+
 		</h:form>
 	</ui:define>
 

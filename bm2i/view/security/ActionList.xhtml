@@ -38,7 +38,7 @@
 				<h:panelGrid columns="2" columnClasses="headerTitle,">
 					<h:outputText
 						value=" #{messages['action.searchResults']} (#{empty actionList.resultList ? 0 : (actionList.paginated ? actionList.resultCount : actionList.resultList.size)})" />
-					<s:button view="/security/ActionEdit.xhtml" id="create"
+					<s:button view="/security/ActionEdit1.xhtml" id="create"
 						propagation="none"
 						value="#{messages['common.create']} #{messages['action']}">
 						<f:param name="actionId" />
@@ -53,7 +53,9 @@
 
 				<rich:dataTable id="actionList" var="_action"
 					value="#{actionList.resultList}"
-					rendered="#{not empty actionList.resultList}">
+					rendered="#{not empty actionList.resultList}"
+					onRowMouseOver="this.style.backgroundColor='#9EBAC7'"
+					onRowMouseOut="this.style.backgroundColor='#{a4jSkin.tableBackgroundColor}'">
 					<h:column>
 						<f:facet name="header">
 							<ui:include src="../layout/sort.xhtml">
@@ -88,7 +90,7 @@
 					</h:column>
 					<rich:column styleClass="action">
 						<f:facet name="header">#{messages['common.action']}</f:facet>
-						<s:button view="/security/ActionEdit.xhtml"
+						<s:button view="/security/ActionEdit1.xhtml"
 							value="#{messages['common.edit']}" propagation="none"
 							id="actionEdit" rendered="#{empty from}">
 							<f:param name="actionId" value="#{_action.id}" />
