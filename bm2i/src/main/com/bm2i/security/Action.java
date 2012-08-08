@@ -10,12 +10,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.TableGenerator;
 
 @Entity
 @TableGenerator(name = "ActionGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "Action", initialValue = 1, allocationSize = 1)
+@NamedQueries(value = {
+
+@NamedQuery(name = "Action.findByName", query = "select a from Action a where "
+		+ "lower(a.name) like lower(concat(:sugerencia, '%'))") })
 public class Action {
 	@Id
 	@GeneratedValue(generator = "ActionGenerator", strategy = GenerationType.TABLE)

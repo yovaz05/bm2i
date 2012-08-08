@@ -59,6 +59,7 @@ public class DiaTrabajo {
 
 	public DiaTrabajo() {
 		openDate = new Date();
+		isOpen = new Boolean(true);
 	}
 
 	public void finalize() throws Throwable {

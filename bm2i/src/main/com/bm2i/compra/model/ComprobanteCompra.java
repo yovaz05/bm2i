@@ -67,7 +67,8 @@ public class ComprobanteCompra {
 	private Resident preveedor;
 
 	public ComprobanteCompra() {
-
+		isPayed = new Boolean(false);
+		fecha = new Date();
 	}
 
 	public void finalize() throws Throwable {
