@@ -39,8 +39,7 @@ public class Usuario {
 	@Temporal(TemporalType.DATE)
 	private Date expirationDate;
 
-	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE,
-			CascadeType.MERGE })
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private Persona persona;
 
 	@ManyToMany(mappedBy = "users")

@@ -57,7 +57,10 @@ public class UserHome extends EntityHome<Usuario> {
 	public void wire() {
 		getInstance();
 		if (this.getInstance().getId() != null) {
-			persona=this.getInstance().getPersona();
+			persona = this.getInstance().getPersona();
+			if (persona == null) {
+				persona = new Persona();
+			}
 		}
 	}
 
@@ -158,6 +161,15 @@ public class UserHome extends EntityHome<Usuario> {
 		this.persona.setNombre(this.persona.toString());
 		this.getInstance().setPersona(persona);
 		return super.update();
+	}
+
+	@Override
+	public String remove() {
+		// TODO Auto-generated method stub
+		/*
+		 * this.getInstance().setPersona(null); this.persona = new Persona();
+		 */
+		return super.remove();
 	}
 
 }

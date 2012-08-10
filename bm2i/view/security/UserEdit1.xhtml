@@ -265,6 +265,9 @@
 					<h:commandButton id="update" value="#{messages['common.save']}"
 						action="#{userHome.update}" rendered="#{userHome.managed}" />
 
+					<h:commandButton id="delete" value="#{messages['common.delete']}"
+						action="#{userHome.remove}" rendered="#{userHome.managed}" />
+
 					<s:button id="cancelEdit" value="#{messages['common.cancel']}"
 						propagation="end" view="/security/UserList.xhtml" />
 				</rich:panel>

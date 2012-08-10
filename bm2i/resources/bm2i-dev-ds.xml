@@ -9,8 +9,8 @@
       <use-java-context>false</use-java-context>
       <connection-url>jdbc:postgresql:bm2i</connection-url>
       <driver-class>org.postgresql.Driver</driver-class>
-      <user-name>bm2i</user-name>
-      <password>bm2i</password>
+      <user-name>postgres</user-name>
+      <password>bebetito</password>
    </local-tx-datasource>
     
 </datasources>
