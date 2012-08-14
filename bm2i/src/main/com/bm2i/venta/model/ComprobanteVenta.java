@@ -39,7 +39,11 @@ import com.bm2i.comun.model.TipoComprobante;
 				+ "c.numero = :numero"),
 		@NamedQuery(name = "ComprobanteVenta.findByDate", query = "select c from ComprobanteVenta c where "
 				+ "c.fecha between :fechaDesde and :fechaHasta "
-				+ "order by c.fecha") })
+				+ "order by c.fecha"),
+		@NamedQuery(name = "ComprobanteVenta.sumarByDateIVA", query = "select SUM(c.iva) from ComprobanteVenta c where "
+				+ "c.fecha between :fechaDesde and :fechaHasta"),
+		@NamedQuery(name = "ComprobanteVenta.sumarByDateSubCero", query = "select SUM(c.subTotalCero) from ComprobanteVenta c where "
+				+ "c.fecha between :fechaDesde and :fechaHasta") })
 public class ComprobanteVenta {
 
 	@Id
@@ -273,5 +277,5 @@ public class ComprobanteVenta {
 	public void setRegistrador(Persona registrador) {
 		this.registrador = registrador;
 	}
-	
+
 }// end ComprobanteVenta
