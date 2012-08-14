@@ -62,6 +62,14 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 
 	private ComprobanteVenta anularCV;
 
+	// para reporte
+	private BigDecimal iva;
+	private BigDecimal subTotal;
+	private BigDecimal descuento;
+	private BigDecimal subTotalCero;
+	private BigDecimal subTotalIva;
+	private BigDecimal total;
+
 	public void setComprobanteVentaId(Long id) {
 		setId(id);
 	}
@@ -453,8 +461,10 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		if (this.residentHome.getInstance().getNumeroIdentificacion() != null) {
 			if (!this.pagoHome.getAnyError()) {
 				if (actualRow > 0) {
-					this.getInstance().setResident(this.residentHome.getInstance());
-					this.getInstance().setRegistrador(this.userSession.getPersona());
+					this.getInstance().setResident(
+							this.residentHome.getInstance());
+					this.getInstance().setRegistrador(
+							this.userSession.getPersona());
 					this.getInstance().setPago(this.pagoHome.getInstance());
 					for (ItemComprobanteVenta icv : this.itemAux) {
 						if (icv.getArticulo() != null) {
@@ -533,9 +543,33 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		q.setParameter("fechaDesde", desde);
 		q.setParameter("fechaHasta", hasta);
 		this.comprobantes = q.getResultList();
-		System.out.println("las fechas sons");
-		System.out.println();
-		System.out.println(hasta);
+		// para totales del reporte
+		sumarIva();
+		sumarSubCero();
+	}
+
+	public void sumarIva() {	
+		Query q = this.getEntityManager().createNamedQuery(
+				"ComprobanteVenta.sumarByDateIVA");
+		q.setParameter("fechaDesde", desde);
+		q.setParameter("fechaHasta", hasta);
+		if (q.getResultList().size() > 0) {
+			this.iva = new BigDecimal(q.getSingleResult().toString());
+		} else {
+			this.iva = new BigDecimal(0);
+		}
+	}
+
+	public void sumarSubCero() {
+		Query q = this.getEntityManager().createNamedQuery(
+				"ComprobanteVenta.sumarByDateSubCero");
+		q.setParameter("fechaDesde", desde);
+		q.setParameter("fechaHasta", hasta);
+		if (q.getResultList().size() > 0) {
+			this.subTotalCero = new BigDecimal(q.getSingleResult().toString());
+		} else {
+			this.subTotalCero = new BigDecimal(0);
+		}
 	}
 
 	public void metodos() {
@@ -548,8 +582,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	}
 
 	public void anularComprobante(ComprobanteVenta cv) {
-		
-		//this.anularCV.setIsAnulado(new Boolean(true));
+		// this.anularCV.setIsAnulado(new Boolean(true));
 		this.setInstance(cv);
 		this.getInstance().setIsAnulado(new Boolean(true));
 		this.update();
@@ -565,6 +598,54 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 
 	public void setAnularCV(ComprobanteVenta anularCV) {
 		this.anularCV = anularCV;
+	}
+
+	public BigDecimal getIva() {
+		return iva;
+	}
+
+	public void setIva(BigDecimal iva) {
+		this.iva = iva;
+	}
+
+	public BigDecimal getSubTotal() {
+		return subTotal;
+	}
+
+	public void setSubTotal(BigDecimal subTotal) {
+		this.subTotal = subTotal;
+	}
+
+	public BigDecimal getDescuento() {
+		return descuento;
+	}
+
+	public void setDescuento(BigDecimal descuento) {
+		this.descuento = descuento;
+	}
+
+	public BigDecimal getSubTotalCero() {
+		return subTotalCero;
+	}
+
+	public void setSubTotalCero(BigDecimal subTotalCero) {
+		this.subTotalCero = subTotalCero;
+	}
+
+	public BigDecimal getSubTotalIva() {
+		return subTotalIva;
+	}
+
+	public void setSubTotalIva(BigDecimal subTotalIva) {
+		this.subTotalIva = subTotalIva;
+	}
+
+	public BigDecimal getTotal() {
+		return total;
+	}
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
 	}
 
 }

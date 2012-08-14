@@ -12,7 +12,9 @@ public class UserList extends EntityQuery<Usuario> {
 
 	private static final String EJBQL = "select user from Usuario user";
 
-	private static final String[] RESTRICTIONS = { "lower(user.name) like lower(concat(#{userList.user.name},'%'))", };
+	private static final String[] RESTRICTIONS = {
+			"lower(user.name) like lower(concat(#{userList.user.name},'%'))",
+			 };
 
 	private Usuario user = new Usuario();
 
@@ -22,9 +24,19 @@ public class UserList extends EntityQuery<Usuario> {
 		setMaxResults(25);
 	}
 
+	@Override
+	public String getRestrictionLogicOperator() {
+		return "or";
+	}
+
 	public Usuario getUser() {
 		return user;
 	}
+
+	public void setUser(Usuario user) {
+		this.user = user;
+	}
+
 	/*
 	 * public Usuario getUsuario() { return user; }
 	 */
