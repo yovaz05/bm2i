@@ -6,7 +6,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:a="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich" template="../layout/template.xhtml">
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
 
 	<ui:define name="body">
 		<h:form id="comprobanteVenta" styleClass="edit">
@@ -44,10 +45,18 @@
 
 					<rich:dataTable id="comprobanteVentaList" var="_comprobanteVenta"
 						value="#{comprobanteVentaHome.comprobantes}">
+
+						<f:facet name="header">
+							<rich:columnGroup>
+								<rich:column colspan="11">
+									<h:outputText value="Reporte por Rubro" />
+								</rich:column>
+							</rich:columnGroup>
+						</f:facet>
+
 						<rich:column>
 							<f:facet name="header">Cliente</f:facet>
-							<h:outputText
-								value="#{_comprobanteVenta.resident.nombre}" />
+							<h:outputText value="#{_comprobanteVenta.resident.nombre}" />
 						</rich:column>
 						<rich:column>
 							<f:facet name="header">Fecha</f:facet>
@@ -62,8 +71,7 @@
 						</rich:column>
 						<rich:column>
 							<f:facet name="header">N° Comprobante</f:facet>
-							<h:outputText
-								value="#{_comprobanteVenta.numero}" />
+							<h:outputText value="#{_comprobanteVenta.numero}" />
 						</rich:column>
 						<rich:column>
 							<f:facet name="header">Tipo Pago</f:facet>
@@ -72,13 +80,6 @@
 						<rich:column style="text-align:right;">
 							<f:facet name="header">IVA</f:facet>
 							<h:outputText value="#{_comprobanteVenta.iva}">
-								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
-									minFractionDigits="2" type="currency" />
-							</h:outputText>
-						</rich:column>
-						<rich:column style="text-align:right;">
-							<f:facet name="header">SubTotal</f:facet>
-							<h:outputText value="#{_comprobanteVenta.subTotal}">
 								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
 									minFractionDigits="2" type="currency" />
 							</h:outputText>
@@ -112,7 +113,7 @@
 									minFractionDigits="2" type="currency" />
 							</h:outputText>
 						</rich:column>
-						<rich:column styleClass="action">
+						<!-- rich:column styleClass="action">
 							<f:facet name="header">Acciones</f:facet>
 
 							<s:link view="/ComprobanteVentaEdit.xhtml" value="Edit"
@@ -121,7 +122,39 @@
 								<f:param name="comprobanteVentaId"
 									value="#{_comprobanteVenta.id}" />
 							</s:link>
-						</rich:column>
+						</rich:column-->
+						<f:facet name="footer">
+							<rich:columnGroup>
+								<rich:column style="text-align:right;" colspan="5">Totales</rich:column>
+								<rich:column style="text-align:right;">
+									<h:outputText value="#{comprobanteVentaHome.iva}">
+										<f:convertNumber currencySymbol="$" maxFractionDigits="2"
+											minFractionDigits="2" type="currency" />
+									</h:outputText>
+								</rich:column>
+								
+								<rich:column style="text-align:right;">
+									<h:outputText value="#{comprobanteVentaHome.descuento}">
+										<f:convertNumber pattern="####.00" />
+									</h:outputText>
+								</rich:column>
+								<rich:column style="text-align:right;">
+									<h:outputText value="#{comprobanteVentaHome.subTotalCero}">
+										<f:convertNumber pattern="$####.00" />
+									</h:outputText>
+								</rich:column>
+								<rich:column style="text-align:right;">
+									<h:outputText value="#{comprobanteVentaHome.subTotalIva}">
+										<f:convertNumber pattern="$####.00" />
+									</h:outputText>
+								</rich:column>
+								<rich:column style="text-align:right;">
+									<h:outputText value="#{comprobanteVentaHome.total}">
+										<f:convertNumber pattern="$####.00" />
+									</h:outputText>
+								</rich:column>
+							</rich:columnGroup>
+						</f:facet>
 					</rich:dataTable>
 
 				</div>
