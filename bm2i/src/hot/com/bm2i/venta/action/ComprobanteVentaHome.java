@@ -155,6 +155,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 				if (q.getResultList().size() > 0) {
 					Articulo art = (Articulo) q.getResultList().get(0);
 					if (!existeArticuloEnItems(art)) {
+						itemLocal.setIsCodigoBarraEnabled(new Boolean(false));
 						itemLocal.setArticulo(art);
 
 						if (art.getIsCalculatedIva()) {
@@ -174,6 +175,8 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 					} else {
 						itemLocal.setCodigoBarra("");
 					}
+				} else {
+					itemLocal.setCodigoBarra("");
 				}
 			}
 		}
@@ -371,6 +374,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		it.setvUnitario(null);
 		it.setCodigoBarra("");
 		editarValoresItem(it);
+		it.setIsCodigoBarraEnabled(new Boolean(true));
 		if (actualRow > 0) {
 			actualRow--;
 		}
@@ -427,6 +431,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 			} else {
 				itemLocal.setvUnitario(articulo.getCurrentPrecio().getPvp());
 			}
+			itemLocal.setIsCodigoBarraEnabled(new Boolean(false));
 			editarValoresItem(itemLocal);
 			actualRow++;
 
@@ -461,6 +466,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		if (this.residentHome.getInstance().getNumeroIdentificacion() != null) {
 			if (!this.pagoHome.getAnyError()) {
 				if (actualRow > 0) {
+					this.residentHome.evaluateName();
 					this.getInstance().setResident(
 							this.residentHome.getInstance());
 					this.getInstance().setRegistrador(
@@ -548,7 +554,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		sumarSubCero();
 	}
 
-	public void sumarIva() {	
+	public void sumarIva() {
 		Query q = this.getEntityManager().createNamedQuery(
 				"ComprobanteVenta.sumarByDateIVA");
 		q.setParameter("fechaDesde", desde);

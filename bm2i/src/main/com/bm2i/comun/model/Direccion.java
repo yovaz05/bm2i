@@ -21,13 +21,13 @@ public class Direccion {
 	@GeneratedValue(generator = "DireccionGenerator", strategy = GenerationType.TABLE)
 	private Long id;
 
-	@Column(length = 30)
+	@Column(length = 50)
 	private String calle;
 
-	@Column(length = 30)
+	@Column(length = 50)
 	private String ciudad;
 
-	@Column(length = 30)
+	@Column(length = 50)
 	private String barrio;
 
 	@Column(length = 30)
@@ -36,7 +36,7 @@ public class Direccion {
 	@Column(length = 10)
 	private String numero;
 
-	@Column(length = 25)
+	@Column(length = 50)
 	private String pais;
 
 	@Column(length = 15)

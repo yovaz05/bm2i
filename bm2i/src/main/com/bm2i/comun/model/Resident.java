@@ -59,7 +59,7 @@ public abstract class Resident {
 	@Column(length = 15)
 	private String numeroIdentificacion;
 
-	@Column(length = 50)
+	@Column(length = 100)
 	private String nombre;
 	
 	@Column(length = 50)

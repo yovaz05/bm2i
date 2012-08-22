@@ -1,6 +1,7 @@
 package com.bm2i.venta.action;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -74,9 +75,12 @@ public class PagoHome extends EntityHome<Pago> {
 
 	public void calcularCambio() {
 		if (this.getInstance().getTotal() != null) {
-			int comp = this.getInstance().getEfectivo()
-					.compareTo(this.getInstance().getTotal());
-			if (comp > 0) {
+			BigDecimal efectivo = this.getInstance().getEfectivo()
+					.setScale(2, RoundingMode.HALF_UP);
+			BigDecimal total = this.getInstance().getTotal()
+					.setScale(2, RoundingMode.HALF_UP);
+			int comp = efectivo.compareTo(total);
+			if (comp >= 0) {
 				this.getInstance().setCambio(
 						this.getInstance().getEfectivo()
 								.subtract(this.getInstance().getTotal()));

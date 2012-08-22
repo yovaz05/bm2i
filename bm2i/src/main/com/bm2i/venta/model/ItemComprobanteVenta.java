@@ -50,12 +50,15 @@ public class ItemComprobanteVenta {
 	@Transient
 	private Boolean isValid;
 	@Transient
+	private Boolean isCodigoBarraEnabled;
+	@Transient
 	private String codigoBarra;
 
 	public ItemComprobanteVenta() {
 		fecha = new Date();
 		isValid = new Boolean(true);
 		conPerdida = new Boolean(false);
+		isCodigoBarraEnabled = new Boolean(true);
 	}
 
 	public void finalize() throws Throwable {
@@ -140,5 +143,13 @@ public class ItemComprobanteVenta {
 
 	public void setConPerdida(Boolean conPerdida) {
 		this.conPerdida = conPerdida;
+	}
+
+	public Boolean getIsCodigoBarraEnabled() {
+		return isCodigoBarraEnabled;
+	}
+
+	public void setIsCodigoBarraEnabled(Boolean isCodigoBarraEnabled) {
+		this.isCodigoBarraEnabled = isCodigoBarraEnabled;
 	}
 }// end ItemComprobanteVenta

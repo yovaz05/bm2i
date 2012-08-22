@@ -132,7 +132,7 @@ public class ResidentHome extends EntityHome<Resident> {
 		 * getInstance().setTipoIdentificacion(identificationTypes.get(0));
 		 */
 		// return identificationTypes;
-		
+
 		// getInstance().setTipoIdentificacion(identificationTypes.get(0));
 		return identificationTypes;
 	}
@@ -221,11 +221,19 @@ public class ResidentHome extends EntityHome<Resident> {
 				this.getInstance().setFechaRegistro(new Date());
 				this.getInstance().getCurrentDireccion().setPais("ECUADOR");
 				this.persist();
-				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<< . . .  "+this.getInstance().getNombre());
+				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<< . . .  "
+						+ this.getInstance().getNombre());
 				return true;
 			}
 		} else {
 			return false;
 		}
 	}
+
+	public void evaluateName() {
+		if (residentType.equalsIgnoreCase("Persona")) {
+			getInstance().setNombre(getInstance().toString());
+		}
+	}
+
 }
