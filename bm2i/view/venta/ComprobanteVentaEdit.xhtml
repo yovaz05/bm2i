@@ -105,7 +105,7 @@
 									value="#{residentHome.instance.nombre}"
 									style="text-transform: uppercase">
 									<a:support event="onblur" reRender="nameField"
-										ajaxSingle="true" action="#{comprobanteVentaHome.metodos()}"/>
+										ajaxSingle="true" action="#{comprobanteVentaHome.metodos()}" />
 								</h:inputText>
 							</s:decorate>
 						</rich:column>
@@ -207,7 +207,7 @@
 							<h:outputText id="itemsCount"
 								value="Items (#{comprobanteVentaHome.itemAux.size})" />
 							<a:commandButton ajaxSingle="true"
-								oncomplete="Richfaces.showModalPanel('buscarArticuloPanel',{width:600, top:150})"
+								oncomplete="Richfaces.showModalPanel('buscarArticuloPanel',{width:600, top:100})"
 								value="Buscar Artículos" />
 						</h:panelGrid>
 					</f:facet>
@@ -218,11 +218,12 @@
 						<rich:column styleClass="action">
 							<f:facet name="header">#{messages['articulo.codigoBarra']}</f:facet>
 							<h:inputText value="#{_itemComprobanteVenta.codigoBarra}"
-								onkeypress="return noEnter(event);" id="codigoBarra" size="15">
+								onkeypress="return noEnter(event);" id="codigoBarra" size="15"
+								disabled="#{!_itemComprobanteVenta.isCodigoBarraEnabled}">
 								<a:support event="onblur" ajaxSingle="true"
 									action="#{comprobanteVentaHome.buscarCodigoBarra(_itemComprobanteVenta)}"
 									reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores, 
-									itemComprobanteVentaList,itemsCount, totalField, panelValores, codigoBarra, subTotalIvaField,subTotalCeroField,descuentoField,ivaField,valorTotalField" />
+									itemComprobanteVentaList,itemsCount, totalField, panelValores, codigoBarra, subTotalIvaField,subTotalCeroField,descuentoField,ivaField,valorTotalField,codigoBarra" />
 							</h:inputText>
 						</rich:column>
 						<rich:column>
@@ -399,7 +400,8 @@
 
 					<s:button value="#{messages['common.new']}" propagation="end"
 						view="/venta/ComprobanteVentaEdit.xhtml"
-						action="#{comprobanteVentaHome.nuevoComprobante()}" immediate="true">
+						action="#{comprobanteVentaHome.nuevoComprobante()}"
+						immediate="true">
 
 					</s:button>
 

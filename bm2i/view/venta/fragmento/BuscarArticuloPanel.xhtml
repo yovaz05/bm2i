@@ -8,7 +8,7 @@
 	xmlns:s="http://jboss.com/products/seam/taglib"
 	xmlns:rich="http://richfaces.org/rich">
 
-	<rich:modalPanel id="buscarArticuloPanel" width="600" height="400">
+	<rich:modalPanel id="buscarArticuloPanel" width="600" height="500">
 		<f:facet name="header">
 			<h:panelGroup>
 				<h:outputText
@@ -36,15 +36,15 @@
 					<a:commandButton value="#{messages['common.search']}"
 						ajaxSingle="true"
 						action="#{comprobanteVentaHome.buscarArticulos()}"
-						reRender="articuloTable" />
+						reRender="articuloTable,sc2" />
 					<a:commandButton value="#{messages['common.quit']}"
-						reRender="articuloTable,txtCriteria"
+						reRender="articuloTable,txtCriteria,articuloTable,sc2"
 						oncomplete="Richfaces.hideModalPanel('buscarArticuloPanel');"
 						ajaxSingle="true"
 						action="#{comprobanteVentaHome.limpiarPanelBusqueda()}" />
 				</h:panelGrid>
 				<rich:dataTable id="articuloTable" var="_articulo"
-					value="#{comprobanteVentaHome.articulos}" rows="5">
+					value="#{comprobanteVentaHome.articulos}" rows="10">
 					<rich:column width="20%">
 						<f:facet name="header">#{messages['articulo.codigoBarra']}</f:facet>
 						<h:outputText value="#{_articulo.codigoBarra}" />
