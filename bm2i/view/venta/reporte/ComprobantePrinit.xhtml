@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<head>
+<script type="text/javascript">
+	function cerrar(){
+	    try {
+	        window.opener.focus();
+	        this.close();
+	    } catch (e) {
+	        alert("error al cerrar la ventan");
+	    }
+	}
+	function doPrint(){
+	    try{
+	        document.getElementById("noprint").style.visibility='hidden';
+	        window.print();
+	        window.opener.focus();
+	        this.close();
+	    }catch(e){
+	        alert(e);
+	    }
+	}
+</script>
+</head>
+<body>
+	<h:outputText value="1 vadasdasdasdasdadasda" />
+	<br />
+	<h:outputText value="2 vadasdasdasdasdadasda" />
+	<br />
+	<h:outputText value="3 vadasdasdasdasdadasda" />
+
+	<div class="actionButtons">
+		<div align="center">
+			<div align="center" id="noprint">
+				<table width="100%">
+					<tr align="center">
+						<td align="right"><table>
+								<tr>
+									<td align="center"><h:commandButton
+											onclick="doPrint();return false;" value="Imprimir" />
+									</td>
+									<td align="center"><h:commandButton
+											onclick="cerrar();return false;" value="Cerrar" /></td>
+								</tr>
+							</table></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
