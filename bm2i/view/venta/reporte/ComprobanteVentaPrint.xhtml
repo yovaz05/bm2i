@@ -38,81 +38,90 @@ alignTop {
 	vertical-align: top;
 }
 
+.text-input{
+    margin-bottom:5px;
+    padding:2px;
+    
+}
+
+
 .rich-table,.rich-table-header,.rich-table-headercell,.rich-table-cell,.rich-subtable-cell,.rich-table-footercell,.rich-subtable-footercell
 	{
-	border-width: 0px;
-}
+		border-width: 0px;
+	}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
 <body>
 	<h:form id="diaTrabajo">
-		<div style="height: 90px; width: 75%" />
-		<div style="width: 75%">
+		<div style="height: 103px; width: 80%" />
+		<div style="width: 80%">
 
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<tr>
-					<td width="70%"  height="30px"><h:outputText
+					<td width="15%" height="30px"></td>
+					<td width="70%" height="30px"><h:outputText
 							value="#{comprobanteVentaHome.instance.fecha}"
 							style="font-family: courier;font-size: 8pt;">
 							<f:convertDateTime pattern="yyyy - MMMM - dd" locale="es" />
-						</h:outputText></td>
-					<td></td>
+						</h:outputText>
+					</td>
+					<td width="20%" height="30px"></td>
 				</tr>
 				<tr>
+					<td width="5%" height="30px"></td>
 					<td colspan="2" height="30px"><h:outputText
 							value="#{residentHome.instance.nombre}"
-							style="font-family: courier;font-size: 8pt;" />
-					</td>
+							style="font-family: courier;font-size: 8pt;" /></td>
 				</tr>
 				<tr>
+					<td width="8%" height="30px"></td>
 					<td colspan="2" height="30px"><h:outputText
 							value="#{residentHome.instance.currentDireccion.calle}"
-							style="font-family: courier;font-size: 8pt;" />
-					</td>
+							style="font-family: courier;font-size: 8pt;" /></td>
 				</tr>
 				<tr>
+					<td width="10%" height="30px"></td>
 					<td width="60%" height="30px"><h:outputText
 							value="#{residentHome.instance.numeroIdentificacion}"
-							style="font-family: courier;font-size: 8pt;" />
-					</td>
+							style="font-family: courier;font-size: 8pt;" /></td>
 					<td><h:outputText
 							value="#{residentHome.instance.currentDireccion.telefonoFijo}"
-							style="font-family: courier;font-size: 8pt;" /></td>
+							style="font-family: courier;font-size: 8pt;" />
+					</td>
 				</tr>
 
 			</table>
-			<div style="height: 20px; width: 100%" />
+			<div style="height: 13px; width: 100%" />
 			<div align="center">
 
-				<div align="center" style="height: 360px">
+				<div align="center" style="height: 350px">
 					<rich:dataTable id="itemComprobanteVentaList"
 						var="_itemComprobanteVenta"
-						value="#{comprobanteVentaHome.instance.items}" width="100%">
+						value="#{comprobanteVentaHome.instance.items}" width="100%" cellpadding="0" cellspacing="0" border="0"
+						style="height:5px" >
 
-						<rich:column styleClass="action" width="6%">
+						<rich:column  width="8%" style="height:5px" styleClass="text-input">
 							<!-- f:facet name="header">#{messages['articulo.cantidad']}</f:facet-->
 							<h:outputText value="#{_itemComprobanteVenta.cantidad}"
-								style="font-family: courier;font-size: 8pt;" />
+								style="font-family: courier;font-size: 8pt;"  />
 						</rich:column>
 
-
-						<rich:column>
+						<rich:column width="65%" styleClass="text-input">
 							<!-- f:facet name="header">#{messages['articulo']}</f:facet-->
 							<h:outputText value="#{_itemComprobanteVenta.articulo.nombre}"
-								style="font-family: courier;font-size: 8pt;" />
+								style="font-family: sans-serif;font-size: 6pt; font-stretch: condensed;"  />
 						</rich:column>
 
-
-						<rich:column styleClass="action" width="6%">
+						<rich:column  width="17%" styleClass="text-input">
 							<!--f:facet name="header">#{messages['articulo.valorUnitario']}</f:facet-->
 							<h:outputText value="#{_itemComprobanteVenta.vUnitario}"
-								style="font-family: courier;font-size: 8pt;" />
+								style="font-family: courier;font-size: 8pt;"  />
 						</rich:column>
-						<rich:column style="text-align: right;" width="10%">
+						<rich:column style="text-align: right;" width="10%" styleClass="text-input">
 							<!--f:facet name="header">#{messages['articulo.valorTotal']}</f:facet-->
-							<h:outputText value="#{_itemComprobanteVenta.vTotal}" />
+							<h:outputText value="#{_itemComprobanteVenta.vTotal}"  />
 						</rich:column>
 					</rich:dataTable>
 
@@ -126,42 +135,37 @@ alignTop {
 							<tr>
 								<td align="right" height="15px"><h:outputText
 										value="#{comprobanteVentaHome.instance.subTotalIva}"
-										style="font-family: courier;font-size: 8pt;">
+										style="font-family: courier;font-size: 8pt; font-weight:bold;">
 										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
-									</h:outputText>
-								</td>
+									</h:outputText></td>
 							</tr>
 							<tr>
-								<td align="right" height="15px"><h:outputText
+								<td align="right" height="20px"><h:outputText
 										value="#{comprobanteVentaHome.instance.descuento}"
-										style="font-family: courier;font-size: 8pt;">
+										style="font-family: courier;font-size: 8pt; font-weight:bold;">
 										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
-									</h:outputText>
-								</td>
+									</h:outputText></td>
 							</tr>
 							<tr>
-								<td align="right" height="15px"><h:outputText
+								<td align="right" height="20px"><h:outputText
 										value="#{comprobanteVentaHome.instance.subTotalCero}"
-										style="font-family: courier;font-size: 8pt;">
+										style="font-family: courier;font-size: 8pt; font-weight:bold;">
 										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
-									</h:outputText>
-								</td>
+									</h:outputText></td>
 							</tr>
 							<tr>
-								<td align="right" height="15px"><h:outputText
+								<td align="right" height="20px"><h:outputText
 										value="#{comprobanteVentaHome.instance.iva}"
-										style="font-family: courier;font-size: 8pt;">
+										style="font-family: courier;font-size: 8pt; font-weight:bold;">
 										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
-									</h:outputText>
-								</td>
+									</h:outputText></td>
 							</tr>
 							<tr>
-								<td align="right" height="15px"><h:outputText
+								<td align="right" height="20px"><h:outputText
 										value="#{comprobanteVentaHome.instance.valorTotal}"
-										style="font-family: courier;font-size: 8pt;">
+										style="font-family: courier;font-size: 8pt; font-weight:bold;">
 										<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
-									</h:outputText>
-								</td>
+									</h:outputText></td>
 							</tr>
 						</table>
 
@@ -179,14 +183,11 @@ alignTop {
 							<td align="right"><table>
 									<tr>
 										<td align="center"><a:commandButton id="bt_imprimir"
-												onclick="doPrint();return false;" value="Imprimir" />
-										</td>
+												onclick="doPrint();return false;" value="Imprimir" /></td>
 										<td align="center"><a:commandButton id="bt_cerrar"
-												onclick="cerrar();return false;" value="Cerrar" />
-										</td>
+												onclick="cerrar();return false;" value="Cerrar" /></td>
 									</tr>
-								</table>
-							</td>
+								</table></td>
 						</tr>
 					</table>
 				</div>
