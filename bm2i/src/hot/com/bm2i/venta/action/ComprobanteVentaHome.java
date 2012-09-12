@@ -163,7 +163,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 							itemLocal.setvUnitario(art
 									.getCurrentPrecio()
 									.getPvp()
-									.divide(new BigDecimal(1.12),
+									.divide(new BigDecimal(1.12), 2,
 											RoundingMode.HALF_UP));
 						} else {
 							itemLocal.setvUnitario(art.getCurrentPrecio()
@@ -270,7 +270,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 				if (it.getArticulo().getIsCalculatedIva()) {
 					this.getInstance().setSubTotalIva(
 							this.getInstance().getSubTotalIva()
-									.add(it.getvTotal()));
+									.add(it.getvTotal()).setScale(2, RoundingMode.HALF_UP));
 					cantArticulosIVA++;
 
 				} else {
@@ -291,14 +291,14 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		if (this.getInstance().getSubTotalIva() != null) {
 			BigDecimal baseIva = this.getInstance().getSubTotalIva()
 					.multiply(new BigDecimal(0.12));
-			this.getInstance().setIva(baseIva);
+			this.getInstance().setIva(baseIva.setScale(2, RoundingMode.HALF_UP));
 		}
 
 		this.getInstance().setValorTotal(
 				this.getInstance()
 						.getSubTotalIva()
 						.add(this.getInstance().getSubTotalCero()
-								.add(this.getInstance().getIva())));
+								.add(this.getInstance().getIva())).setScale(2, RoundingMode.HALF_UP));
 
 		this.pagoHome.getInstance()
 				.setTotal(this.getInstance().getValorTotal());
@@ -427,7 +427,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 				// calculo el valor sin iva
 
 				itemLocal.setvUnitario(articulo.getCurrentPrecio().getPvp()
-						.divide(new BigDecimal(1.12), RoundingMode.HALF_UP));
+						.divide(new BigDecimal(1.12), 2, RoundingMode.HALF_UP));
 			} else {
 				itemLocal.setvUnitario(articulo.getCurrentPrecio().getPvp());
 			}
