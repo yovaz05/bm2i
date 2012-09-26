@@ -42,7 +42,7 @@ public class UserSession extends EntityController {
 		return periodoFiscal;
 	}
 
-	@Observer(value = "org.jboss.seam.postCreate.userSession")
+	/*@Observer(value = "org.jboss.seam.postCreate.userSession")
 	public void initializeCurrentperiodoFiscal() {
 		Date currentDate = new Date();
 		Query query = getEntityManager().createNamedQuery(
@@ -52,7 +52,7 @@ public class UserSession extends EntityController {
 		if (list.size() > 0) {
 			periodoFiscal = list.get(0);
 		}
-	}
+	}*/
 
 	@Observer(value = "org.jboss.seam.postCreate.userSession")
 	public void initializeCurrentDiaTrabajo() {

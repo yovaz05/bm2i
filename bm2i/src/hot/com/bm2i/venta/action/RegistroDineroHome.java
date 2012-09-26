@@ -8,6 +8,7 @@ import com.bm2i.venta.model.CajaPermiso;
 import com.bm2i.venta.model.ComprobanteVenta;
 import com.bm2i.venta.model.RegistroDinero;
 
+
 @Name("registroDineroHome")
 public class RegistroDineroHome extends EntityHome<RegistroDinero> {
 
