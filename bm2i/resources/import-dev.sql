@@ -2,10 +2,10 @@
 --la creacion del usuario principal
 insert into direccion (id, barrio, calle, ciudad, codigopostal, numero, pais, telefonocelular, telefonofijo, resident_id) values (1, 'Motupe', 'CHANTACO Y AV. 8 DE DICIEMBRE','LOJA', NULL,NULL, 'ECUADOR', '087567242', '2540302',NULL);
 insert into resident 
-(residenttype, id, email, fecharegistro, nombre, nombrecomercial, numeroidentificacion, tipoidentificacion, apellidos, birthday, estadocivil, genero, isdiscapacitado, nombres, numerodiscapacidad, codigo, fechaconstitucion, tipoentidadlegal, currentdireccion_id) 
+(residenttype, id, email, fecharegistro, nombre, numeroidentificacion, tipoidentificacion, apellidos, birthday, estadocivil, genero, isdiscapacitado, nombres, numerodiscapacidad, codigo, fechaconstitucion, tipoentidadlegal, currentdireccion_id) 
 values 
-('N',1,'richardmijo@hotmail.com','2012-09-22','RICHARD FRANCISCO ARMIJOS MERINO',null,'1104111271','CEDULA','ARMIJOR MERINO','2012-09-22','SOLTERO','MASCULINO',FALSE,'RICHARD FRANCISCO',null,null,null,null,1);
-insert into usuario (id, expirationdate, isactive, name, password, person_id ) values (1,'2012-09-22',TRUE,'mijo','pris1',1);
+('N',1,'richardmijo@hotmail.com','2012-09-22','RICHARD FRANCISCO ARMIJOS MERINO', '1104111271','CEDULA','ARMIJOR MERINO','2012-09-22','SOLTERO','MASCULINO',FALSE,'RICHARD FRANCISCO',null,null,null,null,1);
+insert into usuario (id, expirationdate, isactive, name, password, persona_id ) values (1,'2012-09-22',TRUE,'mijo','pris1',1);
 -- para las acciones
 insert into action (id,icon,name,priority,url,parent_id) values (1,'','Administracion',0,'#',null); 
 insert into action (id,icon,name,priority,url,parent_id) values (2,'','Acciones',2,'/security/ActionList.xhtml',1);
