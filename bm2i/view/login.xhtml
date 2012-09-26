@@ -10,34 +10,41 @@
 	<ui:define name="body">
 
 		<h:form id="loginForm">
+			<h:panelGrid columns="2" style="margin-left:20%;">
+				<rich:panel style="width:45%;">
+					<h:graphicImage value="/img/4life.jpg" alt="Login logo"
+						style="border:15px solid transparent" />
+				</rich:panel>
 
-			<rich:panel style="width:45%; margin-left:25%;">
-				<f:facet name="header">#{messages['login.title']}</f:facet>
+				<rich:panel style="width:70%;">
+					<f:facet name="header">#{messages['login.title']}</f:facet>
 
-				<p>#{messages['login.description']}</p>
+					<p>#{messages['login.description']}</p>
 
-				<div class="dialog">
-					<h:panelGrid columns="2">
-						<h:panelGrid>
-							<h:graphicImage value="/img/login_logo.gif" alt="Login logo"
-								style="border:15px solid transparent" />
+					<div class="dialog">
+						<h:panelGrid columns="2">
+							<h:panelGrid>
+								<h:graphicImage value="/img/login_logo.gif" alt="Login logo"
+									style="border:15px solid transparent" />
+							</h:panelGrid>
+							<h:panelGrid columns="2" rowClasses="prop"
+								columnClasses="name,value">
+								<h:outputLabel for="username">#{messages['login.username']}:</h:outputLabel>
+								<h:inputText id="username" value="#{credentials.username}" />
+								<h:outputLabel for="password">#{messages['login.password']}:</h:outputLabel>
+								<h:inputSecret id="password" value="#{credentials.password}" />
+								<h:outputLabel for="rememberMe">#{messages['login.rememberMe']}:</h:outputLabel>
+								<h:selectBooleanCheckbox id="rememberMe"
+									value="#{rememberMe.enabled}" />
+								<h:commandButton id="submit" value="#{messages['login.action']}"
+									action="#{identity.login}" />
+							</h:panelGrid>
 						</h:panelGrid>
-						<h:panelGrid columns="2" rowClasses="prop"
-							columnClasses="name,value">
-							<h:outputLabel for="username">#{messages['login.username']}:</h:outputLabel>
-							<h:inputText id="username" value="#{credentials.username}" />
-							<h:outputLabel for="password">#{messages['login.password']}:</h:outputLabel>
-							<h:inputSecret id="password" value="#{credentials.password}" />
-							<h:outputLabel for="rememberMe">#{messages['login.rememberMe']}:</h:outputLabel>
-							<h:selectBooleanCheckbox id="rememberMe"
-								value="#{rememberMe.enabled}" />
-							<h:commandButton id="submit" value="#{messages['login.action']}"
-								action="#{identity.login}" />
-						</h:panelGrid>
-					</h:panelGrid>
-				</div>
+					</div>
 
-			</rich:panel>
+				</rich:panel>
+
+			</h:panelGrid>
 
 			<div class="actionButtons"></div>
 
