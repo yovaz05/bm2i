@@ -111,6 +111,10 @@ public class Articulo {
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<Lote> lotes;
 	
+	@OneToMany(mappedBy = "articulo", cascade = CascadeType.ALL)
+	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	private List<Punto> puntos;
+	
 	@Transient
 	private BigDecimal pvpCorrecto;
 
