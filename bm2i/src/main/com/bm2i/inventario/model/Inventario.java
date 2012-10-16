@@ -2,17 +2,22 @@ package com.bm2i.inventario.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Cascade;
 
 /**
  * @author richard
@@ -36,8 +41,27 @@ public class Inventario {
 
 	private Long id_evento;
 
+	public Punto getPunto() {
+		return punto;
+	}
+
+	public void setPunto(Punto punto) {
+		this.punto = punto;
+	}
+
+	public List<Precio> getPrecios() {
+		return precios;
+	}
+
+	public void setPrecios(List<Precio> precios) {
+		this.precios = precios;
+	}
+
 	@OneToOne
 	private Articulo articulo;
+
+	@OneToOne
+	private Punto punto;
 
 	/**
 	 * compra, venta, devolucion o otra cosa se cree
@@ -45,6 +69,10 @@ public class Inventario {
 	@ManyToOne
 	@JoinColumn(name = "tipoRegistro_id")
 	private TipoRegistro tipoRegistro;
+
+	@OneToMany(mappedBy = "Inventario", cascade = CascadeType.ALL)
+	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	private List<Precio> precios;
 
 	public Inventario() {
 

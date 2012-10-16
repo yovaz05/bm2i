@@ -36,7 +36,26 @@ public class Precio {
 
 	private BigDecimal pvp;
 
+	public Inventario getInventario() {
+		return inventario;
+	}
+
+	public void setInventario(Inventario inventario) {
+		this.inventario = inventario;
+	}
+
 	private BigDecimal utilidad;
+	
+	@ManyToOne
+	private Inventario inventario;
+
+	public TipoPrecio getTipoPrecio() {
+		return tipoPrecio;
+	}
+
+	public void setTipoPrecio(TipoPrecio tipoPrecio) {
+		this.tipoPrecio = tipoPrecio;
+	}
 
 	@ManyToOne
 	private Articulo articulo;
@@ -44,6 +63,11 @@ public class Precio {
 	@ManyToOne
 	@JoinColumn(name = "ganancia_id")
 	private Ganancia ganancia;
+	
+	@ManyToOne
+	@JoinColumn(name = "tipoPrecio_id")
+	private TipoPrecio tipoPrecio;
+	
 
 	public Precio() {
 		costo=new BigDecimal(0);
