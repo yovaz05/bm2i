@@ -69,6 +69,9 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	private BigDecimal subTotalCero;
 	private BigDecimal subTotalIva;
 	private BigDecimal total;
+	
+	private String criterio;
+	private List<Resident> residents;
 
 	public void setComprobanteVentaId(Long id) {
 		setId(id);
@@ -270,7 +273,8 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 				if (it.getArticulo().getIsCalculatedIva()) {
 					this.getInstance().setSubTotalIva(
 							this.getInstance().getSubTotalIva()
-									.add(it.getvTotal()).setScale(2, RoundingMode.HALF_UP));
+									.add(it.getvTotal())
+									.setScale(2, RoundingMode.HALF_UP));
 					cantArticulosIVA++;
 
 				} else {
@@ -291,14 +295,16 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		if (this.getInstance().getSubTotalIva() != null) {
 			BigDecimal baseIva = this.getInstance().getSubTotalIva()
 					.multiply(new BigDecimal(0.12));
-			this.getInstance().setIva(baseIva.setScale(2, RoundingMode.HALF_UP));
+			this.getInstance()
+					.setIva(baseIva.setScale(2, RoundingMode.HALF_UP));
 		}
 
 		this.getInstance().setValorTotal(
 				this.getInstance()
 						.getSubTotalIva()
 						.add(this.getInstance().getSubTotalCero()
-								.add(this.getInstance().getIva())).setScale(2, RoundingMode.HALF_UP));
+								.add(this.getInstance().getIva()))
+						.setScale(2, RoundingMode.HALF_UP));
 
 		this.pagoHome.getInstance()
 				.setTotal(this.getInstance().getValorTotal());
@@ -654,4 +660,22 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		this.total = total;
 	}
 
+	public List<Resident> buscaCedula(Object o) {
+		Query q = this.getEntityManager().createNamedQuery("Resident.findByCriteria");
+		q.setParameter("criteria", o.toString());
+		return q.getResultList();
+	}
+	
+	
+	public void setCriterio(String criterio) {
+		this.criterio = criterio;
+	}
+
+	public String getCriterio() {
+		return criterio;
+	}
+	
+	public void selectCliente(Resident cliente){
+		System.out.println(cliente.getNombre());
+	}
 }
