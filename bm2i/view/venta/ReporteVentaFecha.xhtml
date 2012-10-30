@@ -14,6 +14,41 @@
 			<rich:panel>
 				<f:facet name="header">Reporte de Ventas</f:facet>
 				<div align="center">
+					<h:panelGrid columns="3">
+						<a:region>
+							<s:decorate id="criterioField" template="../layout/edit.xhtml">
+								<ui:define name="label">Buscar:</ui:define>
+								<h:inputText id="criterio"
+									value="#{comprobanteVentaHome.criterio}" size="50"
+									required="true" />
+								<rich:suggestionbox id="suggestionId" for="criterio" width="200"
+									var="_cliente" usingSuggestObjects="true"
+									suggestionAction="#{comprobanteVentaHome.buscaCedula}"
+									rules="none" >
+									<a:support event="onselect" ajaxSingle="true" immediate="true"
+										reRender="routeField"
+										action="#{comprobanteVentaHome.selectCliente(_cliente)}" />
+									<a:support event="onobjectchange" ajaxSingle="true"
+										immediate="true"
+										action="#{comprobanteVentaHome.selectCliente(_cliente)}" />
+									<h:column>
+										<h:outputText value="#{_cliente.numeroIdentificacion}" />
+									</h:column>
+									<h:column>
+										<h:outputText value="#{_cliente.nombre}" />
+									</h:column>
+								</rich:suggestionbox>
+							</s:decorate>
+						</a:region>
+
+						<a:commandButton value="Buscar"
+							action="#{comprobanteVentaHome.buscaCedula()}" />
+
+						<s:decorate id="NombreCliente" template="../layout/edit.xhtml">
+							<ui:define name="label">Cliente</ui:define>
+							<h:inputText value="" />
+						</s:decorate>
+					</h:panelGrid>
 
 					<h:panelGrid columns="3">
 						<s:decorate id="fechaDesde" template="../layout/edit.xhtml">
@@ -132,7 +167,7 @@
 											minFractionDigits="2" type="currency" />
 									</h:outputText>
 								</rich:column>
-								
+
 								<rich:column style="text-align:right;">
 									<h:outputText value="#{comprobanteVentaHome.descuento}">
 										<f:convertNumber pattern="####.00" />
