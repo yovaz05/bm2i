@@ -39,23 +39,7 @@ public class Inventario {
 	@Temporal(TemporalType.DATE)
 	private Date fecha;
 
-	private Long id_evento;
-
-	public Punto getPunto() {
-		return punto;
-	}
-
-	public void setPunto(Punto punto) {
-		this.punto = punto;
-	}
-
-	public List<Precio> getPrecios() {
-		return precios;
-	}
-
-	public void setPrecios(List<Precio> precios) {
-		this.precios = precios;
-	}
+	private Long id_evento;	
 
 	@OneToOne
 	private Articulo articulo;
@@ -70,7 +54,7 @@ public class Inventario {
 	@JoinColumn(name = "tipoRegistro_id")
 	private TipoRegistro tipoRegistro;
 
-	@OneToMany(mappedBy = "Inventario", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "inventario", cascade = CascadeType.ALL)
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<Precio> precios;
 
@@ -137,4 +121,21 @@ public class Inventario {
 	public void setTipoRegistro(TipoRegistro tipoRegistro) {
 		this.tipoRegistro = tipoRegistro;
 	}
+	
+	public Punto getPunto() {
+		return punto;
+	}
+
+	public void setPunto(Punto punto) {
+		this.punto = punto;
+	}
+
+	public List<Precio> getPrecios() {
+		return precios;
+	}
+
+	public void setPrecios(List<Precio> precios) {
+		this.precios = precios;
+	}
+	
 }// end Inventario
