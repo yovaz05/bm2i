@@ -1,6 +1,7 @@
 package com.bm2i.compra.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cascade;
 
+import com.bm2i.comun.model.Persona;
 import com.bm2i.comun.model.Resident;
 import com.bm2i.venta.model.TipoPago;
 
@@ -65,10 +67,15 @@ public class ComprobanteCompra {
 
 	@ManyToOne
 	private Resident preveedor;
+	
+	@ManyToOne
+	@JoinColumn(name = "registrador_id")
+	private Persona registrador;
 
 	public ComprobanteCompra() {
 		isPayed = new Boolean(false);
 		fecha = new Date();
+		items = new ArrayList<ItemComprobanteCompra>();
 	}
 
 	public void finalize() throws Throwable {
@@ -185,5 +192,20 @@ public class ComprobanteCompra {
 
 	public void setPreveedor(Resident preveedor) {
 		this.preveedor = preveedor;
+	}
+
+	public Persona getRegistrador() {
+		return registrador;
+	}
+
+	public void setRegistrador(Persona registrador) {
+		this.registrador = registrador;
+	}
+	
+	public void add(ItemComprobanteCompra item) {
+		if (!this.items.contains(item)) {
+			this.items.add(item);
+			item.setCompra(this);
+		}
 	}
 }// end ComprobanteCompra

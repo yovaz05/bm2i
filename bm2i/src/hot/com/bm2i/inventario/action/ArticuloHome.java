@@ -8,15 +8,18 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.jboss.seam.annotations.Factory;
 import org.jboss.seam.annotations.In;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.framework.EntityHome;
 
+import com.bm2i.comun.model.Impuesto;
 import com.bm2i.inventario.model.Articulo;
 import com.bm2i.inventario.model.Ganancia;
 import com.bm2i.inventario.model.Generico;
 import com.bm2i.inventario.model.Linea;
 import com.bm2i.inventario.model.Precio;
+import com.bm2i.inventario.model.TipoPrecio;
 
 @Name("articuloHome")
 public class ArticuloHome extends EntityHome<Articulo> {
@@ -145,6 +148,11 @@ public class ArticuloHome extends EntityHome<Articulo> {
 		this.getInstance().setCurrentPrecio(precio);
 		// disableAddressControls = false;
 	}
+	
+	public void addNewPrecio(){
+		Precio precio = new Precio();
+		this.getInstance().add(precio);
+	}
 
 	@Override
 	public String persist() {
@@ -158,10 +166,17 @@ public class ArticuloHome extends EntityHome<Articulo> {
 	@Override
 	public String update() {
 		// TODO Auto-generated method stub
-		if (this.getInstance().getCurrentPrecio().getCosto() != null) {
+		/*if (this.getInstance().getCurrentPrecio().getCosto() != null) {
 			this.getInstance().add(this.getInstance().getCurrentPrecio());
-		}
+		}*/
 		return super.update();
+	}
+	
+	@Factory("tiposPrecio")
+	public List<TipoPrecio> tiposPrecio() {
+		Query query = this.getEntityManager().createNamedQuery(
+				"TipoPrecio.findAll");
+		return query.getResultList();
 	}
 
 }

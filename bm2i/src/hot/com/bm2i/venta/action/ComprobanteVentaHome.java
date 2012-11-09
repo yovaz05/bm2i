@@ -23,6 +23,8 @@ import com.bm2i.comun.model.Resident;
 import com.bm2i.comun.model.TasaImpuesto;
 import com.bm2i.comun.model.TipoComprobante;
 import com.bm2i.inventario.model.Articulo;
+import com.bm2i.inventario.model.Precio;
+import com.bm2i.inventario.model.TipoPrecio;
 import com.bm2i.security.action.UserSession;
 import com.bm2i.venta.model.ComprobanteVenta;
 import com.bm2i.venta.model.ItemComprobanteVenta;
@@ -69,7 +71,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	private BigDecimal subTotalCero;
 	private BigDecimal subTotalIva;
 	private BigDecimal total;
-	
+
 	private String criterio;
 	private List<Resident> residents;
 
@@ -158,19 +160,23 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 				if (q.getResultList().size() > 0) {
 					Articulo art = (Articulo) q.getResultList().get(0);
 					if (!existeArticuloEnItems(art)) {
+
+						// determino el precio correcto para el articulo
+						// seleccionado
+						art.setPrecio(determinarPrecioCorrecto(art));
+
 						itemLocal.setIsCodigoBarraEnabled(new Boolean(false));
 						itemLocal.setArticulo(art);
 
 						if (art.getIsCalculatedIva()) {
 							// calculo el valor sin iva
 							itemLocal.setvUnitario(art
-									.getCurrentPrecio()
+									.getPrecio()
 									.getPvp()
 									.divide(new BigDecimal(1.12), 2,
 											RoundingMode.HALF_UP));
 						} else {
-							itemLocal.setvUnitario(art.getCurrentPrecio()
-									.getPvp());
+							itemLocal.setvUnitario(art.getPrecio().getPvp());
 						}
 						itemLocal.setCodigoBarra(art.getCodigoBarra());
 						editarValoresItem(itemLocal);
@@ -224,7 +230,7 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 
 		// por defecto se va a cargar factura con desgloce
 		if (it.getArticulo() != null) {
-			double costo = it.getArticulo().getCurrentPrecio().getCosto()
+			double costo = it.getArticulo().getPrecio().getCosto()
 					.doubleValue();
 			double pvp = it.getvUnitario().doubleValue();
 			int cantidad = it.getCantidad();
@@ -384,7 +390,6 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		if (actualRow > 0) {
 			actualRow--;
 		}
-
 	}
 
 	public List<Articulo> getArticulos() {
@@ -426,16 +431,19 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		// this.getInstance().getItems()
 		ItemComprobanteVenta itemLocal = this.itemAux.get(actualRow);
 		if (!existeArticuloEnItems(articulo)) {
+			// determino el precio correcto para el articulo seleccionado
+			articulo.setPrecio(determinarPrecioCorrecto(articulo));
+
 			itemLocal.setCodigoBarra(articulo.getCodigoBarra());
 			itemLocal.setArticulo(articulo);
 			// itemLocal.setvUnitario(articulo.getCurrentPrecio().getPvp());
 			if (articulo.getIsCalculatedIva()) {
 				// calculo el valor sin iva
 
-				itemLocal.setvUnitario(articulo.getCurrentPrecio().getPvp()
+				itemLocal.setvUnitario(articulo.getPrecio().getPvp()
 						.divide(new BigDecimal(1.12), 2, RoundingMode.HALF_UP));
 			} else {
-				itemLocal.setvUnitario(articulo.getCurrentPrecio().getPvp());
+				itemLocal.setvUnitario(articulo.getPrecio().getPvp());
 			}
 			itemLocal.setIsCodigoBarraEnabled(new Boolean(false));
 			editarValoresItem(itemLocal);
@@ -444,7 +452,25 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 		} else {
 			itemLocal.setCodigoBarra("");
 		}
+	}
 
+	public Precio determinarPrecioCorrecto(Articulo articulo) {
+		
+		if(this.getInstance().getTipoPrecio()==null){
+			this.getInstance().setTipoPrecio(getTiposPrecio().get(0));
+			System.out.println("........................es nulo el tipo de precio::::::::::::::: "+this.getInstance().getTipoPrecio().getNombre());
+		}
+		
+		
+		Query q = this.getEntityManager().createNamedQuery(
+				"Precio.findByTipoPrecio");
+		q.setParameter("isActive", new Boolean(true));
+		q.setParameter("tipoPrecio", this.getInstance().getTipoPrecio());
+		q.setParameter("articulo", articulo);
+		
+		Precio p=(Precio) q.getResultList().get(0);
+		System.out.println("........................el pvpv es::::::::::::::: "+p.getPvp());
+		return (Precio) q.getResultList().get(0);
 	}
 
 	public void limpiarPanelBusqueda() {
@@ -661,21 +687,39 @@ public class ComprobanteVentaHome extends EntityHome<ComprobanteVenta> {
 	}
 
 	public List<Resident> buscaCedula(Object o) {
-		Query q = this.getEntityManager().createNamedQuery("Resident.findByCriteria");
+		System.out.println("............................... enttassss");
+		Query q = this.getEntityManager().createNamedQuery(
+				"Resident.findByCriteria");
 		q.setParameter("criteria", o.toString());
 		return q.getResultList();
 	}
-	
-	
-	public void setCriterio(String criterio) {
-		this.criterio = criterio;
+
+	public void selectCliente(Resident cliente) {
+		System.out.println(cliente.getNombre());
 	}
 
 	public String getCriterio() {
 		return criterio;
 	}
-	
-	public void selectCliente(Resident cliente){
-		System.out.println(cliente.getNombre());
+
+	public void setCriterio(String criterio) {
+		this.criterio = criterio;
 	}
+
+	public List<Resident> getResidents() {
+		return residents;
+	}
+
+	public void setResidents(List<Resident> residents) {
+		this.residents = residents;
+	}
+
+	public List<TipoPrecio> getTiposPrecio() {
+		Query query = this.getEntityManager().createNamedQuery(
+				"TipoPrecio.findAll");
+		System.out.println("................... entra a cargar los tipos de precios y asigan ccomo defecto");
+		//this.getInstance().setTipoPrecio((TipoPrecio) query.getResultList().get(0));
+		return query.getResultList();
+	}
+
 }

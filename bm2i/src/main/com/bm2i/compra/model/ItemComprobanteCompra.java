@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.bm2i.inventario.model.Articulo;
 
@@ -44,8 +45,17 @@ public class ItemComprobanteCompra {
 	@ManyToOne
 	ComprobanteCompra compra;
 
-	public ItemComprobanteCompra() {
+	@Transient
+	private Boolean isValid;
+	@Transient
+	private Boolean isCodigoBarraEnabled;
+	@Transient
+	private String codigoBarra;
 
+	public ItemComprobanteCompra() {
+		fecha = new Date();
+		isValid = new Boolean(true);
+		isCodigoBarraEnabled = new Boolean(true);
 	}
 
 	public void finalize() throws Throwable {
@@ -106,5 +116,29 @@ public class ItemComprobanteCompra {
 
 	public void setCompra(ComprobanteCompra compra) {
 		this.compra = compra;
+	}
+
+	public Boolean getIsValid() {
+		return isValid;
+	}
+
+	public void setIsValid(Boolean isValid) {
+		this.isValid = isValid;
+	}
+
+	public Boolean getIsCodigoBarraEnabled() {
+		return isCodigoBarraEnabled;
+	}
+
+	public void setIsCodigoBarraEnabled(Boolean isCodigoBarraEnabled) {
+		this.isCodigoBarraEnabled = isCodigoBarraEnabled;
+	}
+
+	public String getCodigoBarra() {
+		return codigoBarra;
+	}
+
+	public void setCodigoBarra(String codigoBarra) {
+		this.codigoBarra = codigoBarra;
 	}
 }// end ItemComprobanteCompra

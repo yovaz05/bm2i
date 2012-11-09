@@ -26,6 +26,7 @@ import org.hibernate.annotations.Cascade;
 import com.bm2i.comun.model.Persona;
 import com.bm2i.comun.model.Resident;
 import com.bm2i.comun.model.TipoComprobante;
+import com.bm2i.inventario.model.TipoPrecio;
 
 /**
  * @author richard
@@ -95,6 +96,10 @@ public class ComprobanteVenta {
 	@ManyToOne
 	@JoinColumn(name = "registrador_id")
 	private Persona registrador;
+	
+	@ManyToOne
+	@JoinColumn(name = "tipoPrecio_id")
+	private TipoPrecio tipoPrecio;
 
 	public ComprobanteVenta() {
 		items = new ArrayList<ItemComprobanteVenta>();
@@ -276,6 +281,14 @@ public class ComprobanteVenta {
 
 	public void setRegistrador(Persona registrador) {
 		this.registrador = registrador;
+	}
+
+	public TipoPrecio getTipoPrecio() {
+		return tipoPrecio;
+	}
+
+	public void setTipoPrecio(TipoPrecio tipoPrecio) {
+		this.tipoPrecio = tipoPrecio;
 	}
 
 }// end ComprobanteVenta

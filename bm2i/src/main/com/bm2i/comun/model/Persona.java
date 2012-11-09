@@ -70,7 +70,7 @@ public class Persona extends Resident {
 	private Usuario user;
 
 	public Persona() {
-
+		birthDay=new Date();
 	}
 
 	public void finalize() throws Throwable {

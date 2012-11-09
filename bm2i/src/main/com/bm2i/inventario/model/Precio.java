@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,6 +23,8 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @TableGenerator(name = "PrecioGenerator", table = "IdentityGenerator", pkColumnName = "name", valueColumnName = "value", pkColumnValue = "Precio", initialValue = 1, allocationSize = 1)
+@NamedQueries(value = { @NamedQuery(name = "Precio.findByTipoPrecio", query = "select p from Precio p where "
+		+ "p.isActive = :isActive and " + "p.tipoPrecio = :tipoPrecio and p.articulo = :articulo") })
 public class Precio {
 
 	@Id
@@ -41,14 +45,6 @@ public class Precio {
 	@ManyToOne
 	private Inventario inventario;
 
-	public TipoPrecio getTipoPrecio() {
-		return tipoPrecio;
-	}
-
-	public void setTipoPrecio(TipoPrecio tipoPrecio) {
-		this.tipoPrecio = tipoPrecio;
-	}
-
 	@ManyToOne
 	private Articulo articulo;
 
@@ -64,6 +60,7 @@ public class Precio {
 		costo = new BigDecimal(0);
 		pvp = new BigDecimal(0);
 		utilidad = new BigDecimal(0);
+		fecha = new Date();
 	}
 
 	public void finalize() throws Throwable {
@@ -151,6 +148,14 @@ public class Precio {
 
 	public void setInventario(Inventario inventario) {
 		this.inventario = inventario;
+	}
+
+	public TipoPrecio getTipoPrecio() {
+		return tipoPrecio;
+	}
+
+	public void setTipoPrecio(TipoPrecio tipoPrecio) {
+		this.tipoPrecio = tipoPrecio;
 	}
 
 }// end Precio

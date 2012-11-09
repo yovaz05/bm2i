@@ -1,6 +1,7 @@
 package com.bm2i.inventario.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -97,8 +98,7 @@ public class Articulo {
 	 * 
 	 * @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
 	 */
-	@OneToMany(mappedBy = "articulo", cascade = { CascadeType.PERSIST,
-			CascadeType.MERGE }, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "articulo", cascade = { CascadeType.ALL })
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@OrderBy("fecha")
 	private List<Precio> precios;
@@ -110,16 +110,29 @@ public class Articulo {
 	@OneToMany(mappedBy = "articulo", cascade = CascadeType.ALL)
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<Lote> lotes;
-	
+
 	@OneToMany(mappedBy = "articulo", cascade = CascadeType.ALL)
 	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<Punto> puntos;
-	
+
+	private BigDecimal punto;
+
+	/*
+	 * @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch =
+	 * FetchType.LAZY)
+	 * 
+	 * @JoinColumn(name = "punto_id") private Punto punto;
+	 */
+
 	@Transient
 	private BigDecimal pvpCorrecto;
+	
+	@Transient
+	private Precio precio;
 
 	public Articulo() {
 		// this.currentPrecio = new Precio();
+		precios = new ArrayList<Precio>();
 	}
 
 	public void finalize() throws Throwable {
@@ -248,6 +261,7 @@ public class Articulo {
 
 	public void add(Precio precio) {
 		if (!this.precios.contains(precio)) {
+			precio.setArticulo(this);
 			this.precios.add(precio);
 		}
 	}
@@ -279,4 +293,21 @@ public class Articulo {
 	public void setPvpCorrecto(BigDecimal pvpCorrecto) {
 		this.pvpCorrecto = pvpCorrecto;
 	}
+
+	public BigDecimal getPunto() {
+		return punto;
+	}
+
+	public void setPunto(BigDecimal punto) {
+		this.punto = punto;
+	}
+
+	public Precio getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(Precio precio) {
+		this.precio = precio;
+	}
+
 }// end Articulo
