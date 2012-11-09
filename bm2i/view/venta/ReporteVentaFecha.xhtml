@@ -15,34 +15,34 @@
 				<f:facet name="header">Reporte de Ventas</f:facet>
 				<div align="center">
 					<h:panelGrid columns="3">
-						<a:region>
-							<s:decorate id="criterioField" template="../layout/edit.xhtml">
-								<ui:define name="label">Buscar:</ui:define>
-								<h:inputText id="criterio"
-									value="#{comprobanteVentaHome.criterio}" size="50"
-									required="true" />
-								<rich:suggestionbox id="suggestionId" for="criterio" width="200"
-									var="_cliente" usingSuggestObjects="true"
-									suggestionAction="#{comprobanteVentaHome.buscaCedula}"
-									rules="none" >
-									<a:support event="onselect" ajaxSingle="true" immediate="true"
-										reRender="routeField"
-										action="#{comprobanteVentaHome.selectCliente(_cliente)}" />
-									<a:support event="onobjectchange" ajaxSingle="true"
-										immediate="true"
-										action="#{comprobanteVentaHome.selectCliente(_cliente)}" />
-									<h:column>
-										<h:outputText value="#{_cliente.numeroIdentificacion}" />
-									</h:column>
-									<h:column>
-										<h:outputText value="#{_cliente.nombre}" />
-									</h:column>
-								</rich:suggestionbox>
-							</s:decorate>
-						</a:region>
 
-						<a:commandButton value="Buscar"
-							action="#{comprobanteVentaHome.buscaCedula()}" />
+
+
+						<s:decorate id="rubroField" template="../layout/edit.xhtml">
+							<ui:define name="label">Buscar:</ui:define>
+							<h:inputText id="entryChild" size="45"
+								value="#{comprobanteVentaHome.criterio}">
+								<a:support event="onblur" 
+									ajaxSingle="true" />
+							</h:inputText>
+
+							<rich:suggestionbox for="entryChild"
+								suggestionAction="#{comprobanteVentaHome.buscaCedula}"
+								width="375" var="_cliente">
+								<h:column>
+									<h:outputText value="#{_cliente.numeroIdentificacion}" />
+								</h:column>
+								<h:column>
+									<h:outputText value="#{_cliente.nombre}" />
+								</h:column>
+								<a:support event="onselect"
+									action="#{comprobanteVentaHome.selectCliente(_cliente)}"
+									ajaxSingle="true" />
+								<a:support event="onobjectchange"
+									action="#{comprobanteVentaHome.selectCliente(_cliente)}"
+									ajaxSingle="true" />
+							</rich:suggestionbox>
+						</s:decorate>
 
 						<s:decorate id="NombreCliente" template="../layout/edit.xhtml">
 							<ui:define name="label">Cliente</ui:define>

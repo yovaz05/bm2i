@@ -1,0 +1,68 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:form id="tipoPrecio" styleClass="edit">
+
+			<h:outputText styleClass="formTitle"
+				value="#{tipoPrecioHome.managed ? messages['common.edit'] : messages['common.edit']} #{messages['tipoPrecio']}" />
+
+			<rich:panel>
+				<f:facet name="header">#{messages['tipoPrecio.infoData']}</f:facet>
+
+				<s:decorate id="nombreField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['tipoPrecio.nombre']}</ui:define>
+					<h:inputText id="nombre" size="30" maxlength="30"
+						value="#{tipoPrecioHome.instance.nombre}" style="text-transform: uppercase" required="true">
+						<a:support event="onblur" reRender="nombreField"
+							bypassUpdates="true" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
+				<s:decorate id="isActiveField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['tipoPrecio.isActive']}</ui:define>
+					<h:selectBooleanCheckbox id="isActive"
+						value="#{tipoPrecioHome.instance.isActive}" />
+				</s:decorate>
+
+				<div style="clear: both">
+					<span class="required">*</span>
+					#{messages['common.requiredFields']}
+				</div>
+
+			</rich:panel>
+
+			<div class="actionButtons">
+
+				<h:commandButton id="save" value="#{messages['common.save']}"
+					action="#{tipoPrecioHome.persist}"
+					disabled="#{!tipoPrecioHome.wired}"
+					rendered="#{!tipoPrecioHome.managed}" />
+
+				<h:commandButton id="update" value="#{messages['common.save']}"
+					action="#{tipoPrecioHome.update}"
+					rendered="#{tipoPrecioHome.managed}" />
+
+				<h:commandButton id="delete" value="#{messages['common.delete']}"
+					action="#{tipoPrecioHome.remove}" immediate="true"
+					rendered="#{tipoPrecioHome.managed}" />
+
+				<s:button id="cancelAdd" value="#{messages['common.cancel']}"
+					propagation="end"
+					view="/inventario/TipoPrecioList.xhtml" />
+
+			</div>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

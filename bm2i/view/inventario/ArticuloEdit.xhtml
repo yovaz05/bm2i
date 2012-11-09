@@ -77,20 +77,8 @@
 					</h:inputText>
 				</s:decorate>
 
-				<s:decorate id="currentCostoField" template="../layout/edit.xhtml">
-					<ui:define name="label">#{messages['articulo.currentCosto']}</ui:define>
-					<h:inputText id="currentCosto"
-						value="#{articuloHome.instance.currentCosto}" size="26"
-						required="true" onkeypress="return noEnter(event);">
-						<a:support event="onblur"
-							reRender="currentCostoField,outCurrentCosto" ajaxSingle="true" />
-						<f:convertNumber pattern="#0.00" />
-					</h:inputText>
-				</s:decorate>
-
-				
 				<s:decorate id="descripcionField" template="../layout/edit.xhtml">
-				<ui:define name="label">#{messages['articulo.descripcion']}</ui:define>
+					<ui:define name="label">#{messages['articulo.descripcion']}</ui:define>
 					<h:inputTextarea id="descripcion"
 						value="#{articuloHome.instance.descripcion}" cols="60" rows="3">
 						<f:validateLength maximum="100"></f:validateLength>
@@ -141,6 +129,14 @@
 					</h:inputText>
 				</s:decorate>
 
+				<s:decorate id="puntoField" template="../layout/edit.xhtml">
+					<ui:define name="label">#{messages['articulo.punto']}</ui:define>
+					<h:inputText id="punto" size="30" maxlength="30"
+						value="#{articuloHome.instance.punto}">
+						<a:support event="onblur" reRender="puntoField" ajaxSingle="true" />
+					</h:inputText>
+				</s:decorate>
+
 				<s:decorate id="isCalculatedIvaField"
 					template="../layout/edit.xhtml">
 					<ui:define name="label">#{messages['articulo.isCalculatedIva']}</ui:define>
@@ -158,125 +154,121 @@
 				<f:facet name="header">
 					<h:panelGrid columns="3" columnClasses="headerTitle,">
 						<h:outputText value="#{messages['precios']}" />
-						<a:commandButton value="Nuevo Precio"
-							action="#{articuloHome.addPrecio()}" ajaxSingle="true"
-							reRender="precioList,costoInfoField,pvpField,utilidadField,panelPrecios,pTotal" />
+						<a:commandButton value="Agregar Nuevo Precio"
+							action="#{articuloHome.addNewPrecio()}" ajaxSingle="true"
+							reRender="precioList" />
 					</h:panelGrid>
 				</f:facet>
 
 				<a:region>
-					<h:panelGrid columns="2" columnClasses="alignTop, alignTop"
-						rendered="#{articuloHome.instance.currentPrecio!=null}"
-						id="panelPrecios">
-						<h:panelGrid border="1" width="100%">
-							<h:outputText value="Precio Actual" />
-						</h:panelGrid>
-						<h:panelGrid border="1" width="100%">
-							<h:outputText value="Historico" />
-						</h:panelGrid>
-						<h:panelGrid>
-							<s:decorate id="costoInfoField"
-								template="../layout/display.xhtml">
-								<ui:define name="label">#{messages['articulo.costo']}</ui:define>
-								<h:outputText value="#{articuloHome.instance.currentCosto}"
-									id="outCurrentCosto" onkeypress="return noEnter(event);">
-									<f:convertNumber pattern="#0.00" />
-								</h:outputText>
-							</s:decorate>
 
-							<s:decorate id="pvpField" template="../layout/edit.xhtml">
-								<ui:define name="label">Pvp</ui:define>
-								<h:inputText id="pvp"
-									value="#{articuloHome.instance.currentPrecio.pvp}"
-									onkeypress="return noEnter(event);">
-									<a:support event="onblur" reRender="pvpField, utilidadField"
-										ajaxSingle="true" action="#{articuloHome.calcularUtilidad()}" />
-
-								</h:inputText>
-							</s:decorate>
-
-							<s:decorate id="utilidadField" template="../layout/edit.xhtml">
-								<ui:define name="label">Utilidad</ui:define>
-								<h:inputText id="utilidad"
-									value="#{articuloHome.instance.currentPrecio.utilidad}"
-									onkeypress="return noEnter(event);">
-									<a:support event="onblur" reRender="utilidadField, pvpField"
-										ajaxSingle="true" action="#{articuloHome.calcularPVP()}" />
-
-								</h:inputText>
-							</s:decorate>
-						</h:panelGrid>
-						<h:panelGrid width="500px">
-							<rich:dataTable id="precioList" var="_precio"
-								value="#{articuloHome.instance.precios}" width="500px">
-								<h:column>
-									<f:facet name="header">
-										<ui:include src="../layout/sort.xhtml">
-											<ui:param name="entityList" value="#{precioList}" />
-											<ui:param name="propertyLabel"
-												value="#{messages['precio.id']}" />
-											<ui:param name="propertyPath" value="precio.id" />
-										</ui:include>
-									</f:facet>
-									<h:outputText value="#{_precio.id}" />
-								</h:column>
-								<h:column>
-									<f:facet name="header">
-										<ui:include src="../layout/sort.xhtml">
-											<ui:param name="entityList" value="#{precioList}" />
-											<ui:param name="propertyLabel"
-												value="#{messages['precio.fecha']}" />
-											<ui:param name="propertyPath" value="precio.fecha" />
-										</ui:include>
-									</f:facet>
-									<h:outputText value="#{_precio.fecha}">
-										<s:convertDateTime type="date" dateStyle="short"
-											pattern="#{messages['common.datePattern']}" />
-									</h:outputText>
-								</h:column>
-								<rich:column style="text-align:right;">
-									<f:facet name="header">
-										<ui:include src="../layout/sort.xhtml">
-											<ui:param name="entityList" value="#{precioList}" />
-											<ui:param name="propertyLabel"
-												value="#{messages['precio.costo']}" />
-											<ui:param name="propertyPath" value="precio.costo" />
-										</ui:include>
-									</f:facet>
-									<h:outputText value="#{_precio.costo}">
-										<f:convertNumber pattern="$####.00" />
-									</h:outputText>
-								</rich:column>
-
-								<rich:column style="text-align:right;">
-									<f:facet name="header">
-										<ui:include src="../layout/sort.xhtml">
-											<ui:param name="entityList" value="#{precioList}" />
-											<ui:param name="propertyLabel"
-												value="#{messages['precio.ganancia']}" />
-											<ui:param name="propertyPath" value="precio.ganancia.id" />
-										</ui:include>
-									</f:facet>
-									<h:outputText value="#{_precio.utilidad}">
-										<f:convertNumber pattern="####.00" />
-									</h:outputText>
-								</rich:column>
-								<rich:column style="text-align:right;">
-									<f:facet name="header">
-										<ui:include src="../layout/sort.xhtml">
-											<ui:param name="entityList" value="#{precioList}" />
-											<ui:param name="propertyLabel"
-												value="#{messages['precio.pvp']}" />
-											<ui:param name="propertyPath" value="precio.pvp" />
-										</ui:include>
-									</f:facet>
-									<h:outputText value="#{_precio.pvp}">
-										<f:convertNumber pattern="$####.00" />
-									</h:outputText>
-								</rich:column>
-							</rich:dataTable>
-						</h:panelGrid>
+					<h:panelGrid width="100%">
+						<rich:panel style="height:50px; width:100%; overflow:auto;">
+							<rich:messages errorClass="errors" />
+						</rich:panel>
 					</h:panelGrid>
+
+					<h:panelGrid width="100%">
+						<rich:dataTable id="precioList" var="_precio"
+							value="#{articuloHome.instance.precios}" width="100%">
+							<h:column>
+								<f:facet name="header">
+									<ui:include src="../layout/sort.xhtml">
+										<ui:param name="entityList" value="#{precioList}" />
+										<ui:param name="propertyLabel"
+											value="#{messages['precio.id']}" />
+										<ui:param name="propertyPath" value="precio.id" />
+									</ui:include>
+								</f:facet>
+								<h:outputText value="#{_precio.id}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">#{messages['tipoPrecio.isActive']}</f:facet>
+								<h:selectBooleanCheckbox value="#{_precio.isActive}">
+									<a:support event="onchange" ajaxSingle="true" />
+								</h:selectBooleanCheckbox>
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">#{messages['tipoPrecio.nombre']}</f:facet>
+
+								<h:selectOneMenu value="#{_precio.tipoPrecio}">
+									<s:selectItems value="#{tiposPrecio}" var="tipoPrecio"
+										label="#{tipoPrecio.nombre}" />
+									<s:convertEntity />
+									<a:support event="onchange" ajaxSingle="true" />
+								</h:selectOneMenu>
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<ui:include src="../layout/sort.xhtml">
+										<ui:param name="entityList" value="#{precioList}" />
+										<ui:param name="propertyLabel"
+											value="#{messages['precio.fecha']}" />
+										<ui:param name="propertyPath" value="precio.fecha" />
+									</ui:include>
+								</f:facet>
+
+								<h:outputText value="#{_precio.fecha}">
+									<s:convertDateTime type="date" dateStyle="short"
+										pattern="#{messages['common.datePattern']}" />
+								</h:outputText>
+							</h:column>
+
+							<rich:column style="text-align:right;">
+								<f:facet name="header">
+									<ui:include src="../layout/sort.xhtml">
+										<ui:param name="entityList" value="#{precioList}" />
+										<ui:param name="propertyLabel"
+											value="#{messages['precio.costo']}" />
+										<ui:param name="propertyPath" value="precio.costo" />
+									</ui:include>
+								</f:facet>
+
+								<h:inputText value="#{_precio.costo}"
+									onkeypress="return noEnter(event);">
+									<a:support event="onblur" ajaxSingle="true" />
+								</h:inputText>
+
+							</rich:column>
+
+							<rich:column style="text-align:right;">
+								<f:facet name="header">
+									<ui:include src="../layout/sort.xhtml">
+										<ui:param name="entityList" value="#{precioList}" />
+										<ui:param name="propertyLabel"
+											value="#{messages['precio.ganancia']}" />
+										<ui:param name="propertyPath" value="precio.ganancia.id" />
+									</ui:include>
+								</f:facet>
+
+								<h:inputText value="#{_precio.utilidad}"
+									onkeypress="return noEnter(event);">
+									<a:support event="onblur" ajaxSingle="true" />
+								</h:inputText>
+
+							</rich:column>
+							<rich:column style="text-align:right;">
+								<f:facet name="header">
+									<ui:include src="../layout/sort.xhtml">
+										<ui:param name="entityList" value="#{precioList}" />
+										<ui:param name="propertyLabel"
+											value="#{messages['precio.pvp']}" />
+										<ui:param name="propertyPath" value="precio.pvp" />
+									</ui:include>
+								</f:facet>
+
+								<h:inputText value="#{_precio.pvp}"
+									onkeypress="return noEnter(event);">
+									<a:support event="onblur" ajaxSingle="true" />
+								</h:inputText>
+
+							</rich:column>
+						</rich:dataTable>
+					</h:panelGrid>
+
 
 				</a:region>
 			</rich:panel>

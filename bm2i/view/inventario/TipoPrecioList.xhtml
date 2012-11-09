@@ -1,0 +1,149 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	template="../layout/template.xhtml">
+
+	<ui:define name="body">
+
+		<h:form id="tipoPrecioSearch" styleClass="edit">
+
+			<h:outputText styleClass="formTitle"
+				value="Tipo Precio Buscador" />
+
+			<rich:simpleTogglePanel
+				label="Filtro Busqueda" switchType="ajax">
+
+				<s:decorate template="../layout/display.xhtml">
+					<ui:define name="label">#{messages['common.criteria']}</ui:define>
+					<h:inputText id="nombre"
+						value="#{tipoPrecioList.tipoPrecio.nombre}" />
+				</s:decorate>
+				
+				<s:decorate template="../layout/display.xhtml">
+					<ui:define name="label">COmo string</ui:define>
+					<h:inputText id="nombreString"
+						value="#{tipoPrecioList.nombre}" />
+				</s:decorate>
+
+			</rich:simpleTogglePanel>
+
+			<div class="actionButtons">
+				<h:commandButton id="search" value="Buscar"
+					action="/inventario/TipoPrecioList.xhtml" />
+				<s:button id="reset" value="Limpiar"
+					includePageParams="false" />
+			</div>
+
+		</h:form>
+
+		<rich:panel>
+			<f:facet name="header">
+				<h:panelGrid columns="2" columnClasses="headerTitle,">
+					
+					<s:div styleClass="actionButtons" rendered="#{empty from}">
+						<s:button view="/inventario/TipoPrecioEdit.xhtml" id="create"
+							propagation="none" value="#{messages['common.create']}">
+							<f:param name="tipoPrecioId" />
+						</s:button>
+					</s:div>
+				</h:panelGrid>
+			</f:facet>
+			<div class="results" id="tipoPrecioList">
+
+				<h:outputText value="#{messages['action.noresults']}"
+					rendered="#{empty tipoPrecioList.resultList}" />
+
+				<rich:dataTable id="tipoPrecioList" var="_tipoPrecio"
+					value="#{tipoPrecioList.resultList}"
+					rendered="#{not empty tipoPrecioList.resultList}">
+					<rich:column>
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{tipoPrecioList}" />
+								<ui:param name="propertyLabel"
+									value="#{messages['tipoPrecio.id']}" />
+								<ui:param name="propertyPath" value="tipoPrecio.id" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_tipoPrecio.id}" />
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{tipoPrecioList}" />
+								<ui:param name="propertyLabel"
+									value="#{messages['tipoPrecio.nombre']}" />
+								<ui:param name="propertyPath" value="tipoPrecio.nombre" />
+							</ui:include>
+						</f:facet>
+						<h:outputText value="#{_tipoPrecio.nombre}" />
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">
+							<ui:include src="../layout/sort.xhtml">
+								<ui:param name="entityList" value="#{tipoPrecioList}" />
+								<ui:param name="propertyLabel"
+									value="#{messages['tipoPrecio.isActive']}" />
+								<ui:param name="propertyPath" value="tipoPrecio.isActive" />
+							</ui:include>
+						</f:facet>
+						<h:selectBooleanCheckbox value="#{_tipoPrecio.isActive}"
+							disabled="true" />
+					</rich:column>
+					<rich:column styleClass="action">
+						<f:facet name="header">#{messages['common.action']}</f:facet>
+
+						<s:button view="/inventario/TipoPrecioEdit.xhtml"
+							value="#{messages['common.edit']}" propagation="none"
+							id="tipoPrecioEdit" rendered="#{empty from}">
+							<f:param name="tipoPrecioId" value="#{_tipoPrecio.id}" />
+						</s:button>
+					</rich:column>
+				</rich:dataTable>
+
+			</div>
+		</rich:panel>
+
+		<div class="tableControl">
+
+			<s:link view="/inventario/tipoPrecioList.xhtml"
+				rendered="#{tipoPrecioList.previousExists}"
+				value="#{messages.left}#{messages.left} #{messages['common.firstPage']}"
+				id="firstPage">
+				<f:param name="firstResult" value="0" />
+			</s:link>
+
+			<s:link view="/inventario/tipoPrecioList.xhtml"
+				rendered="#{tipoPrecioList.previousExists}"
+				value="#{messages.left} #{messages['comun.previousPage']}"
+				id="previousPage">
+				<f:param name="firstResult"
+					value="#{tipoPrecioList.previousFirstResult}" />
+			</s:link>
+
+			<s:link view="/inventario/tipoPrecioList.xhtml"
+				rendered="#{tipoPrecioList.nextExists}"
+				value="#{messages['common.nextPage']} #{messages.right}"
+				id="nextPage">
+				<f:param name="firstResult"
+					value="#{tipoPrecioList.nextFirstResult}" />
+			</s:link>
+
+			<s:link view="/inventario/tipoPrecioList.xhtml"
+				rendered="#{tipoPrecioList.nextExists}"
+				value="#{messages['common.lastPage']} #{messages.right}#{messages.right}"
+				id="lastPage">
+				<f:param name="firstResult"
+					value="#{tipoPrecioList.lastFirstResult}" />
+			</s:link>
+
+		</div>
+
+	</ui:define>
+
+</ui:composition>

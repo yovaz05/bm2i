@@ -11,6 +11,8 @@
 
 	<ui:define name="body">
 
+		<ui:include src="fragmento/BuscarArticuloPanel.xhtml" />
+
 		<h:form id="comprobanteCompra" styleClass="edit">
 
 			<div align="center">
@@ -21,12 +23,13 @@
 						columnClasses="colStyle1,colStyle2,colStyle3,colStyle4"
 						cellpadding="0" cellspacing="0" width="100%">
 
-						<s:decorate id="tipoPagoField" template="../layout/vertical-edit.xhtml">
+						<s:decorate id="tipoPagoField"
+							template="../layout/vertical-edit.xhtml">
 							<ui:define name="label">Tipo Pago</ui:define>
 							<h:selectOneMenu id="tipoPago"
 								value="#{comprobanteCompraHome.instance.tipoPago}">
-								<s:selectItems value="#{comprobanteCompraHome.tiposPago}" var="tipoP"
-									label="#{tipoP.nombre}" />
+								<s:selectItems value="#{comprobanteCompraHome.tiposPago}"
+									var="tipoP" label="#{tipoP.nombre}" />
 								<s:convertEntity />
 								<a:support event="onchange" reRender="tipoPagoField"
 									ajaxSingle="true" />
@@ -35,7 +38,7 @@
 
 						<s:decorate id="numeroField"
 							template="../layout/vertical-edit.xhtml">
-							<ui:define name="label">Numero</ui:define>
+							<ui:define name="label">Número Factura</ui:define>
 							<h:inputText id="numero"
 								value="#{comprobanteCompraHome.instance.numero}">
 								<a:support event="onblur" reRender="numeroField"
@@ -88,7 +91,7 @@
 
 						<s:decorate template="../layout/display.xhtml">
 						</s:decorate>
-						
+
 						<s:decorate id="isPayedField"
 							template="../layout/vertical-edit.xhtml">
 							<ui:define name="label">#{messages['comprobanteCompra.isPayed']}</ui:define>
@@ -104,7 +107,7 @@
 									value="#{residentHome.instance.nombre}"
 									style="text-transform: uppercase">
 									<a:support event="onblur" reRender="nameField"
-										ajaxSingle="true" action="#{comprobanteVentaHome.metodos()}" />
+										ajaxSingle="true" action="#{comprobanteCompraHome.metodos()}" />
 								</h:inputText>
 							</s:decorate>
 						</rich:column>
@@ -195,6 +198,111 @@
 				</rich:panel>
 			</div>
 
+
+
+
+			<div align="center">
+
+				<rich:panel style="width:90%">
+					<f:facet name="header">
+						<h:panelGrid columns="3" columnClasses="headerTitle,">
+							<h:outputText id="itemsCount"
+								value="Items (#{comprobanteCompraHome.itemAux.size})" />
+							<a:commandButton ajaxSingle="true"
+								oncomplete="Richfaces.showModalPanel('buscarArticuloPanel',{width:600, top:100})"
+								value="Buscar Artículos" />
+						</h:panelGrid>
+					</f:facet>
+
+					<rich:dataTable id="itemComprobanteVentaList"
+						var="_itemComprobanteVenta"
+						value="#{comprobanteCompraHome.itemAux}" width="100%">
+						<rich:column styleClass="action">
+							<f:facet name="header">#{messages['articulo.codigoBarra']}</f:facet>
+							<h:inputText value="#{_itemComprobanteVenta.codigoBarra}"
+								onkeypress="return noEnter(event);" id="codigoBarra" size="15"
+								disabled="#{!_itemComprobanteVenta.isCodigoBarraEnabled}">
+								<a:support event="onblur" ajaxSingle="true"
+									reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores, 
+									itemComprobanteVentaList,itemsCount, totalField, panelValores, codigoBarra, subTotalIvaField,subTotalCeroField,descuentoField,ivaField,valorTotalField,codigoBarra" />
+							</h:inputText>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">#{messages['articulo']}</f:facet>
+							<h:outputText value="#{_itemComprobanteVenta.articulo.nombre}" />
+						</rich:column>
+
+						<rich:column style="text-align: right;" width="7%">
+							<f:facet name="header">Puntos</f:facet>
+							<h:outputText value="#{_itemComprobanteVenta.articulo.punto}">
+								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
+									minFractionDigits="2" type="currency" />
+							</h:outputText>
+						</rich:column>
+
+						<rich:column style="text-align: right;" width="7%">
+							<f:facet name="header">#{messages['Costo']}</f:facet>
+							<h:outputText
+								value="#{_itemComprobanteVenta.articulo.precio.costo}">
+								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
+									minFractionDigits="2" type="currency" />
+							</h:outputText>
+						</rich:column>
+
+
+						<rich:column styleClass="action" width="6%">
+							<f:facet name="header">#{messages['articulo.cantidad']}</f:facet>
+							<h:inputText value="#{_itemComprobanteVenta.cantidad}"
+								style="text-align: right;" size="7">
+								<a:support event="onblur" ajaxSingle="true"
+									reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores, 
+									itemComprobanteVentaList, itemsCount, totalField, panelValores,codigoBarra,subTotalIvaField,subTotalCeroField,descuentoField,ivaField,valorTotalField" />
+							</h:inputText>
+						</rich:column>
+						<rich:column styleClass="action" width="6%">
+							<f:facet name="header">#{messages['articulo.valorUnitario']}</f:facet>
+							<h:inputText value="#{_itemComprobanteVenta.vUnitario}"
+								style="text-align: right;" size="7">
+								<a:support event="onblur" ajaxSingle="true"
+									reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores,
+									itemComprobanteVentaList,itemsCount, totalField, panelValores,codigoBarra,subTotalIvaField,subTotalCeroField,descuentoField,ivaField,valorTotalField"
+									focus="valorTotalField" />
+							</h:inputText>
+						</rich:column>
+						<rich:column
+							style="text-align: right; background-color: #{_itemComprobanteVenta.isValid ? 'white' : 'red'};"
+							id="colVtotal" width="10%">
+							<f:facet name="header">#{messages['articulo.valorTotal']}</f:facet>
+							<h:outputText value="#{_itemComprobanteVenta.vTotal}"
+								id="itemValorTotal">
+								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
+									minFractionDigits="2" type="currency" />
+							</h:outputText>
+						</rich:column>
+
+						<rich:column styleClass="action"
+							style="background-color: #{_itemComprobanteVenta.isValid ? 'white' : 'red'};"
+							id="colVerificacion" width="7%">
+							<f:facet name="header">Verificacion</f:facet>
+							<h:graphicImage
+								value="/img/#{_itemComprobanteVenta.isValid ? 'true.png' : 'error.gif'}"
+								id="isValid" />
+						</rich:column>
+
+						<rich:column styleClass="action" width="7%">
+							<f:facet name="header">#{messages['common.action']}</f:facet>
+							<a:commandLink id="btRemoveItem"
+								action="#{comprobanteCompraHome.removeArticuloItem(_itemComprobanteVenta)}"
+								reRender="itemComprobanteVentaList, itemsCount, totalField, panelValores,codigoBarra"
+								ajaxSingle="true">
+								<h:graphicImage url="/img/delete.png" />
+							</a:commandLink>
+						</rich:column>
+					</rich:dataTable>
+				</rich:panel>
+
+			</div>
+
 			<div align="center">
 				<div align="right" style="width: 90%">
 					<h:panelGrid columnClasses="alignRight" id="panelValores">
@@ -206,7 +314,6 @@
 								style="text-align: right;">
 								<a:support event="onblur" reRender="subTotalIvaField"
 									bypassUpdates="true" ajaxSingle="true" />
-								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 							</h:inputText>
 						</s:decorate>
 
@@ -217,7 +324,6 @@
 								style="text-align: right;">
 								<a:support event="onblur" reRender="descuentoField"
 									bypassUpdates="true" ajaxSingle="true" />
-								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 							</h:inputText>
 						</s:decorate>
 
@@ -228,7 +334,6 @@
 								style="text-align: right;">
 								<a:support event="onblur" reRender="subTotalCeroField"
 									bypassUpdates="true" ajaxSingle="true" />
-								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 							</h:inputText>
 						</s:decorate>
 
@@ -239,7 +344,7 @@
 								style="text-align: right;">
 								<a:support event="onblur" reRender="ivaField"
 									bypassUpdates="true" ajaxSingle="true" />
-								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+
 							</h:inputText>
 						</s:decorate>
 
@@ -259,7 +364,7 @@
 								style="text-align: right;">
 								<a:support event="onblur" reRender="valorTotalField"
 									bypassUpdates="true" ajaxSingle="true" />
-								<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+
 							</h:inputText>
 						</s:decorate>
 					</h:panelGrid>
@@ -269,20 +374,21 @@
 			<div align="center" style="width: 90%">
 				<div class="actionButtons">
 
-					<h:commandButton id="save" value="Save"
+					<h:commandButton id="save" value="#{messages['common.save']}"
 						action="#{comprobanteCompraHome.persist}"
 						disabled="#{!comprobanteCompraHome.wired}"
 						rendered="#{!comprobanteCompraHome.managed}" />
 
-					<h:commandButton id="update" value="Save"
+					<h:commandButton id="update" value="#{messages['common.save']}"
 						action="#{comprobanteCompraHome.update}"
 						rendered="#{comprobanteCompraHome.managed}" />
 
-					<h:commandButton id="delete" value="Delete"
+					<h:commandButton id="delete" value="#{messages['common.delete']}"
 						action="#{comprobanteCompraHome.remove}" immediate="true"
 						rendered="#{comprobanteCompraHome.managed}" />
 
-					<s:button id="cancelAdd" value="Cancel" propagation="end"
+					<s:button id="cancelAdd" value="#{messages['common.cancel']}"
+						propagation="end"
 						view="/compra/#{empty comprobanteCompraFrom ? 'ComprobanteCompraList' : comprobanteCompraFrom}.xhtml" />
 
 				</div>

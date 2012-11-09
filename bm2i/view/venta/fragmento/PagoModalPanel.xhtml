@@ -98,7 +98,6 @@
 					<h:inputText id="cambio" value="#{pagoHome.instance.cambio}"
 						style="text-align: right; color:red; font-size:20px" size="10"
 						disabled="true">
-						<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
 						<a:support event="onblur" reRender="cambioField"
 							bypassUpdates="true" ajaxSingle="true" />
 					</h:inputText>

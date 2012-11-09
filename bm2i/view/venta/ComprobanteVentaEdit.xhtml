@@ -39,7 +39,7 @@
 
 						<s:decorate id="numeroField"
 							template="../layout/vertical-edit.xhtml">
-							<ui:define name="label">Numero</ui:define>
+							<ui:define name="label">Número Factura</ui:define>
 							<h:inputText id="numero"
 								value="#{comprobanteVentaHome.instance.numero}" required="true"
 								validator="numberIncoiceValidator">
@@ -93,6 +93,18 @@
 						</s:decorate>
 
 						<s:decorate template="../layout/display.xhtml">
+
+							<ui:define name="label">Tipo Precio:</ui:define>
+
+							<h:selectOneMenu id="tipoPrecio"
+								value="#{comprobanteVentaHome.instance.tipoPrecio}">
+								<s:selectItems value="#{comprobanteVentaHome.tiposPrecio}" var="tipoPrecio"
+									label="#{tipoPrecio.nombre}" />
+								<s:convertEntity />
+								<a:support event="onchange" ajaxSingle="true"
+									reRender="tipoPrecio" />
+							</h:selectOneMenu>
+
 						</s:decorate>
 						<s:decorate template="../layout/display.xhtml">
 						</s:decorate>
@@ -230,14 +242,26 @@
 							<f:facet name="header">#{messages['articulo']}</f:facet>
 							<h:outputText value="#{_itemComprobanteVenta.articulo.nombre}" />
 						</rich:column>
+						
 						<rich:column style="text-align: right;" width="7%">
-							<f:facet name="header">#{messages['costo']}</f:facet>
+							<f:facet name="header">Puntos</f:facet>
 							<h:outputText
-								value="#{_itemComprobanteVenta.articulo.currentPrecio.costo}">
+								value="#{_itemComprobanteVenta.articulo.punto}">
 								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
 									minFractionDigits="2" type="currency" />
 							</h:outputText>
 						</rich:column>
+						
+						<rich:column style="text-align: right;" width="7%">
+							<f:facet name="header">#{messages['Costo']}</f:facet>
+							<h:outputText
+								value="#{_itemComprobanteVenta.articulo.precio.costo}">
+								<f:convertNumber currencySymbol="$" maxFractionDigits="2"
+									minFractionDigits="2" type="currency" />
+							</h:outputText>
+						</rich:column>
+												
+						
 						<rich:column styleClass="action" width="6%">
 							<f:facet name="header">#{messages['articulo.cantidad']}</f:facet>
 							<h:inputText value="#{_itemComprobanteVenta.cantidad}"

@@ -29,22 +29,22 @@
 
 				<h:panelGrid columns="4">
 					<h:outputText value="#{messages['articulo.searchCriteria']}:" />
-					<h:inputText value="#{comprobanteVentaHome.criteriaArticulo}"
+					<h:inputText value="#{comprobanteCompraHome.criteriaArticulo}"
 						id="txtCriteria" onkeypress="return noEnter(event);">
 						<a:support event="onblur" reRender="txtCriteria" ajaxSingle="true" />
 					</h:inputText>
 					<a:commandButton value="#{messages['common.search']}"
 						ajaxSingle="true"
-						action="#{comprobanteVentaHome.buscarArticulos()}"
+						action="#{comprobanteCompraHome.buscarArticulos()}"
 						reRender="articuloTable,sc2" />
 					<a:commandButton value="#{messages['common.quit']}"
 						reRender="articuloTable,txtCriteria,articuloTable,sc2"
 						oncomplete="Richfaces.hideModalPanel('buscarArticuloPanel');"
 						ajaxSingle="true"
-						action="#{comprobanteVentaHome.limpiarPanelBusqueda()}" />
+						action="#{comprobanteCompraHome.limpiarPanelBusqueda()}" />
 				</h:panelGrid>
 				<rich:dataTable id="articuloTable" var="_articulo"
-					value="#{comprobanteVentaHome.articulos}" rows="10">
+					value="#{comprobanteCompraHome.articulos}" rows="10">
 					<rich:column width="15%">
 						<f:facet name="header">#{messages['articulo.codigoBarra']}</f:facet>
 						<h:outputText value="#{_articulo.codigoBarra}" />
@@ -68,7 +68,7 @@
 					<rich:column styleClass="action" width="10%">
 						<f:facet name="header">#{messages['common.action']}</f:facet>
 						<a:commandLink
-							action="#{comprobanteVentaHome.seleccionarArticulo(_articulo)}"
+							action="#{comprobanteCompraHome.seleccionarArticulo(_articulo)}"
 							ajaxSingle="true"
 							reRender="itemValorTotal, isValid, colVtotal, colVerificacion, valorTotalField, panelValores, 
 									itemComprobanteVentaList,itemsCount, totalField, panelValores, codigoBarra, subTotalIvaField,subTotalCeroField,descuentoField,ivaField,valorTotalField">
