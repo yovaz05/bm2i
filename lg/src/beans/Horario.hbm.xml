@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Horario.hbm.xml
+    Created on : 19 de septiembre de 2006, 16:43
+    Author     : ANtro
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="beans.Horario" table="HORARIO">
+    <id name="id_Horario"  column="ID_HORARIO">
+        <generator class="native"/>
+    </id>                 
+
+    <property name="fechaInicio" column="FECHAINICIO"/>
+    <property name="fechaFin" column="FECHAFIN"/>
+   
+    <property name="ingresoT" column="INGRESOT"/>
+    <property name="egresoT" column="EGRESOT"/>
+    
+    <property name="ingresoL" column="INGRESOL"/>
+    <property name="egresoL" column="EGRESOL"/>
+    
+    <property name="faltaT" column="FALTAT"/>
+    <property name="faltaL" column="FALTAL"/>
+        
+    <property name="depoT" column="DEPOT"/>
+    <property name="depoL" column="depoTL"/>
+    
+    <property name="secion" type="java.lang.Boolean"  >
+    <column name="SECION" sql-type="tinyint(1)" not-null="true"/>
+    </property>
+     
+   
+    <property name="horas" column="HORAS"/>
+    <property name="minutos" column="MINUTOS"/>
+    <property name="segundos" column="SEGUNDOS"/>
+    <property name="adelanto" column="ADELANTO"/>
+    
+    <many-to-one name="usuario" column="ID_USUARIO"/>
+    
+</class>
+</hibernate-mapping>

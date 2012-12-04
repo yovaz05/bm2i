@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Giro.hbm.xml
+    Created on : 19 de septiembre de 2006, 16:04
+    Author     : ANtro
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="beans.Compras" table="COMPRAS">
+    <id name="id_Compras"  column="ID_COMPRAS">
+        <generator class="native"/>
+    </id>          
+    
+   <property name="fecha" column="FECHA"/>
+   <property name="unidades" column="UNIDADES"/>
+   <property name="nfactura" column="NFACTURA"/>
+   
+   
+   <many-to-one name="horario" column="ID_HORARIO"/>
+   <many-to-one name="provedor" column="ID_PROVEDOR"/>
+   <many-to-one name="otros" column="ID_OTROS"/>
+  
+</class>
+</hibernate-mapping>

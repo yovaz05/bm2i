@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Paquete.hbm.xml
+    Created on : 19 de septiembre de 2006, 16:12
+    Author     : ANtro
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="beans.Paquete" table="PAQUETE">
+    <id name="id_Paquete"  column="ID_PAQUETE">
+        <generator class="native"/>
+    </id>                 
+    
+    <property name="porCobrar" column="PORCOBRAR"/>    
+       
+    <many-to-one name="agencia" column="ID_AGENCIA"/>
+    
+</class>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Giro.hbm.xml
+    Created on : 19 de septiembre de 2006, 16:04
+    Author     : ANtro
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="beans.Remplazo" table="REMPLAZO">
+    <id name="id_Remplazo"  column="ID_REMPLAZO">
+        <generator class="native"/>
+    </id>          
+    <many-to-one name="giro" column="ID_GIRO"/>
+    <many-to-one name="giroviejo" column="ID_GIROVIEJO"/>
+    <many-to-one name="horario" column="ID_HORARIO"/>
+    
+</class>
+</hibernate-mapping>

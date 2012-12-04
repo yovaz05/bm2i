@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Giro.hbm.xml
+    Created on : 19 de septiembre de 2006, 16:04
+    Author     : ANtro
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="beans.Cierre" table="CIERRE">
+    <id name="id_Cierre"  column="ID_CIERRE">
+        <generator class="native"/>
+    </id>          
+    <property name="concepto" column="CONCEPTO"/>
+    <property name="numero" column="NUMERO"/>
+    <property name="desde" column="DESDE"/>
+    <property name="hasta" column="HASTA"/>
+    <property name="neto" column="NETO"/>
+    <property name="total" column="TOTAL"/>
+    
+    <property name="ingreso" type="java.lang.Boolean"  >
+    <column name="INGRESO" sql-type="tinyint(1)" not-null="true"/>
+    </property>
+    
+    <property name="cierre1" type="java.lang.Boolean"  >
+    <column name="CIERRE1" sql-type="tinyint(1)" not-null="true"/>
+    </property>
+    
+    <many-to-one name="horario" column="ID_HORARIO"/>
+    
+    
+</class>
+</hibernate-mapping>

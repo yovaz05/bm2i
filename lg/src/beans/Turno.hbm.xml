@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Turno.hbm.xml
+    Created on : 19 de septiembre de 2006, 16:35
+    Author     : ANtro
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="beans.Turno" table="TURNO">
+    <id name="id_Turno"  column="ID_TURNO">
+        <generator class="native"/>
+    </id>                 
+    
+    <property name="actividad" column="ACTIVIDAD"/>    
+       
+    <many-to-one name="agencia" column="ID_AGENCIA"/>
+    <many-to-one name="usuario" column="ID_USUARIO"/>
+    
+</class>
+</hibernate-mapping>

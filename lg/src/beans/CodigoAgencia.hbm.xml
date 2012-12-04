@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Agencia.hbm.xml
+    Created on : 19 de septiembre de 2006, 15:54
+    Author     : ANtro
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="beans.CodigoAgencia" table="CODIGOAGENCIA">         
+    
+    <id name="id_Codigo"  column="ID_CODIGO">
+        <generator class="native"/>        
+    </id>            
+    
+    <property name="codigo" column="CODIGO"/>
+    <many-to-one name="agencia" column="ID_AGENCIA"/> 
+    
+     
+</class>
+</hibernate-mapping>

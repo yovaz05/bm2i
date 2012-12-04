@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Cheque.hbm.xml
+    Created on : 19 de septiembre de 2006, 16:04
+    Author     : ANtro
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="beans.Cheque" table="CHEQUE">
+    <id name="id_Cheque"  column="ID_CHEQUE">
+        <generator class="native"/>
+    </id>          
+    
+    <property name="protestado" type="java.lang.Boolean"  >
+    <column name="PROTESTADO" sql-type="tinyint(1)" not-null="true"/>
+    </property>
+    
+    <property name="fecha" column="FECHA"/>
+    <property name="nombre" column="NOMBRE"/>
+    <property name="neto" column="NETO"/>
+    <property name="total" column="TOTAL"/>
+    <property name="numero" column="NUMERO"/>
+    <property name="utilidad" column="UTILIDAD"/>
+    <property name="utilidadche" column="UTILIDAD_CHEQUE"/>
+    <property name="clave" column="CLAVE"/>
+    <property name="protesto" column="PROTESTO"/>
+    
+    <property name="lgtrasmiter" type="java.lang.Boolean"  >
+    <column name="LGTRASMITER" sql-type="tinyint(1)" not-null="true"/>
+    </property>
+    
+    <property name="adelanto" type="java.lang.Boolean"  >
+    <column name="ADELANTO" sql-type="tinyint(1)" not-null="true"/>
+    </property>
+   
+    <many-to-one name="horario" column="ID_HORARIO"/>
+    <many-to-one name="giro" column="ID_GIRO"/>
+
+    
+</class>
+</hibernate-mapping>
