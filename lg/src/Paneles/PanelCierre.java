@@ -240,12 +240,12 @@ txtUtilidadche.setText(String.valueOf(che1));
             Agencia b1=(Agencia) lista.getObject(i);
             listaAnteriores =new Lista(new Giro().lista19(otro,b1)); 
             //EL NUMERO DE GIROS
-            int tamaño = listaAnteriores.getSize();
-            if(tamaño==0){
+            int tamanio = listaAnteriores.getSize();
+            if(tamanio==0){
         
             }else{
                     cierre.setConcepto(b1.getNombre());
-                    cierre.setNumero(String.valueOf(tamaño));
+                    cierre.setNumero(String.valueOf(tamanio));
                     giro = new Giro();
                     giro = (Giro) listaAnteriores.primero();
                     //GUARDO EL PRIMER CODIGO
@@ -291,8 +291,8 @@ txtUtilidadche.setText(String.valueOf(che1));
             flores = new Flores();
             codigo = new Lista(new Flores().lista3(otro));
       
-            int tamaño = codigo.getSize();
-            if(tamaño==0){
+            int tamanio = codigo.getSize();
+            if(tamanio==0){
       
             }else{
                 flores=(Flores) codigo.primero();
@@ -302,10 +302,10 @@ txtUtilidadche.setText(String.valueOf(che1));
                 cierre.setDesde(String.valueOf(ult.getFactura()));
                 cierre.setIngreso(false);
                 cierre.setConcepto("Flores");
-                cierre.setNumero(String.valueOf(tamaño));
+                cierre.setNumero(String.valueOf(tamanio));
       
                 float tot =0;
-                for(int j=0;j<tamaño;j++){
+                for(int j=0;j<tamanio;j++){
                     Flores su=(Flores)codigo.getObject(j);
                     tot=tot+su.getTotal();
                     }
@@ -328,8 +328,8 @@ txtUtilidadche.setText(String.valueOf(che1));
             pasajes = new Pasajes();
             codigo = new Lista(new Pasajes().lista3(otro));
       
-            int tamaño = codigo.getSize();
-            if(tamaño==0){
+            int tamanio = codigo.getSize();
+            if(tamanio==0){
             
             }else{
                 pasajes=(Pasajes) codigo.primero();
@@ -339,10 +339,10 @@ txtUtilidadche.setText(String.valueOf(che1));
                 cierre.setHasta(" ");
                 cierre.setIngreso(false);
                 cierre.setConcepto("Pasajes");
-                cierre.setNumero(String.valueOf(tamaño));
+                cierre.setNumero(String.valueOf(tamanio));
       
                 float to =0;
-                for(int j=0;j<tamaño;j++){
+                for(int j=0;j<tamanio;j++){
                     Pasajes s=(Pasajes)codigo.getObject(j);
                     to=to+s.getValor();
                 }
@@ -365,8 +365,8 @@ txtUtilidadche.setText(String.valueOf(che1));
             video = new VideoConferencia();
             codigo = new Lista(new VideoConferencia().lista3(otro));
       
-            int tamaño = codigo.getSize();
-            if(tamaño==0){
+            int tamanio = codigo.getSize();
+            if(tamanio==0){
             
             }else{
                 video=(VideoConferencia) codigo.primero();
@@ -377,10 +377,10 @@ txtUtilidadche.setText(String.valueOf(che1));
                 cierre.setDesde(String.valueOf(vid.getNumero()));
                 cierre.setIngreso(false);
                 cierre.setConcepto("Video Conferencia");
-                cierre.setNumero(String.valueOf(tamaño));
+                cierre.setNumero(String.valueOf(tamanio));
       
                 float to =0;
-                for(int j=0;j<tamaño;j++){
+                for(int j=0;j<tamanio;j++){
                     VideoConferencia vi=(VideoConferencia)codigo.getObject(j);
                     to=to+vi.getTotal();
                            
@@ -403,8 +403,8 @@ txtUtilidadche.setText(String.valueOf(che1));
             cabinas = new Cabinas();
             codigo = new Lista(new Cabinas().lista3(otro));
       
-            int tamaño = codigo.getSize();
-            if(tamaño==0){
+            int tamanio = codigo.getSize();
+            if(tamanio==0){
       
             }else{
                 cabinas=(Cabinas) codigo.primero();
@@ -414,10 +414,10 @@ txtUtilidadche.setText(String.valueOf(che1));
                 cierre.setHasta(" ");
                 cierre.setIngreso(false);
                 cierre.setConcepto("Cabinas");
-                cierre.setNumero(String.valueOf(tamaño));
+                cierre.setNumero(String.valueOf(tamanio));
       
                 float o =0;
-                for(int j=0;j<tamaño;j++){
+                for(int j=0;j<tamanio;j++){
                      Cabinas sumas=(Cabinas)codigo.getObject(j);
                     o=o+sumas.getValor();
                   }
@@ -446,8 +446,8 @@ txtUtilidadche.setText(String.valueOf(che1));
             lista = new Lista(new VentaProductos().lista2(otro));
             for(int i=0;i<lista.getSize();i++){
                     venta =(VentaProductos) lista.getObject(i);
-                    int tamaño = lista.getSize();
-                    if(tamaño==0){
+                    int tamanio = lista.getSize();
+                    if(tamanio==0){
                     }else{
                         cierre = new Cierre();
                        // Mensaje.showMensaje(this,"La agencia es "+venta.getOtros().getNombre());
@@ -482,8 +482,8 @@ txtUtilidadche.setText(String.valueOf(che1));
       boolean b = true;
       codigo = new Lista(new Cheque().lista4(otro,b, b));
       
-      int tamaño = codigo.getSize();
-      if(tamaño==0){
+      int tamanio = codigo.getSize();
+      if(tamanio==0){
       
       }else{
       
@@ -496,7 +496,7 @@ txtUtilidadche.setText(String.valueOf(che1));
       
       int unidades=0;
       float o =0;
-      for(int j=0;j<tamaño;j++){
+      for(int j=0;j<tamanio;j++){
            Cheque bainas=(Cheque)codigo.getObject(j);
            if (bainas.getGiro()==null){
                                        o=o+bainas.getTotal();
@@ -523,7 +523,7 @@ txtUtilidadche.setText(String.valueOf(che1));
       
       int protesto=0;
       float p =0;
-      for(int j=0;j<tamaño;j++){
+      for(int j=0;j<tamanio;j++){
            Cheque bainas=(Cheque)codigo.getObject(j);
            if (bainas.getGiro()==null){
                                        p=p+bainas.getProtesto();
@@ -554,8 +554,8 @@ txtUtilidadche.setText(String.valueOf(che1));
               cxp = new CuentasXCobrar();
               codigo = new Lista(new CuentasXCobrar().lista5(otro));
 
-              int tamaño = codigo.getSize();
-              if(tamaño==0){
+              int tamanio = codigo.getSize();
+              if(tamanio==0){
 
               }else{
 
@@ -564,11 +564,11 @@ txtUtilidadche.setText(String.valueOf(che1));
               cierre.setHasta("");
               cierre.setIngreso(false);
               cierre.setConcepto("Cuentas X Cobrar");
-              cierre.setNumero(String.valueOf(tamaño));
+              cierre.setNumero(String.valueOf(tamanio));
 
               float o =0;
 
-              for(int j=0;j<tamaño;j++){
+              for(int j=0;j<tamanio;j++){
                    CuentasXCobrar cxp1=(CuentasXCobrar)codigo.getObject(j);
                    o=o+cxp1.getCuota();
                  }
@@ -600,8 +600,8 @@ txtUtilidadche.setText(String.valueOf(che1));
      codigo = new Lista(new Giro().lista18(otro, b));
      float o =0;    
      int num=0;
-     int tamaño = codigo.getSize();
-     if(tamaño==0){
+     int tamanio = codigo.getSize();
+     if(tamanio==0){
 
                     }else{
                           cierre = new Cierre();
@@ -613,15 +613,15 @@ txtUtilidadche.setText(String.valueOf(che1));
                           
                           
                           Lista codigo=new Lista (new Agencia().lista());
-                          int tamaño1 = codigo.getSize();
-                          for(int j=0;j<tamaño1;j++){
+                          int tamanio1 = codigo.getSize();
+                          for(int j=0;j<tamanio1;j++){
                              agencia=(Agencia)codigo.getObject(j); 
                              if (agencia!=age){
                                  Lista codigo1 =new Lista(new Giro().lista8(otro, b, agencia)); 
-                                 int tamaño2 = codigo1.getSize();
-                                 if(tamaño2==0){
+                                 int tamanio2 = codigo1.getSize();
+                                 if(tamanio2==0){
                                  }else{
-                                      for(int i=0;i<tamaño2;i++){
+                                      for(int i=0;i<tamanio2;i++){
                                        sum=(Giro)codigo1.getObject(i);
                                        o=o+sum.getTotal();
                                        num=num+1;
@@ -651,8 +651,8 @@ txtUtilidadche.setText(String.valueOf(che1));
                   boolean b = true;
                   codigo = new Lista(new Giro().lista9(otro, b));
 
-                  int tamaño = codigo.getSize();
-                  if(tamaño==0){
+                  int tamanio = codigo.getSize();
+                  if(tamanio==0){
 
                   }else{
 
@@ -661,11 +661,11 @@ txtUtilidadche.setText(String.valueOf(che1));
                   cierre.setHasta("");
                   cierre.setIngreso(true);
                   cierre.setConcepto("Giros Pagados");
-                  cierre.setNumero(String.valueOf(tamaño));
+                  cierre.setNumero(String.valueOf(tamanio));
 
                   float o =0;
 
-                  for(int j=0;j<tamaño;j++){
+                  for(int j=0;j<tamanio;j++){
                        Giro sum=(Giro)codigo.getObject(j);
                        o=o+sum.getTotal();
                      }
@@ -689,15 +689,15 @@ txtUtilidadche.setText(String.valueOf(che1));
                   agencia = new Agencia();
                    String cod ="PQ";
                   agencia = agencia.Busca(cod);
-                //  Mensaje.showMensaje(this,"Cual es teamaño "+agencia.getNombre());
+                //  Mensaje.showMensaje(this,"Cual es teamanio "+agencia.getNombre());
                   giro = new Giro();
                   boolean b = true;
                   codigo = new Lista(new Giro().lista10(agencia, otro, b));
 
-                  int tamaño = codigo.getSize();
+                  int tamanio = codigo.getSize();
 
-                  if(tamaño==0){
-               //   Mensaje.showMensaje(this,"Cual es teamaño "+tamaño);
+                  if(tamanio==0){
+               //   Mensaje.showMensaje(this,"Cual es teamanio "+tamanio);
                   }else{
 
                   cierre = new Cierre();
@@ -705,11 +705,11 @@ txtUtilidadche.setText(String.valueOf(che1));
                   cierre.setHasta("");
                   cierre.setIngreso(true);
                   cierre.setConcepto("Paquetes Devueltos ");
-                  cierre.setNumero(String.valueOf(tamaño));
+                  cierre.setNumero(String.valueOf(tamanio));
 
                   float o =0;
 
-                  for(int j=0;j<tamaño;j++){
+                  for(int j=0;j<tamanio;j++){
                        Giro sum=(Giro)codigo.getObject(j);
                        o=o+sum.getTotal();
                      }
@@ -734,8 +734,8 @@ txtUtilidadche.setText(String.valueOf(che1));
                   cp = new CuentasXPagar();
                   codigo = new Lista(new CuentasXPagar().lista3(otro, pagos));
 
-                  int tamaño = codigo.getSize();
-                  if(tamaño==0){
+                  int tamanio = codigo.getSize();
+                  if(tamanio==0){
 
                   }else{
 
@@ -744,10 +744,10 @@ txtUtilidadche.setText(String.valueOf(che1));
                   cierre.setHasta("");
                   cierre.setIngreso(true);
                   cierre.setConcepto("Cuentas X Pagar");
-                  cierre.setNumero(String.valueOf(tamaño));
+                  cierre.setNumero(String.valueOf(tamanio));
 
                   float o =0;
-                  for(int j=0;j<tamaño;j++){
+                  for(int j=0;j<tamanio;j++){
                        CuentasXPagar cp1=(CuentasXPagar)codigo.getObject(j);
                        o=o+cp1.getTotal();
                      }
@@ -772,8 +772,8 @@ txtUtilidadche.setText(String.valueOf(che1));
                   boolean b = true;
                   codigo = new Lista(new Giro().lista11(otro, b));
 
-                  int tamaño = codigo.getSize();
-                  if(tamaño==0){
+                  int tamanio = codigo.getSize();
+                  if(tamanio==0){
 
                   }else{
 
@@ -782,10 +782,10 @@ txtUtilidadche.setText(String.valueOf(che1));
                   cierre.setHasta("");
                   cierre.setIngreso(true);
                   cierre.setConcepto("Remplazo de Giros");
-                  cierre.setNumero(String.valueOf(tamaño));
+                  cierre.setNumero(String.valueOf(tamanio));
 
                   float o =0;
-                  for(int j=0;j<tamaño;j++){
+                  for(int j=0;j<tamanio;j++){
                        Giro sum=(Giro)codigo.getObject(j);
                        o=o+sum.getTotal();
 
@@ -810,8 +810,8 @@ txtUtilidadche.setText(String.valueOf(che1));
                       boolean b = true;
                       codigo = new Lista(new ComprasOficina().lista3(otro, b));
 
-                      int tamaño = codigo.getSize();
-                      if(tamaño==0){
+                      int tamanio = codigo.getSize();
+                      if(tamanio==0){
 
                       }else{
 
@@ -820,10 +820,10 @@ txtUtilidadche.setText(String.valueOf(che1));
                       cierre.setHasta("");
                       cierre.setIngreso(true);
                       cierre.setConcepto("Compras de Oficina");
-                      cierre.setNumero(String.valueOf(tamaño));
+                      cierre.setNumero(String.valueOf(tamanio));
 
                       float o =0;
-                      for(int j=0;j<tamaño;j++){
+                      for(int j=0;j<tamanio;j++){
                            ComprasOficina pras1=(ComprasOficina)codigo.getObject(j);
                            o=o+pras1.getValor();
 
@@ -854,9 +854,9 @@ txtUtilidadche.setText(String.valueOf(che1));
 
                       codigo = new Lista(new Giro().lista2(agencia, otro));
 
-                      int tamaño = codigo.getSize();
+                      int tamanio = codigo.getSize();
 
-                      if(tamaño==0){
+                      if(tamanio==0){
 
                       }else{
 
@@ -865,11 +865,11 @@ txtUtilidadche.setText(String.valueOf(che1));
                       cierre.setHasta("");
                       cierre.setIngreso(true);
                       cierre.setConcepto("Giros de Oficina ");
-                      cierre.setNumero(String.valueOf(tamaño));
+                      cierre.setNumero(String.valueOf(tamanio));
 
                       float o =0;
 
-                      for(int j=0;j<tamaño;j++){
+                      for(int j=0;j<tamanio;j++){
                            Giro sum=(Giro)codigo.getObject(j);
                            o=o+sum.getTotal();
                          }
@@ -894,18 +894,18 @@ txtUtilidadche.setText(String.valueOf(che1));
                   pg = new PagoT();
 
                   codigo = new Lista(new PagoT().lista3(otro));
-                  int tamaño = codigo.getSize();
+                  int tamanio = codigo.getSize();
 
-                  if(tamaño==0){
+                  if(tamanio==0){
                   }else{
                       cierre = new Cierre();
                       cierre.setDesde("");
                       cierre.setHasta("");
                       cierre.setIngreso(true);
                       cierre.setConcepto("Pago Facturas de Tarjetas ");
-                      cierre.setNumero(String.valueOf(tamaño));
+                      cierre.setNumero(String.valueOf(tamanio));
                       float o =0;
-                      for(int j=0;j<tamaño;j++){
+                      for(int j=0;j<tamanio;j++){
                             PagoT pg1=(PagoT)codigo.getObject(j);
                             o=o+pg1.getValorpagar();
 

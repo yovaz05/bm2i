@@ -163,8 +163,8 @@ public class FinTurno_1 extends javax.swing.JPanel {
      codigo = new Lista(new CierreFaltante().lista3(otro, b));
      float o =0;    
      int num=0;
-     int tamaño = codigo.getSize();
-     if(tamaño==0){
+     int tamanio = codigo.getSize();
+     if(tamanio==0){
 
                     }else{
                           cierre = new Cierre();
@@ -173,7 +173,7 @@ public class FinTurno_1 extends javax.swing.JPanel {
                           cierre.setIngreso(false);
                           cierre.setConcepto("Faltante de Otros Cierres");
                           
-                          for(int j=0;j<tamaño;j++){
+                          for(int j=0;j<tamanio;j++){
                           cierrefaltante=(CierreFaltante)codigo.getObject(j); 
                           o=o+cierrefaltante.getSaldo();
                          }
@@ -205,8 +205,8 @@ public class FinTurno_1 extends javax.swing.JPanel {
       float che1=0;
       float che2=0;
       
-      int tamaño = codigo.getSize();
-      if(tamaño==0){
+      int tamanio = codigo.getSize();
+      if(tamanio==0){
       
       }else{
       
@@ -282,8 +282,8 @@ public class FinTurno_1 extends javax.swing.JPanel {
       float che1=0;
       float che2=0;
       
-      int tamaño = codigo.getSize();
-      if(tamaño==0){
+      int tamanio = codigo.getSize();
+      if(tamanio==0){
       
       }else{
       
@@ -399,8 +399,8 @@ public void  cie2(){
             flores = new Flores();
             codigo = new Lista(new Flores().lista3(otro));
       
-            int tamaño = codigo.getSize();
-            if(tamaño==0){
+            int tamanio = codigo.getSize();
+            if(tamanio==0){
       
             }else{  
                 flores=(Flores) codigo.primero();
@@ -410,10 +410,10 @@ public void  cie2(){
                 cierre.setHasta(String.valueOf(ult.getFactura()));
                 cierre.setIngreso(false);
                 cierre.setConcepto("Flores");
-                cierre.setNumero(String.valueOf(tamaño));
+                cierre.setNumero(String.valueOf(tamanio));
       
                 float tot =0;
-                for(int j=0;j<tamaño;j++){
+                for(int j=0;j<tamanio;j++){
                     Flores su=(Flores)codigo.getObject(j);
                     tot=tot+su.getTotal();
                     }
@@ -436,8 +436,8 @@ public void  cie2(){
             pasajes = new Pasajes();
             codigo = new Lista(new Pasajes().lista3(otro));
       
-            int tamaño = codigo.getSize();
-            if(tamaño==0){
+            int tamanio = codigo.getSize();
+            if(tamanio==0){
             
             }else{
                 pasajes=(Pasajes) codigo.primero();
@@ -447,10 +447,10 @@ public void  cie2(){
                 cierre.setHasta(" ");
                 cierre.setIngreso(false);
                 cierre.setConcepto("Pasajes");
-                cierre.setNumero(String.valueOf(tamaño));
+                cierre.setNumero(String.valueOf(tamanio));
       
                 float to =0;
-                for(int j=0;j<tamaño;j++){
+                for(int j=0;j<tamanio;j++){
                     Pasajes s=(Pasajes)codigo.getObject(j);
                     to=to+s.getValor();
                 }
@@ -473,8 +473,8 @@ public void  cie2(){
             video = new VideoConferencia();
             codigo = new Lista(new VideoConferencia().lista3(otro));
       
-            int tamaño = codigo.getSize();
-            if(tamaño==0){
+            int tamanio = codigo.getSize();
+            if(tamanio==0){
             
             }else{
                 video=(VideoConferencia) codigo.primero();
@@ -485,10 +485,10 @@ public void  cie2(){
                 cierre.setDesde(String.valueOf(vid.getNumero()));
                 cierre.setIngreso(false);
                 cierre.setConcepto("Video Conferencia");
-                cierre.setNumero(String.valueOf(tamaño));
+                cierre.setNumero(String.valueOf(tamanio));
       
                 float to =0;
-                for(int j=0;j<tamaño;j++){
+                for(int j=0;j<tamanio;j++){
                     VideoConferencia vi=(VideoConferencia)codigo.getObject(j);
                     to=to+vi.getTotal();
                            
@@ -512,8 +512,8 @@ public void  cie2(){
             cabinas = new Cabinas();
             codigo = new Lista(new Cabinas().lista3(otro));
       
-            int tamaño = codigo.getSize();
-            if(tamaño==0){
+            int tamanio = codigo.getSize();
+            if(tamanio==0){
       
             }else{
                 cabinas=(Cabinas) codigo.primero();
@@ -523,10 +523,10 @@ public void  cie2(){
                 cierre.setHasta(" ");
                 cierre.setIngreso(false);
                 cierre.setConcepto("Cabinas");
-                cierre.setNumero(String.valueOf(tamaño));
+                cierre.setNumero(String.valueOf(tamanio));
       
                 float o =0;
-                for(int j=0;j<tamaño;j++){
+                for(int j=0;j<tamanio;j++){
                      Cabinas sumas=(Cabinas)codigo.getObject(j);
                     o=o+sumas.getValor();
                   }
@@ -556,8 +556,8 @@ public void  cie2(){
             lista = new Lista(new VentaProductos().lista2(otro));
             for(int i=0;i<lista.getSize();i++){
                     venta =(VentaProductos) lista.getObject(i);
-                    int tamaño = lista.getSize();
-                    if(tamaño==0){
+                    int tamanio = lista.getSize();
+                    if(tamanio==0){
                     }else{
                         cierre = new Cierre();
                        // Mensaje.showMensaje(this,"La agencia es "+venta.getOtros().getNombre());
@@ -595,8 +595,8 @@ public void  cie2(){
       boolean ciert=false;
       codigo = new Lista(new Cheque().lista4(otro,b, ciert));
       
-      int tamaño = codigo.getSize();
-      if(tamaño==0){
+      int tamanio = codigo.getSize();
+      if(tamanio==0){
       
       }else{
       
@@ -608,7 +608,7 @@ public void  cie2(){
       
       int unidades=0;
       float o =0;
-      for(int j=0;j<tamaño;j++){
+      for(int j=0;j<tamanio;j++){
            Cheque bainas=(Cheque)codigo.getObject(j);
            if (bainas.getGiro()==null){
                                        o=o+bainas.getTotal();
@@ -635,7 +635,7 @@ public void  cie2(){
       
       int protesto=0;
       float p =0;
-      for(int j=0;j<tamaño;j++){
+      for(int j=0;j<tamanio;j++){
            Cheque bainas=(Cheque)codigo.getObject(j);
            if (bainas.getGiro()==null){
                                        p=p+bainas.getProtesto();
@@ -665,15 +665,15 @@ public void  cie2(){
                   agencia = new Agencia();
                    String cod ="PQ";
                   agencia = agencia.Busca(cod);
-                //  Mensaje.showMensaje(this,"Cual es teamaño "+agencia.getNombre());
+                //  Mensaje.showMensaje(this,"Cual es teamanio "+agencia.getNombre());
                   giro = new Giro();
                   boolean b = false;
                   codigo = new Lista(new Giro().lista10(agencia, otro, b));
 
-                  int tamaño = codigo.getSize();
+                  int tamanio = codigo.getSize();
 
-                  if(tamaño==0){
-               //   Mensaje.showMensaje(this,"Cual es teamaño "+tamaño);
+                  if(tamanio==0){
+               //   Mensaje.showMensaje(this,"Cual es teamanio "+tamanio);
                   }else{
 
                   cierre = new Cierre();
@@ -681,11 +681,11 @@ public void  cie2(){
                   cierre.setHasta("");
                   cierre.setIngreso(false);
                   cierre.setConcepto("Paquetes ");
-                  cierre.setNumero(String.valueOf(tamaño));
+                  cierre.setNumero(String.valueOf(tamanio));
 
                   float o =0;
 
-                  for(int j=0;j<tamaño;j++){
+                  for(int j=0;j<tamanio;j++){
                        Giro sum=(Giro)codigo.getObject(j);
                        o=o+sum.getTotal();
                      }
@@ -712,8 +712,8 @@ public void  cie2(){
               cxp = new CuentasXCobrar();
               codigo = new Lista(new CuentasXCobrar().lista3(otro, gi));
 
-              int tamaño = codigo.getSize();
-              if(tamaño==0){
+              int tamanio = codigo.getSize();
+              if(tamanio==0){
 
               }else{
 
@@ -722,11 +722,11 @@ public void  cie2(){
               cierre.setHasta("");
               cierre.setIngreso(false);
               cierre.setConcepto("Cuentas X Cobrar");
-              cierre.setNumero(String.valueOf(tamaño));
+              cierre.setNumero(String.valueOf(tamanio));
 
               float o =0;
 
-              for(int j=0;j<tamaño;j++){
+              for(int j=0;j<tamanio;j++){
                    CuentasXCobrar cxp1=(CuentasXCobrar)codigo.getObject(j);
                    o=o+cxp1.getCuota();
                  }
@@ -751,15 +751,15 @@ private void dpaquetes(){
                   agencia = new Agencia();
                    String cod ="PQ";
                   agencia = agencia.Busca(cod);
-                //  Mensaje.showMensaje(this,"Cual es teamaño "+agencia.getNombre());
+                //  Mensaje.showMensaje(this,"Cual es teamanio "+agencia.getNombre());
                   giro = new Giro();
                   boolean b = true;
                   codigo = new Lista(new Giro().lista10(agencia, otro, b));
 
-                  int tamaño = codigo.getSize();
+                  int tamanio = codigo.getSize();
 
-                  if(tamaño==0){
-               //   Mensaje.showMensaje(this,"Cual es teamaño "+tamaño);
+                  if(tamanio==0){
+               //   Mensaje.showMensaje(this,"Cual es teamanio "+tamanio);
                   }else{
 
                   cierre = new Cierre();
@@ -767,11 +767,11 @@ private void dpaquetes(){
                   cierre.setHasta("");
                   cierre.setIngreso(true);
                   cierre.setConcepto("Paquetes Devueltos ");
-                  cierre.setNumero(String.valueOf(tamaño));
+                  cierre.setNumero(String.valueOf(tamanio));
 
                   float o =0;
 
-                  for(int j=0;j<tamaño;j++){
+                  for(int j=0;j<tamanio;j++){
                        Giro sum=(Giro)codigo.getObject(j);
                        o=o+sum.getTotal();
                      }
@@ -796,8 +796,8 @@ private void dpaquetes(){
                   cp = new CuentasXPagar();
                   codigo = new Lista(new CuentasXPagar().lista6(otro, est));
 
-                  int tamaño = codigo.getSize();
-                  if(tamaño==0){
+                  int tamanio = codigo.getSize();
+                  if(tamanio==0){
 
                   }else{
 
@@ -806,10 +806,10 @@ private void dpaquetes(){
                   cierre.setHasta("");
                   cierre.setIngreso(true);
                   cierre.setConcepto("Cuentas X Pagar");
-                  cierre.setNumero(String.valueOf(tamaño));
+                  cierre.setNumero(String.valueOf(tamanio));
 
                   float o =0;
-                  for(int j=0;j<tamaño;j++){
+                  for(int j=0;j<tamanio;j++){
                        CuentasXPagar cp1=(CuentasXPagar)codigo.getObject(j);
                        o=o+cp1.getTotal();
                      }
@@ -834,8 +834,8 @@ private void compras(){
                       boolean b = true;
                       codigo = new Lista(new ComprasOficina().lista3(otro, est));
 
-                      int tamaño = codigo.getSize();
-                      if(tamaño==0){
+                      int tamanio = codigo.getSize();
+                      if(tamanio==0){
 
                       }else{
 
@@ -844,10 +844,10 @@ private void compras(){
                       cierre.setHasta("");
                       cierre.setIngreso(true);
                       cierre.setConcepto("Compras de Oficina");
-                      cierre.setNumero(String.valueOf(tamaño));
+                      cierre.setNumero(String.valueOf(tamanio));
 
                       float o =0;
-                      for(int j=0;j<tamaño;j++){
+                      for(int j=0;j<tamanio;j++){
                            ComprasOficina pras1=(ComprasOficina)codigo.getObject(j);
                            o=o+pras1.getValor();
 
@@ -874,18 +874,18 @@ private void compras(){
                   pg = new PagoT();
 
                   codigo = new Lista(new PagoT().lista3(otro));
-                  int tamaño = codigo.getSize();
+                  int tamanio = codigo.getSize();
 
-                  if(tamaño==0){
+                  if(tamanio==0){
                   }else{
                       cierre = new Cierre();
                       cierre.setDesde("");
                       cierre.setHasta("");
                       cierre.setIngreso(true);
                       cierre.setConcepto("Pago Facturas de Tarjetas ");
-                      cierre.setNumero(String.valueOf(tamaño));
+                      cierre.setNumero(String.valueOf(tamanio));
                       float o =0;
-                      for(int j=0;j<tamaño;j++){
+                      for(int j=0;j<tamanio;j++){
                             PagoT pg1=(PagoT)codigo.getObject(j);
                             o=o+pg1.getValorpagar();
 
@@ -940,8 +940,8 @@ private void moneytrasmiter(){
                       boolean b = true;
                       codigo = new Lista(new ComprasOficina().lista3(otro, b));
 
-                      int tamaño = codigo.getSize();
-                      if(tamaño==0){
+                      int tamanio = codigo.getSize();
+                      if(tamanio==0){
 
                       }else{
 
@@ -950,10 +950,10 @@ private void moneytrasmiter(){
                       cierre.setHasta("");
                       cierre.setIngreso(true);
                       cierre.setConcepto("Compras de Oficina");
-                      cierre.setNumero(String.valueOf(tamaño));
+                      cierre.setNumero(String.valueOf(tamanio));
 
                       float o =0;
-                      for(int j=0;j<tamaño;j++){
+                      for(int j=0;j<tamanio;j++){
                            ComprasOficina pras1=(ComprasOficina)codigo.getObject(j);
                            o=o+pras1.getValor();
 
@@ -985,8 +985,8 @@ private void moneytrasmiter(){
      codigo = new Lista(new CierreFaltante().lista3(otro, b));
      float o =0;    
      int num=0;
-     int tamaño = codigo.getSize();
-     if(tamaño==0){
+     int tamanio = codigo.getSize();
+     if(tamanio==0){
 
                     }else{
                           cierre = new Cierre();
@@ -995,7 +995,7 @@ private void moneytrasmiter(){
                           cierre.setIngreso(false);
                           cierre.setConcepto("Faltante de Otros Cierres");
                           
-                          for(int j=0;j<tamaño;j++){
+                          for(int j=0;j<tamanio;j++){
                           cierrefaltante=(CierreFaltante)codigo.getObject(j); 
                           o=o+cierrefaltante.getSaldo();
                          }
@@ -1030,8 +1030,8 @@ private void adelanto(){
       float che1=0;
       float che2=0;
       
-      int tamaño = codigo.getSize();
-      if(tamaño==0){
+      int tamanio = codigo.getSize();
+      if(tamanio==0){
       
       }else{
       
@@ -1106,8 +1106,8 @@ private void utilidadcheque1(){
       float che1=0;
       float che2=0;
       
-      int tamaño = codigo.getSize();
-      if(tamaño==0){
+      int tamanio = codigo.getSize();
+      if(tamanio==0){
       
       }else{
       
@@ -1256,12 +1256,12 @@ private void agencias(){
             Agencia b1=(Agencia) lista.getObject(i);
             listaAnteriores =new Lista(new Giro().lista19(oo,b1)); 
             //EL NUMERO DE GIROS
-            int tamaño = listaAnteriores.getSize();
-            if(tamaño==0){
+            int tamanio = listaAnteriores.getSize();
+            if(tamanio==0){
         
             }else{
                     cierre.setConcepto(b1.getNombre());
-                    cierre.setNumero(String.valueOf(tamaño));
+                    cierre.setNumero(String.valueOf(tamanio));
                     giro = new Giro();
                     giro = (Giro) listaAnteriores.primero();
                     //GUARDO EL PRIMER CODIGO
@@ -1314,8 +1314,8 @@ private void agencias(){
       boolean ciert=true;
       codigo = new Lista(new Cheque().lista4(oo,b, ciert));
       
-      int tamaño = codigo.getSize();
-      if(tamaño==0){
+      int tamanio = codigo.getSize();
+      if(tamanio==0){
       
       }else{
       
@@ -1328,7 +1328,7 @@ private void agencias(){
       
       int unidades=0;
       float o =0;
-      for(int j=0;j<tamaño;j++){
+      for(int j=0;j<tamanio;j++){
            Cheque bainas=(Cheque)codigo.getObject(j);
             if (bainas.getGiro()!=null){
                                        o=o+bainas.getTotal();
@@ -1356,7 +1356,7 @@ private void agencias(){
       
       int protesto=0;
       float p =0;
-      for(int j=0;j<tamaño;j++){
+      for(int j=0;j<tamanio;j++){
            Cheque bainas=(Cheque)codigo.getObject(j);
            if (bainas.getGiro()!=null){
                                        p=p+bainas.getProtesto();
@@ -1384,19 +1384,19 @@ private void agencias(){
               cxp = new CuentasXCobrar();
               codigo = new Lista(new CuentasXCobrar().lista3(oo, gi));
 
-              int tamaño = codigo.getSize();
-              if(tamaño==0){
+              int tamanio = codigo.getSize();
+              if(tamanio==0){
             }else{
               cierre = new Cierre();
               cierre.setDesde("");
               cierre.setHasta("");
               cierre.setIngreso(false);
               cierre.setConcepto("Cuentas X Cobrar");
-              cierre.setNumero(String.valueOf(tamaño));
+              cierre.setNumero(String.valueOf(tamanio));
 
               float o =0;
 
-              for(int j=0;j<tamaño;j++){
+              for(int j=0;j<tamanio;j++){
                    CuentasXCobrar cxp1=(CuentasXCobrar)codigo.getObject(j);
                    o=o+cxp1.getCuota();
                  }
@@ -1428,8 +1428,8 @@ private void dgiros(){
      codigo = new Lista(new Giro().lista18(oo, b));
      float o =0;    
      int num=0;
-     int tamaño = codigo.getSize();
-     if(tamaño==0){
+     int tamanio = codigo.getSize();
+     if(tamanio==0){
 
                     }else{
                           cierre = new Cierre();
@@ -1441,15 +1441,15 @@ private void dgiros(){
                           
                           
                           Lista codigo=new Lista (new Agencia().lista());
-                          int tamaño1 = codigo.getSize();
-                          for(int j=0;j<tamaño1;j++){
+                          int tamanio1 = codigo.getSize();
+                          for(int j=0;j<tamanio1;j++){
                              agencia=(Agencia)codigo.getObject(j); 
                              if (agencia!=age){
                                  Lista codigo1 =new Lista(new Giro().lista8(oo, b, agencia)); 
-                                 int tamaño2 = codigo1.getSize();
-                                 if(tamaño2==0){
+                                 int tamanio2 = codigo1.getSize();
+                                 if(tamanio2==0){
                                  }else{
-                                      for(int i=0;i<tamaño2;i++){
+                                      for(int i=0;i<tamanio2;i++){
                                        sum=(Giro)codigo1.getObject(i);
                                        o=o+sum.getTotal();
                                        num=num+1;
@@ -1478,8 +1478,8 @@ private void dgiros(){
                   boolean b = true;
                   codigo = new Lista(new Giro().lista9(oo, b));
 
-                  int tamaño = codigo.getSize();
-                  if(tamaño==0){
+                  int tamanio = codigo.getSize();
+                  if(tamanio==0){
 
                   }else{
 
@@ -1488,11 +1488,11 @@ private void dgiros(){
                   cierre.setHasta("");
                   cierre.setIngreso(true);
                   cierre.setConcepto("Giros Pagados");
-                  cierre.setNumero(String.valueOf(tamaño));
+                  cierre.setNumero(String.valueOf(tamanio));
 
                   float o =0;
 
-                  for(int j=0;j<tamaño;j++){
+                  for(int j=0;j<tamanio;j++){
                        Giro sum=(Giro)codigo.getObject(j);
                        o=o+sum.getTotal();
                      }
@@ -1514,8 +1514,8 @@ private void dgiros(){
                   cp = new CuentasXPagar();
                   codigo = new Lista(new CuentasXPagar().lista6(oo, pagos));
 
-                  int tamaño = codigo.getSize();
-                  if(tamaño==0){
+                  int tamanio = codigo.getSize();
+                  if(tamanio==0){
 
                   }else{
 
@@ -1524,10 +1524,10 @@ private void dgiros(){
                   cierre.setHasta("");
                   cierre.setIngreso(true);
                   cierre.setConcepto("Cuentas X Pagar");
-                  cierre.setNumero(String.valueOf(tamaño));
+                  cierre.setNumero(String.valueOf(tamanio));
 
                   float o =0;
-                  for(int j=0;j<tamaño;j++){
+                  for(int j=0;j<tamanio;j++){
                        CuentasXPagar cp1=(CuentasXPagar)codigo.getObject(j);
                        o=o+cp1.getTotal();
                      }
@@ -1551,8 +1551,8 @@ private void dgiros(){
                   boolean b = true;
                   codigo = new Lista(new Giro().lista11(oo, b));
 
-                  int tamaño = codigo.getSize();
-                  if(tamaño==0){
+                  int tamanio = codigo.getSize();
+                  if(tamanio==0){
 
                   }else{
 
@@ -1561,10 +1561,10 @@ private void dgiros(){
                   cierre.setHasta("");
                   cierre.setIngreso(true);
                   cierre.setConcepto("Remplazo de Giros");
-                  cierre.setNumero(String.valueOf(tamaño));
+                  cierre.setNumero(String.valueOf(tamanio));
 
                   float o =0;
-                  for(int j=0;j<tamaño;j++){
+                  for(int j=0;j<tamanio;j++){
                        Giro sum=(Giro)codigo.getObject(j);
                        o=o+sum.getTotal();
 
@@ -1593,9 +1593,9 @@ private void dgiros(){
 
                       codigo = new Lista(new Giro().lista2(agencia, oo));
 
-                      int tamaño = codigo.getSize();
+                      int tamanio = codigo.getSize();
 
-                      if(tamaño==0){
+                      if(tamanio==0){
 
                       }else{
 
@@ -1604,11 +1604,11 @@ private void dgiros(){
                       cierre.setHasta("");
                       cierre.setIngreso(true);
                       cierre.setConcepto("Giros de Oficina ");
-                      cierre.setNumero(String.valueOf(tamaño));
+                      cierre.setNumero(String.valueOf(tamanio));
 
                       float o =0;
 
-                      for(int j=0;j<tamaño;j++){
+                      for(int j=0;j<tamanio;j++){
                            Giro sum=(Giro)codigo.getObject(j);
                            o=o+sum.getTotal();
                          }

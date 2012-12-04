@@ -272,8 +272,8 @@ private void agencias(){
             Agencia b1=(Agencia) lista.getObject(i);
             listaAnteriores =new Lista(new Giro().lista19(otro,b1)); 
             //EL NUMERO DE GIROS
-            int tamaño = listaAnteriores.getSize();
-            if(tamaño==0){
+            int tamanio = listaAnteriores.getSize();
+            if(tamanio==0){
         
             }else if (b1.getCodigo().equals("GO")){
             
@@ -281,7 +281,7 @@ private void agencias(){
             
                              }else{
                                     cierre.setConcepto(b1.getNombre());
-                                    cierre.setNumero(String.valueOf(tamaño));
+                                    cierre.setNumero(String.valueOf(tamanio));
                                     giro = new Giro();
                                     giro = (Giro) listaAnteriores.primero();
                     //GUARDO EL PRIMER CODIGO
@@ -337,8 +337,8 @@ private void utilidadcheque(){
       float che1=0;
       float che2=0;
       
-      int tamaño = codigo.getSize();
-      if(tamaño==0){
+      int tamanio = codigo.getSize();
+      if(tamanio==0){
       
       }else{
       
@@ -392,7 +392,7 @@ private void utilidadcheque(){
      
  }
 
-//¿??????))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+//ni??????))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 //la tontera de adelanto de deposito
 
 private void adelanto(){
@@ -411,8 +411,8 @@ private void adelanto(){
       float che1=0;
       float che2=0;
       
-      int tamaño = codigo.getSize();
-      if(tamaño==0){
+      int tamanio = codigo.getSize();
+      if(tamanio==0){
       
       }else{
       
@@ -492,8 +492,8 @@ private void adelanto(){
         boolean ciert=true;
       codigo = new Lista(new Cheque().lista4(otro,b, ciert));
       
-      int tamaño = codigo.getSize();
-      if(tamaño==0){
+      int tamanio = codigo.getSize();
+      if(tamanio==0){
       
       }else{
       
@@ -506,7 +506,7 @@ private void adelanto(){
       
       int unidades=0;
       float o =0;
-      for(int j=0;j<tamaño;j++){
+      for(int j=0;j<tamanio;j++){
            Cheque bainas=(Cheque)codigo.getObject(j);
    //        Mensaje.showMensaje(this,"Llega a ver si diferente de nulo el giro "+bainas.getNumero());
            if (bainas.getGiro()!=null){
@@ -537,7 +537,7 @@ private void adelanto(){
       
       int protesto=0;
       float p =0;
-      for(int j=0;j<tamaño;j++){
+      for(int j=0;j<tamanio;j++){
            Cheque bainas=(Cheque)codigo.getObject(j);
            if (bainas.getGiro()!=null){
                                        p=p+bainas.getProtesto();
@@ -567,8 +567,8 @@ private void adelanto(){
               cxp = new CuentasXCobrar();
               codigo = new Lista(new CuentasXCobrar().lista3(otro, gi));
 
-              int tamaño = codigo.getSize();
-              if(tamaño==0){
+              int tamanio = codigo.getSize();
+              if(tamanio==0){
 
               }else{
 
@@ -577,11 +577,11 @@ private void adelanto(){
               cierre.setHasta("");
               cierre.setIngreso(false);
               cierre.setConcepto("Cuentas X Cobrar");
-              cierre.setNumero(String.valueOf(tamaño));
+              cierre.setNumero(String.valueOf(tamanio));
 
               float o =0;
 
-              for(int j=0;j<tamaño;j++){
+              for(int j=0;j<tamanio;j++){
                    CuentasXCobrar cxp1=(CuentasXCobrar)codigo.getObject(j);
                    o=o+cxp1.getCuota();
                  }
@@ -629,8 +629,8 @@ private void generarcierre(){
                       boolean b = true;
                       codigo = new Lista(new ComprasOficina().lista3(otro, b));
 
-                      int tamaño = codigo.getSize();
-                      if(tamaño==0){
+                      int tamanio = codigo.getSize();
+                      if(tamanio==0){
 
                       }else{
 
@@ -639,10 +639,10 @@ private void generarcierre(){
                       cierre.setHasta("");
                       cierre.setIngreso(true);
                       cierre.setConcepto("Compras de Oficina");
-                      cierre.setNumero(String.valueOf(tamaño));
+                      cierre.setNumero(String.valueOf(tamanio));
 
                       float o =0;
-                      for(int j=0;j<tamaño;j++){
+                      for(int j=0;j<tamanio;j++){
                            ComprasOficina pras1=(ComprasOficina)codigo.getObject(j);
                            o=o+pras1.getValor();
 
@@ -674,8 +674,8 @@ private void generarcierre(){
      codigo = new Lista(new CierreFaltante().lista3(otro, b));
      float o =0;    
      int num=0;
-     int tamaño = codigo.getSize();
-     if(tamaño==0){
+     int tamanio = codigo.getSize();
+     if(tamanio==0){
 
                     }else{
                           cierre = new Cierre();
@@ -684,7 +684,7 @@ private void generarcierre(){
                           cierre.setIngreso(false);
                           cierre.setConcepto("Faltante de Otros Cierres");
                           
-                          for(int j=0;j<tamaño;j++){
+                          for(int j=0;j<tamanio;j++){
                           cierrefaltante=(CierreFaltante)codigo.getObject(j); 
                           o=o+cierrefaltante.getSaldo();
                          }
@@ -713,8 +713,8 @@ private void generarcierre(){
      codigo = new Lista(new anulargiro().lista2(otro));
      float o =0;    
      int num=0;
-     int tamaño = codigo.getSize();
-     if(tamaño==0){
+     int tamanio = codigo.getSize();
+     if(tamanio==0){
 
                     }else{
                           cierre = new Cierre();
@@ -723,7 +723,7 @@ private void generarcierre(){
                           cierre.setIngreso(true);
                           cierre.setConcepto("Devolucion de Giros");
                           
-                          for(int i=0;i<tamaño;i++){
+                          for(int i=0;i<tamanio;i++){
                                        anull=(anulargiro)codigo.getObject(i);
                                        if (anull.getGiro().getAgencia().getCodigo().equals("PQ")){
                                            
@@ -756,8 +756,8 @@ private void generarcierre(){
                   boolean b = true;
                   codigo = new Lista(new Giro().lista9(otro, b));
 
-                  int tamaño = codigo.getSize();
-                  if(tamaño==0){
+                  int tamanio = codigo.getSize();
+                  if(tamanio==0){
 
                   }else{
 
@@ -766,11 +766,11 @@ private void generarcierre(){
                   cierre.setHasta("");
                   cierre.setIngreso(true);
                   cierre.setConcepto("Giros Pagados");
-                  cierre.setNumero(String.valueOf(tamaño));
+                  cierre.setNumero(String.valueOf(tamanio));
 
                   float o =0;
 
-                  for(int j=0;j<tamaño;j++){
+                  for(int j=0;j<tamanio;j++){
                        Giro sum=(Giro)codigo.getObject(j);
                        o=o+sum.getTotal();
                      }
@@ -794,8 +794,8 @@ private void generarcierre(){
                   cp = new CuentasXPagar();
                   codigo = new Lista(new CuentasXPagar().lista6(otro,pagos));
 
-                  int tamaño = codigo.getSize();
-                  if(tamaño==0){
+                  int tamanio = codigo.getSize();
+                  if(tamanio==0){
 
                   }else{
 
@@ -804,10 +804,10 @@ private void generarcierre(){
                   cierre.setHasta("");
                   cierre.setIngreso(true);
                   cierre.setConcepto("Cuentas X Pagar");
-                  cierre.setNumero(String.valueOf(tamaño));
+                  cierre.setNumero(String.valueOf(tamanio));
 
                   float o =0;
-                  for(int j=0;j<tamaño;j++){
+                  for(int j=0;j<tamanio;j++){
                        CuentasXPagar cp1=(CuentasXPagar)codigo.getObject(j);
                        o=o+cp1.getTotal();
                      }
@@ -830,8 +830,8 @@ private void generarcierre(){
                                     
                   codigo = new Lista(new Remplazo().lista2(otro));
 
-                  int tamaño = codigo.getSize();
-                  if(tamaño==0){
+                  int tamanio = codigo.getSize();
+                  if(tamanio==0){
 
                   }else{
 
@@ -840,10 +840,10 @@ private void generarcierre(){
                   cierre.setHasta("");
                   cierre.setIngreso(true);
                   cierre.setConcepto("Remplazo de Giros");
-                  cierre.setNumero(String.valueOf(tamaño));
+                  cierre.setNumero(String.valueOf(tamanio));
 
                   float o =0;
-                  for(int j=0;j<tamaño;j++){
+                  for(int j=0;j<tamanio;j++){
                        remplaz=(Remplazo)codigo.getObject(j);
                        if (remplaz==null){
                            Mensaje.showMensaje(this,"Es nulo");
@@ -881,9 +881,9 @@ private void generarcierre(){
 
                       codigo = new Lista(new Giro().lista2(agencia, otro));
 
-                      int tamaño = codigo.getSize();
+                      int tamanio = codigo.getSize();
 
-                      if(tamaño==0){
+                      if(tamanio==0){
                       
                       }else{
                   
@@ -892,11 +892,11 @@ private void generarcierre(){
                       cierre.setHasta("");
                       cierre.setIngreso(true);
                       cierre.setConcepto("Giros de Oficina ");
-                      cierre.setNumero(String.valueOf(tamaño));
+                      cierre.setNumero(String.valueOf(tamanio));
 
                       float o =0;
 
-                      for(int j=0;j<tamaño;j++){
+                      for(int j=0;j<tamanio;j++){
                            Giro sum=(Giro)codigo.getObject(j);
                            o=o+sum.getTotal();
                          }
@@ -1521,7 +1521,7 @@ private void generarcierre(){
     }
     
   //(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
-    //···························saco utilidad
+    //nininininininininininininininininininininininininininisaco utilidad
     float neto=ingre-egres;   
   //*************************************SACO EL efectivo
   Boolean cie=true;

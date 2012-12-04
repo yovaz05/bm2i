@@ -141,8 +141,8 @@ public class VerCierre2 extends javax.swing.JPanel {
         codigo = new Lista(new CierreFaltante().lista3(otro, b));
         float o =0;
         int num=0;
-        int tamaño = codigo.getSize();
-        if(tamaño==0){
+        int tamanio = codigo.getSize();
+        if(tamanio==0){
             
         }else{
             cierre = new Cierre();
@@ -151,7 +151,7 @@ public class VerCierre2 extends javax.swing.JPanel {
             cierre.setIngreso(false);
             cierre.setConcepto("Faltante de Otros Cierres");
             
-            for(int j=0;j<tamaño;j++){
+            for(int j=0;j<tamanio;j++){
                 cierrefaltante=(CierreFaltante)codigo.getObject(j);
                 o=o+cierrefaltante.getSaldo();
             }
@@ -324,8 +324,8 @@ public class VerCierre2 extends javax.swing.JPanel {
         flores = new Flores();
         codigo = new Lista(new Flores().lista3(otro));
         
-        int tamaño = codigo.getSize();
-        if(tamaño==0){
+        int tamanio = codigo.getSize();
+        if(tamanio==0){
             
         }else{
             flores=(Flores) codigo.primero();
@@ -335,10 +335,10 @@ public class VerCierre2 extends javax.swing.JPanel {
             cierre.setHasta(String.valueOf(ult.getFactura()));
             cierre.setIngreso(false);
             cierre.setConcepto("Flores");
-            cierre.setNumero(String.valueOf(tamaño));
+            cierre.setNumero(String.valueOf(tamanio));
             
             float tot =0;
-            for(int j=0;j<tamaño;j++){
+            for(int j=0;j<tamanio;j++){
                 Flores su=(Flores)codigo.getObject(j);
                 tot=tot+su.getTotal();
             }
@@ -362,8 +362,8 @@ public class VerCierre2 extends javax.swing.JPanel {
         pasajes = new Pasajes();
         codigo = new Lista(new Pasajes().lista3(otro));
         
-        int tamaño = codigo.getSize();
-        if(tamaño==0){
+        int tamanio = codigo.getSize();
+        if(tamanio==0){
             
         }else{
             pasajes=(Pasajes) codigo.primero();
@@ -373,10 +373,10 @@ public class VerCierre2 extends javax.swing.JPanel {
             cierre.setHasta(" ");
             cierre.setIngreso(false);
             cierre.setConcepto("Pasajes");
-            cierre.setNumero(String.valueOf(tamaño));
+            cierre.setNumero(String.valueOf(tamanio));
             
             float to =0;
-            for(int j=0;j<tamaño;j++){
+            for(int j=0;j<tamanio;j++){
                 Pasajes s=(Pasajes)codigo.getObject(j);
                 to=to+s.getValor();
             }
@@ -400,8 +400,8 @@ public class VerCierre2 extends javax.swing.JPanel {
         video = new VideoConferencia();
         codigo = new Lista(new VideoConferencia().lista3(otro));
         
-        int tamaño = codigo.getSize();
-        if(tamaño==0){
+        int tamanio = codigo.getSize();
+        if(tamanio==0){
             
         }else{
             video=(VideoConferencia) codigo.primero();
@@ -412,10 +412,10 @@ public class VerCierre2 extends javax.swing.JPanel {
             cierre.setDesde(String.valueOf(vid.getNumero()));
             cierre.setIngreso(false);
             cierre.setConcepto("Video Conferencia");
-            cierre.setNumero(String.valueOf(tamaño));
+            cierre.setNumero(String.valueOf(tamanio));
             
             float to =0;
-            for(int j=0;j<tamaño;j++){
+            for(int j=0;j<tamanio;j++){
                 VideoConferencia vi=(VideoConferencia)codigo.getObject(j);
                 to=to+vi.getTotal();
                 
@@ -439,8 +439,8 @@ public class VerCierre2 extends javax.swing.JPanel {
         cabinas = new Cabinas();
         codigo = new Lista(new Cabinas().lista3(otro));
         
-        int tamaño = codigo.getSize();
-        if(tamaño==0){
+        int tamanio = codigo.getSize();
+        if(tamanio==0){
             
         }else{
             cabinas=(Cabinas) codigo.primero();
@@ -450,10 +450,10 @@ public class VerCierre2 extends javax.swing.JPanel {
             cierre.setHasta(" ");
             cierre.setIngreso(false);
             cierre.setConcepto("Cabinas");
-            cierre.setNumero(String.valueOf(tamaño));
+            cierre.setNumero(String.valueOf(tamanio));
             
             float o =0;
-            for(int j=0;j<tamaño;j++){
+            for(int j=0;j<tamanio;j++){
                 Cabinas sumas=(Cabinas)codigo.getObject(j);
                 o=o+sumas.getValor();
             }
@@ -483,8 +483,8 @@ public class VerCierre2 extends javax.swing.JPanel {
         lista = new Lista(new VentaProductos().lista2(otro));
         for(int i=0;i<lista.getSize();i++){
             venta =(VentaProductos) lista.getObject(i);
-            int tamaño = lista.getSize();
-            if(tamaño==0){
+            int tamanio = lista.getSize();
+            if(tamanio==0){
             }else{
                 cierre = new Cierre();
                 // Mensaje.showMensaje(this,"La agencia es "+venta.getOtros().getNombre());
@@ -527,8 +527,8 @@ public class VerCierre2 extends javax.swing.JPanel {
         lista = new Lista(new VentaProductos().lista2(otro));
         for(int i=0;i<lista.getSize();i++){
             venta =(VentaProductos) lista.getObject(i);
-            int tamaño = lista.getSize();
-            if(tamaño==0){
+            int tamanio = lista.getSize();
+            if(tamanio==0){
             }else{
                 cierre = new Cierre();
                 // Mensaje.showMensaje(this,"La agencia es "+venta.getOtros().getNombre());
@@ -574,8 +574,8 @@ public class VerCierre2 extends javax.swing.JPanel {
         float che1=0;
         float che2=0;
         
-        int tamaño = codigo.getSize();
-        if(tamaño==0){
+        int tamanio = codigo.getSize();
+        if(tamanio==0){
             
         }else{
             
@@ -647,8 +647,8 @@ public class VerCierre2 extends javax.swing.JPanel {
         float bet=0;
         float beto=0;
         
-        int tamaño = codigo.getSize();
-        if(tamaño==0){
+        int tamanio = codigo.getSize();
+        if(tamanio==0){
             
         }else{
             
@@ -720,8 +720,8 @@ public class VerCierre2 extends javax.swing.JPanel {
         boolean ciert=false;
         codigo = new Lista(new Cheque().lista4(otro,b, ciert));
         
-        int tamaño = codigo.getSize();
-        if(tamaño==0){
+        int tamanio = codigo.getSize();
+        if(tamanio==0){
             
         }else{
             
@@ -734,7 +734,7 @@ public class VerCierre2 extends javax.swing.JPanel {
             
             int unidades=0;
             float o =0;
-            for(int j=0;j<tamaño;j++){
+            for(int j=0;j<tamanio;j++){
                 Cheque bainas=(Cheque)codigo.getObject(j);
                 if (bainas.getGiro()==null){
                     o=o+bainas.getTotal();
@@ -761,7 +761,7 @@ public class VerCierre2 extends javax.swing.JPanel {
             
             int protesto=0;
             float p =0;
-            for(int j=0;j<tamaño;j++){
+            for(int j=0;j<tamanio;j++){
                 Cheque bainas=(Cheque)codigo.getObject(j);
                 if (bainas.getGiro()==null){
                     p=p+bainas.getProtesto();
@@ -791,8 +791,8 @@ public class VerCierre2 extends javax.swing.JPanel {
         cxp = new CuentasXCobrar();
         codigo = new Lista(new CuentasXCobrar().lista3(otro, gi));
         
-        int tamaño = codigo.getSize();
-        if(tamaño==0){
+        int tamanio = codigo.getSize();
+        if(tamanio==0){
             
         }else{
             cierre = new Cierre();
@@ -800,11 +800,11 @@ public class VerCierre2 extends javax.swing.JPanel {
             cierre.setHasta("");
             cierre.setIngreso(false);
             cierre.setConcepto("Cuentas X Cobrar");
-            cierre.setNumero(String.valueOf(tamaño));
+            cierre.setNumero(String.valueOf(tamanio));
             
             float o =0;
             
-            for(int j=0;j<tamaño;j++){
+            for(int j=0;j<tamanio;j++){
                 CuentasXCobrar cxp1=(CuentasXCobrar)codigo.getObject(j);
                 o=o+cxp1.getCuota();
             }
@@ -830,15 +830,15 @@ public class VerCierre2 extends javax.swing.JPanel {
         agencia = new Agencia();
         String cod ="PQ";
         agencia = agencia.Busca(cod);
-        //  Mensaje.showMensaje(this,"Cual es teamaño "+agencia.getNombre());
+        //  Mensaje.showMensaje(this,"Cual es teamanio "+agencia.getNombre());
         giro = new Giro();
         boolean b = false;
         codigo = new Lista(new Giro().lista10(agencia, otro, b));
         
-        int tamaño = codigo.getSize();
+        int tamanio = codigo.getSize();
         
-        if(tamaño==0){
-            //   Mensaje.showMensaje(this,"Cual es teamaño "+tamaño);
+        if(tamanio==0){
+            //   Mensaje.showMensaje(this,"Cual es teamanio "+tamanio);
         }else{
             
             cierre = new Cierre();
@@ -846,11 +846,11 @@ public class VerCierre2 extends javax.swing.JPanel {
             cierre.setHasta("");
             cierre.setIngreso(false);
             cierre.setConcepto("Paquetes ");
-            cierre.setNumero(String.valueOf(tamaño));
+            cierre.setNumero(String.valueOf(tamanio));
             
             float o =0;
             
-            for(int j=0;j<tamaño;j++){
+            for(int j=0;j<tamanio;j++){
                 Giro sum=(Giro)codigo.getObject(j);
                 o=o+sum.getTotal();
             }
@@ -879,12 +879,12 @@ public class VerCierre2 extends javax.swing.JPanel {
      codigo = new Lista(new anulargiro().lista2(otro));
      float o =0;    
      int num=0;
-     int tamaño = codigo.getSize();
-     if(tamaño==0){
+     int tamanio = codigo.getSize();
+     if(tamanio==0){
      
      
      }else{
-             for(int i=0;i<tamaño;i++){
+             for(int i=0;i<tamanio;i++){
                                        anull=(anulargiro)codigo.getObject(i);
                                        if (anull.getGiro().getAgencia().getCodigo().equals("PQ")){
                                           o=o+anull.getGiro().getTotal();
@@ -900,7 +900,7 @@ public class VerCierre2 extends javax.swing.JPanel {
             cierre.setHasta("");
             cierre.setIngreso(true);
             cierre.setConcepto("Paquetes Devueltos ");
-            cierre.setNumero(String.valueOf(tamaño));
+            cierre.setNumero(String.valueOf(tamanio));
             cierre.setTotal(String.valueOf(o));
             cierre.setNeto("0");
             cierre.setHorario(otro);
@@ -925,8 +925,8 @@ public class VerCierre2 extends javax.swing.JPanel {
         cp = new CuentasXPagar();
         codigo = new Lista(new CuentasXPagar().lista6(otro, est));
         
-        int tamaño = codigo.getSize();
-        if(tamaño==0){
+        int tamanio = codigo.getSize();
+        if(tamanio==0){
             
         }else{
             
@@ -935,10 +935,10 @@ public class VerCierre2 extends javax.swing.JPanel {
             cierre.setHasta("");
             cierre.setIngreso(true);
             cierre.setConcepto("Cuentas X Pagar");
-            cierre.setNumero(String.valueOf(tamaño));
+            cierre.setNumero(String.valueOf(tamanio));
             
             float o =0;
-            for(int j=0;j<tamaño;j++){
+            for(int j=0;j<tamanio;j++){
                 CuentasXPagar cp1=(CuentasXPagar)codigo.getObject(j);
                 o=o+cp1.getTotal();
             }
@@ -964,8 +964,8 @@ public class VerCierre2 extends javax.swing.JPanel {
         boolean b = true;
         codigo = new Lista(new ComprasOficina().lista3(otro, est));
         
-        int tamaño = codigo.getSize();
-        if(tamaño==0){
+        int tamanio = codigo.getSize();
+        if(tamanio==0){
             
         }else{
             
@@ -974,10 +974,10 @@ public class VerCierre2 extends javax.swing.JPanel {
             cierre.setHasta("");
             cierre.setIngreso(true);
             cierre.setConcepto("Compras de Oficina");
-            cierre.setNumero(String.valueOf(tamaño));
+            cierre.setNumero(String.valueOf(tamanio));
             
             float o =0;
-            for(int j=0;j<tamaño;j++){
+            for(int j=0;j<tamanio;j++){
                 ComprasOficina pras1=(ComprasOficina)codigo.getObject(j);
                 o=o+pras1.getValor();
                 
@@ -1005,18 +1005,18 @@ public class VerCierre2 extends javax.swing.JPanel {
         pg = new PagoT();
         
         codigo = new Lista(new PagoT().lista3(otro));
-        int tamaño = codigo.getSize();
+        int tamanio = codigo.getSize();
         
-        if(tamaño==0){
+        if(tamanio==0){
         }else{
             cierre = new Cierre();
             cierre.setDesde("");
             cierre.setHasta("");
             cierre.setIngreso(true);
             cierre.setConcepto("Pago Facturas de Tarjetas ");
-            cierre.setNumero(String.valueOf(tamaño));
+            cierre.setNumero(String.valueOf(tamanio));
             float o =0;
-            for(int j=0;j<tamaño;j++){
+            for(int j=0;j<tamanio;j++){
                 PagoT pg1=(PagoT)codigo.getObject(j);
                 o=o+pg1.getValorpagar();
                 
@@ -1566,7 +1566,7 @@ public class VerCierre2 extends javax.swing.JPanel {
         }
         
         //(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
-        //···························saco utilidad
+        //nininininininininininininininininininininininininininisaco utilidad
         float neto=ingre-egres;
         //*************************************SACO EL efectivo
         Boolean cie=false;
