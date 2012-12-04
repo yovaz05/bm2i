@@ -295,7 +295,7 @@ private boolean isVacio(){
     
   //GENERO LA LISTA Y TOMO EL ULTIMO VALOR 
   codigo = new Lista(new CodigoAgencia().lista((Agencia)lista.getObject(cboAgencia.getSelectedIndex())));
- //  Mensaje.showError(this,"el tamañoa es  "+String.valueOf(codigo.getSize()),"Error");
+ //  Mensaje.showError(this,"el tamanioa es  "+String.valueOf(codigo.getSize()),"Error");
    codigos = new CodigoAgencia();
    codigos=(CodigoAgencia) codigo.ultimo();
   if (codigos==null){
