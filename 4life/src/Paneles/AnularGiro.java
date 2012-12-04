@@ -796,15 +796,15 @@ private void setPanel(anulargiro gg){
 //     
 //   Vector vec= new Vector();
 //                     Lista codigo=new Lista (new Agencia().lista());
-//                          int tamaño1 = codigo.getSize();
-//                          for(int j=0;j<tamaño1;j++){
+//                          int tamanio1 = codigo.getSize();
+//                          for(int j=0;j<tamanio1;j++){
 //                             agencia=(Agencia)codigo.getObject(j); 
 //                             if (agencia!=age){
 //                                 Lista codigo1 =new Lista(new Giro().lista8(otro, b, agencia)); 
-//                                 int tamaño2 = codigo1.getSize();
-//                                 if(tamaño2==0){
+//                                 int tamanio2 = codigo1.getSize();
+//                                 if(tamanio2==0){
 //                                 }else{
-//                                      for(int i=0;i<tamaño2;i++){
+//                                      for(int i=0;i<tamanio2;i++){
 //                                       sum=(Giro)codigo1.getObject(i);
 //                                       vec.add(sum);
 //                                       num=num+1;

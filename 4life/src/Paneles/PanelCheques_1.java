@@ -830,7 +830,7 @@ private void setTabla2(){
         Boolean es=true;
          
          lista =new Lista(new Billetes().lista9(otro, es, est));
-        // Mensaje.showMensaje(this,"El tamaño es LG "+lista.getSize());
+        // Mensaje.showMensaje(this,"El tamanio es LG "+lista.getSize());
          if (lista.getSize()==0){
              txtBilletes.setText("0");
          }else{
