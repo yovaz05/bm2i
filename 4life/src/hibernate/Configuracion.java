@@ -25,7 +25,7 @@ public class Configuracion {
             sessionFactory = new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
         // Make sure you log the exception, as it might be swallowed
-            System.err.println("Creación fallida de la SessionFactory." + ex);
+            System.err.println("Creacinin fallida de la SessionFactory." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
