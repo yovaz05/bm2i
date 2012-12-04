@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Direccion.hbm.xml
+    Created on : 19 de septiembre de 2006, 15:26
+    Author     : ANtro
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="beans.Direccion" table="DIRECCION">         
+    
+    <id name="id_Direccion"  column="ID_DIRECCION">
+        <generator class="native"/>        
+    </id>
+    <property name="pais" column="PAIS"/>
+    <property name="ciudad" column="CIUDAD"/>
+    <property name="provincia" column="PROVINCIA"/>
+    <property name="callePrincipal" column="CPRINCIPAL"/>
+    <property name="calleSecundaria" column="CSECUNDARIA"/>
+    <property name="numeroCasa" column="NCASA"/>
+    <property name="numroTelefono" column="NTELEFONO"/>
+    <property name="numroCelular" column="NCELULAR"/>
+    <property name="email" column="EMAL"/>           
+    
+</class>
+</hibernate-mapping>

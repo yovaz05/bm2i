@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Credito.hbm.xml
+    Created on : 19 de septiembre de 2006, 16:57
+    Author     : ANtro
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="beans.Credito" table="CREDITO">
+    <id name="id_Credito"  column="ID_CREDITO">
+        <generator class="native"/>
+    </id>                 
+    
+    <property name="fecha" column="FECHA"/>
+    <property name="monto" column="MONTO"/>
+       
+    <many-to-one name="horario" column="ID_HORARIO"/>
+    
+</class>
+</hibernate-mapping>

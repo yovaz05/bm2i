@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Giro.hbm.xml
+    Created on : 19 de septiembre de 2006, 16:04
+    Author     : ANtro
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="beans.Giro" table="GIRO">
+    <id name="id_Giro"  column="ID_GIRO">
+        <generator class="native"/>
+    </id>          
+    
+    <property name="estado" type="java.lang.Boolean"  >
+    <column name="ESTADO" sql-type="tinyint(1)" not-null="true"/>
+    </property>
+    
+    <property name="fechaLlegada" column="FECHALLEGADA"/>
+    <property name="neto" column="NETO"/>
+    <property name="nombre" column="NOMBRE"/>
+    <property name="anulado" type="java.lang.Boolean"  >
+    <column name="ANULADO" sql-type="tinyint(1)" not-null="true"/>
+    </property>
+    
+    <property name="rem" type="java.lang.Boolean"  >
+    <column name="REM" sql-type="tinyint(1)" not-null="true"/>
+    </property>
+   
+    <property name="pagado" type="java.lang.Boolean"  >
+    <column name="PAGADO" sql-type="tinyint(1)" not-null="true"/>
+    </property>
+    
+    <property name="clave" column="CLAVE"/>
+    <property name="codigo" column="CODIGO"/>
+    <property name="referencia" column="REFERENCIA"/>
+    <property name="total" column="TOTAL"/>
+    <many-to-one name="agencia" column="ID_AGENCIA"/> 
+    <many-to-one name="horario" column="ID_HORARIO"/>
+    <many-to-one name="remplazo" column="ID_REMPLAZO"/>
+    <many-to-one name="anulargiro" column="ID_ANULARGIRO"/>
+    <many-to-one name="credito" column="ID_CREDITO"/>
+    <many-to-one name="cheque" column="ID_CHEQE"/>
+    <!--  
+   
+    <many-to-one name="efectivo" column="ID_EFECTIVO"/>
+    <many-to-one name="credito" column="ID_CREDITO"/>
+    <many-to-one name="remplazo" column="ID_REMPLAZO"/>
+    --> 
+    
+</class>
+</hibernate-mapping>

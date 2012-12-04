@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE report PUBLIC "-//JFreeReport//DTD report definition//EN//simple/version 0.8.5"
+                        "http://jfreereport.sourceforge.net/report-085.dtd">
+<report name="CIERRE" leftmargin="72" rightmargin="72" topmargin="72" pageformat="A4">
+
+  <configuration>
+    <property name="org.jfree.report.modules.output.table.base.StrictLayout">true</property>
+    <property name="org.jfree.report.modules.output.table.html.TableRowBorderDefinition">true</property>
+    <property name="org.jfree.report.modules.output.table.html.UseDeviceIndependentImageSize">true</property>
+    <property name="org.jfree.report.modules.output.pageable.pdf.Version">1.5</property>
+  </configuration>
+
+  <!-- REPORT HEADER -->
+  <!-- This band appears once at the beginning of the report.  In this example, -->
+  <!-- the header contains four labels. -->
+  <reportheader height="0"
+        fontname="SansSerif" fontstyle="plain" fontsize="10">
+
+        <rectangle x="18%" y="0" width="100%" height="30"
+            color="#CCFFCC" weight="0"/>
+
+        <rectangle x="18%" y="0" width="100%" height="30"
+            color="black" weight="1" draw="true" fill="false"/>
+
+        <rectangle x="0%" y="0" width="15%" height="102"
+            color="white" weight="0"/>
+            
+         <label x="18%" y="0" width="82%" height="30" trim-text-content="true"
+            fontname="Serif"  fontsize="18" alignment="center" dynamic="true"
+            fontstyle="bold"
+            >LG TRAVEL 2006</label>
+    
+            
+        <string-field fontstyle="bold" fontsize="18"
+                x="18%" y="31" width="82%" height="30"
+                alignment="center" fieldname="encReporte" dynamic="true"/>    
+
+        <label x="18%" y="61" width="82%" height="0" trim-text-content="true"
+            fontname="Serif" alignment="left" dynamic="true"
+            >CIERRE DE CAJA POR TURNOS</label>
+
+        <label x="18%" y="75" width="82%" height="10" fieldname="p" 
+            fontname="Monospaced" fontsize="9" trim-text-content="true"
+            alignment="right" vertical-alignment="top"
+            >http://www.lg.com.ec</label>
+      
+        <line x1="0" y1="104" x2="100%" y2="104"
+            color="#CCCCCC" weight="0.5"/>    
+    
+   
+  </reportheader>
+
+  <!-- REPORT FOOTER -->
+  <!-- Displays item count and total bytes for icons listed in the report. -->
+  <reportfooter height="80"
+        
+         fontname="SansSerif" fontstyle="bold" fontsize="12">
+      
+        <label x="0" y="5" width="200%" height="15"
+            fontname="Monospaced" fontsize="9" trim-text-content="true"
+            alignment="right" vertical-alignment="top"
+                 >Responsable</label>
+        
+        <string-field fontstyle="bold" fontsize="11"
+                x="3" y="5" width="100%" height="38"
+                alignment="left" fieldname="pieReporte" dynamic="true"/> 
+      
+         <string-field fontstyle="bold" fontsize="11"
+                x="3" y="20" width="700%" height="15"
+                alignment="right" fieldname="respon" dynamic="true"/>
+                
+  </reportfooter>
+
+  <!-- PAGE HEADER -->
+  <!-- Displays the report name and date. -->
+  <!-- Suppressed on the first page to avoid duplication with report header. -->
+  <pageheader height="18" onfirstpage="true"
+    
+        fontname="SansSerif" fontstyle="bold" fontsize="9">
+      
+        <string-field fontstyle="bold" fontsize="14"
+                x="0" y="0" width="82%" height="30"
+                alignment="left" fieldname="encPagina" dynamic="true"/> 
+        
+        <date-field x="0" y="0" width="100%" height="14" alignment="right" format="dd - MMM - yyyy" fieldname="report.date"/>
+    
+        <line x1="0" y1="13" x2="100%" y2="13" color="#CFCFCF" weight="2.0"/>
+        
+       
+  </pageheader>
+
+  <!-- PAGE FOOTER -->
+  <!-- Displays the page number, centered at the bottom of the page. -->
+  <pagefooter height="14"
+  
+        onfirstpage="true" onlastpage="true"
+        fontname="SansSerif" fontstyle="plain" fontsize="9">
+      
+        <line x1="0" y1="0" x2="100%" y2="0" color="#CFCFCF" weight="2.0"/>
+     
+        <number-field fieldname="PageNumber" format="Página 0" x="0" y="3" width="100%" height="9"
+            alignment="right" nullstring="hull"/>
+            
+        <string-field fontstyle="bold" fontsize="14"
+                x="0" y="0" width="82%" height="30"
+                alignment="left" fieldname="piePagina" dynamic="true"/> 
+            
+  </pagefooter>
+  
+  <groups>
+        <group name="Category Group">
+      
+            <groupheader height="35" fontname="SansSerif" fontstyle="bold" fontsize="11" pagebreak-before-print="false">
+                
+                <string-field fontstyle="bold" fontsize="18"
+                    x="0" y="0" width="100%" height="18"
+                    alignment="center" fieldname="encGrupo" dynamic="true"/>
+                   
+                <label x="3" y="19" width="10%" height="12"
+                    alignment="left">N</label>
+
+                <label x="10%" y="19" width="45%" height="12"
+                    alignment="left">Concepto</label>
+                
+                <label x="25%" y="19" width="45%" height="12"
+                    alignment="left"># Unidades</label>
+                    
+                <label x="40%" y="19" width="45%" height="12"
+                    alignment="left">Desde</label>
+                
+                <label x="55%" y="19" width="45%" height="12"
+                    alignment="left">Hasta</label>
+                    
+                <label x="70%" y="19" width="45%" height="12"
+                    alignment="left">Neto</label>
+                
+                <label x="85%" y="19" width="45%" height="12"
+                    alignment="left">Total</label>
+                    
+            </groupheader>
+            
+        </group>
+        
+  </groups>
+  
+
+  <!-- THE ITEM BAND -->
+  <!-- This band is printed once for each row of data in the TableModel. -->
+  <items height="15"
+    
+        fontname="SansSerif" fontstyle="plain" fontsize="9">
+      
+            <string-field x="2" y="0" width="10%" height="10" alignment="left"
+                fontstyle="bold" fontsize="10"
+                fieldname="N"/>
+
+            <string-field x="11%" y="0" width="15%" height="10" alignment="left"
+                fontname="Serif"  fontsize="10" vertical-alignment="bottom"
+                 fieldname="Concepto"/>
+            
+            <string-field x="26%" y="0" width="15%" height="10" alignment="left"
+                fontstyle="bold" fontsize="10"
+                fieldname="# Unidades"/>
+
+            <string-field x="41%%" y="0" width="15%" height="10" alignment="left"
+                fontname="Serif"  fontsize="10" vertical-alignment="bottom"
+                fieldname="Desde"/>
+                
+            <string-field x="56%" y="0" width="15%" height="10" alignment="left"
+                fontstyle="bold" fontsize="10"
+                fieldname="Hasta"/>
+
+            <string-field x="71%%" y="0" width="15%%" height="10" alignment="left"
+                fontname="Serif"  fontsize="10" vertical-alignment="bottom"
+                fieldname="Neto"/>
+                
+            <string-field x="86%" y="0" width="15%" height="10" alignment="left"
+                fontstyle="bold" fontsize="10"
+                fieldname="Total"/>
+
+            
+                
+
+  </items>
+  
+  
+  <!-- FUNCTIONS -->
+  <!-- Declares the functions used in this report. -->
+  <functions>
+    
+        <property-ref name="report.date"/>
+
+        <function name="PageNumber" class="org.jfree.report.function.PageFunction"/>
+
+        <function name="OverallCount"
+            class="org.jfree.report.function.ItemCountFunction"/>
+            
+    <!-- This will mark the property to be included in the datarow -->
+        <property-ref name="encReporte"/>
+        <property-ref name="pieReporte"/>
+        <property-ref name="encPagina"/>
+        <property-ref name="piePagina"/>
+        <property-ref name="encGrupo"/>
+        <property-ref name="respon"/>
+
+  </functions>
+
+</report>
