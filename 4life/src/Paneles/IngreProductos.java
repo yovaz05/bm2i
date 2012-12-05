@@ -42,6 +42,7 @@ Boolean activado;
     public IngreProductos() {
         initComponents();
         fijaMetodos();
+        combos();
         inicializa();
         setTabla();
     }
@@ -56,15 +57,20 @@ private boolean isVacio(){
   return false;
         } 
    
- private void inicializa(){
 
-    linea = new Linea();
+
+ private void combos(){
+     
+      linea = new Linea();
     lista = new Lista(new Linea().lista());
     for(int i=0;i<lista.getSize();i++){
                                         Linea b1=(Linea) lista.getObject(i);
                                         cboAgencia.addItem(b1.getNombre());
                                        }
-                                   
+ }
+ private void inicializa(){
+
+                                      
                    horario=new Horario();
                    Horario otro = new Horario();
                    Boolean est=(false);
