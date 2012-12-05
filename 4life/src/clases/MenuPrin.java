@@ -598,7 +598,7 @@ public class MenuPrin extends javax.swing.JFrame {
         jMenuSocios.setText("LINEAS");
 
         jMenuItemConfiSocios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/12/Asistencia.png"))); // NOI18N
-        jMenuItemConfiSocios.setText("Configuración de Linea");
+        jMenuItemConfiSocios.setText("Configuraciï¿½n de Linea");
         jMenuItemConfiSocios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemConfiSociosActionPerformed(evt);
@@ -1735,7 +1735,7 @@ COMVender f = new COMVender();
         
         Confagencia f = new Confagencia();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
+        //f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
         escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
         
@@ -1754,24 +1754,24 @@ COMVender f = new COMVender();
      */
     public static void main(String args[]) {
         try{
-            javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+            //javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
         }catch(Exception e){
             e.printStackTrace();
         }
-        final PanSplash panSplash = new PanSplash(new javax.swing.JFrame());
+        /*final PanSplash panSplash = new PanSplash(new javax.swing.JFrame());
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 panSplash.showSplashScreen();
             }
-        });
+        });*/
         
         final MenuPrin pantallaPrincipal= new MenuPrin();
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                panSplash.hideSplash();
+                //panSplash.hideSplash();
                 java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
                 pantallaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                //pantallaPrincipal.setBounds(0, 0, screenSize.width, screenSize.height);
+                pantallaPrincipal.setBounds(0, 0, screenSize.width, screenSize.height);
                 pantallaPrincipal.setVisible(true);
                 
             }

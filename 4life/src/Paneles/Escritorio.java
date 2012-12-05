@@ -24,7 +24,8 @@ public class Escritorio extends javax.swing.JDesktopPane {
     public Escritorio() {
        // this.setLayout(new java.awt.BorderLayout());
         javax.swing.ImageIcon img;
-        img = new javax.swing.ImageIcon(Escritorio.class.getResource("/fondo22.gif"));
+        
+        img = new javax.swing.ImageIcon(getClass().getResource("/fondo22.gif"));
         alto = img.getIconWidth();
         ancho = img.getIconHeight();
         image = img.getImage();
