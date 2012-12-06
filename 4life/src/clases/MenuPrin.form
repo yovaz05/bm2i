@@ -24,8 +24,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmConfiguracion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="GIROS"/>
-            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="Clientes"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">

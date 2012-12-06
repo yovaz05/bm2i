@@ -4,7 +4,6 @@
  */
 package beans;
 
-import Datos.AgenciaHBM;
 import Datos.ClienteHBM;
 import java.util.List;
 
@@ -24,6 +23,25 @@ public class Cliente {
     private String cedularuc;
     private String codigocliente;
     private String email;
+    private String telefono;
+    private String celular;
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
     private ClienteHBM base;
 
     public Cliente() {

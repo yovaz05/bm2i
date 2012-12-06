@@ -14,17 +14,19 @@
 
 <hibernate-mapping>
 
-<class name="beans.Cliente" table="CLIENTE">
+    <class name="beans.Cliente" table="CLIENTE">
     
-    <id name="id_cliente"  column="id_cliente">
-        <generator class="native"/>        
-    </id>            
-    <property name="nombre" column="nombre"/>
-    <property name="nombres" column="nombres"/>
-    <property name="apellidos" column="apellido"/>
-    <property name="cedularuc" column="cedularuc"/>
-    <property name="codigocliente" column="codigocliente"/>
-    <property name="email" column="email"/>
+        <id name="id_cliente"  column="id_cliente">
+            <generator class="native"/>        
+        </id>            
+        <property name="nombre" column="nombre"/>
+        <property name="nombres" column="nombres"/>
+        <property name="apellidos" column="apellido"/>
+        <property name="cedularuc" column="cedularuc"/>
+        <property name="codigocliente" column="codigocliente"/>
+        <property name="email" column="email"/>
+        <property name="telefono" column="telefono"/>
+        <property name="celular" column="celular"/>
                
-</class>
+    </class>
 </hibernate-mapping>

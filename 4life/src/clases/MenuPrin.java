@@ -3,7 +3,6 @@
  *
  * Created on 13 de abril de 2006, 14:34
  */
-
 package clases;
 
 import java.awt.BorderLayout;
@@ -12,18 +11,20 @@ import javax.swing.JLayeredPane;
 import javax.swing.SwingUtilities;
 
 public class MenuPrin extends javax.swing.JFrame {
-    
-    /** Creates new form MenuPrin */
+
+    /**
+     * Creates new form MenuPrin
+     */
     public MenuPrin() {
         //   JFreeReportBoot.getInstance().start();
-        
+
         initComponents();
         init();
     }
-    
-    private void init(){
+
+    private void init() {
         escritorio = new Paneles.Escritorio();
-        panel.add(escritorio,BorderLayout.CENTER);
+        panel.add(escritorio, BorderLayout.CENTER);
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -598,7 +599,7 @@ public class MenuPrin extends javax.swing.JFrame {
         jMenuSocios.setText("LINEAS");
 
         jMenuItemConfiSocios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/12/Asistencia.png"))); // NOI18N
-        jMenuItemConfiSocios.setText("Configuraci�n de Linea");
+        jMenuItemConfiSocios.setText("Configuración de Linea");
         jMenuItemConfiSocios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemConfiSociosActionPerformed(evt);
@@ -608,8 +609,7 @@ public class MenuPrin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuSocios);
 
-        jmConfiguracion.setText("GIROS");
-        jmConfiguracion.setEnabled(false);
+        jmConfiguracion.setText("Clientes");
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/12/Accesos.png"))); // NOI18N
         jMenuItem5.setText("Eviar un Giro");
@@ -1049,723 +1049,721 @@ public class MenuPrin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMPagarFiadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMPagarFiadasActionPerformed
-ComCobrarTarjetasCre f = new ComCobrarTarjetasCre();
+        ComCobrarTarjetasCre f = new ComCobrarTarjetasCre();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMPagarFiadasActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-COMCxP f = new COMCxP();
+        COMCxP f = new COMCxP();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
- COMCunetasXcobrar f = new COMCunetasXcobrar();
+        COMCunetasXcobrar f = new COMCunetasXcobrar();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-COMVender f = new COMVender();
+        COMVender f = new COMVender();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();// TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-COMAgreUnidades f = new COMAgreUnidades();
+        COMAgreUnidades f = new COMAgreUnidades();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-COMOtrosV f = new COMOtrosV();
+        COMOtrosV f = new COMOtrosV();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
-        
+
+
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jXHFlores1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHFlores1ActionPerformed
-COMviajes f = new COMviajes();
+        COMviajes f = new COMviajes();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
     }//GEN-LAST:event_jXHFlores1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-COMviajes f = new COMviajes();
+        COMviajes f = new COMviajes();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jXHEnviarGiro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHEnviarGiro2ActionPerformed
 // TODO add your handling code here:
-         RemplazarG f = new RemplazarG();
+        RemplazarG f = new RemplazarG();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
     }//GEN-LAST:event_jXHEnviarGiro2ActionPerformed
 
     private void jXHEnviarGiro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHEnviarGiro1ActionPerformed
-AnularGiros f = new AnularGiros();
+        AnularGiros f = new AnularGiros();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
 //                DEFAULT_LAYER);
         f.moveToFront();
-  
+
     }//GEN-LAST:event_jXHEnviarGiro1ActionPerformed
 
     private void jMVercierresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVercierresActionPerformed
-Vercierrres f = new Vercierrres();
+        Vercierrres f = new Vercierrres();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
 //                DEFAULT_LAYER);
         f.moveToFront();
 // TODO add your handling code here:
     }//GEN-LAST:event_jMVercierresActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-COMVender f = new COMVender();
+        COMVender f = new COMVender();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
-    
+
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         COMvc f = new COMvc();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jButton7ActionPerformed
-    
+
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         COMcb f = new COMcb();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jButton6ActionPerformed
-    
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         COMFLORES f = new COMFLORES();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jButton3ActionPerformed
-    
+
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         COMpaquete f = new COMpaquete();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jButton5ActionPerformed
-    
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         COMgirosOficina f = new COMgirosOficina();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jButton4ActionPerformed
-    
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Pagosdegiros f = new Pagosdegiros();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jButton2ActionPerformed
-    
+
     private void enviargiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviargiroActionPerformed
         ConfigurarGiros f = new ConfigurarGiros();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
-        
+
     }//GEN-LAST:event_enviargiroActionPerformed
-    
+
     private void PasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasajesActionPerformed
 // TODO add your handling code here:
         COMviajes f = new COMviajes();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
     }//GEN-LAST:event_PasajesActionPerformed
-    
+
     private void VideoConferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VideoConferenciasActionPerformed
 // TODO add your handling code here:
         COMvc f = new COMvc();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_VideoConferenciasActionPerformed
-    
+
     private void CabinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CabinasActionPerformed
         COMcb f = new COMcb();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_CabinasActionPerformed
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Confagencia f = new Confagencia();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+
     private void jMCierreFaltanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCierreFaltanteActionPerformed
-        
+
         COmCieereFaltante f = new COmCieereFaltante();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMCierreFaltanteActionPerformed
-    
+
     private void jMAdelantoDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAdelantoDepositoActionPerformed
         AdelantoDeposito f = new AdelantoDeposito();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
     }//GEN-LAST:event_jMAdelantoDepositoActionPerformed
-    
+
     private void jMDEUDASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMDEUDASActionPerformed
         ComDeuda f = new ComDeuda();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMDEUDASActionPerformed
-    
+
     private void jMProvedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMProvedoresActionPerformed
         COMProvedor f = new COMProvedor();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMProvedoresActionPerformed
-    
+
     private void jMBilletesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBilletesActionPerformed
         ComBilletes f = new ComBilletes();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
     }//GEN-LAST:event_jMBilletesActionPerformed
-    
+
     private void jXHCheques2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHCheques2ActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_jXHCheques2ActionPerformed
-    
+
     private void jXHDarCredito2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHDarCredito2ActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_jXHDarCredito2ActionPerformed
-    
+
     private void jXHCobrarCreditos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHCobrarCreditos2ActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_jXHCobrarCreditos2ActionPerformed
-    
+
     private void jXHPasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHPasajesActionPerformed
         COMviajes f = new COMviajes();
         f.setVisible(true);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
     }//GEN-LAST:event_jXHPasajesActionPerformed
-    
+
     private void jXHComprasOfiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHComprasOfiActionPerformed
         COMprasOficina f = new COMprasOficina();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
     }//GEN-LAST:event_jXHComprasOfiActionPerformed
-    
+
     private void jXHChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHChequesActionPerformed
         COMCheque f = new COMCheque();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jXHChequesActionPerformed
-    
+
     private void jXHDarCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHDarCreditoActionPerformed
         COMCxP f = new COMCxP();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
     }//GEN-LAST:event_jXHDarCreditoActionPerformed
-    
+
     private void jXHCobrarCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHCobrarCreditosActionPerformed
         COMCunetasXcobrar f = new COMCunetasXcobrar();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jXHCobrarCreditosActionPerformed
-    
+
     private void jXHVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHVentasActionPerformed
         COMVender f = new COMVender();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
+
     }//GEN-LAST:event_jXHVentasActionPerformed
-    
+
     private void jXHConferenciaVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHConferenciaVActionPerformed
         COMvc f = new COMvc();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jXHConferenciaVActionPerformed
-    
+
     private void jXHCabinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHCabinasActionPerformed
         COMcb f = new COMcb();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jXHCabinasActionPerformed
-    
+
     private void jXHFloresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHFloresActionPerformed
         COMFLORES f = new COMFLORES();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jXHFloresActionPerformed
-    
+
     private void jXHEnvioPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHEnvioPaqueteActionPerformed
         COMpaquete f = new COMpaquete();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
-        
+
+
     }//GEN-LAST:event_jXHEnvioPaqueteActionPerformed
-    
+
     private void jXHGiroOficinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHGiroOficinaActionPerformed
         COMgirosOficina f = new COMgirosOficina();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jXHGiroOficinaActionPerformed
-    
+
     private void jXHPagarGiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHPagarGiroActionPerformed
         Pagosdegiros f = new Pagosdegiros();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jXHPagarGiroActionPerformed
-    
+
     private void jXHEnviarGiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHEnviarGiroActionPerformed
         ConfigurarGiros f = new ConfigurarGiros();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
-        
+
     }//GEN-LAST:event_jXHEnviarGiroActionPerformed
-    
+
     private void jMCierreCajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCierreCajasActionPerformed
         FindeTurno f = new FindeTurno();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
-        
-        
+
+
     }//GEN-LAST:event_jMCierreCajasActionPerformed
-    
+
     private void jMVerCaja2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerCaja2ActionPerformed
         COMCIERRE f = new COMCIERRE();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
     }//GEN-LAST:event_jMVerCaja2ActionPerformed
-    
+
     private void jMVerCaja1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerCaja1ActionPerformed
         ConCierre1 f = new ConCierre1();
         f.setVisible(true);
-      f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
     }//GEN-LAST:event_jMVerCaja1ActionPerformed
-    
+
     private void jMVerPasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerPasajesActionPerformed
-        ComVerPasajes f = new  ComVerPasajes();
+        ComVerPasajes f = new ComVerPasajes();
         f.setVisible(true);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMVerPasajesActionPerformed
-    
+
     private void JMVerProtestadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMVerProtestadosActionPerformed
-        VerChequePro f = new  VerChequePro();
+        VerChequePro f = new VerChequePro();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
-        
+
+
     }//GEN-LAST:event_JMVerProtestadosActionPerformed
-    
+
     private void jMVerPagoChequeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerPagoChequeActionPerformed
-        ComVerPagoCheque f = new  ComVerPagoCheque();
+        ComVerPagoCheque f = new ComVerPagoCheque();
         f.setVisible(true);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
+
     }//GEN-LAST:event_jMVerPagoChequeActionPerformed
-    
+
     private void jMcREDITOSpAGADOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMcREDITOSpAGADOSActionPerformed
 // TODO add your handling code here:
-        ComDarCredito f = new  ComDarCredito();
+        ComDarCredito f = new ComDarCredito();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMcREDITOSpAGADOSActionPerformed
-    
+
     private void jMVerDarCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerDarCreditosActionPerformed
-        ComVerDarCreditos f = new  ComVerDarCreditos();
+        ComVerDarCreditos f = new ComVerDarCreditos();
         f.setVisible(true);
-      f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
-        
+
+
     }//GEN-LAST:event_jMVerDarCreditosActionPerformed
-    
+
     private void jMVerVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerVentasActionPerformed
-        ConVerVentas f = new  ConVerVentas();
+        ConVerVentas f = new ConVerVentas();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMVerVentasActionPerformed
-    
+
     private void jMVerVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerVideoActionPerformed
-        ComVerVideo f = new  ComVerVideo();
+        ComVerVideo f = new ComVerVideo();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMVerVideoActionPerformed
-    
+
     private void jMReportesCabinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMReportesCabinasActionPerformed
-        ComVerCabinas f = new  ComVerCabinas();
+        ComVerCabinas f = new ComVerCabinas();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
+
     }//GEN-LAST:event_jMReportesCabinasActionPerformed
-    
+
     private void jMVerFloresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerFloresActionPerformed
-        ComVerFlores f = new  ComVerFlores();
+        ComVerFlores f = new ComVerFlores();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMVerFloresActionPerformed
-    
+
     private void JMVerPaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMVerPaquetesActionPerformed
-        ComVerPaquetes f = new  ComVerPaquetes();
+        ComVerPaquetes f = new ComVerPaquetes();
         f.setVisible(true);
-      f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_JMVerPaquetesActionPerformed
-    
+
     private void jMVerGiroOfiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerGiroOfiActionPerformed
-        ComVerGirosOfi f = new  ComVerGirosOfi();
+        ComVerGirosOfi f = new ComVerGirosOfi();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
-        
-        
+
+
+
     }//GEN-LAST:event_jMVerGiroOfiActionPerformed
-    
+
     private void jMProtestarChequeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMProtestarChequeActionPerformed
-        COMChequeProtestado f = new  COMChequeProtestado();
+        COMChequeProtestado f = new COMChequeProtestado();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMProtestarChequeActionPerformed
-    
+
     private void jMGirospagadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGirospagadosActionPerformed
-        COMgirosPagados f = new  COMgirosPagados();
+        COMgirosPagados f = new COMgirosPagados();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMGirospagadosActionPerformed
-    
+
     private void jMGirosAnuladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGirosAnuladosActionPerformed
         COManulargiros f = new COManulargiros();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
+
     }//GEN-LAST:event_jMGirosAnuladosActionPerformed
-    
+
     private void jMGirosRemplazadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGirosRemplazadosActionPerformed
         COMvergiroremplazado f = new COMvergiroremplazado();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMGirosRemplazadosActionPerformed
-    
+
     private void jMuNIDADESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMuNIDADESActionPerformed
         COMAgreUnidades f = new COMAgreUnidades();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMuNIDADESActionPerformed
-    
+
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         COMCheque f = new COMCheque();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
-        
+
+
     }//GEN-LAST:event_jMenuItem14ActionPerformed
-    
+
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         COMCunetasXcobrar f = new COMCunetasXcobrar();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMenuItem13ActionPerformed
-    
+
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        
+
         COMVender f = new COMVender();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
+
     }//GEN-LAST:event_jMenuItem7ActionPerformed
-    
+
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         COMgirosOficina f = new COMgirosOficina();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
+
     }//GEN-LAST:event_jMenuItem12ActionPerformed
-    
+
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         Pagosdegiros f = new Pagosdegiros();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
-        
+
+
     }//GEN-LAST:event_jMenuItem11ActionPerformed
-    
+
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         AnularGiros f = new AnularGiros();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
 //                DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
-    
+
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         RemplazarG f = new RemplazarG();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
     }//GEN-LAST:event_jMenuItem9ActionPerformed
-    
+
     private void jMvERgIROSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMvERgIROSActionPerformed
-        
+
         COMverGiros f = new COMverGiros();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
-        
+
     }//GEN-LAST:event_jMvERgIROSActionPerformed
-    
+
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        ConfigurarGiros f = new ConfigurarGiros();
-        f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
-        f.moveToFront();
-        
+
+        ClienteGestionIFrame cgif = new ClienteGestionIFrame();
+        cgif.setVisible(true);
+        escritorio.add(cgif, JLayeredPane.DEFAULT_LAYER);
+        cgif.moveToFront();
+
     }//GEN-LAST:event_jMenuItem5ActionPerformed
-    
+
     private void jMNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMNuevoUsuarioActionPerformed
         COMnuevoU f = new COMnuevoU();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
+
     }//GEN-LAST:event_jMNuevoUsuarioActionPerformed
-    
+
     private void jMenuItemPagoMercaderiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPagoMercaderiaActionPerformed
         COMOtrosV f = new COMOtrosV();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
+
     }//GEN-LAST:event_jMenuItemPagoMercaderiaActionPerformed
-    
+
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        
+
         ConfiUser f = new ConfiUser();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-    
+
     private void jmProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmProductoActionPerformed
         COMprasOficina f = new COMprasOficina();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
-        
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+
         f.moveToFront();
     }//GEN-LAST:event_jmProductoActionPerformed
-    
+
     private void jMenuItemAgregarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarProActionPerformed
-        
+
         COMCxP f = new COMCxP();
         f.setVisible(true);
-       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
-        
+
+
     }//GEN-LAST:event_jMenuItemAgregarProActionPerformed
-    
+
     private void jMenuItemConfiCuoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfiCuoActionPerformed
         COMAnuPq f = new COMAnuPq();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMenuItemConfiCuoActionPerformed
-    
+
     private void jMenuItemPagoCuoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPagoCuoActionPerformed
         COMpaquete f = new COMpaquete();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMenuItemPagoCuoActionPerformed
-    
+
     private void jMenuItemConfiSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfiSociosActionPerformed
-        
+
         Confagencia f = new Confagencia();
         f.setVisible(true);
         //f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-        
+
     }//GEN-LAST:event_jMenuItemConfiSociosActionPerformed
-    
+
     private void jMenuItemPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPagoActionPerformed
         COMFLORES f = new COMFLORES();
         f.setVisible(true);
-        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
-        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMenuItemPagoActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        try{
+        try {
             //javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         /*final PanSplash panSplash = new PanSplash(new javax.swing.JFrame());
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                panSplash.showSplashScreen();
-            }
-        });*/
-        
-        final MenuPrin pantallaPrincipal= new MenuPrin();
+         SwingUtilities.invokeLater(new Runnable() {
+         public void run() {
+         panSplash.showSplashScreen();
+         }
+         });*/
+
+        final MenuPrin pantallaPrincipal = new MenuPrin();
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 //panSplash.hideSplash();
@@ -1773,11 +1771,10 @@ COMVender f = new COMVender();
                 pantallaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 pantallaPrincipal.setBounds(0, 0, screenSize.width, screenSize.height);
                 pantallaPrincipal.setVisible(true);
-                
+
             }
         });
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Cabinas;
     private javax.swing.JMenuItem JMVerPaquetes;
