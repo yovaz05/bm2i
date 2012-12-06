@@ -40,9 +40,9 @@ public class ExampleSplashWindow {
 
         // Setting a title label
         JLabel title = new JLabel();
-        title.setFont(new Font("Dialog", Font.BOLD, 13));
+        title.setFont(new Font("Dialog", Font.BOLD, 12));
         title.setForeground(Color.BLACK);
-        title.setText("Ingreso de lecturas - Agua potable");
+        title.setText("Software de Invetarios - LIKHI S.A - LOJA");
         title.setBounds(240, 180, 260, 30);
         splash.add(title);
 
