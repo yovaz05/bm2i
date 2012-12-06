@@ -16,7 +16,7 @@
 
 <class name="beans.Cliente" table="CLIENTE">
     
-    <id name="id_cliente"  column="ID_CLIENTE">
+    <id name="id_cliente"  column="id_cliente">
         <generator class="native"/>        
     </id>            
     <property name="nombre" column="nombre"/>
