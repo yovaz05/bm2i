@@ -147,6 +147,7 @@ public class MenuPrin extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new java.awt.GridBagLayout());
 
         jXMonthView1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255)));
         jXMonthView1.setAntialiased(true);
@@ -155,7 +156,9 @@ public class MenuPrin extends javax.swing.JFrame {
         jXMonthView1.setFocusTraversalPolicyProvider(true);
         jXMonthView1.setInheritsPopupMenu(true);
         jXMonthView1.setTraversable(true);
-        jPanel5.add(jXMonthView1);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(12, 0, 12, 0);
+        jPanel5.add(jXMonthView1, gridBagConstraints);
 
         jXTaskPane1.setTitle("    GIROS");
 
@@ -220,7 +223,7 @@ public class MenuPrin extends javax.swing.JFrame {
                     .add(jXHEnviarGiro, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXHPagarGiro, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXHEnvioPaquete, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         jXTaskPane1Layout.setVerticalGroup(
             jXTaskPane1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -238,7 +241,12 @@ public class MenuPrin extends javax.swing.JFrame {
                 .add(jXHEnvioPaquete, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel5.add(jXTaskPane1);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.weighty = 0.2;
+        gridBagConstraints.insets = new java.awt.Insets(6, 0, 6, 0);
+        jPanel5.add(jXTaskPane1, gridBagConstraints);
 
         jXTaskPane2.setTitle("Ingresos LG");
 
@@ -294,7 +302,7 @@ public class MenuPrin extends javax.swing.JFrame {
                     .add(jXHFlores, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXHCabinas, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXHConferenciaV, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         jXTaskPane2Layout.setVerticalGroup(
             jXTaskPane2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -312,7 +320,11 @@ public class MenuPrin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel5.add(jXTaskPane2);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.insets = new java.awt.Insets(7, 0, 7, 0);
+        jPanel5.add(jXTaskPane2, gridBagConstraints);
 
         jXTaskPane3.setTitle("Cuentas");
 
@@ -381,7 +393,11 @@ public class MenuPrin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel5.add(jXTaskPane3);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
+        jPanel5.add(jXTaskPane3, gridBagConstraints);
 
         jXTaskPane5.setTitle("Cierre de Caja");
 
@@ -430,7 +446,10 @@ public class MenuPrin extends javax.swing.JFrame {
                 .add(51, 51, 51))
         );
 
-        jPanel5.add(jXTaskPane5);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        jPanel5.add(jXTaskPane5, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -599,7 +618,7 @@ public class MenuPrin extends javax.swing.JFrame {
         jMenuSocios.setText("LINEAS");
 
         jMenuItemConfiSocios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/12/Asistencia.png"))); // NOI18N
-        jMenuItemConfiSocios.setText("ConfiguraciÃ³n de Linea");
+        jMenuItemConfiSocios.setText("Configuración de Linea");
         jMenuItemConfiSocios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemConfiSociosActionPerformed(evt);
