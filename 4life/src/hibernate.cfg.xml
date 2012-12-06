@@ -41,6 +41,8 @@
     <mapping resource="beans/CierreFaltante.hbm.xml"/>
     <mapping resource="beans/Tarjetas.hbm.xml"/>
     <mapping resource="beans/Linea.hbm.xml"/>
+    <!--agregado por mi jiji-->
+    <mapping resource="beans/Cliente.hbm.xml"/>
     <!-- <mapping resource="beans/Turno.hbm.xml"/>  
         <mapping resource="beans/Efectivo.hbm.xml"/>  
         <mapping resource="beans/Destino.hbm.xml"/
