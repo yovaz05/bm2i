@@ -21,7 +21,7 @@
     <mapping resource="beans/Horario.hbm.xml"/>
     <mapping resource="beans/anulargiro.hbm.xml"/>
     <mapping resource="beans/Giro.hbm.xml"/>
-    <mapping resource="beans/Agencia.hbm.xml"/>
+    <mapping resource="beans/Agencia.hbm.xml"/> 
     <mapping resource="beans/CodigoAgencia.hbm.xml"/>
     <mapping resource="beans/Pasajes.hbm.xml"/>
     <mapping resource="beans/Flores.hbm.xml"/>
