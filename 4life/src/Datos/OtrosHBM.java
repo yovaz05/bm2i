@@ -4,6 +4,7 @@ package Datos;
 
 import beans.Horario;
 import beans.Otros;
+import beans.Linea;
 import hibernate.HibernateDAO;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -27,4 +28,12 @@ public List lista3(Horario hora){
         crit.add(Restrictions.eq("horario",hora));
         return crit.list();
 }
+  public List lista2(Linea reg){
+        Criteria crit = session.createCriteria(Otros.class);
+      //  crit.setMaxResults(150);
+         if ( reg!=null){
+            crit.add(Restrictions.eq("linea",reg));
+            return crit.list();
+         }return null;
+    }
 }
