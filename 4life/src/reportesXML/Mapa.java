@@ -209,7 +209,7 @@ public class Mapa {
     }
 
     private void setMapaCliente() {
-        modeloTabla = new MapaCierre(lista, isNumerador());
+        modeloTabla = new MapaCliente(lista, isNumerador());
     }
     
     private void setMapaMinima() {

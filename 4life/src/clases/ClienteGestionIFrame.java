@@ -27,14 +27,10 @@ public class ClienteGestionIFrame extends javax.swing.JInternalFrame {
     Linea gh;
     private String mensaje = "";
     private boolean editar;
-    Lista listaAnteriores;
+    //Lista listaAnteriores;
 
     public ClienteGestionIFrame() {
         initComponents();
-        //clientePanel = new ClientePanel();
-
-        ///getContentPane().add(clientePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 602, 686));
-
         fijaMetodos();
         inicializa();
         setTabla();
@@ -435,7 +431,7 @@ public class ClienteGestionIFrame extends javax.swing.JInternalFrame {
 
     private void getPanel2() {
         int fila = tblProducto.getSelectedRow();
-        cliente = (Cliente) listaAnteriores.getObject(fila);
+        cliente = (Cliente) lista.getObject(fila);
     }
 
     private void setBlanco() {
@@ -475,8 +471,8 @@ public class ClienteGestionIFrame extends javax.swing.JInternalFrame {
     }
 
     private void setTabla() {
-        listaAnteriores = new Lista(new Cliente().lista());
-        Mapa mapa = new Mapa(listaAnteriores, Mapa.CLIENTES, true);
+        lista = new Lista(new Cliente().lista());
+        Mapa mapa = new Mapa(lista, Mapa.CLIENTES, true);
         reportesXML.ModeloTabla modelo = mapa.getModeloTabla();
         tblProducto.setModel(modelo);
     }
@@ -486,7 +482,7 @@ public class ClienteGestionIFrame extends javax.swing.JInternalFrame {
 
     private void borra() {
         int fila = tblProducto.getSelectedRow();
-        cliente = (Cliente) listaAnteriores.getObject(fila);
+        cliente = (Cliente) lista.getObject(fila);
         cliente.borrar();
         setTabla();
         /*
