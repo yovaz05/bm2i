@@ -6,22 +6,21 @@
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
  */
-
 package beans;
 
- import Datos.AgenciaHBM;
- import java.util.HashSet;
- import java.util.List;
- import java.util.Set;       
-        
+import Datos.AgenciaHBM;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Agencia {
-    
+
     private int id_Agencia;
     private String nombre;
     private String codigo;
     private Float utilidad;
     private AgenciaHBM base;
-    
+
     public Agencia() {
         setBase(new AgenciaHBM());
     }
@@ -57,18 +56,19 @@ public class Agencia {
     public void setBase(AgenciaHBM base) {
         this.base = base;
     }
-     public boolean guardar(){
+
+    public boolean guardar() {
         return getBase().guardar(this);
     }
-    
-    public boolean actualizar(){
+
+    public boolean actualizar() {
         return getBase().actualizar(this);
     }
-    
-    public void borrar(){
+
+    public void borrar() {
         getBase().eliminar(this);
     }
-       
+
     public Float getUtilidad() {
         return utilidad;
     }
@@ -76,17 +76,20 @@ public class Agencia {
     public void setUtilidad(Float utilidad) {
         this.utilidad = utilidad;
     }
-    public List lista(){
+
+    public List lista() {
         return getBase().lista();
     }
-    public Agencia Busca(String cod){
+
+    public Agencia Busca(String cod) {
         return getBase().busca(cod);
     }
-   public Agencia bus(String nom){
+
+    public Agencia bus(String nom) {
         return getBase().buscar(nom);
-        }
-  
-   public Agencia busCla(String nom){
-        return getBase(). buscarCl(nom);
-        }
+    }
+
+    public Agencia busCla(String nom) {
+        return getBase().buscarCl(nom);
+    }
 }

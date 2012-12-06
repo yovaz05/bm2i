@@ -4,6 +4,10 @@
  */
 package beans;
 
+import Datos.AgenciaHBM;
+import Datos.ClienteHBM;
+import java.util.List;
+
 /**
  *
  * @author richard
@@ -17,9 +21,14 @@ public class Cliente {
     private String nombre;
     private String nombres;
     private String apellidos;
-    private String cedulaRuc;
-    private String codigoCliente;
+    private String cedularuc;
+    private String codigocliente;
     private String email;
+    private ClienteHBM base;
+
+    public Cliente() {
+        setBase(new ClienteHBM());
+    }
 
     public int getId_cliente() {
         return id_cliente;
@@ -53,21 +62,21 @@ public class Cliente {
         this.apellidos = apellidos;
     }
 
-    public String getCedulaRuc() {
-        return cedulaRuc;
+    public String getCedularuc() {
+        return cedularuc;
     }
 
-    public void setCedulaRuc(String cedulaRuc) {
-        this.cedulaRuc = cedulaRuc;
+    public void setCedularuc(String cedularuc) {
+        this.cedularuc = cedularuc;
     }
 
-    public String getCodigoCliente() {
-        return codigoCliente;
+    public String getCodigocliente() {
+        return codigocliente;
     }
 
-    public void setCodigoCliente(String codigoCliente) {
-        this.codigoCliente = codigoCliente;
-    }
+    public void setCodigocliente(String codigocliente) {
+        this.codigocliente = codigocliente;
+    }    
 
     public String getEmail() {
         return email;
@@ -75,5 +84,42 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public ClienteHBM getBase() {
+        return base;
+    }
+
+    public void setBase(ClienteHBM base) {
+        this.base = base;
+    }
+    
+    
+    public boolean guardar(){
+        return getBase().guardar(this);
+    }
+    
+    public boolean actualizar(){
+        return getBase().actualizar(this);
+    }
+    
+    public void borrar(){
+        getBase().eliminar(this);
+    }
+    
+    public List lista() {
+        return getBase().lista();
+    }
+    
+    public List<Cliente> buscarNombres(String nombre) {
+        return getBase().buscarNombres(nombre);
+    }
+
+    public Cliente buscarCodigo(String codigo) {
+        return getBase().buscarCodigoCliente(codigo);
+    }
+
+    public Cliente buscarCedula(String cedula) {
+        return getBase().buscaCedula(cedula);
     }
 }

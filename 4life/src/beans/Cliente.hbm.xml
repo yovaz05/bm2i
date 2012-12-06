@@ -22,8 +22,8 @@
     <property name="nombre" column="nombre"/>
     <property name="nombres" column="nombres"/>
     <property name="apellidos" column="apellido"/>
-    <property name="cedulaRuc" column="cedularuc"/>
-    <property name="codigoCliente" column="codigocliente"/>
+    <property name="cedularuc" column="cedularuc"/>
+    <property name="codigocliente" column="codigocliente"/>
     <property name="email" column="email"/>
                
 </class>
