@@ -13,7 +13,8 @@ import java.util.Date;
 import Datos.OtrosHBM;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set; 
+import java.util.Set;
+import beans.Linea;
 
 public class Otros {
     
@@ -111,7 +112,10 @@ public class Otros {
     }
   public List lista3(Horario horas){
         return getBase().lista3(horas);
-   }  
+   } 
+   public List lista2(Linea reg){
+        return getBase().lista2(reg);
+   }
 
     public int getTotal() {
         return total;
