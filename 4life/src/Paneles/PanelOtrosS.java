@@ -34,7 +34,7 @@ private Lista lista;
 private Lista codigo;
 private Lista tar;
 private Horario horario;
-private Otros otros;
+Otros otros;
 private String mensaje="";
 private boolean editar;
 private VentaProductos venta;
@@ -61,7 +61,7 @@ Lista listaAnteriores;
     
     private void combos(){
      
-      linea = new Linea();
+    linea = new Linea();
     lista = new Lista(new Linea().lista());
     for(int i=0;i<lista.getSize();i++){
                                         Linea b1=(Linea) lista.getObject(i);
@@ -1218,6 +1218,13 @@ setTabla();
 
     private void cboProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboProductosActionPerformed
 
+        
+        linea=((Linea)lista.getObject(cboLinea.getSelectedIndex()));
+        codigo =new Lista(new Otros().lista2(linea));
+        
+        otros = ((Otros)codigo.getObject(cboProductos.getSelectedIndex()));
+        txtStock.setText(String.valueOf(otros.getStock()));
+        txtVunitario.setText(String.valueOf(otros.getVunitario()));
    
     }//GEN-LAST:event_cboProductosActionPerformed
 
