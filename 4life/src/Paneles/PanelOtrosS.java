@@ -16,6 +16,7 @@ import beans.Otros;
 import beans.Provedor;
 import beans.VentaProductos;
 import beans.Horario;
+import beans.Linea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
@@ -25,6 +26,7 @@ import reportesXML.Mapa;
 import reportesXML.MapaVentasdia;
 import reportesXML.ReportePrevio;
 import beans.Tarjetas;
+
 
 public class PanelOtrosS extends javax.swing.JPanel {
     
@@ -39,6 +41,9 @@ private VentaProductos venta;
 private VentaProductos mas;
 private Provedor provedor;
 private Tarjetas tarjetas;
+private javax.swing.DefaultComboBoxModel modelo2;
+Linea linea;
+Lista tres;
 
 Boolean activado;
 VentaProductos gh;
@@ -49,15 +54,22 @@ Lista listaAnteriores;
         fijaMetodos();
         inicializa();
         setTabla();
-        
-         otros = new Otros();
-                   lista = new Lista(new Otros().lista());
-                   for(int i=0;i<lista.getSize();i++){
-                   Otros b1=(Otros) lista.getObject(i);
-                   cboProductos.addItem(b1.getNombre());
-                   }
-                        
+        combos();
+         
     }
+    
+    
+    private void combos(){
+     
+      linea = new Linea();
+    lista = new Lista(new Linea().lista());
+    for(int i=0;i<lista.getSize();i++){
+                                        Linea b1=(Linea) lista.getObject(i);
+                                        cboLinea.addItem(b1.getNombre());
+                                       }
+ }
+    
+    
     
     private boolean isVacio(){
  if(txtStock.getText().equalsIgnoreCase("")    | (txtVunitario.getText().equalsIgnoreCase("")) 
@@ -215,7 +227,7 @@ private void setPanel(){
    }
    txtTotal.setText(""+venta.getTotal());
    txNombre.setText(""+venta.getNombre());
-   cboProductos.setSelectedItem(otros.getNombre().toString());
+   cboLinea.setSelectedItem(otros.getNombre().toString());
        
 } 
 private void setPanel(VentaProductos gg){
@@ -247,7 +259,7 @@ private void setPanel(VentaProductos gg){
    txtTotal.setText(""+gg.getTotal());
    txNombre.setText(""+gg.getNombre());
    txCedula.setText(gg.getCedula());
-   cboProductos.setSelectedItem(gg.getOtros().getNombre().toString());
+   cboLinea.setSelectedItem(gg.getOtros().getNombre().toString());
    txCodigo.setText(""+gg.getId_Venta());     
     }  
     
@@ -255,7 +267,7 @@ private void setPanel(VentaProductos gg){
     private void getPanel(){
       
       
-            venta.setOtros((Otros)lista.getObject(cboProductos.getSelectedIndex()));
+            venta.setOtros((Otros)lista.getObject(cboLinea.getSelectedIndex()));
             venta.setFechasalida(datFechaIngreso.getDate());
             venta.setTotal(Float.parseFloat(txtTotal.getText()));
             venta.setContado(txtCantidad.getText());
@@ -273,7 +285,7 @@ private void setPanel(VentaProductos gg){
            venta.setUsuario(hora.getUsuario());
         
            Otros otros;
-           otros = ((Otros)lista.getObject(cboProductos.getSelectedIndex()));
+           otros = ((Otros)lista.getObject(cboLinea.getSelectedIndex()));
         
            otros.setStock(otros.getStock()-Integer.parseInt(txtCantidad.getText()));    
            otros.actualizar();    
@@ -332,7 +344,7 @@ private void setPanel(VentaProductos gg){
         otros.actualizar();
 //#########################################################################################        
        
-           gh.setOtros((Otros)lista.getObject(cboProductos.getSelectedIndex()));
+           gh.setOtros((Otros)lista.getObject(cboLinea.getSelectedIndex()));
            gh.setFechasalida(datFechaIngreso.getDate());
            Float sun= Float.parseFloat(txtVunitario.getText())*Float.parseFloat(txtCantidad.getText());
            gh.setTotal(sun);
@@ -435,12 +447,6 @@ public void modoEdicion(boolean b){
         java.awt.GridBagConstraints gridBagConstraints;
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabelCreditopendiente1 = new javax.swing.JLabel();
-        lblFechaIngreso = new javax.swing.JLabel();
-        datFechaIngreso = new org.jdesktop.swingx.JXDatePicker();
-        cboProductos = new javax.swing.JComboBox();
-        haybodega = new javax.swing.JLabel();
-        txtStock = new javax.swing.JTextField();
         vunitario = new javax.swing.JLabel();
         txtVunitario = new javax.swing.JTextField();
         cliente = new javax.swing.JLabel();
@@ -455,7 +461,6 @@ public void modoEdicion(boolean b){
         panMantenimiento1 = new clases.PanMantenimiento();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProducto = new org.jdesktop.swingx.JXTable();
-        jLabelCedula3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         cantidadcomprar = new javax.swing.JLabel();
         txNombre = new javax.swing.JTextField();
@@ -466,61 +471,43 @@ public void modoEdicion(boolean b){
         jLabelSubtitulo7 = new javax.swing.JLabel();
         cliente1 = new javax.swing.JLabel();
         txCodigo = new javax.swing.JTextField();
+        jXPanel2 = new org.jdesktop.swingx.JXPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jXPanel1 = new org.jdesktop.swingx.JXPanel();
+        jLabel16 = new javax.swing.JLabel();
+        lblFechaIngreso1 = new javax.swing.JLabel();
+        jLNombre1 = new javax.swing.JLabel();
+        jLApellido1 = new javax.swing.JLabel();
+        jLCedula1 = new javax.swing.JLabel();
+        jLTelefono1 = new javax.swing.JLabel();
+        datFechaIngreso = new org.jdesktop.swingx.JXDatePicker();
+        jTNombre = new javax.swing.JTextField();
+        jTApellido = new javax.swing.JTextField();
+        jTCedula = new javax.swing.JTextField();
+        jTelefono = new javax.swing.JTextField();
+        jXPanel3 = new org.jdesktop.swingx.JXPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        cboLinea = new javax.swing.JComboBox();
+        cboProductos = new javax.swing.JComboBox();
+        jCParroquia = new javax.swing.JComboBox();
+        jTextField3 = new javax.swing.JTextField();
+        txtStock = new javax.swing.JTextField();
 
         setBackground(java.awt.SystemColor.window);
         setLayout(new java.awt.GridBagLayout());
 
-        jLabelCreditopendiente1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jLabelCreditopendiente1.setForeground(new java.awt.Color(204, 0, 51));
-        jLabelCreditopendiente1.setText("                     SALIDA DE PRODUCTOS");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(jLabelCreditopendiente1, gridBagConstraints);
-
-        lblFechaIngreso.setText("                            Fecha de Ingreso");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(lblFechaIngreso, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        add(datFechaIngreso, gridBagConstraints);
-
-        cboProductos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboProductosActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        add(cboProductos, gridBagConstraints);
-
-        haybodega.setText("                            Hay en Bodega");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(haybodega, gridBagConstraints);
-
-        txtStock.setEditable(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(txtStock, gridBagConstraints);
-
         vunitario.setText("                            V Unitario");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 15;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(vunitario, gridBagConstraints);
 
@@ -531,15 +518,15 @@ public void modoEdicion(boolean b){
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 15;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(txtVunitario, gridBagConstraints);
 
         cliente.setText("                            Nombre del Cliente");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridy = 21;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(cliente, gridBagConstraints);
 
@@ -549,20 +536,20 @@ public void modoEdicion(boolean b){
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 14;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(txtCantidad, gridBagConstraints);
 
         total.setText("                            Total");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 16;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(total, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 16;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(txtTotal, gridBagConstraints);
 
@@ -574,7 +561,7 @@ public void modoEdicion(boolean b){
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
@@ -586,14 +573,14 @@ public void modoEdicion(boolean b){
         jLabelSubtitulo6.setText("                             DATOS DE LA CAJERA");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridy = 23;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         add(jLabelSubtitulo6, gridBagConstraints);
 
         jLabelNombreGrup1.setText("                            Nombre ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridy = 24;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(jLabelNombreGrup1, gridBagConstraints);
 
@@ -601,7 +588,7 @@ public void modoEdicion(boolean b){
         txtNombre.setSelectionColor(new java.awt.Color(255, 255, 255));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridy = 18;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 3, 0);
@@ -615,14 +602,14 @@ public void modoEdicion(boolean b){
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 11);
         add(jButton2, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridy = 25;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         add(panMantenimiento1, gridBagConstraints);
@@ -647,20 +634,13 @@ public void modoEdicion(boolean b){
         jScrollPane2.setViewportView(tblProducto);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 15;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 26;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(jScrollPane2, gridBagConstraints);
-
-        jLabelCedula3.setText("                            Nombre del Producto");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(jLabelCedula3, gridBagConstraints);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16/Profesor.png"))); // NOI18N
         jButton3.setText("Ver Ventas");
@@ -670,7 +650,7 @@ public void modoEdicion(boolean b){
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 11);
@@ -679,7 +659,7 @@ public void modoEdicion(boolean b){
         cantidadcomprar.setText("                            Cantidad a Comprar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 14;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(cantidadcomprar, gridBagConstraints);
 
@@ -689,8 +669,8 @@ public void modoEdicion(boolean b){
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 21;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(txNombre, gridBagConstraints);
 
@@ -702,7 +682,7 @@ public void modoEdicion(boolean b){
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 11, 0, 11);
@@ -716,7 +696,7 @@ public void modoEdicion(boolean b){
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 11);
@@ -725,7 +705,7 @@ public void modoEdicion(boolean b){
         cedula.setText("                            Cedula del Cliente");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridy = 22;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(cedula, gridBagConstraints);
 
@@ -735,8 +715,8 @@ public void modoEdicion(boolean b){
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 11;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 22;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(txCedula, gridBagConstraints);
 
@@ -745,14 +725,14 @@ public void modoEdicion(boolean b){
         jLabelSubtitulo7.setText("                             DATOS DEL CLIENTE");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 19;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(jLabelSubtitulo7, gridBagConstraints);
 
         cliente1.setText("                            Numero de credito");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridy = 20;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(cliente1, gridBagConstraints);
 
@@ -765,10 +745,296 @@ public void modoEdicion(boolean b){
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 20;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(txCodigo, gridBagConstraints);
+
+        jXPanel2.setBackground(new java.awt.Color(235, 247, 247));
+        jXPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jXPanel2.setForeground(new java.awt.Color(0, 102, 102));
+        jXPanel2.setName("Panel de Miercoles"); // NOI18N
+        jXPanel2.setLayout(new java.awt.GridBagLayout());
+
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel14.setText("                               EGRESO DE MERCADERIA           ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(6, 19, 0, 26);
+        jXPanel2.add(jLabel14, gridBagConstraints);
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel13.setForeground(java.awt.SystemColor.textHighlight);
+        jLabel13.setText("                      Selección de cliente,  y elegir  los productos a vender.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 1, 7, 0);
+        jXPanel2.add(jLabel13, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(5, 16, 7, 21);
+        add(jXPanel2, gridBagConstraints);
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel4.setForeground(java.awt.SystemColor.textHighlight);
+        jLabel4.setText("                          DATOS DEL CLIENTE");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 7, 0);
+        add(jLabel4, gridBagConstraints);
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel1.setForeground(java.awt.SystemColor.textHighlight);
+        jLabel1.setText("SELECCION DEL PRODUCTO");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(5, 57, 7, 0);
+        add(jLabel1, gridBagConstraints);
+
+        jXPanel1.setBackground(new java.awt.Color(235, 247, 247));
+        jXPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jXPanel1.setDoubleBuffered(false);
+        jXPanel1.setFocusCycleRoot(true);
+        jXPanel1.setLayout(new java.awt.GridBagLayout());
+
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(51, 0, 153));
+        jLabel16.setText("  ____________________");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(12, 3, 6, 25);
+        jXPanel1.add(jLabel16, gridBagConstraints);
+
+        lblFechaIngreso1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        lblFechaIngreso1.setText("Fecha de Ingreso");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
+        jXPanel1.add(lblFechaIngreso1, gridBagConstraints);
+
+        jLNombre1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLNombre1.setText("Nombre");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
+        jXPanel1.add(jLNombre1, gridBagConstraints);
+
+        jLApellido1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLApellido1.setText("Apellido");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
+        jXPanel1.add(jLApellido1, gridBagConstraints);
+
+        jLCedula1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLCedula1.setText("Cedula");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
+        jXPanel1.add(jLCedula1, gridBagConstraints);
+
+        jLTelefono1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLTelefono1.setText("Telefono");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 12, 12, 0);
+        jXPanel1.add(jLTelefono1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 17);
+        jXPanel1.add(datFechaIngreso, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 17);
+        jXPanel1.add(jTNombre, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 17);
+        jXPanel1.add(jTApellido, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 17);
+        jXPanel1.add(jTCedula, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 8, 11, 17);
+        jXPanel1.add(jTelefono, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(6, 26, 7, 19);
+        add(jXPanel1, gridBagConstraints);
+
+        jXPanel3.setBackground(new java.awt.Color(235, 247, 247));
+        jXPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jXPanel3.setFocusCycleRoot(true);
+        jXPanel3.setLayout(new java.awt.GridBagLayout());
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel15.setText("  _________________________");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.insets = new java.awt.Insets(15, 0, 11, 19);
+        jXPanel3.add(jLabel15, gridBagConstraints);
+
+        jLabel7.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel7.setText("Linea");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 21, 0, 12);
+        jXPanel3.add(jLabel7, gridBagConstraints);
+
+        jLabel8.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel8.setText("Producto");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 21, 0, 12);
+        jXPanel3.add(jLabel8, gridBagConstraints);
+
+        jLabel17.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel17.setText("Existencia");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 21, 0, 12);
+        jXPanel3.add(jLabel17, gridBagConstraints);
+
+        jLabel18.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel18.setText("Parroquia");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 21, 0, 12);
+        jXPanel3.add(jLabel18, gridBagConstraints);
+
+        jLabel19.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel19.setText("Direccion");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 21, 16, 12);
+        jXPanel3.add(jLabel19, gridBagConstraints);
+
+        cboLinea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboLineaActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 23);
+        jXPanel3.add(cboLinea, gridBagConstraints);
+
+        cboProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboProductosActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 22);
+        jXPanel3.add(cboProductos, gridBagConstraints);
+
+        jCParroquia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCParroquiaActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 22);
+        jXPanel3.add(jCParroquia, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 15, 22);
+        jXPanel3.add(jTextField3, gridBagConstraints);
+
+        txtStock.setEditable(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 22);
+        jXPanel3.add(txtStock, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.insets = new java.awt.Insets(8, 18, 10, 21);
+        add(jXPanel3, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txCodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txCodigoKeyPressed
@@ -925,35 +1191,84 @@ setTabla();
         txtTotal.setText(String.valueOf(igual));
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void cboLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLineaActionPerformed
+        //****************************************************
+        //CARGAR EL COMBO DE PRODUCTO
+        //****************************************************
+        
+        linea = new Linea();
+        linea=((Linea)lista.getObject(cboLinea.getSelectedIndex()));
+        codigo =new Lista(new Otros().lista2(linea));
+       
+        if (codigo.getSize()>=1){
+            cboProductos.setEnabled(true);
+
+            modelo2 = new javax.swing.DefaultComboBoxModel();
+            for(int i=0;i<codigo.getSize();i++){
+                Otros b1=(Otros) codigo.getObject(i);
+                modelo2.addElement(b1.getNombre());
+            }
+            cboProductos.setModel(modelo2);
+}else {
+            cboProductos.setEnabled(false);
+            Mensaje.showError(this,"No hay productos para esta lines ","Error");
+        }
+            
+    }//GEN-LAST:event_cboLineaActionPerformed
+
     private void cboProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboProductosActionPerformed
-        Otros otros;
-        otros = ((Otros)lista.getObject(cboProductos.getSelectedIndex()));
-        txtStock.setText(String.valueOf(otros.getStock()));
-        txtVunitario.setText(String.valueOf(otros.getVunitario()));
+
+   
     }//GEN-LAST:event_cboProductosActionPerformed
+
+    private void jCParroquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCParroquiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCParroquiaActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel cantidadcomprar;
+    private javax.swing.JComboBox cboLinea;
     private javax.swing.JComboBox cboProductos;
     private javax.swing.JLabel cedula;
     private javax.swing.JLabel cliente;
     private javax.swing.JLabel cliente1;
     private org.jdesktop.swingx.JXDatePicker datFechaIngreso;
-    private javax.swing.JLabel haybodega;
     private javax.swing.JButton jBEstado;
     private javax.swing.JButton jBPrint;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabelCedula3;
-    private javax.swing.JLabel jLabelCreditopendiente1;
+    private javax.swing.JComboBox jCParroquia;
+    private javax.swing.JLabel jLApellido1;
+    private javax.swing.JLabel jLCedula1;
+    private javax.swing.JLabel jLNombre1;
+    private javax.swing.JLabel jLTelefono1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelNombreGrup1;
     private javax.swing.JLabel jLabelSubtitulo6;
     private javax.swing.JLabel jLabelSubtitulo7;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblFechaIngreso;
+    private javax.swing.JTextField jTApellido;
+    private javax.swing.JTextField jTCedula;
+    private javax.swing.JTextField jTNombre;
+    private javax.swing.JTextField jTelefono;
+    private javax.swing.JTextField jTextField3;
+    private org.jdesktop.swingx.JXPanel jXPanel1;
+    private org.jdesktop.swingx.JXPanel jXPanel2;
+    private org.jdesktop.swingx.JXPanel jXPanel3;
+    private javax.swing.JLabel lblFechaIngreso1;
     private clases.PanMantenimiento panMantenimiento1;
     private org.jdesktop.swingx.JXTable tblProducto;
     private javax.swing.JLabel total;
