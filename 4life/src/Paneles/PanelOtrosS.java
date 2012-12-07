@@ -504,6 +504,10 @@ public void modoEdicion(boolean b){
         txtStock = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         txtStock1 = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
 
         setBackground(java.awt.SystemColor.window);
@@ -992,10 +996,10 @@ public void modoEdicion(boolean b){
         jXPanel3.add(jLabel18, gridBagConstraints);
 
         jLabel19.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
-        jLabel19.setText("LP");
+        jLabel19.setText("Cantidad");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 21, 16, 12);
         jXPanel3.add(jLabel19, gridBagConstraints);
@@ -1040,7 +1044,7 @@ public void modoEdicion(boolean b){
         jXPanel3.add(jCParroquia, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 15, 22);
@@ -1074,6 +1078,38 @@ public void modoEdicion(boolean b){
         gridBagConstraints.weighty = 0.1;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 22);
         jXPanel3.add(txtStock1, gridBagConstraints);
+
+        jLabel21.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel21.setText("Total");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 21, 16, 12);
+        jXPanel3.add(jLabel21, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 15, 22);
+        jXPanel3.add(jTextField4, gridBagConstraints);
+
+        jLabel22.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel22.setText("LP");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 21, 16, 12);
+        jXPanel3.add(jLabel22, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 15, 22);
+        jXPanel3.add(jTextField5, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -1340,6 +1376,8 @@ setTabla();
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1354,6 +1392,8 @@ setTabla();
     private javax.swing.JTextField jTelefono1;
     private javax.swing.JTextField jTelefono2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private org.jdesktop.swingx.JXPanel jXPanel1;
     private org.jdesktop.swingx.JXPanel jXPanel2;
     private org.jdesktop.swingx.JXPanel jXPanel3;
