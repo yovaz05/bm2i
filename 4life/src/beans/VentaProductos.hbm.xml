@@ -20,17 +20,12 @@
     </id>          
     
     <property name="fechasalida" column="FECHASALIDA"/>
-    <property name="nombre" column="NOMBRE"/>
-    <property name="cedula" column="CEDULA"/>
-    
-    <property name="pagado" type="java.lang.Boolean"  >
-    <column name="PAGADO" sql-type="tinyint(1)" not-null="true"/>
-    </property>
-   
-    <property name="contado" column="CONTADO"/>
-    <property name="credito" column="CREDITO"/>
-    <property name="total" column="TOTAL"/>
-    
+    <property name="nfactura" column="NFACTURA"/>
+    <property name="totalproducto" column="TOTALPRODUCTO"/>
+    <property name="vuproducto" column="VUPRODUCTO"/>
+    <property name="totalpuntos" column="TOTALPUNTOS"/>
+    <property name="vupuntos" column="VUPUNTOS"/>
+    <many-to-one name="cliente" column="ID_CLIENTE"/>
     <many-to-one name="otros" column="ID_OTROS"/>
     <many-to-one name="usuario" column="ID_USUARIO"/>
     <many-to-one name="horario" column="ID_HORARIO"/>
