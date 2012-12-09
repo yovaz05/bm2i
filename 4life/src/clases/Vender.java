@@ -123,7 +123,7 @@ private boolean editar;
                
            }else{
                Mensaje.showError(this,"no es nulo","Error");
-               mas.setTotal(mas.getTotal()+Float.parseFloat(txtTotal.getText()));
+          //     mas.setTotal(mas.getTotal()+Float.parseFloat(txtTotal.getText()));
 //               mas.setUnidades(mas.getUnidades()+Integer.parseInt(txtCantidad.getText()));
                otros = ((Otros)lista.getObject(cboProductos.getSelectedIndex()));
                otros.setStock(otros.getStock()-Integer.parseInt(txtCantidad.getText()));    
@@ -211,7 +211,7 @@ private boolean editar;
    txtStock.setText(""+otro.getStock());
    txtVunitario.setText(""+otro.getVunitario());
 //   txtCantidad.setText(""+venta.getUnidades()); 
-   txtTotal.setText(""+venta.getTotal());
+ //  txtTotal.setText(""+venta.getTotal());
    cboProductos.setSelectedItem(otro.getNombre().toString());
     }  
     
@@ -220,7 +220,7 @@ private boolean editar;
         
         venta.setOtros((Otros)lista.getObject(cboProductos.getSelectedIndex()));
         venta.setFechasalida(datFechaIngreso.getDate());
-        venta.setTotal(Float.parseFloat(txtTotal.getText()));
+   //     venta.setTotal(Float.parseFloat(txtTotal.getText()));
 //        venta.setUnidades(Integer.parseInt(txtCantidad.getText()));
       
         horario=new Horario();
