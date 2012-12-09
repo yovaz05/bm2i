@@ -543,7 +543,7 @@ public void  cie2(){
   }
  private void venats(){
    
-    
+    /*
             venta = new VentaProductos();
           
           
@@ -582,7 +582,7 @@ public void  cie2(){
                         }
                 }
     
-   
+   */
 } 
  private void cheq2(){
       horario=new Horario();
