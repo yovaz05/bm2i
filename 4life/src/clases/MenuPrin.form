@@ -24,7 +24,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmConfiguracion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Clientes"/>
+            <Property name="text" type="java.lang.String" value="CLIENTES"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
@@ -32,7 +32,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/12/Accesos.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Eviar un Giro"/>
+                <Property name="text" type="java.lang.String" value="Crear Cliente"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5ActionPerformed"/>
@@ -44,6 +44,7 @@
                   <Image iconType="3" name="/12/Warning.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Remplazo de Giros"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem9ActionPerformed"/>
@@ -55,6 +56,7 @@
                   <Image iconType="3" name="/12/Cortar.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Anular Giros"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem10ActionPerformed"/>
@@ -66,6 +68,7 @@
                   <Image iconType="3" name="/12/edit_f2.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pagos de Giros"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem11ActionPerformed"/>
@@ -77,6 +80,7 @@
                   <Image iconType="3" name="/12/guardar.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Giros de oficina"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem12ActionPerformed"/>
@@ -640,7 +644,7 @@
                                   <Component id="jXHPagarGiro" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jXHEnvioPaquete" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="95" max="32767" attributes="0"/>
+                              <EmptySpace pref="89" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -753,7 +757,7 @@
                                   <Component id="jXHCabinas" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jXHConferenciaV" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="99" max="32767" attributes="0"/>
+                              <EmptySpace pref="96" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
