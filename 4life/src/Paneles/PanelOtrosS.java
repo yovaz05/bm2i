@@ -304,7 +304,7 @@ private void setPanel(VentaProductos gg){
       
             venta.setOtros((Otros)lista.getObject(cboLinea.getSelectedIndex()));
             venta.setFechasalida(datFechaIngreso.getDate());
-            venta.setPagado(true);
+           // venta.setPagado(true);
             
            horario=new Horario();
            Horario hora = new Horario();
@@ -337,7 +337,7 @@ private void setPanel(VentaProductos gg){
                gh=(VentaProductos)listaAnteriores.getObject(fila);
 //#########################################################################################
         //RESTRUCTURO EL ANTIGUO ESTOK
-        Otros otros=new Otros();
+     /*   Otros otros=new Otros();
         otros=gh.getOtros();
         if (gh.getCredito().equals(null)){
             gh.setCredito("0");
@@ -346,7 +346,7 @@ private void setPanel(VentaProductos gg){
             
         int ant= otros.getStock()+Integer.parseInt(gh.getContado())+Integer.parseInt(gh.getCredito());
 //        otros.setStock(ant-Integer.parseInt(txtCantidad.getText()));
-        otros.actualizar();
+        otros.actualizar();*/
 //#########################################################################################        
        
            gh.setOtros((Otros)lista.getObject(cboLinea.getSelectedIndex()));
@@ -354,10 +354,10 @@ private void setPanel(VentaProductos gg){
   //         Float sun= Float.parseFloat(txtVunitario.getText())*Float.parseFloat(txtCantidad.getText());
   //         gh.setTotal(sun);
   //         gh.setContado(txtCantidad.getText());
-           gh.setCredito("0");
+        //   gh.setCredito("0");
   //       gh.setNombre(txNombre.getText());
   //       gh.setCedula(txCedula.getText());
-           gh.setPagado(true);
+      //     gh.setPagado(true);
            gh.setHorario(hora);
            gh.setUsuario(hora.getUsuario());
            gh.actualizar();  
@@ -383,7 +383,7 @@ private void setPanel(VentaProductos gg){
         //SE DEBE SUMAR LO QUE SE BORRA A LA TABLA OTROS
         Otros otros = new Otros();
         otros= gh.getOtros();
-        otros.setStock(otros.getStock()+Integer.parseInt(gh.getContado())+Integer.parseInt(gh.getCredito()));
+      //  otros.setStock(otros.getStock()+Integer.parseInt(gh.getContado())+Integer.parseInt(gh.getCredito()));
         otros.actualizar();
 //#########################################################################################       
         
