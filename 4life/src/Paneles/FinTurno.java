@@ -150,7 +150,7 @@ private Lista lista;
    }
  
          private void ventascredito(){
-        
+     /*   
         
         venta = new VentaProductos();
         otros = new Otros();
@@ -190,7 +190,7 @@ private Lista lista;
                 }
   
         }
-        
+        */
         
     }
      private void FaltanteCierre(){
@@ -592,7 +592,7 @@ public void  cie2(){
   }
  private void venats(){
    
-    
+    /*
             venta = new VentaProductos();
             otros = new Otros();
             int p;
@@ -631,7 +631,7 @@ public void  cie2(){
                                 }
                         }
                 }
-    
+    */
    
 } 
  private void cheq2(){
