@@ -226,7 +226,7 @@ private void setPanel(){
        txtCantidad.setText(""+venta.getContado());  
    }
    txtTotal.setText(""+venta.getTotal());
-   txNombre.setText(""+venta.getNombre());
+   //txNombre.setText(""+venta.getNombre());
    cboLinea.setSelectedItem(otros.getNombre().toString());
        
 } 
@@ -257,10 +257,10 @@ private void setPanel(VentaProductos gg){
    }
    
    txtTotal.setText(""+gg.getTotal());
-   txNombre.setText(""+gg.getNombre());
+//   txNombre.setText(""+gg.getNombre());
    txCedula.setText(gg.getCedula());
    cboLinea.setSelectedItem(gg.getOtros().getNombre().toString());
-   txCodigo.setText(""+gg.getId_Venta());     
+  // txCodigo.setText(""+gg.getId_Venta());     
     }  
     
     
@@ -272,7 +272,7 @@ private void setPanel(VentaProductos gg){
             venta.setTotal(Float.parseFloat(txtTotal.getText()));
             venta.setContado(txtCantidad.getText());
             venta.setCredito("0");
-            venta.setNombre(txNombre.getText());
+//            venta.setNombre(txNombre.getText());
             venta.setCedula(txCedula.getText());
             venta.setPagado(true);
             
@@ -350,7 +350,7 @@ private void setPanel(VentaProductos gg){
            gh.setTotal(sun);
            gh.setContado(txtCantidad.getText());
            gh.setCredito("0");
-           gh.setNombre(txNombre.getText());
+//           gh.setNombre(txNombre.getText());
            gh.setCedula(txCedula.getText());
            gh.setPagado(true);
            gh.setHorario(hora);
@@ -400,7 +400,7 @@ private void setPanel(VentaProductos gg){
    
      if(tar.getSize()!=0){
         venta=(VentaProductos) tar.getObject(tar.getSize()-1);
-        txCodigo.setText(""+(venta.getId_Venta()+1));
+//        txCodigo.setText(""+(venta.getId_Venta()+1));
      }
    txtCantidad.setText("0"); 
    txtTotal.setText("0");
@@ -412,7 +412,7 @@ public void modoEdicion(boolean b){
 
       txtCantidad.setEditable(b);
       txtTotal.setEditable(b);
-      txNombre.setEditable(b);
+      //txNombre.setEditable(b);
       txCedula.setEditable(b);
       panMantenimiento1.setActiva(b);
       
@@ -1264,6 +1264,9 @@ setTabla();
     }//GEN-LAST:event_tblProductoMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        
+        
         setTabla2();
     }//GEN-LAST:event_jButton2ActionPerformed
  private void setTabla2(){
