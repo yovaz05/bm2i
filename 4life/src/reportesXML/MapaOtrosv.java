@@ -87,8 +87,8 @@ public class MapaOtrosv extends ModeloTabla implements ModeloMapa{
                 row.add(""+ getOtros().getNombre());
                 row.add(""+ getOtros().getUnidad());
                 row.add(""+ getOtros().getCosto());
-                row.add(""+ getOtros().getVunitario());
                 row.add(""+ getOtros().getVunitario2());
+                row.add(""+ getOtros().getVunitario());
                 row.add(""+ getOtros().getPuntos());
                 row.add(""+ getOtros().getEminima());
                 row.add(""+ getOtros().getEmaxima());
