@@ -20,15 +20,16 @@ public class VentaProductos {
     
      private int id_Venta;
      private Date fechasalida;
-     private String nombre;
-     private String cedula;
-     private Boolean pagado;
-     private String contado;
-     private String credito;
-     private Float total;
+     private String nfactura;
+     private Float totalproducto;
+     private Float vuproducto;
+     private Float totalpuntos;
+     private Float vupuntos;
      private Otros otros;
      private Usuario usuario;
      private Horario horario;
+     private Cliente cliente;
+     private String contado;
      
      private VentaProductosHBM base;
     public VentaProductos() {
@@ -49,14 +50,6 @@ public class VentaProductos {
 
     public void setFechasalida(Date fechasalida) {
         this.fechasalida = fechasalida;
-    }
-
-    public Float getTotal() {
-        return total;
-    }
-
-    public void setTotal(Float total) {
-        this.total = total;
     }
 
     public Usuario getUsuario() {
@@ -114,29 +107,6 @@ public class VentaProductos {
         return getBase().lista4(hora, anul);
     } 
 
-   public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Boolean getPagado() {
-        return pagado;
-    }
-
-    public void setPagado(Boolean pagado) {
-        this.pagado = pagado;
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
     public List lista3( String nom, Boolean bo){
         return getBase().lista3(nom, bo);
     } 
@@ -175,11 +145,89 @@ public class VentaProductos {
         this.contado = contado;
     }
 
-    public String getCredito() {
-        return credito;
+    /**
+     * @return the nfactura
+     */
+    public String getNfactura() {
+        return nfactura;
     }
 
-    public void setCredito(String credito) {
-        this.credito = credito;
+    /**
+     * @param nfactura the nfactura to set
+     */
+    public void setNfactura(String nfactura) {
+        this.nfactura = nfactura;
     }
+
+    /**
+     * @return the totalproducto
+     */
+    public Float getTotalproducto() {
+        return totalproducto;
+    }
+
+    /**
+     * @param totalproducto the totalproducto to set
+     */
+    public void setTotalproducto(Float totalproducto) {
+        this.totalproducto = totalproducto;
+    }
+
+    /**
+     * @return the vuproducto
+     */
+    public Float getVuproducto() {
+        return vuproducto;
+    }
+
+    /**
+     * @param vuproducto the vuproducto to set
+     */
+    public void setVuproducto(Float vuproducto) {
+        this.vuproducto = vuproducto;
+    }
+
+    /**
+     * @return the totalpuntos
+     */
+    public Float getTotalpuntos() {
+        return totalpuntos;
+    }
+
+    /**
+     * @param totalpuntos the totalpuntos to set
+     */
+    public void setTotalpuntos(Float totalpuntos) {
+        this.totalpuntos = totalpuntos;
+    }
+
+    /**
+     * @return the vupuntos
+     */
+    public Float getVupuntos() {
+        return vupuntos;
+    }
+
+    /**
+     * @param vupuntos the vupuntos to set
+     */
+    public void setVupuntos(Float vupuntos) {
+        this.vupuntos = vupuntos;
+    }
+
+    /**
+     * @return the cliente
+     */
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+   
 }
