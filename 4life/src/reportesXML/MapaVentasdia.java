@@ -81,14 +81,15 @@ public class MapaVentasdia extends ModeloTabla implements ModeloMapa{
 //                row.add(i+1);
             row.add(""+ getVenta().getId_Venta());
             row.add(""+ getVenta().getFechasalida());
+            //
             row.add(""+ getVenta().getNombre());
             row.add(""+ getVenta().getOtros().getNombre());
             
             
             row.add(""+ getVenta().getContado());
             
-            row.add(""+getVenta().getCredito());
-            row.add(""+ getVenta().getTotal());
+            //row.add(""+getVenta().getCredito());
+           // row.add(""+ getVenta().getTotal());
             row.add(""+ getVenta().getHorario().getUsuario().getNombre());
             rows.add(row);
         }
