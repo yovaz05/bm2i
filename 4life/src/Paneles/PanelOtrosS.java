@@ -407,7 +407,7 @@ private void setPanel(VentaProductos gg){
         venta=(VentaProductos) tar.getObject(tar.getSize()-1);
 //      txCodigo.setText(""+(venta.getId_Venta()+1));
      }
-  jTCantidad.setText("0"); 
+  jTCantidad.setText("1"); 
   jTotal.setText("0");
      
 }
@@ -417,7 +417,10 @@ public void modoEdicion(boolean b){
 
     jTCantidad.setEditable(b);
     panMantenimiento1.setActiva(b);
-      
+    txtStock.setEditable(false);
+    jTPuntos.setEditable(false);   
+    jTPrecio.setEditable(false); 
+    jTotal.setEditable(false);
 }
 
     public boolean isEditar() {
@@ -498,7 +501,6 @@ public void modoEdicion(boolean b){
         jTCantidad = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
         jTPuntos = new javax.swing.JTextField();
         jBPrint1 = new javax.swing.JButton();
 
@@ -983,19 +985,6 @@ public void modoEdicion(boolean b){
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 10;
         jXPanel3.add(jButton1, gridBagConstraints);
-
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16/BINOC02A.png"))); // NOI18N
-        jButton7.setText("GRABAR");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 11;
-        gridBagConstraints.insets = new java.awt.Insets(11, 15, 11, 5);
-        jXPanel3.add(jButton7, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -1012,7 +1001,7 @@ public void modoEdicion(boolean b){
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 11;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 11, 0, 11);
@@ -1075,10 +1064,16 @@ public void modoEdicion(boolean b){
      }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        float vunit=Float.parseFloat(jTPrecio.getText());
-        float cant = Float.parseFloat(jTCantidad.getText());
-        float igual= (vunit * cant);
-        jTotal.setText(String.valueOf(igual));
+        
+        if (jTPrecio.getText().equals("")){
+            Mensaje.showMensaje(this,"NO ha seleccionado un precio");
+        }else {
+            float vunit=Float.parseFloat(jTPrecio.getText());
+            float cant = Float.parseFloat(jTCantidad.getText());
+            float igual= (vunit * cant);
+            jTotal.setText(String.valueOf(igual));
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cboLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLineaActionPerformed
@@ -1153,10 +1148,6 @@ getPanellinete();
              // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
     private void jBPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPrint1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBPrint1ActionPerformed
@@ -1172,7 +1163,6 @@ getPanellinete();
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox jCParroquia;
     private javax.swing.JTextField jCelular;
     private javax.swing.JTextField jDireccion;
