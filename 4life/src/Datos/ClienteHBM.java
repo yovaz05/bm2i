@@ -9,7 +9,6 @@
 package Datos;
 
 import beans.Cliente;
-import beans.Cliente;
 import hibernate.HibernateDAO;
 import java.util.List;
 import org.hibernate.Criteria;
