@@ -17,14 +17,18 @@ public class MapaCliente extends ModeloTabla implements ModeloMapa {
 
     private boolean numerador;
     private String[] nombre = new String[]{
-        "Cedula/RUC",
-        "Nombres",
-        "Apellidos",
-        "Codigo",
-        "Correo",
-        "Telefono",
-        "Celular",};
+         "Codigo 4LIFE",
+         "Nombres",
+         "Apellidos",
+         "Cedula/RUC",
+         "Telefono",
+         "Celular",
+         "Direccion",
+         "Correo"
+    
+    };
     private boolean[] edit = new boolean[]{
+        false,
         false,
         false,
         false,
@@ -34,6 +38,7 @@ public class MapaCliente extends ModeloTabla implements ModeloMapa {
         false
     };
     private Class[] tipo = new Class[]{
+        String.class,
         String.class,
         String.class,
         String.class,
@@ -57,14 +62,14 @@ public class MapaCliente extends ModeloTabla implements ModeloMapa {
         for (int i = 0; i < lista.getSize(); i++) {
             Vector row = new Vector();
             Cliente cliente = (Cliente) lista.getObject(i);
-
-            row.add(cliente.getCedularuc());
+            row.add(cliente.getCodigocliente());
             row.add(cliente.getNombres());
             row.add(cliente.getApellidos());
-            row.add(cliente.getCodigocliente());
-            row.add(cliente.getEmail());
+            row.add(cliente.getCedularuc());
             row.add(cliente.getTelefono());
             row.add(cliente.getCelular());
+            row.add(cliente.getNombre());
+            row.add(cliente.getEmail());
             
             rows.add(row);
 
