@@ -459,7 +459,7 @@ txtUtilidadche.setText(String.valueOf(che1));
                         cierre.setDesde(" ");
                         cierre.setHasta(" ");
                         cierre.setNeto(" ");
-                        cierre.setTotal(String.valueOf(venta.getTotal()));
+                       // cierre.setTotal(String.valueOf(venta.getTotal()));
                         if (cierre.guardar()){
                         //   Mensaje.showError(this,"BIEN CARAJO ","Error");
                          }else{
