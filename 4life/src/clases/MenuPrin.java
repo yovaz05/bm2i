@@ -223,7 +223,7 @@ public class MenuPrin extends javax.swing.JFrame {
                     .add(jXHEnviarGiro, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXHPagarGiro, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXHEnvioPaquete, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jXTaskPane1Layout.setVerticalGroup(
             jXTaskPane1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -302,7 +302,7 @@ public class MenuPrin extends javax.swing.JFrame {
                     .add(jXHFlores, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXHCabinas, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXHConferenciaV, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         jXTaskPane2Layout.setVerticalGroup(
             jXTaskPane2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -628,10 +628,10 @@ public class MenuPrin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuSocios);
 
-        jmConfiguracion.setText("Clientes");
+        jmConfiguracion.setText("CLIENTES");
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/12/Accesos.png"))); // NOI18N
-        jMenuItem5.setText("Eviar un Giro");
+        jMenuItem5.setText("Crear Cliente");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -641,6 +641,7 @@ public class MenuPrin extends javax.swing.JFrame {
 
         jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/12/Warning.png"))); // NOI18N
         jMenuItem9.setText("Remplazo de Giros");
+        jMenuItem9.setEnabled(false);
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem9ActionPerformed(evt);
@@ -650,6 +651,7 @@ public class MenuPrin extends javax.swing.JFrame {
 
         jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/12/Cortar.png"))); // NOI18N
         jMenuItem10.setText("Anular Giros");
+        jMenuItem10.setEnabled(false);
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem10ActionPerformed(evt);
@@ -659,6 +661,7 @@ public class MenuPrin extends javax.swing.JFrame {
 
         jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/12/edit_f2.png"))); // NOI18N
         jMenuItem11.setText("Pagos de Giros");
+        jMenuItem11.setEnabled(false);
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem11ActionPerformed(evt);
@@ -668,6 +671,7 @@ public class MenuPrin extends javax.swing.JFrame {
 
         jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/12/guardar.png"))); // NOI18N
         jMenuItem12.setText("Giros de oficina");
+        jMenuItem12.setEnabled(false);
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem12ActionPerformed(evt);
@@ -1675,15 +1679,6 @@ public class MenuPrin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMvERgIROSActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-
-        ClienteGestionIFrame cgif = new ClienteGestionIFrame();
-        cgif.setVisible(true);
-        escritorio.add(cgif, JLayeredPane.DEFAULT_LAYER);
-        cgif.moveToFront();
-
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
     private void jMNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMNuevoUsuarioActionPerformed
         COMnuevoU f = new COMnuevoU();
         f.setVisible(true);
@@ -1765,6 +1760,14 @@ public class MenuPrin extends javax.swing.JFrame {
         escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMenuItemPagoActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+
+        ClienteGestionIFrame cgif = new ClienteGestionIFrame();
+        cgif.setVisible(true);
+        escritorio.add(cgif, JLayeredPane.DEFAULT_LAYER);
+        cgif.moveToFront();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
