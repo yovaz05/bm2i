@@ -272,21 +272,36 @@ private void getPanellinete(){
       
       Cliente cliente = new Cliente();
       
-      cliente.setCodigocliente(jTCodigo.getText());
-      cliente.setNombres(jTNombre.getText());
-      cliente.setApellidos(jTApellido.getText());
-      cliente.setCedularuc(jTCedula.getText());
-      cliente.setTelefono(jTelefono.getText());
-      cliente.setCelular(jCelular.getText());
-      cliente.setNombre(jDireccion.getText());
-      cliente.guardar();   
-      if(cliente.guardar()){
-          modoEdicion2(false);
-          Mensaje.showMensaje(this,"Se ha realizado la venta con EXITO");
-          }else{
-              Mensaje.showError(this,"ERRO AL GRABAR","Error");
-          }
-            
+      if (jTCodigo.getText().equals("")){
+      Mensaje.showError(this,"No se puede Grabar ya que no hay CODIGO 4LIFE","Error");
+      enblanco();
+      }else{
+      String bus = jTCodigo.getText();
+      cliente = cliente.buscarCodigo(bus);
+      if (cliente==null){
+                        Cliente cli = new Cliente();
+                        cli.setCodigocliente(jTCodigo.getText());
+                        cli.setNombres(jTNombre.getText());
+                        cli.setApellidos(jTApellido.getText());
+                        cli.setCedularuc(jTCedula.getText());
+                        cli.setTelefono(jTelefono.getText());
+                        cli.setCelular(jCelular.getText());
+                        cli.setNombre(jDireccion.getText());
+                        cli.guardar();   
+                        if(cli.guardar()){
+                            modoEdicion2(false);
+                            Mensaje.showMensaje(this,"Se ha creado el Cliente con EXITO");
+                            modoEdicion2(false);
+                            }else{
+                                Mensaje.showError(this,"ERRO AL GRABAR","Error");
+                            }
+                        }else{
+                             Mensaje.showError(this,"ESTE CLIENTE YA EXISTE","Error");      
+                             setPanel2(cliente);
+                             modoEdicion2(false);
+                         }
+    }
+         
   }
 
 
