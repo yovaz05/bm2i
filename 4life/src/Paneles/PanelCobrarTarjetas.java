@@ -55,16 +55,18 @@ Otros otros;
     
        
 private void setPanel(){
-   
+   /*
    datFechaIngreso.setDate(venta.getFechasalida());
    jTNombre.setText(""+venta.getNombre());
    JTCantidad.setText(""+venta.getCredito());
    jTVUnitario.setText(""+venta.getOtros().getVunitario());
    jTVTotal.setText(""+venta.getTotal());
    jTextField1.setText(venta.getNombre());
+
+*/
 }  
  private void setPanel(VentaProductos gg){
-     
+  /*   
    datFechaIngreso.setDate(gg.getFechasalida());
    jTNombre.setText(""+gg.getNombre());
    JTCantidad.setText(""+gg.getCredito());
@@ -82,7 +84,7 @@ private void setPanel(){
        jBHabilitar.setEnabled(false);
        jBPagar.setEnabled(true);
            }
-     
+     */
       }  
 
     
@@ -520,7 +522,7 @@ private void setTabla(){
     }//GEN-LAST:event_jBPrintActionPerformed
 
     private void jBHabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBHabilitarActionPerformed
-
+/*
         horario=new Horario();
         Horario otro = new Horario();
         Boolean est=(false);
@@ -540,7 +542,7 @@ private void setTabla(){
         venta.actualizar();
         
         gh.borrar();
-        setTabla();
+        setTabla();*/
     }//GEN-LAST:event_jBHabilitarActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
@@ -613,7 +615,7 @@ setTabla();
     
     private void jBPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPagarActionPerformed
          
-        horario=new Horario();
+  /*      horario=new Horario();
         Horario otro = new Horario();
         Boolean est=(false);
         otro=horario.buscar(est);
@@ -691,7 +693,7 @@ setTabla();
   }
 
 
-       
+     */  
       
     }//GEN-LAST:event_jBPagarActionPerformed
 
