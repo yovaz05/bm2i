@@ -491,7 +491,7 @@ public class VerCierre2 extends javax.swing.JPanel {
                 if(Integer.parseInt(venta.getContado())>0){
                             cierre.setNumero(String.valueOf(venta.getContado()));
                         }else{
-                            cierre.setNumero(String.valueOf(venta.getCredito()));
+                           // cierre.setNumero(String.valueOf(venta.getCredito()));
                         }
                 cierre.setConcepto(venta.getOtros().getNombre());
                 cierre.setIngreso(false);
@@ -499,7 +499,7 @@ public class VerCierre2 extends javax.swing.JPanel {
                 cierre.setDesde(" ");
                 cierre.setHasta(" ");
                 cierre.setNeto(" ");
-                cierre.setTotal(String.valueOf(venta.getTotal()));
+               // cierre.setTotal(String.valueOf(venta.getTotal()));
                 cierre.setCierre1(false);
                 if (cierre.guardar()){
                     //   Mensaje.showError(this,"BIEN CARAJO ","Error");
@@ -532,7 +532,7 @@ public class VerCierre2 extends javax.swing.JPanel {
             }else{
                 cierre = new Cierre();
                 // Mensaje.showMensaje(this,"La agencia es "+venta.getOtros().getNombre());
-                if (Integer.parseInt(venta.getCredito())>0){
+            /*   if (Integer.parseInt(venta.getCredito())>0){
                 
                     cierre.setNumero(String.valueOf(venta.getCredito()));
                     cierre.setConcepto(venta.getOtros().getNombre());
@@ -548,7 +548,7 @@ public class VerCierre2 extends javax.swing.JPanel {
                     }else{
                     Mensaje.showError(this,"SE PUDRIO TODO","Error");
                         }
-                    }
+                    }*/
                 }
   
         }
