@@ -8,7 +8,7 @@ package Paneles;
 
     import beans.Otros;
     import clases.MenuPrin;
-    import com.sun.rmi.rmid.ExecOptionPermission;
+   // import com.sun.rmi.rmid.ExecOptionPermission;
     import java.util.Date;
     import java.util.List;
     import modelo.Mensaje;
