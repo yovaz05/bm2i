@@ -25,6 +25,7 @@
     <property name="vuproducto" column="VUPRODUCTO"/>
     <property name="totalpuntos" column="TOTALPUNTOS"/>
     <property name="vupuntos" column="VUPUNTOS"/>
+    <property name="cantidad" column="CANTIDAD"/>
     <many-to-one name="cliente" column="ID_CLIENTE"/>
     <many-to-one name="otros" column="ID_OTROS"/>
     <many-to-one name="usuario" column="ID_USUARIO"/>
