@@ -22,19 +22,14 @@ public class MapaVentasdia extends ModeloTabla implements ModeloMapa{
    private boolean numerador;
     
     private String[] nombre = new String[]{
-            "Credito N",
-            "Fecha",
-            "Cliente",
-            "Producto",
-            "Unidades al Contado",
-            "Unidades a Credito",
-            "Total"
+            "Cantidad",
+            "Producto Descripcion ",
+            "Precio Unitario",
+            "Puntos",
+            "Precio Total",
             
     };
     private boolean[] edit = new boolean[]{
-            false,
-            false,
-            false,
             false,
             false,
             false,
@@ -43,11 +38,8 @@ public class MapaVentasdia extends ModeloTabla implements ModeloMapa{
             
     };
     private Class[] tipo =new Class[]{
-            Integer.class,
             String.class,
             String.class,
-            String.class,
-            Integer.class,
             String.class,
             String.class,
             String.class
@@ -77,20 +69,13 @@ public class MapaVentasdia extends ModeloTabla implements ModeloMapa{
         for (int i = 0; i < lista.getSize(); i++) {
             Vector row = new Vector();
             setVenta((VentaProductos)lista.getObject(i));
-//            if(isNumerador())
+            if(isNumerador())
 //                row.add(i+1);
-            row.add(""+ getVenta().getId_Venta());
-            row.add(""+ getVenta().getFechasalida());
-            //
-            row.add(""+ getVenta().getNombre());
+            row.add(""+ getVenta().getCantidad());
             row.add(""+ getVenta().getOtros().getNombre());
-            
-            
-            row.add(""+ getVenta().getContado());
-            
-            //row.add(""+getVenta().getCredito());
-           // row.add(""+ getVenta().getTotal());
-            row.add(""+ getVenta().getHorario().getUsuario().getNombre());
+            row.add(""+ getVenta().getVuproducto());
+            row.add(""+ getVenta().getTotalpuntos());
+            row.add(""+ getVenta().getTotalproducto());
             rows.add(row);
         }
         setRows(rows);
