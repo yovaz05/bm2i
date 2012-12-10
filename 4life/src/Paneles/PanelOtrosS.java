@@ -71,9 +71,10 @@ Lista listaAnteriores;
  }
     
  private boolean isVacio(){
- if((jTCantidad.getText().equalsIgnoreCase("")) | (jTotal.getText().equalsIgnoreCase(""))
-        )
-     return true;
+ if((jTCantidad.getText().equalsIgnoreCase(""))  | (jTotal.getText().equalsIgnoreCase("") | (jTCodigo.getText().equalsIgnoreCase("")
+     | (txtStock.getText().equalsIgnoreCase("")) | (jTPuntos.getText().equalsIgnoreCase("")) | (jtNfactura.getText().equalsIgnoreCase(""))
+           )))
+  return true;
   return false;
         } 
    
@@ -85,8 +86,8 @@ Lista listaAnteriores;
                    otro=horario.buscar(est);
                    txtNombre.setText(otro.getUsuario().getNombre()+" "+otro.getUsuario().getApellido());
                    venta = new VentaProductos();
-                   codigo = new Lista(new VentaProductos().lista2(otro));
-                   venta=(VentaProductos) codigo.ultimo();
+                  // codigo = new Lista(new VentaProductos().lista2(otro));
+                  // venta=(VentaProductos) codigo.ultimo();
                    modoEdicion(false);
                    modoEdicion2(false);
                    setTabla();
@@ -153,7 +154,7 @@ Lista listaAnteriores;
             setTabla();
             inicializa();
         }else
-            Mensaje.showError(this,"ERRO AL GRABAR","Error");
+            Mensaje.showError(this,"ERRO AL GRABAR LLENE TODOS LOS CAMPOS","Error");
     }
     
     private void borrar(){
@@ -302,10 +303,22 @@ private void setPanel(VentaProductos gg){
     private void getPanel(){
       
       
-            venta.setOtros((Otros)lista.getObject(cboLinea.getSelectedIndex()));
-            venta.setFechasalida(datFechaIngreso.getDate());
-           // venta.setPagado(true);
-            
+         //  venta.setOtros((Otros)lista.getObject(cboLinea.getSelectedIndex()));
+           venta.setFechasalida(datFechaIngreso.getDate());
+           venta.setNfactura(""+jtNfactura.getText());
+           venta.setVuproducto(Float.parseFloat(jTPrecio.getText()));
+           Float pro= Float.parseFloat(jTPrecio.getText())*Float.parseFloat(jTCantidad.getText());
+           venta.setTotalproducto(pro);
+           venta.setVupuntos(Float.parseFloat(jTPuntos.getText()));
+           Float pu= Float.parseFloat(jTPuntos.getText())*Float.parseFloat(jTCantidad.getText());
+           venta.setTotalpuntos(pu); 
+           venta.setCantidad(Integer.parseInt(jtNfactura.getText()));
+           Cliente cli = new Cliente();        
+           String bus = jTCodigo.getText();
+           cli = cli.buscarCodigo(bus);
+           
+           venta.setCliente(cli);
+           
            horario=new Horario();
            Horario hora = new Horario();
            Boolean est=(false);
@@ -313,12 +326,13 @@ private void setPanel(VentaProductos gg){
         
            venta.setHorario(hora);
            venta.setUsuario(hora.getUsuario());
-        
-           Otros otros;
-           otros = ((Otros)lista.getObject(cboLinea.getSelectedIndex()));
-        
-           //otros.setStock(otros.getStock()-Integer.parseInt(txtCantidad.getText()));    
-           otros.actualizar();    
+                           
+        linea=((Linea)lista.getObject(cboLinea.getSelectedIndex()));
+        codigo =new Lista(new Otros().lista2(linea));
+        otros = ((Otros)codigo.getObject(cboProductos.getSelectedIndex()));
+        venta.setOtros(otros);   
+        otros.setStock(otros.getStock()-Integer.parseInt(jTCantidad.getText()));    
+        otros.actualizar();    
             
          }
     
@@ -415,6 +429,10 @@ private void setPanel(VentaProductos gg){
     
 public void modoEdicion(boolean b){
 
+    cboLinea.setEnabled(b);
+    //cboProductos.setEnabled(b);
+    jCParroquia.setEnabled(b);
+    jtNfactura.setEditable(b);
     jTCantidad.setEditable(b);
     panMantenimiento1.setActiva(b);
     txtStock.setEditable(false);
@@ -503,6 +521,8 @@ public void modoEdicion(boolean b){
         jButton1 = new javax.swing.JButton();
         jTPuntos = new javax.swing.JTextField();
         jBPrint1 = new javax.swing.JButton();
+        jtNfactura = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
 
         setBackground(java.awt.SystemColor.window);
         setLayout(new java.awt.GridBagLayout());
@@ -862,10 +882,10 @@ public void modoEdicion(boolean b){
         jXPanel3.add(jLabel8, gridBagConstraints);
 
         jLabel18.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
-        jLabel18.setText("Tipo Precio");
+        jLabel18.setText("Numero de factura");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 21, 0, 12);
         jXPanel3.add(jLabel18, gridBagConstraints);
@@ -936,7 +956,7 @@ public void modoEdicion(boolean b){
         jXPanel3.add(jLabel22, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 21);
@@ -1006,6 +1026,22 @@ public void modoEdicion(boolean b){
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 11, 0, 11);
         jXPanel3.add(jBPrint1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 21);
+        jXPanel3.add(jtNfactura, gridBagConstraints);
+
+        jLabel19.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabel19.setText("Tipo Precio");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 21, 0, 12);
+        jXPanel3.add(jLabel19, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -1043,7 +1079,7 @@ public void modoEdicion(boolean b){
       String bus = jTCodigo.getText();
       cli = cli.buscarCodigo(bus);
       if (cli==null){
-                 Mensaje.showError(this,"No hay ningun Clinete con este codigo intente denuevo","Error");
+                 Mensaje.showError(this,"No hay ningun Cliente con este codigo intente denuevo","Error");
                  enblanco();
       }else{
                 setPanel2(cli);
@@ -1179,6 +1215,7 @@ getPanellinete();
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -1201,6 +1238,7 @@ getPanellinete();
     private org.jdesktop.swingx.JXPanel jXPanel1;
     private org.jdesktop.swingx.JXPanel jXPanel2;
     private org.jdesktop.swingx.JXPanel jXPanel3;
+    private javax.swing.JTextField jtNfactura;
     private javax.swing.JLabel lblFechaIngreso1;
     private clases.PanMantenimiento panMantenimiento1;
     private org.jdesktop.swingx.JXTable tblProducto;
