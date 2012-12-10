@@ -29,7 +29,7 @@ public class VentaProductos {
      private Usuario usuario;
      private Horario horario;
      private Cliente cliente;
-     private String contado;
+     private int cantidad;
      
      private VentaProductosHBM base;
     public VentaProductos() {
@@ -137,15 +137,7 @@ public class VentaProductos {
         return getBase().lista();
     }
 
-    public String getContado() {
-        return contado;
-    }
-
-    public void setContado(String contado) {
-        this.contado = contado;
-    }
-
-    /**
+       /**
      * @return the nfactura
      */
     public String getNfactura() {
@@ -227,6 +219,20 @@ public class VentaProductos {
      */
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    /**
+     * @return the cantidad
+     */
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    /**
+     * @param cantidad the cantidad to set
+     */
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
    
