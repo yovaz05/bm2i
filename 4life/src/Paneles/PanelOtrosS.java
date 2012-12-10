@@ -428,9 +428,9 @@ private void setPanel(VentaProductos gg){
     
     
 public void modoEdicion(boolean b){
-
+    cboProductos.setEditable(b);
     cboLinea.setEnabled(b);
-    //cboProductos.setEnabled(b);
+    cboProductos.setEnabled(b);
     jCParroquia.setEnabled(b);
     jtNfactura.setEditable(b);
     jTCantidad.setEditable(b);
@@ -457,7 +457,7 @@ public void modoEdicion(boolean b){
          hora=horario.buscar(est);
                
                 
-         Lista listaAnteriores =new Lista(new VentaProductos().lista2(hora));
+         Lista listaAnteriores =new Lista(new VentaProductos().lista9(jtNfactura.getText(),hora));
          Mapa mapa = new Mapa(listaAnteriores,Mapa.MAPAVENTASDIA,true);
          reportesXML.ModeloTabla modelo = mapa.getModeloTabla();
          tblProducto.setModel(modelo);
