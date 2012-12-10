@@ -488,11 +488,11 @@ public class VerCierre2 extends javax.swing.JPanel {
             }else{
                 cierre = new Cierre();
                 // Mensaje.showMensaje(this,"La agencia es "+venta.getOtros().getNombre());
-                if(Integer.parseInt(venta.getContado())>0){
-                            cierre.setNumero(String.valueOf(venta.getContado()));
-                        }else{
+                //if(Integer.parseInt(venta.getContado())>0){
+                      //      cierre.setNumero(String.valueOf(venta.getContado()));
+                      //  }else{
                            // cierre.setNumero(String.valueOf(venta.getCredito()));
-                        }
+                      //  }
                 cierre.setConcepto(venta.getOtros().getNombre());
                 cierre.setIngreso(false);
                 cierre.setHorario(otro);
