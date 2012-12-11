@@ -36,6 +36,7 @@ private Lista codigo;
 private Lista tar;
 private Horario horario;
 Otros otros;
+Horario otro;
 private String mensaje="";
 private boolean editar;
 private VentaProductos venta;
@@ -56,6 +57,7 @@ Lista listaAnteriores;
         initComponents();
         fijaMetodos();
         inicializa();
+        responsable();
         setTabla();
         combos();
     }
@@ -69,6 +71,14 @@ Lista listaAnteriores;
                                         cboLinea.addItem(b1.getNombre());
                                        }
  }
+ 
+    private void responsable(){
+                   horario=new Horario();
+                   Boolean est=(false);
+                   otro=horario.buscar(est);
+                   txtNombre1.setText(otro.getUsuario().getNombre()+" "+otro.getUsuario().getApellido());
+   
+  }
     
  private boolean isVacio(){
  if((jTCantidad.getText().equalsIgnoreCase(""))  | (jTotal.getText().equalsIgnoreCase("") | (jTCodigo.getText().equalsIgnoreCase("")
@@ -439,6 +449,8 @@ public void modoEdicion(boolean b){
     jTPuntos.setEditable(false);   
     jTPrecio.setEditable(false); 
     jTotal.setEditable(false);
+    txtVtotal.setEditable(false);
+    txtPtotal.setEditable(false);        
 }
 
     public boolean isEditar() {
@@ -506,7 +518,6 @@ public void modoEdicion(boolean b){
         jLabel15 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         cboLinea = new javax.swing.JComboBox();
         cboProductos = new javax.swing.JComboBox();
         jCParroquia = new javax.swing.JComboBox();
@@ -521,25 +532,37 @@ public void modoEdicion(boolean b){
         jButton1 = new javax.swing.JButton();
         jTPuntos = new javax.swing.JTextField();
         jBPrint1 = new javax.swing.JButton();
-        jtNfactura = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
+        txtNombre1 = new javax.swing.JTextField();
+        jXPanel5 = new org.jdesktop.swingx.JXPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabelNombreGrup2 = new javax.swing.JLabel();
+        jtNfactura = new javax.swing.JTextField();
+        jXPanel6 = new org.jdesktop.swingx.JXPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabelNombreGrup3 = new javax.swing.JLabel();
+        txtPtotal = new javax.swing.JTextField();
+        txtVtotal = new javax.swing.JTextField();
+        jLabelNombreGrup4 = new javax.swing.JLabel();
+        jCTipoPago = new javax.swing.JComboBox();
+        jLabelNombreGrup5 = new javax.swing.JLabel();
 
         setBackground(java.awt.SystemColor.window);
         setLayout(new java.awt.GridBagLayout());
 
         jLabelSubtitulo6.setFont(new java.awt.Font("Bodoni MT", 1, 12)); // NOI18N
         jLabelSubtitulo6.setForeground(new java.awt.Color(0, 0, 204));
-        jLabelSubtitulo6.setText("                             DATOS DE LA CAJERA");
+        jLabelSubtitulo6.setText("                                                                                                                            DATOS DEL USUARIO");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 23;
+        gridBagConstraints.gridy = 17;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         add(jLabelSubtitulo6, gridBagConstraints);
 
-        jLabelNombreGrup1.setText("                            Nombre ");
+        jLabelNombreGrup1.setText("                                                                                                                                                      Nombre ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 24;
+        gridBagConstraints.gridy = 18;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(jLabelNombreGrup1, gridBagConstraints);
 
@@ -554,7 +577,7 @@ public void modoEdicion(boolean b){
         add(txtNombre, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 25;
+        gridBagConstraints.gridy = 19;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         add(panMantenimiento1, gridBagConstraints);
@@ -580,7 +603,7 @@ public void modoEdicion(boolean b){
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 26;
+        gridBagConstraints.gridy = 20;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
@@ -842,8 +865,7 @@ public void modoEdicion(boolean b){
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 8;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.gridheight = 7;
         gridBagConstraints.insets = new java.awt.Insets(6, 26, 7, 19);
         add(jXPanel1, gridBagConstraints);
 
@@ -880,15 +902,6 @@ public void modoEdicion(boolean b){
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 21, 0, 12);
         jXPanel3.add(jLabel8, gridBagConstraints);
-
-        jLabel18.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
-        jLabel18.setText("Numero de factura");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(0, 21, 0, 12);
-        jXPanel3.add(jLabel18, gridBagConstraints);
 
         cboLinea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1026,13 +1039,6 @@ public void modoEdicion(boolean b){
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 11, 0, 11);
         jXPanel3.add(jBPrint1, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 21);
-        jXPanel3.add(jtNfactura, gridBagConstraints);
 
         jLabel19.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabel19.setText("Tipo Precio");
@@ -1045,7 +1051,7 @@ public void modoEdicion(boolean b){
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.gridheight = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -1053,6 +1059,157 @@ public void modoEdicion(boolean b){
         gridBagConstraints.ipady = 1;
         gridBagConstraints.insets = new java.awt.Insets(8, 18, 10, 21);
         add(jXPanel3, gridBagConstraints);
+
+        txtNombre1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        txtNombre1.setForeground(java.awt.SystemColor.activeCaption);
+        txtNombre1.setBorder(null);
+        txtNombre1.setSelectionColor(java.awt.SystemColor.activeCaptionText);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 18;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 196;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 11);
+        add(txtNombre1, gridBagConstraints);
+
+        jXPanel5.setBackground(new java.awt.Color(235, 247, 247));
+        jXPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jXPanel5.setDoubleBuffered(false);
+        jXPanel5.setFocusCycleRoot(true);
+        jXPanel5.setLayout(new java.awt.GridBagLayout());
+
+        jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(51, 0, 153));
+        jLabel20.setText("---------------------------------------");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 3, 8, 25);
+        jXPanel5.add(jLabel20, gridBagConstraints);
+
+        jLabelNombreGrup2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabelNombreGrup2.setText("Numero de factura");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 14, 0, 11);
+        jXPanel5.add(jLabelNombreGrup2, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 18);
+        jXPanel5.add(jtNfactura, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(2, 22, 8, 15);
+        add(jXPanel5, gridBagConstraints);
+
+        jXPanel6.setBackground(new java.awt.Color(235, 247, 247));
+        jXPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jXPanel6.setDoubleBuffered(false);
+        jXPanel6.setFocusCycleRoot(true);
+        jXPanel6.setLayout(new java.awt.GridBagLayout());
+
+        jLabel24.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(51, 0, 153));
+        jLabel24.setText("---------------------------------------");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 3, 8, 25);
+        jXPanel6.add(jLabel24, gridBagConstraints);
+
+        jLabelNombreGrup3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabelNombreGrup3.setText("Tipo de Pago");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 14, 0, 11);
+        jXPanel6.add(jLabelNombreGrup3, gridBagConstraints);
+
+        txtPtotal.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        txtPtotal.setForeground(java.awt.SystemColor.activeCaption);
+        txtPtotal.setBorder(null);
+        txtPtotal.setSelectionColor(java.awt.SystemColor.activeCaptionText);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 196;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 11);
+        jXPanel6.add(txtPtotal, gridBagConstraints);
+
+        txtVtotal.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        txtVtotal.setForeground(java.awt.SystemColor.activeCaption);
+        txtVtotal.setBorder(null);
+        txtVtotal.setSelectionColor(java.awt.SystemColor.activeCaptionText);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 196;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 11);
+        jXPanel6.add(txtVtotal, gridBagConstraints);
+
+        jLabelNombreGrup4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabelNombreGrup4.setText("Valor Total");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 14, 0, 11);
+        jXPanel6.add(jLabelNombreGrup4, gridBagConstraints);
+
+        jCTipoPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCTipoPagoActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 30);
+        jXPanel6.add(jCTipoPago, gridBagConstraints);
+
+        jLabelNombreGrup5.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabelNombreGrup5.setText("Total Puntos");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 14, 0, 11);
+        jXPanel6.add(jLabelNombreGrup5, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 23, 16, 16);
+        add(jXPanel6, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductoMouseClicked
@@ -1187,6 +1344,10 @@ getPanellinete();
     private void jBPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPrint1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBPrint1ActionPerformed
+
+    private void jCTipoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCTipoPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCTipoPagoActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1200,6 +1361,7 @@ getPanellinete();
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox jCParroquia;
+    private javax.swing.JComboBox jCTipoPago;
     private javax.swing.JTextField jCelular;
     private javax.swing.JTextField jDireccion;
     private javax.swing.JLabel jLApellido1;
@@ -1214,16 +1376,21 @@ getPanellinete();
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelNombreGrup1;
+    private javax.swing.JLabel jLabelNombreGrup2;
+    private javax.swing.JLabel jLabelNombreGrup3;
+    private javax.swing.JLabel jLabelNombreGrup4;
+    private javax.swing.JLabel jLabelNombreGrup5;
     private javax.swing.JLabel jLabelSubtitulo6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTApellido;
@@ -1238,12 +1405,17 @@ getPanellinete();
     private org.jdesktop.swingx.JXPanel jXPanel1;
     private org.jdesktop.swingx.JXPanel jXPanel2;
     private org.jdesktop.swingx.JXPanel jXPanel3;
+    private org.jdesktop.swingx.JXPanel jXPanel5;
+    private org.jdesktop.swingx.JXPanel jXPanel6;
     private javax.swing.JTextField jtNfactura;
     private javax.swing.JLabel lblFechaIngreso1;
     private clases.PanMantenimiento panMantenimiento1;
     private org.jdesktop.swingx.JXTable tblProducto;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombre1;
+    private javax.swing.JTextField txtPtotal;
     private javax.swing.JTextField txtStock;
+    private javax.swing.JTextField txtVtotal;
     // End of variables declaration//GEN-END:variables
     
 }
