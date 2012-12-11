@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Agencia.hbm.xml
+    Created on : 19 de septiembre de 2006, 15:54
+    Author     : ANtro
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="beans.Factura" table="FACTURA">         
+       <id name="id_Factura"  column="ID_FACTURA">
+        <generator class="native"/>        
+    </id>            
+    <property name="numero" column="NUMERO"/>
+    <property name="fecha" column="FECHA"/>
+    <property name="vtotal" column="VTOTAL"/>
+    <property name="vpuntos" column="VPUNTOS"/>
+    <property name="tpago" column="TPAGO"/>
+    <property name="utilidad" column="UTILIDAD"/>
+ <many-to-one name="cliente" column="ID_CLIENTE"/>   
+ <many-to-one name="horario" column="ID_HORARIO"/>
+   
+    
+</class>
+</hibernate-mapping>
