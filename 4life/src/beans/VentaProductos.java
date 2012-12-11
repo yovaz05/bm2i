@@ -11,7 +11,6 @@ package beans;
 
 import java.util.Date;
 import Datos.VentaProductosHBM;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,15 +20,19 @@ public class VentaProductos {
      private int id_Venta;
      private Date fechasalida;
      private String nfactura;
-     private Float totalproducto;
+     private int cantidad;
+     private Float costo;
      private Float vuproducto;
-     private Float totalpuntos;
      private Float vupuntos;
+     private Float utilidad;
+     private Float totalproducto;
+     private Float totalpuntos;
      private Otros otros;
      private Usuario usuario;
      private Horario horario;
      private Cliente cliente;
-     private int cantidad;
+     private Factura factura;
+     
      
      private VentaProductosHBM base;
     public VentaProductos() {
@@ -237,6 +240,48 @@ public class VentaProductos {
      */
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    /**
+     * @return the costo
+     */
+    public Float getCosto() {
+        return costo;
+    }
+
+    /**
+     * @param costo the costo to set
+     */
+    public void setCosto(Float costo) {
+        this.costo = costo;
+    }
+
+    /**
+     * @return the utilidad
+     */
+    public Float getUtilidad() {
+        return utilidad;
+    }
+
+    /**
+     * @param utilidad the utilidad to set
+     */
+    public void setUtilidad(Float utilidad) {
+        this.utilidad = utilidad;
+    }
+
+    /**
+     * @return the factura
+     */
+    public Factura getFactura() {
+        return factura;
+    }
+
+    /**
+     * @param factura the factura to set
+     */
+    public void setFactura(Factura factura) {
+        this.factura = factura;
     }
 
    
