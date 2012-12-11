@@ -6,7 +6,7 @@
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="connection.url">jdbc:mysql://localhost/4life</property>
     <property name="connection.username">root</property>
-    <property name="connection.password">server</property>
+    <property name="connection.password">betos</property>
     <!-- JDBC connection pool (use the built-in) -->
     <property name="connection.pool_size">1</property>
     <!-- SQL dialect -->
@@ -21,7 +21,7 @@
     <mapping resource="beans/Horario.hbm.xml"/>
     <mapping resource="beans/anulargiro.hbm.xml"/>
     <mapping resource="beans/Giro.hbm.xml"/>
-    <mapping resource="beans/Agencia.hbm.xml"/> 
+    <mapping resource="beans/Agencia.hbm.xml"/>
     <mapping resource="beans/CodigoAgencia.hbm.xml"/>
     <mapping resource="beans/Pasajes.hbm.xml"/>
     <mapping resource="beans/Flores.hbm.xml"/>
@@ -41,9 +41,11 @@
     <mapping resource="beans/CierreFaltante.hbm.xml"/>
     <mapping resource="beans/Tarjetas.hbm.xml"/>
     <mapping resource="beans/Linea.hbm.xml"/>
+    <mapping resource="beans/factura.hbm.xml"/>
     <!--agregado por mi jiji-->
     <mapping resource="beans/Cliente.hbm.xml"/>
-    <!-- <mapping resource="beans/Turno.hbm.xml"/>  
+    
+    <!--<mapping resource="beans/Turno.hbm.xml"/>  
         <mapping resource="beans/Efectivo.hbm.xml"/>  
         <mapping resource="beans/Destino.hbm.xml"/
 
