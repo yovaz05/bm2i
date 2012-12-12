@@ -27,9 +27,9 @@ public class FacturaHBM extends HibernateDAO{
         return crit.list();
     }
    
-    public Factura buscar(String nombre) {
+    public Factura buscar(String num) {
         Criteria crit = session.createCriteria(Factura.class);
-        crit.add(Restrictions.eq("nombre",nombre));
+        crit.add(Restrictions.eq("numero",num));
             if(crit.list().size()>1)
             return null;
         else
@@ -48,7 +48,7 @@ public class FacturaHBM extends HibernateDAO{
     
     
     
-    public Factura busca(String cedula){
+    public Factura buscaria(String cedula){
         Criteria crit = session.createCriteria(Factura.class);
         crit.add(Restrictions.eq("codigo",cedula));
         if(crit.list().size()>1){
