@@ -67,7 +67,7 @@ public class Factura {
     }
 
     public Factura Busca(String cod) {
-        return getBase().busca(cod);
+        return getBase().buscar(cod);
     }
 
     public Factura bus(String nom) {
