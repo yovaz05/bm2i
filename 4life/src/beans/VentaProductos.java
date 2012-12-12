@@ -26,7 +26,7 @@ public class VentaProductos {
      private Float vupuntos;
      private Float utilidad;
      private Float totalproducto;
-     private Float totalpuntos;
+     private int totalpuntos;
      private Otros otros;
      private Usuario usuario;
      private Horario horario;
@@ -189,18 +189,7 @@ public class VentaProductos {
     /**
      * @return the totalpuntos
      */
-    public Float getTotalpuntos() {
-        return totalpuntos;
-    }
-
-    /**
-     * @param totalpuntos the totalpuntos to set
-     */
-    public void setTotalpuntos(Float totalpuntos) {
-        this.totalpuntos = totalpuntos;
-    }
-
-    /**
+      /**
      * @return the vupuntos
      */
     public Float getVupuntos() {
@@ -282,6 +271,20 @@ public class VentaProductos {
      */
     public void setFactura(Factura factura) {
         this.factura = factura;
+    }
+
+    /**
+     * @return the totalpuntos
+     */
+    public int getTotalpuntos() {
+        return totalpuntos;
+    }
+
+    /**
+     * @param totalpuntos the totalpuntos to set
+     */
+    public void setTotalpuntos(int totalpuntos) {
+        this.totalpuntos = totalpuntos;
     }
 
    
