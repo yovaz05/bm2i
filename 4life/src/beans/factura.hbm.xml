@@ -24,6 +24,9 @@
     <property name="vpuntos" column="VPUNTOS"/>
     <property name="tpago" column="TPAGO"/>
     <property name="utilidad" column="UTILIDAD"/>
+     <property name="cerrada" type="java.lang.Boolean"  >
+    <column name="CERRADA" sql-type="tinyint(1)" not-null="false"/>
+    </property>
  <many-to-one name="cliente" column="ID_CLIENTE"/>   
  <many-to-one name="horario" column="ID_HORARIO"/>
    
