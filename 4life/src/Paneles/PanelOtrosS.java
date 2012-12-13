@@ -92,7 +92,7 @@ Lista listaAnteriores;
  private boolean isVacio(){
  if((jTCantidad.getText().equalsIgnoreCase(""))  | (jTotal.getText().equalsIgnoreCase("") | (jTCodigo.getText().equalsIgnoreCase("")
      | (txtStock.getText().equalsIgnoreCase("")) | (jTPuntos.getText().equalsIgnoreCase("")) | (jtNfactura.getText().equalsIgnoreCase(""))
-           )))
+     | (jTPrecio.getText().equalsIgnoreCase(""))      )))
   return true;
   return false;
         } 
@@ -155,14 +155,14 @@ Lista listaAnteriores;
         if(isEditar()){
                        getPanel2();
                        }else{            
-                           venta = new VentaProductos();
-                           getPanel(); 
-                            if(venta.guardar()){
-                                                inicializa();
-                                                 setTabla();
-                                               }else{
-                                                     return false;
-                                                    }
+                           if (Integer.parseInt(txtStock.getText())<Integer.parseInt(jTCantidad.getText())){
+                             Mensaje.showError(this,"No hay el Estock Necesario","Error");  
+                           }else{
+                                
+                                 getPanel(); 
+                                
+                           }
+                               
          }
        return true;
    } 
@@ -170,7 +170,7 @@ Lista listaAnteriores;
     private void aceptar(){
      
             if(saveOrUpdate()){
-            Mensaje.showMensaje(this,"Se ha realizado la venta con EXITO");
+           // Mensaje.showMensaje(this,"Se ha realizado la venta con EXITO");
             modoEdicion(false);
             setTabla();
             inicializa();
@@ -327,8 +327,8 @@ private void setPanel(VentaProductos gg){
            linea=((Linea)lista.getObject(cboLinea.getSelectedIndex()));
            codigo =new Lista(new Otros().lista2(linea));
            otros = ((Otros)codigo.getObject(cboProductos.getSelectedIndex()));
-           otros.setStock(otros.getStock()-Integer.parseInt(jTCantidad.getText()));    
-           otros.actualizar();    
+      
+               
            
            Cliente cli = new Cliente();        
            String bus = jTCodigo.getText();
@@ -355,6 +355,7 @@ private void setPanel(VentaProductos gg){
            li=li.Busca(jtNfactura.getText());
            if(li==null){
                         factura = new Factura();
+                        factura.setCerrada(false);
                         factura.setFecha(datFechaIngreso.getDate());
                         factura.setNumero(""+jtNfactura.getText());
                         int a = jCTipoPago.getSelectedIndex();
@@ -370,21 +371,28 @@ private void setPanel(VentaProductos gg){
                       
                         
                          if(factura.guardar()){
-                            Mensaje.showMensaje(this,"Se ha agregado el producto con EXITO"); 
+                            Mensaje.showMensaje(this,"PRODUCTO AGREGADO"); 
                          }
            }else{
-                        factura.setVtotal(tt);
-                        factura.setVpuntos(tp);
-                        factura.setUtilidad(tu);
-                        factura.actualizar();
+                if(li.getCerrada().equals(false) && li.getCerrada().equals(null)){
+                  factura.setVtotal(tt);
+                  factura.setVpuntos(tp);
+                  factura.setUtilidad(tu);
+                  factura.actualizar();   
+                  }else{
+                     Mensaje.showError(this,"El numero de factura ya existe","ERROR");
+                }
+                        
            }
            
     /* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
                                   FIN  FACTURA Y GRABO VENTAS
        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/        
            
-           
-           
+         Factura l =new Factura();
+           l=l.Busca(jtNfactura.getText());   
+        if((l.getCerrada().equals(false)) |(l.getCerrada().equals(null))){
+           venta = new VentaProductos();
            venta.setFechasalida(datFechaIngreso.getDate());
            venta.setNfactura(""+jtNfactura.getText());
            venta.setVuproducto(Float.parseFloat(jTPrecio.getText()));
@@ -402,7 +410,21 @@ private void setPanel(VentaProductos gg){
            
            txtVtotal.setText(""+tt);
            txtPtotal.setText(""+tp);
-           txtUtilidad.setText(""+tu);
+           txtUtilidad.setText(""+tu); 
+           otros.setStock(otros.getStock()-Integer.parseInt(jTCantidad.getText()));  
+           otros.actualizar();
+           
+           if(venta.guardar()){
+              inicializa();
+              setTabla();
+              }else{
+                     Mensaje.showError(this,"NO se ha podido agregar el producto","ERROR");
+               } 
+            
+        } else{
+                     Mensaje.showError(this,"factura cerrada","ERROR");
+               }    
+           
             
          }
     
@@ -484,25 +506,29 @@ private void setPanel(VentaProductos gg){
          Boolean est=(false);
          hora=horario.buscar(est);
          
-         
-   Lista tar =new Lista(new VentaProductos().lista2(hora));
-   
-     if(tar.getSize()!=0){
-        venta=(VentaProductos) tar.getObject(tar.getSize()-1);
-//      txCodigo.setText(""+(venta.getId_Venta()+1));
-     }
-  jTCantidad.setText("1"); 
-  jTotal.setText("0");
-     
+         jTCantidad.setText("1"); 
+         jTotal.setText("0");
+         txtStock.setText("");
+         jTPuntos.setText("");
+         jTPrecio.setText("");
+        
+      
 }
     
     
 public void modoEdicion(boolean b){
+   if (jtNfactura.getText().equals("")){
+            jtNfactura.setEditable(b);
+        }else {
+       jtNfactura.setEditable(false);
+   }
+    
+           
     cboProductos.setEditable(b);
     cboLinea.setEnabled(b);
     cboProductos.setEnabled(b);
     jCParroquia.setEnabled(b);
-    jtNfactura.setEditable(b);
+    
     jTCantidad.setEditable(b);
     panMantenimiento1.setActiva(b);
     txtStock.setEditable(false);
@@ -1430,6 +1456,50 @@ getPanellinete();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jBPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPrint1ActionPerformed
+       
+           Factura li =new Factura();
+           li=li.Busca(jtNfactura.getText());
+       
+           if(li==null){
+               Mensaje.showError(this,"No se ha ingresado el numero de FACTURA ","Error");
+           }else{
+                    li.setCerrada(true);
+                    li.actualizar();
+                    horario=new Horario();
+                    Horario otro = new Horario();
+                    Boolean est=(false);
+                    otro=horario.buscar(est);
+        
+        
+                        if (activado==true){
+
+                         Lista listaAnteriores =new Lista(new VentaProductos().lista2(otro));
+                         try {
+                              ReportePrevio rp = new ReportePrevio(new Mapa(listaAnteriores,Mapa.MAPAVENTASDIA,true),ReportePrevio.VERVENTAS);
+                              rp.setRespon(otro.getUsuario().getNombre()+" "+otro.getUsuario().getApellido());
+                              rp.mostrarVistaPreliminar(MenuPrin.escritorio);
+                             } catch (Exception e) {
+                               e.printStackTrace();
+                             }
+
+                        }else{
+                         Date hora1;
+                         hora1= new Date();
+
+                         Lista listaAnteriores =new Lista(new Otros().lista());
+                         try {
+                              ReportePrevio rp = new ReportePrevio(new Mapa(listaAnteriores,Mapa.MAPAOTROSV,true),ReportePrevio.INVENTARIO);
+                              rp.setRespon(otro.getUsuario().getNombre()+" "+otro.getUsuario().getApellido());
+                              rp.setDesde(hora1);
+                              rp.mostrarVistaPreliminar(MenuPrin.escritorio);
+                             } catch (Exception e) {
+                               e.printStackTrace();
+                             }
+                        }  
+           }
+            
+       
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jBPrint1ActionPerformed
 
