@@ -25,6 +25,7 @@ public class Factura {
     private Float utilidad;
     private Horario horario;
     private Cliente cliente;
+    private Boolean cerrada;
     
     private FacturaHBM base;
 
@@ -188,5 +189,19 @@ public class Factura {
      */
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    /**
+     * @return the cerrada
+     */
+    public Boolean getCerrada() {
+        return cerrada;
+    }
+
+    /**
+     * @param cerrada the cerrada to set
+     */
+    public void setCerrada(Boolean cerrada) {
+        this.cerrada = cerrada;
     }
 }
