@@ -17,7 +17,7 @@
 
     <report-config>
         <simple-page-definition width="1" height="1">
-            <page orientation="portrait" topmargin="20" leftmargin="20" bottommargin="20" rightmargin="20" pageformat="A4"/>
+            <page orientation="portrait" topmargin="20" leftmargin="20" bottommargin="20" rightmargin="20" width="595" height="421"/>
         </simple-page-definition>
     </report-config>
 
@@ -30,244 +30,6 @@
                     <basic-object name="class">org.jfree.report.layout.StaticLayoutManager</basic-object>
                 </compound-key>
             </style>
-            <element name="Element@32885885" type="shape/generic">
-                <style>
-                    <compound-key name="min-size" class="org.jfree.ui.FloatDimension">
-                        <basic-object name="height">0.0</basic-object>
-                        <basic-object name="width">553.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <compound-key name="stroke" class="java.awt.BasicStroke">
-                        <basic-object name="value">1.0</basic-object>
-                    </compound-key>
-                    <basic-key name="scale">true</basic-key>
-                    <basic-key name="keepAspectRatio">false</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">1.0</basic-object>
-                        <basic-object name="y">0.0</basic-object>
-                    </compound-key>
-                    <basic-key name="fill-shape">false</basic-key>
-                    <basic-key name="draw-shape">true</basic-key>
-                </style>
-                <datasource type="StaticDataSource">
-                    <compound-object name="value" class="java.awt.geom.Line2D$Double">
-                        <basic-object name="x1">0.0</basic-object>
-                        <basic-object name="x2">553.0</basic-object>
-                        <basic-object name="y1">0.0</basic-object>
-                        <basic-object name="y2">0.0</basic-object>
-                    </compound-object>
-                </datasource>
-            </element>
-            <element name="Element@32885885" type="shape/generic">
-                <style>
-                    <compound-key name="min-size" class="org.jfree.ui.FloatDimension">
-                        <basic-object name="height">0.0</basic-object>
-                        <basic-object name="width">553.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <compound-key name="stroke" class="java.awt.BasicStroke">
-                        <basic-object name="value">1.0</basic-object>
-                    </compound-key>
-                    <basic-key name="scale">true</basic-key>
-                    <basic-key name="keepAspectRatio">false</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">0.0</basic-object>
-                        <basic-object name="y">23.0</basic-object>
-                    </compound-key>
-                    <basic-key name="fill-shape">false</basic-key>
-                    <basic-key name="draw-shape">true</basic-key>
-                </style>
-                <datasource type="StaticDataSource">
-                    <compound-object name="value" class="java.awt.geom.Line2D$Double">
-                        <basic-object name="x1">0.0</basic-object>
-                        <basic-object name="x2">553.0</basic-object>
-                        <basic-object name="y1">0.0</basic-object>
-                        <basic-object name="y2">0.0</basic-object>
-                    </compound-object>
-                </datasource>
-            </element>
-            <element name="Element@30064779" type="text/plain">
-                <style>
-                    <compound-key name="min-size">
-                        <basic-object name="height">18.0</basic-object>
-                        <basic-object name="width">58.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <basic-key name="font">Dialog</basic-key>
-                    <basic-key name="font-size">12</basic-key>
-                    <basic-key name="line-height">0.0</basic-key>
-                    <basic-key name="font-bold">true</basic-key>
-                    <basic-key name="font-italic">false</basic-key>
-                    <basic-key name="font-underline">false</basic-key>
-                    <basic-key name="font-strikethrough">false</basic-key>
-                    <basic-key name="font-embedded">false</basic-key>
-                    <basic-key name="alignment">left</basic-key>
-                    <basic-key name="valignment">top</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <basic-key name="reserved-literal">..</basic-key>
-                    <basic-key name="trim-text-content">true</basic-key>
-                    <basic-key name="Excel.WrapText">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">6.0</basic-object>
-                        <basic-object name="y">2.0</basic-object>
-                    </compound-key>
-                </style>
-                <template references="label">
-                    <basic-object name="content">Fecha</basic-object>
-                </template>
-            </element>
-            <element name="Element@30064779" type="text/plain">
-                <style>
-                    <compound-key name="min-size">
-                        <basic-object name="height">18.0</basic-object>
-                        <basic-object name="width">82.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <basic-key name="font">Dialog</basic-key>
-                    <basic-key name="font-size">12</basic-key>
-                    <basic-key name="line-height">0.0</basic-key>
-                    <basic-key name="font-bold">true</basic-key>
-                    <basic-key name="font-italic">false</basic-key>
-                    <basic-key name="font-underline">false</basic-key>
-                    <basic-key name="font-strikethrough">false</basic-key>
-                    <basic-key name="font-embedded">false</basic-key>
-                    <basic-key name="alignment">left</basic-key>
-                    <basic-key name="valignment">top</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <basic-key name="reserved-literal">..</basic-key>
-                    <basic-key name="trim-text-content">true</basic-key>
-                    <basic-key name="Excel.WrapText">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">302.0</basic-object>
-                        <basic-object name="y">5.0</basic-object>
-                    </compound-key>
-                </style>
-                <template references="label">
-                    <basic-object name="content">Unid Contado</basic-object>
-                </template>
-            </element>
-            <element name="Element@30064779" type="text/plain">
-                <style>
-                    <compound-key name="min-size">
-                        <basic-object name="height">18.0</basic-object>
-                        <basic-object name="width">80.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <basic-key name="font">Dialog</basic-key>
-                    <basic-key name="font-size">12</basic-key>
-                    <basic-key name="line-height">0.0</basic-key>
-                    <basic-key name="font-bold">true</basic-key>
-                    <basic-key name="font-italic">false</basic-key>
-                    <basic-key name="font-underline">false</basic-key>
-                    <basic-key name="font-strikethrough">false</basic-key>
-                    <basic-key name="font-embedded">false</basic-key>
-                    <basic-key name="alignment">left</basic-key>
-                    <basic-key name="valignment">top</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <basic-key name="reserved-literal">..</basic-key>
-                    <basic-key name="trim-text-content">true</basic-key>
-                    <basic-key name="Excel.WrapText">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">108.0</basic-object>
-                        <basic-object name="y">4.0</basic-object>
-                    </compound-key>
-                </style>
-                <template references="label">
-                    <basic-object name="content">Cliente</basic-object>
-                </template>
-            </element>
-            <element name="Tiempo" type="text/plain">
-                <style>
-                    <compound-key name="min-size">
-                        <basic-object name="height">18.0</basic-object>
-                        <basic-object name="width">79.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <basic-key name="font">Dialog</basic-key>
-                    <basic-key name="font-size">12</basic-key>
-                    <basic-key name="line-height">0.0</basic-key>
-                    <basic-key name="font-bold">true</basic-key>
-                    <basic-key name="font-italic">false</basic-key>
-                    <basic-key name="font-underline">false</basic-key>
-                    <basic-key name="font-strikethrough">false</basic-key>
-                    <basic-key name="font-embedded">false</basic-key>
-                    <basic-key name="alignment">left</basic-key>
-                    <basic-key name="valignment">top</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <basic-key name="reserved-literal">..</basic-key>
-                    <basic-key name="trim-text-content">true</basic-key>
-                    <basic-key name="Excel.WrapText">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">215.0</basic-object>
-                        <basic-object name="y">4.0</basic-object>
-                    </compound-key>
-                </style>
-                <template references="label">
-                    <basic-object name="content">Producto</basic-object>
-                </template>
-            </element>
-            <element name="Element@30064779" type="text/plain">
-                <style>
-                    <compound-key name="min-size">
-                        <basic-object name="height">18.0</basic-object>
-                        <basic-object name="width">82.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <basic-key name="font">Dialog</basic-key>
-                    <basic-key name="font-size">12</basic-key>
-                    <basic-key name="line-height">0.0</basic-key>
-                    <basic-key name="font-bold">true</basic-key>
-                    <basic-key name="font-italic">false</basic-key>
-                    <basic-key name="font-underline">false</basic-key>
-                    <basic-key name="font-strikethrough">false</basic-key>
-                    <basic-key name="font-embedded">false</basic-key>
-                    <basic-key name="alignment">left</basic-key>
-                    <basic-key name="valignment">top</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <basic-key name="reserved-literal">..</basic-key>
-                    <basic-key name="trim-text-content">true</basic-key>
-                    <basic-key name="Excel.WrapText">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">398.0</basic-object>
-                        <basic-object name="y">5.0</basic-object>
-                    </compound-key>
-                </style>
-                <template references="label">
-                    <basic-object name="content">Unid Credito</basic-object>
-                </template>
-            </element>
-            <element name="Element@30064779" type="text/plain">
-                <style>
-                    <compound-key name="min-size">
-                        <basic-object name="height">18.0</basic-object>
-                        <basic-object name="width">48.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <basic-key name="font">Dialog</basic-key>
-                    <basic-key name="font-size">12</basic-key>
-                    <basic-key name="line-height">0.0</basic-key>
-                    <basic-key name="font-bold">true</basic-key>
-                    <basic-key name="font-italic">false</basic-key>
-                    <basic-key name="font-underline">false</basic-key>
-                    <basic-key name="font-strikethrough">false</basic-key>
-                    <basic-key name="font-embedded">false</basic-key>
-                    <basic-key name="alignment">left</basic-key>
-                    <basic-key name="valignment">top</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <basic-key name="reserved-literal">..</basic-key>
-                    <basic-key name="trim-text-content">true</basic-key>
-                    <basic-key name="Excel.WrapText">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">496.0</basic-object>
-                        <basic-object name="y">5.0</basic-object>
-                    </compound-key>
-                </style>
-                <template references="label">
-                    <basic-object name="content">Total</basic-object>
-                </template>
-            </element>
         </report-header>
         <report-footer>
             <style>
@@ -286,66 +48,6 @@
                     <basic-object name="class">org.jfree.report.layout.StaticLayoutManager</basic-object>
                 </compound-key>
             </style>
-            <element name="Element@8578291" type="text/plain">
-                <style>
-                    <compound-key name="min-size">
-                        <basic-object name="height">31.0</basic-object>
-                        <basic-object name="width">430.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">#ff0033</basic-key>
-                    <basic-key name="font">Elephant</basic-key>
-                    <basic-key name="font-size">24</basic-key>
-                    <basic-key name="line-height">0.0</basic-key>
-                    <basic-key name="font-bold">true</basic-key>
-                    <basic-key name="font-italic">false</basic-key>
-                    <basic-key name="font-underline">false</basic-key>
-                    <basic-key name="font-strikethrough">false</basic-key>
-                    <basic-key name="font-embedded">false</basic-key>
-                    <basic-key name="alignment">center</basic-key>
-                    <basic-key name="valignment">top</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <basic-key name="reserved-literal">..</basic-key>
-                    <basic-key name="trim-text-content">true</basic-key>
-                    <basic-key name="Excel.WrapText">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">53.0</basic-object>
-                        <basic-object name="y">28.0</basic-object>
-                    </compound-key>
-                </style>
-                <template references="label">
-                    <basic-object name="content">REPORTES LG TRAVEL </basic-object>
-                </template>
-            </element>
-            <element name="Element@29547223" type="text/plain">
-                <style>
-                    <compound-key name="min-size">
-                        <basic-object name="height">27.0</basic-object>
-                        <basic-object name="width">119.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <basic-key name="font">DialogInput</basic-key>
-                    <basic-key name="font-size">16</basic-key>
-                    <basic-key name="line-height">0.0</basic-key>
-                    <basic-key name="font-bold">true</basic-key>
-                    <basic-key name="font-italic">false</basic-key>
-                    <basic-key name="font-underline">false</basic-key>
-                    <basic-key name="font-strikethrough">false</basic-key>
-                    <basic-key name="font-embedded">false</basic-key>
-                    <basic-key name="alignment">left</basic-key>
-                    <basic-key name="valignment">top</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <basic-key name="reserved-literal">..</basic-key>
-                    <basic-key name="trim-text-content">true</basic-key>
-                    <basic-key name="Excel.WrapText">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">10.0</basic-object>
-                        <basic-object name="y">100.0</basic-object>
-                    </compound-key>
-                </style>
-                <template references="label">
-                    <basic-object name="content">Responsable:</basic-object>
-                </template>
-            </element>
             <element name="respon" type="text/plain">
                 <style>
                     <compound-key name="min-size">
@@ -368,73 +70,13 @@
                     <basic-key name="trim-text-content">true</basic-key>
                     <basic-key name="Excel.WrapText">false</basic-key>
                     <compound-key name="absolute_pos">
-                        <basic-object name="x">135.0</basic-object>
-                        <basic-object name="y">105.0</basic-object>
+                        <basic-object name="x">67.0</basic-object>
+                        <basic-object name="y">54.0</basic-object>
                     </compound-key>
                 </style>
                 <template references="string-field">
                     <basic-object name="field">respon</basic-object>
                     <basic-object name="nullValue"></basic-object>
-                </template>
-            </element>
-            <element name="Element@29547223" type="text/plain">
-                <style>
-                    <compound-key name="min-size">
-                        <basic-object name="height">27.0</basic-object>
-                        <basic-object name="width">119.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <basic-key name="font">DialogInput</basic-key>
-                    <basic-key name="font-size">16</basic-key>
-                    <basic-key name="line-height">0.0</basic-key>
-                    <basic-key name="font-bold">true</basic-key>
-                    <basic-key name="font-italic">false</basic-key>
-                    <basic-key name="font-underline">false</basic-key>
-                    <basic-key name="font-strikethrough">false</basic-key>
-                    <basic-key name="font-embedded">false</basic-key>
-                    <basic-key name="alignment">left</basic-key>
-                    <basic-key name="valignment">top</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <basic-key name="reserved-literal">..</basic-key>
-                    <basic-key name="trim-text-content">true</basic-key>
-                    <basic-key name="Excel.WrapText">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">8.0</basic-object>
-                        <basic-object name="y">130.0</basic-object>
-                    </compound-key>
-                </style>
-                <template references="label">
-                    <basic-object name="content">Desde: </basic-object>
-                </template>
-            </element>
-            <element name="Element@29547223" type="text/plain">
-                <style>
-                    <compound-key name="min-size">
-                        <basic-object name="height">21.0</basic-object>
-                        <basic-object name="width">119.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <basic-key name="font">DialogInput</basic-key>
-                    <basic-key name="font-size">16</basic-key>
-                    <basic-key name="line-height">0.0</basic-key>
-                    <basic-key name="font-bold">true</basic-key>
-                    <basic-key name="font-italic">false</basic-key>
-                    <basic-key name="font-underline">false</basic-key>
-                    <basic-key name="font-strikethrough">false</basic-key>
-                    <basic-key name="font-embedded">false</basic-key>
-                    <basic-key name="alignment">left</basic-key>
-                    <basic-key name="valignment">top</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <basic-key name="reserved-literal">..</basic-key>
-                    <basic-key name="trim-text-content">true</basic-key>
-                    <basic-key name="Excel.WrapText">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">268.0</basic-object>
-                        <basic-object name="y">129.0</basic-object>
-                    </compound-key>
-                </style>
-                <template references="label">
-                    <basic-object name="content">Hasta: </basic-object>
                 </template>
             </element>
             <element name="desde" type="text/plain">
@@ -460,8 +102,8 @@
                     <basic-key name="Excel.WrapText">false</basic-key>
                     <basic-key name="Excel.CellDataFormat"></basic-key>
                     <compound-key name="absolute_pos">
-                        <basic-object name="x">139.0</basic-object>
-                        <basic-object name="y">133.0</basic-object>
+                        <basic-object name="x">425.0</basic-object>
+                        <basic-object name="y">18.0</basic-object>
                     </compound-key>
                 </style>
                 <template references="date-field">
@@ -470,11 +112,11 @@
                     <basic-object name="nullValue"></basic-object>
                 </template>
             </element>
-            <element name="hasta" type="text/plain">
+            <element name="agencia" type="text/plain">
                 <style>
                     <compound-key name="min-size">
-                        <basic-object name="height">16.0</basic-object>
-                        <basic-object name="width">100.0</basic-object>
+                        <basic-object name="height">17.0</basic-object>
+                        <basic-object name="width">155.0</basic-object>
                     </compound-key>
                     <basic-key name="paint">black</basic-key>
                     <basic-key name="font">dialog</basic-key>
@@ -491,133 +133,76 @@
                     <basic-key name="reserved-literal">..</basic-key>
                     <basic-key name="trim-text-content">true</basic-key>
                     <basic-key name="Excel.WrapText">false</basic-key>
-                    <basic-key name="Excel.CellDataFormat"></basic-key>
                     <compound-key name="absolute_pos">
-                        <basic-object name="x">373.0</basic-object>
-                        <basic-object name="y">131.0</basic-object>
+                        <basic-object name="x">63.0</basic-object>
+                        <basic-object name="y">82.0</basic-object>
                     </compound-key>
                 </style>
-                <template references="date-field">
-                    <basic-object name="field">hasta</basic-object>
-                    <basic-object name="format">dd-MMM-yyyy</basic-object>
+                <template references="string-field">
+                    <basic-object name="field">agencia</basic-object>
                     <basic-object name="nullValue"></basic-object>
                 </template>
             </element>
-            <element name="Element@11456467" type="shape/generic">
-                <style>
-                    <compound-key name="min-size" class="org.jfree.ui.FloatDimension">
-                        <basic-object name="height">0.0</basic-object>
-                        <basic-object name="width">417.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <compound-key name="stroke" class="java.awt.BasicStroke">
-                        <basic-object name="value">1.0</basic-object>
-                    </compound-key>
-                    <basic-key name="scale">true</basic-key>
-                    <basic-key name="keepAspectRatio">false</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">136.0</basic-object>
-                        <basic-object name="y">120.0</basic-object>
-                    </compound-key>
-                    <basic-key name="fill-shape">false</basic-key>
-                    <basic-key name="draw-shape">true</basic-key>
-                </style>
-                <datasource type="StaticDataSource">
-                    <compound-object name="value" class="java.awt.geom.Line2D$Double">
-                        <basic-object name="x1">0.0</basic-object>
-                        <basic-object name="x2">417.0</basic-object>
-                        <basic-object name="y1">0.0</basic-object>
-                        <basic-object name="y2">0.0</basic-object>
-                    </compound-object>
-                </datasource>
-            </element>
-            <element name="Element@11456467" type="shape/generic">
-                <style>
-                    <compound-key name="min-size" class="org.jfree.ui.FloatDimension">
-                        <basic-object name="height">0.0</basic-object>
-                        <basic-object name="width">125.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <compound-key name="stroke" class="java.awt.BasicStroke">
-                        <basic-object name="value">1.0</basic-object>
-                    </compound-key>
-                    <basic-key name="scale">true</basic-key>
-                    <basic-key name="keepAspectRatio">false</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">136.0</basic-object>
-                        <basic-object name="y">150.0</basic-object>
-                    </compound-key>
-                    <basic-key name="fill-shape">false</basic-key>
-                    <basic-key name="draw-shape">true</basic-key>
-                </style>
-                <datasource type="StaticDataSource">
-                    <compound-object name="value" class="java.awt.geom.Line2D$Double">
-                        <basic-object name="x1">0.0</basic-object>
-                        <basic-object name="x2">125.0</basic-object>
-                        <basic-object name="y1">0.0</basic-object>
-                        <basic-object name="y2">0.0</basic-object>
-                    </compound-object>
-                </datasource>
-            </element>
-            <element name="Element@11456467" type="shape/generic">
-                <style>
-                    <compound-key name="min-size" class="org.jfree.ui.FloatDimension">
-                        <basic-object name="height">0.0</basic-object>
-                        <basic-object name="width">125.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <compound-key name="stroke" class="java.awt.BasicStroke">
-                        <basic-object name="value">1.0</basic-object>
-                    </compound-key>
-                    <basic-key name="scale">true</basic-key>
-                    <basic-key name="keepAspectRatio">false</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">375.0</basic-object>
-                        <basic-object name="y">149.0</basic-object>
-                    </compound-key>
-                    <basic-key name="fill-shape">false</basic-key>
-                    <basic-key name="draw-shape">true</basic-key>
-                </style>
-                <datasource type="StaticDataSource">
-                    <compound-object name="value" class="java.awt.geom.Line2D$Double">
-                        <basic-object name="x1">0.0</basic-object>
-                        <basic-object name="x2">125.0</basic-object>
-                        <basic-object name="y1">0.0</basic-object>
-                        <basic-object name="y2">0.0</basic-object>
-                    </compound-object>
-                </datasource>
-            </element>
-            <element name="Element@8578291" type="text/plain">
+            <element name="telefono" type="text/plain">
                 <style>
                     <compound-key name="min-size">
-                        <basic-object name="height">31.0</basic-object>
-                        <basic-object name="width">555.0</basic-object>
+                        <basic-object name="height">17.0</basic-object>
+                        <basic-object name="width">155.0</basic-object>
                     </compound-key>
-                    <basic-key name="paint">#ff0033</basic-key>
-                    <basic-key name="font">Elephant</basic-key>
-                    <basic-key name="font-size">16</basic-key>
+                    <basic-key name="paint">black</basic-key>
+                    <basic-key name="font">dialog</basic-key>
+                    <basic-key name="font-size">12</basic-key>
                     <basic-key name="line-height">0.0</basic-key>
-                    <basic-key name="font-bold">true</basic-key>
+                    <basic-key name="font-bold">false</basic-key>
                     <basic-key name="font-italic">false</basic-key>
                     <basic-key name="font-underline">false</basic-key>
                     <basic-key name="font-strikethrough">false</basic-key>
                     <basic-key name="font-embedded">false</basic-key>
-                    <basic-key name="alignment">center</basic-key>
+                    <basic-key name="alignment">left</basic-key>
                     <basic-key name="valignment">top</basic-key>
                     <basic-key name="dynamic_height">false</basic-key>
                     <basic-key name="reserved-literal">..</basic-key>
                     <basic-key name="trim-text-content">true</basic-key>
                     <basic-key name="Excel.WrapText">false</basic-key>
                     <compound-key name="absolute_pos">
-                        <basic-object name="x">0.0</basic-object>
-                        <basic-object name="y">169.0</basic-object>
+                        <basic-object name="x">306.0</basic-object>
+                        <basic-object name="y">79.0</basic-object>
                     </compound-key>
                 </style>
-                <template references="label">
-                    <basic-object name="content">REPORTES DE VENTAS DIARIAS</basic-object>
+                <template references="string-field">
+                    <basic-object name="field">telefono</basic-object>
+                    <basic-object name="nullValue"></basic-object>
+                </template>
+            </element>
+            <element name="direccion" type="text/plain">
+                <style>
+                    <compound-key name="min-size">
+                        <basic-object name="height">17.0</basic-object>
+                        <basic-object name="width">331.0</basic-object>
+                    </compound-key>
+                    <basic-key name="paint">black</basic-key>
+                    <basic-key name="font">dialog</basic-key>
+                    <basic-key name="font-size">12</basic-key>
+                    <basic-key name="line-height">0.0</basic-key>
+                    <basic-key name="font-bold">false</basic-key>
+                    <basic-key name="font-italic">false</basic-key>
+                    <basic-key name="font-underline">false</basic-key>
+                    <basic-key name="font-strikethrough">false</basic-key>
+                    <basic-key name="font-embedded">false</basic-key>
+                    <basic-key name="alignment">left</basic-key>
+                    <basic-key name="valignment">top</basic-key>
+                    <basic-key name="dynamic_height">false</basic-key>
+                    <basic-key name="reserved-literal">..</basic-key>
+                    <basic-key name="trim-text-content">true</basic-key>
+                    <basic-key name="Excel.WrapText">false</basic-key>
+                    <compound-key name="absolute_pos">
+                        <basic-object name="x">62.0</basic-object>
+                        <basic-object name="y">111.0</basic-object>
+                    </compound-key>
+                </style>
+                <template references="string-field">
+                    <basic-object name="field">direccion</basic-object>
+                    <basic-object name="nullValue"></basic-object>
                 </template>
             </element>
         </page-header>
@@ -651,23 +236,23 @@
                     <basic-key name="trim-text-content">true</basic-key>
                     <basic-key name="Excel.WrapText">false</basic-key>
                     <compound-key name="absolute_pos">
-                        <basic-object name="x">215.0</basic-object>
-                        <basic-object name="y">173.0</basic-object>
+                        <basic-object name="x">191.0</basic-object>
+                        <basic-object name="y">24.0</basic-object>
                     </compound-key>
                 </style>
                 <template references="label">
-                    <basic-object name="content">Reporte generado por Alberto Bustillos</basic-object>
+                    <basic-object name="content">Reporte generado por LIKIHI.SA - Loja</basic-object>
                 </template>
             </element>
-            <element name="Element@18217488" type="text/plain">
+            <element name="totale" type="text/plain">
                 <style>
                     <compound-key name="min-size">
-                        <basic-object name="height">12.0</basic-object>
-                        <basic-object name="width">61.0</basic-object>
+                        <basic-object name="height">17.0</basic-object>
+                        <basic-object name="width">52.0</basic-object>
                     </compound-key>
                     <basic-key name="paint">black</basic-key>
-                    <basic-key name="font">Dialog</basic-key>
-                    <basic-key name="font-size">8</basic-key>
+                    <basic-key name="font">dialog</basic-key>
+                    <basic-key name="font-size">12</basic-key>
                     <basic-key name="line-height">0.0</basic-key>
                     <basic-key name="font-bold">false</basic-key>
                     <basic-key name="font-italic">false</basic-key>
@@ -681,42 +266,45 @@
                     <basic-key name="trim-text-content">true</basic-key>
                     <basic-key name="Excel.WrapText">false</basic-key>
                     <compound-key name="absolute_pos">
-                        <basic-object name="x">232.0</basic-object>
-                        <basic-object name="y">62.0</basic-object>
+                        <basic-object name="x">392.0</basic-object>
+                        <basic-object name="y">6.0</basic-object>
                     </compound-key>
                 </style>
-                <template references="label">
-                    <basic-object name="content">Loja - Ecuador</basic-object>
+                <template references="string-field">
+                    <basic-object name="field">totale</basic-object>
+                    <basic-object name="nullValue"></basic-object>
                 </template>
             </element>
-            <element name="Element@12873167" type="shape/generic">
+            <element name="punto" type="text/plain">
                 <style>
-                    <compound-key name="min-size" class="org.jfree.ui.FloatDimension">
-                        <basic-object name="height">0.0</basic-object>
-                        <basic-object name="width">551.0</basic-object>
+                    <compound-key name="min-size">
+                        <basic-object name="height">17.0</basic-object>
+                        <basic-object name="width">52.0</basic-object>
                     </compound-key>
                     <basic-key name="paint">black</basic-key>
-                    <compound-key name="stroke" class="java.awt.BasicStroke">
-                        <basic-object name="value">1.0</basic-object>
-                    </compound-key>
-                    <basic-key name="scale">true</basic-key>
-                    <basic-key name="keepAspectRatio">false</basic-key>
+                    <basic-key name="font">dialog</basic-key>
+                    <basic-key name="font-size">12</basic-key>
+                    <basic-key name="line-height">0.0</basic-key>
+                    <basic-key name="font-bold">false</basic-key>
+                    <basic-key name="font-italic">false</basic-key>
+                    <basic-key name="font-underline">false</basic-key>
+                    <basic-key name="font-strikethrough">false</basic-key>
+                    <basic-key name="font-embedded">false</basic-key>
+                    <basic-key name="alignment">left</basic-key>
+                    <basic-key name="valignment">top</basic-key>
                     <basic-key name="dynamic_height">false</basic-key>
+                    <basic-key name="reserved-literal">..</basic-key>
+                    <basic-key name="trim-text-content">true</basic-key>
+                    <basic-key name="Excel.WrapText">false</basic-key>
                     <compound-key name="absolute_pos">
-                        <basic-object name="x">4.0</basic-object>
-                        <basic-object name="y">47.0</basic-object>
+                        <basic-object name="x">490.0</basic-object>
+                        <basic-object name="y">7.0</basic-object>
                     </compound-key>
-                    <basic-key name="fill-shape">false</basic-key>
-                    <basic-key name="draw-shape">true</basic-key>
                 </style>
-                <datasource type="StaticDataSource">
-                    <compound-object name="value" class="java.awt.geom.Line2D$Double">
-                        <basic-object name="x1">0.0</basic-object>
-                        <basic-object name="x2">551.0</basic-object>
-                        <basic-object name="y1">0.0</basic-object>
-                        <basic-object name="y2">0.0</basic-object>
-                    </compound-object>
-                </datasource>
+                <template references="string-field">
+                    <basic-object name="field">punto</basic-object>
+                    <basic-object name="nullValue"></basic-object>
+                </template>
             </element>
         </page-footer>
         <watermark>            <style>
@@ -736,7 +324,7 @@
                     <basic-object name="class">org.jfree.report.layout.StaticLayoutManager</basic-object>
                 </compound-key>
             </style>
-            <element name="Unidades al Contado" type="text/plain">
+            <element name="Precio Unitario" type="text/plain">
                 <style>
                     <compound-key name="min-size">
                         <basic-object name="height">16.0</basic-object>
@@ -758,16 +346,78 @@
                     <basic-key name="trim-text-content">true</basic-key>
                     <basic-key name="Excel.WrapText">false</basic-key>
                     <compound-key name="absolute_pos">
-                        <basic-object name="x">318.0</basic-object>
-                        <basic-object name="y">0.0</basic-object>
+                        <basic-object name="x">306.0</basic-object>
+                        <basic-object name="y">6.0</basic-object>
                     </compound-key>
                 </style>
                 <template references="string-field">
-                    <basic-object name="field">Unidades al Contado</basic-object>
+                    <basic-object name="field">Precio Unitario</basic-object>
                     <basic-object name="nullValue"></basic-object>
                 </template>
             </element>
-            <element name="Cliente" type="text/plain">
+            <element name="Producto Descripcion" type="text/plain">
+                <style>
+                    <compound-key name="min-size">
+                        <basic-object name="height">16.0</basic-object>
+                        <basic-object name="width">222.0</basic-object>
+                    </compound-key>
+                    <basic-key name="paint">black</basic-key>
+                    <basic-key name="font">Dialog</basic-key>
+                    <basic-key name="font-size">10</basic-key>
+                    <basic-key name="line-height">0.0</basic-key>
+                    <basic-key name="font-bold">false</basic-key>
+                    <basic-key name="font-italic">false</basic-key>
+                    <basic-key name="font-underline">false</basic-key>
+                    <basic-key name="font-strikethrough">false</basic-key>
+                    <basic-key name="font-embedded">false</basic-key>
+                    <basic-key name="alignment">left</basic-key>
+                    <basic-key name="valignment">top</basic-key>
+                    <basic-key name="dynamic_height">false</basic-key>
+                    <basic-key name="reserved-literal">..</basic-key>
+                    <basic-key name="trim-text-content">true</basic-key>
+                    <basic-key name="Excel.WrapText">false</basic-key>
+                    <compound-key name="absolute_pos">
+                        <basic-object name="x">60.0</basic-object>
+                        <basic-object name="y">8.0</basic-object>
+                    </compound-key>
+                </style>
+                <template references="string-field">
+                    <basic-object name="field">Producto Descripcion</basic-object>
+                    <basic-object name="nullValue"></basic-object>
+                </template>
+            </element>
+            <element name="Cantidad" type="text/plain">
+                <style>
+                    <compound-key name="min-size">
+                        <basic-object name="height">16.0</basic-object>
+                        <basic-object name="width">45.0</basic-object>
+                    </compound-key>
+                    <basic-key name="paint">black</basic-key>
+                    <basic-key name="font">Dialog</basic-key>
+                    <basic-key name="font-size">10</basic-key>
+                    <basic-key name="line-height">0.0</basic-key>
+                    <basic-key name="font-bold">false</basic-key>
+                    <basic-key name="font-italic">false</basic-key>
+                    <basic-key name="font-underline">false</basic-key>
+                    <basic-key name="font-strikethrough">false</basic-key>
+                    <basic-key name="font-embedded">false</basic-key>
+                    <basic-key name="alignment">left</basic-key>
+                    <basic-key name="valignment">top</basic-key>
+                    <basic-key name="dynamic_height">false</basic-key>
+                    <basic-key name="reserved-literal">..</basic-key>
+                    <basic-key name="trim-text-content">true</basic-key>
+                    <basic-key name="Excel.WrapText">false</basic-key>
+                    <compound-key name="absolute_pos">
+                        <basic-object name="x">6.0</basic-object>
+                        <basic-object name="y">8.0</basic-object>
+                    </compound-key>
+                </style>
+                <template references="string-field">
+                    <basic-object name="field">Cantidad</basic-object>
+                    <basic-object name="nullValue"></basic-object>
+                </template>
+            </element>
+            <element name="Puntos" type="text/plain">
                 <style>
                     <compound-key name="min-size">
                         <basic-object name="height">16.0</basic-object>
@@ -789,109 +439,16 @@
                     <basic-key name="trim-text-content">true</basic-key>
                     <basic-key name="Excel.WrapText">false</basic-key>
                     <compound-key name="absolute_pos">
-                        <basic-object name="x">107.0</basic-object>
-                        <basic-object name="y">2.0</basic-object>
+                        <basic-object name="x">388.0</basic-object>
+                        <basic-object name="y">7.0</basic-object>
                     </compound-key>
                 </style>
                 <template references="string-field">
-                    <basic-object name="field">Cliente</basic-object>
+                    <basic-object name="field">Puntos</basic-object>
                     <basic-object name="nullValue"></basic-object>
                 </template>
             </element>
-            <element name="Fecha" type="text/plain">
-                <style>
-                    <compound-key name="min-size">
-                        <basic-object name="height">16.0</basic-object>
-                        <basic-object name="width">99.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <basic-key name="font">Dialog</basic-key>
-                    <basic-key name="font-size">10</basic-key>
-                    <basic-key name="line-height">0.0</basic-key>
-                    <basic-key name="font-bold">false</basic-key>
-                    <basic-key name="font-italic">false</basic-key>
-                    <basic-key name="font-underline">false</basic-key>
-                    <basic-key name="font-strikethrough">false</basic-key>
-                    <basic-key name="font-embedded">false</basic-key>
-                    <basic-key name="alignment">left</basic-key>
-                    <basic-key name="valignment">top</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <basic-key name="reserved-literal">..</basic-key>
-                    <basic-key name="trim-text-content">true</basic-key>
-                    <basic-key name="Excel.WrapText">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">5.0</basic-object>
-                        <basic-object name="y">3.0</basic-object>
-                    </compound-key>
-                </style>
-                <template references="string-field">
-                    <basic-object name="field">Fecha</basic-object>
-                    <basic-object name="nullValue"></basic-object>
-                </template>
-            </element>
-            <element name="Unidades a Credito" type="text/plain">
-                <style>
-                    <compound-key name="min-size">
-                        <basic-object name="height">16.0</basic-object>
-                        <basic-object name="width">83.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <basic-key name="font">Dialog</basic-key>
-                    <basic-key name="font-size">10</basic-key>
-                    <basic-key name="line-height">0.0</basic-key>
-                    <basic-key name="font-bold">false</basic-key>
-                    <basic-key name="font-italic">false</basic-key>
-                    <basic-key name="font-underline">false</basic-key>
-                    <basic-key name="font-strikethrough">false</basic-key>
-                    <basic-key name="font-embedded">false</basic-key>
-                    <basic-key name="alignment">left</basic-key>
-                    <basic-key name="valignment">top</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <basic-key name="reserved-literal">..</basic-key>
-                    <basic-key name="trim-text-content">true</basic-key>
-                    <basic-key name="Excel.WrapText">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">400.0</basic-object>
-                        <basic-object name="y">1.0</basic-object>
-                    </compound-key>
-                </style>
-                <template references="string-field">
-                    <basic-object name="field">Unidades a Credito</basic-object>
-                    <basic-object name="nullValue"></basic-object>
-                </template>
-            </element>
-            <element name="Unidades" type="text/plain">
-                <style>
-                    <compound-key name="min-size">
-                        <basic-object name="height">16.0</basic-object>
-                        <basic-object name="width">96.0</basic-object>
-                    </compound-key>
-                    <basic-key name="paint">black</basic-key>
-                    <basic-key name="font">Dialog</basic-key>
-                    <basic-key name="font-size">10</basic-key>
-                    <basic-key name="line-height">0.0</basic-key>
-                    <basic-key name="font-bold">false</basic-key>
-                    <basic-key name="font-italic">false</basic-key>
-                    <basic-key name="font-underline">false</basic-key>
-                    <basic-key name="font-strikethrough">false</basic-key>
-                    <basic-key name="font-embedded">false</basic-key>
-                    <basic-key name="alignment">left</basic-key>
-                    <basic-key name="valignment">top</basic-key>
-                    <basic-key name="dynamic_height">false</basic-key>
-                    <basic-key name="reserved-literal">..</basic-key>
-                    <basic-key name="trim-text-content">true</basic-key>
-                    <basic-key name="Excel.WrapText">false</basic-key>
-                    <compound-key name="absolute_pos">
-                        <basic-object name="x">217.0</basic-object>
-                        <basic-object name="y">1.0</basic-object>
-                    </compound-key>
-                </style>
-                <template references="string-field">
-                    <basic-object name="field">Producto</basic-object>
-                    <basic-object name="nullValue"></basic-object>
-                </template>
-            </element>
-            <element name="Total" type="text/plain">
+            <element name="Precio Total" type="text/plain">
                 <style>
                     <compound-key name="min-size">
                         <basic-object name="height">16.0</basic-object>
@@ -913,12 +470,12 @@
                     <basic-key name="trim-text-content">true</basic-key>
                     <basic-key name="Excel.WrapText">false</basic-key>
                     <compound-key name="absolute_pos">
-                        <basic-object name="x">497.0</basic-object>
-                        <basic-object name="y">1.0</basic-object>
+                        <basic-object name="x">485.0</basic-object>
+                        <basic-object name="y">7.0</basic-object>
                     </compound-key>
                 </style>
                 <template references="string-field">
-                    <basic-object name="field">Total</basic-object>
+                    <basic-object name="field">Precio Total</basic-object>
                     <basic-object name="nullValue"></basic-object>
                 </template>
             </element>
@@ -926,8 +483,16 @@
     </report-description>
     <functions>
         <property-ref name="report.date"/>
+             <property-ref name="report.date"/>
+        <property-ref name="report.date"/>
+        <property-ref name="report.date"/>
         <property-ref name="respon"/>
         <property-ref name="desde"/>
-        <property-ref name="hasta"/>
+        <property-ref name="agencia"/>
+        <property-ref name="direccion"/>
+        <property-ref name="telefono"/>
+        <property-ref name="totale"/>
+        <property-ref name="punto"/>
+
     </functions>
 </report-definition>
