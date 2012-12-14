@@ -23,7 +23,7 @@ public class MapaVentasdia extends ModeloTabla implements ModeloMapa{
     
     private String[] nombre = new String[]{
             "Cantidad",
-            "Producto Descripcion ",
+            "Producto Descripcion",
             "Precio Unitario",
             "Puntos",
             "Precio Total",
