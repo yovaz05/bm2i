@@ -15,7 +15,7 @@
       <sources> 
         <request>output-type</request> 
       </sources>  
-      <default-value>xml</default-value>
+      <default-value>pdf</default-value>
     </output-type> 
   </inputs>  
   <outputs/>  
