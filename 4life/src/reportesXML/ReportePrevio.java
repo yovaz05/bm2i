@@ -73,10 +73,13 @@ public class ReportePrevio {
     private String pieDePagina;
     private Mapa mapa;
     private int tipo;
+    private int punto;
     private URL url;
     private JFreeReport reporte;
     private ReportGenerator generator;
     private String respon;
+    private String telefono;
+    private String direccion;
     private Float totale;
     private Float totali;
     private Date desde;
@@ -182,6 +185,9 @@ public class ReportePrevio {
             getReporte().setProperty("piePagina", getPieDePagina());
             getReporte().setProperty("pieReporte", getPieDelReporte()); 
             getReporte().setProperty("respon", getRespon());
+            getReporte().setProperty("telefono", getTelefono());
+            getReporte().setProperty("direccion", getDireccion());
+            getReporte().setProperty("punto", getPunto());
             getReporte().setProperty("desde", getDesde());
             getReporte().setProperty("hasta", getHasta());
             getReporte().setProperty("agencia", getAgencia());
@@ -474,6 +480,48 @@ public class ReportePrevio {
 
     public void setFaltante(Float faltante) {
         this.faltante = faltante;
+    }
+
+    /**
+     * @return the telefono
+     */
+    public String getTelefono() {
+        return telefono;
+    }
+
+    /**
+     * @param telefono the telefono to set
+     */
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    /**
+     * @return the direccion
+     */
+    public String getDireccion() {
+        return direccion;
+    }
+
+    /**
+     * @param direccion the direccion to set
+     */
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    /**
+     * @return the punto
+     */
+    public int getPunto() {
+        return punto;
+    }
+
+    /**
+     * @param punto the punto to set
+     */
+    public void setPunto(int punto) {
+        this.punto = punto;
     }
     
 }
