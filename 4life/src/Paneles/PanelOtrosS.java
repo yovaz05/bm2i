@@ -373,16 +373,6 @@ private void setPanel(VentaProductos gg){
                          if(factura.guardar()){
                             Mensaje.showMensaje(this,"PRODUCTO AGREGADO"); 
                          }
-           }else{
-                if(li.getCerrada().equals(false) && li.getCerrada().equals(null)){
-                  factura.setVtotal(tt);
-                  factura.setVpuntos(tp);
-                  factura.setUtilidad(tu);
-                  factura.actualizar();   
-                  }else{
-                     Mensaje.showError(this,"El numero de factura ya existe","ERROR");
-                }
-                        
            }
            
     /* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -413,6 +403,13 @@ private void setPanel(VentaProductos gg){
            txtUtilidad.setText(""+tu); 
            otros.setStock(otros.getStock()-Integer.parseInt(jTCantidad.getText()));  
            otros.actualizar();
+           
+            factura.setVtotal(tt);
+            factura.setVpuntos(tp);
+            factura.setUtilidad(tu);
+            factura.actualizar();   
+           
+           
            
            if(venta.guardar()){
               inicializa();
@@ -1463,20 +1460,24 @@ getPanellinete();
            if(li==null){
                Mensaje.showError(this,"No se ha ingresado el numero de FACTURA ","Error");
            }else{
-                    li.setCerrada(true);
-                    li.actualizar();
+                    
                     horario=new Horario();
-                    Horario otro = new Horario();
+                    Horario hora= new Horario();
                     Boolean est=(false);
-                    otro=horario.buscar(est);
+                    hora=horario.buscar(est);
         
-        
-                        if (activado==true){
+                    if (activado==true){
 
-                         Lista listaAnteriores =new Lista(new VentaProductos().lista2(otro));
+                         Lista listaAnteriores =new Lista(new VentaProductos().lista9(jtNfactura.getText(),hora));
                          try {
                               ReportePrevio rp = new ReportePrevio(new Mapa(listaAnteriores,Mapa.MAPAVENTASDIA,true),ReportePrevio.VERVENTAS);
-                              rp.setRespon(otro.getUsuario().getNombre()+" "+otro.getUsuario().getApellido());
+                             rp.setDesde(li.getFecha());
+                             rp.setRespon(li.getCliente().getNombres()+" "+otro.getUsuario().getApellido());
+                             rp.setAgencia(li.getCliente().getCodigocliente());
+                             rp.setTelefono(li.getCliente().getTelefono());
+                             rp.setDireccion(li.getCliente().getNombre());
+                             rp.setTotale(li.getVtotal());
+                             rp.setPunto(li.getVpuntos());
                               rp.mostrarVistaPreliminar(MenuPrin.escritorio);
                              } catch (Exception e) {
                                e.printStackTrace();
@@ -1498,7 +1499,8 @@ getPanellinete();
                         }  
            }
             
-       
+       li.setCerrada(true);
+       li.actualizar();
         
         // TODO add your handling code here:
     }//GEN-LAST:event_jBPrint1ActionPerformed
