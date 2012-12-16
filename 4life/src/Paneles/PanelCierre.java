@@ -35,6 +35,7 @@ import beans.CuentasXPagar;
 import beans.ComprasOficina;
 import beans.PagoT;
 import beans.VideoConferencia;
+import javax.swing.JLayeredPane;
 import reportesXML.ReportePrevio;
 public class PanelCierre extends javax.swing.JPanel {
     
@@ -42,32 +43,12 @@ public class PanelCierre extends javax.swing.JPanel {
     private Lista codigo;
     private Lista codigo1;
     private Agencia agencia;
-    private CodigoAgencia codigos;
     private Horario horario;
-   
-    private Giro giro;
-    private Giro fin;
-    private Giro sum;
-    
+      
     private String mensaje="";
     private boolean editar;
     Lista listaAnteriores;
     private Cierre cierre;
-    private Flores flores;
-    Flores ult;
-    Flores su;
-    
-    private Pasajes pasajes;
-    Pasajes ul;
-    Pasajes s;
-   
-    private  VideoConferencia video;
-    VideoConferencia vid;
-    VideoConferencia vi;
-    
-    private Cabinas cabinas;
-    private Cabinas ultimo;
-    private Cabinas sumas;
     
     private Otros otros;
     private Otros ultim;
@@ -75,16 +56,6 @@ public class PanelCierre extends javax.swing.JPanel {
    
     private VentaProductos venta;
 
-    private Cheque cheque;
-    private Cheque pri;
-    private Cheque ultimito;
-    private Cheque bainas;
-    
-    private CuentasXCobrar cxp;
-    private CuentasXCobrar cxp1;
-    
-    private CuentasXPagar cp;
-    private CuentasXPagar cp1;
     
     private ComprasOficina pras;
     private ComprasOficina pras1;
@@ -92,11 +63,12 @@ public class PanelCierre extends javax.swing.JPanel {
     private PagoT pg;
     private PagoT pg1;
     public int v=0;
+    
 public PanelCierre() {
        initComponents();
        generarcierre();
 }
-
+ 
 
 public void  cie(){
     
@@ -193,612 +165,11 @@ public void  sumas(){
   txtAgente.setText(""+to);
 
 
- //*************************************SACO EL TOTAL DE CHEQUES     
-      cheque = new Cheque();
-      boolean b = false;
-      codigo = new Lista(new Cheque().lista4(otro,b,b));
-      float che=0;
-      float che1=0;
-      float che2=0;
    
-             
-      for(int j=0;j<codigo.getSize();j++){
-         cheque=(Cheque)codigo.getObject(j);
-         che = che+ cheque.getTotal();
-         che1 = che1+ cheque.getUtilidad();
-         che2 = che2+ cheque.getUtilidadche();
-    }
-txtNeto2.setText(String.valueOf(che));
-txtSobranteChe.setText(String.valueOf(che2));
-txtUtilidadche.setText(String.valueOf(che1));
-
-//*************************************SACO EL TOTAL DE LOS CREDITOS 
-              cxp = new CuentasXCobrar();
-              codigo = new Lista(new CuentasXCobrar().lista5(otro));
-              float cuenta =0;
-              for(int j=0;j<codigo.getSize();j++){
-                 cxp=(CuentasXCobrar)codigo.getObject(j);
-                 cuenta = cuenta+ cxp.getCuota();
-              }
-   txtCredito.setText(String.valueOf(cuenta));           
               
 }
- private void agencias(){
-     
-  
-        agencia = new Agencia();
-        lista = new Lista(new Agencia().lista());
 
-        horario=new Horario();
-        Horario otro = new Horario();
-        Boolean est=(false);
-        otro=horario.buscar(est);
-        txtNombre.setText(otro.getUsuario().getNombre()+" "+otro.getUsuario().getApellido());
- 
-        for(int i=0;i<lista.getSize();i++){
-            cierre = new Cierre();
-            Agencia b1=(Agencia) lista.getObject(i);
-            listaAnteriores =new Lista(new Giro().lista19(otro,b1)); 
-            //EL NUMERO DE GIROS
-            int tamanio = listaAnteriores.getSize();
-            if(tamanio==0){
-        
-            }else{
-                    cierre.setConcepto(b1.getNombre());
-                    cierre.setNumero(String.valueOf(tamanio));
-                    giro = new Giro();
-                    giro = (Giro) listaAnteriores.primero();
-                    //GUARDO EL PRIMER CODIGO
-                    if (giro==null){
-                                        
-                    }else{
-                          fin = (Giro) listaAnteriores.ultimo();
-                          cierre.setDesde(fin.getClave());
-                          cierre.setHasta(giro.getClave());
-                          cierre.setHorario(otro);
-                          fin = new Giro();
-                         
-                    
-                          float net =0;
-                          float tot =0;
-                          for(int j=0;j<listaAnteriores.getSize();j++){
-                              Giro sum=(Giro)listaAnteriores.getObject(j);
-                              net=net+sum.getNeto();
-                              tot=tot+sum.getTotal();
-                           }
-                          cierre.setNeto(String.valueOf(net)) ;
-                          cierre.setTotal(String.valueOf(tot));
-                          cierre.setIngreso(false);
-                          if (cierre.guardar()){
-                             //  Mensaje.showError(this,"BIEN CARAJO ","Error");
-       
-                          }else{
-                                Mensaje.showError(this,"SE PUDRIO TODO","Error");
-                                }
-                     }
-            }
-        }
- 
-    
-} 
- private void flores(){
 
-            horario=new Horario();
-            Horario otro = new Horario();
-            Boolean est=(false);
-            otro=horario.buscar(est);
-      
-            flores = new Flores();
-            codigo = new Lista(new Flores().lista3(otro));
-      
-            int tamanio = codigo.getSize();
-            if(tamanio==0){
-      
-            }else{
-                flores=(Flores) codigo.primero();
-                ult=(Flores) codigo.ultimo();
-                cierre = new Cierre();
-                cierre.setHasta(String.valueOf(flores.getFactura()));
-                cierre.setDesde(String.valueOf(ult.getFactura()));
-                cierre.setIngreso(false);
-                cierre.setConcepto("Flores");
-                cierre.setNumero(String.valueOf(tamanio));
-      
-                float tot =0;
-                for(int j=0;j<tamanio;j++){
-                    Flores su=(Flores)codigo.getObject(j);
-                    tot=tot+su.getTotal();
-                    }
-                cierre.setTotal(String.valueOf(tot));
-                cierre.setNeto("0");
-                cierre.setHorario(otro);
-                cierre.guardar();
-                } 
-
-}
-     
- private void pasaje(){
-     
-    
-            horario=new Horario();
-            Horario otro = new Horario();
-            Boolean est=(false);
-            otro=horario.buscar(est);
-      
-            pasajes = new Pasajes();
-            codigo = new Lista(new Pasajes().lista3(otro));
-      
-            int tamanio = codigo.getSize();
-            if(tamanio==0){
-            
-            }else{
-                pasajes=(Pasajes) codigo.primero();
-                ul=(Pasajes) codigo.ultimo();
-                cierre = new Cierre();
-                cierre.setDesde(" ");
-                cierre.setHasta(" ");
-                cierre.setIngreso(false);
-                cierre.setConcepto("Pasajes");
-                cierre.setNumero(String.valueOf(tamanio));
-      
-                float to =0;
-                for(int j=0;j<tamanio;j++){
-                    Pasajes s=(Pasajes)codigo.getObject(j);
-                    to=to+s.getValor();
-                }
-                cierre.setTotal(String.valueOf(to));
-                cierre.setNeto("0");
-                cierre.setHorario(otro);
-                cierre.guardar();
-                }
-   
-  }
- 
- private void videos(){
-     
-    
-            horario=new Horario();
-            Horario otro = new Horario();
-            Boolean est=(false);
-            otro=horario.buscar(est);
-      
-            video = new VideoConferencia();
-            codigo = new Lista(new VideoConferencia().lista3(otro));
-      
-            int tamanio = codigo.getSize();
-            if(tamanio==0){
-            
-            }else{
-                video=(VideoConferencia) codigo.primero();
-                vid=(VideoConferencia) codigo.ultimo();
-                cierre = new Cierre();
-                
-                cierre.setHasta(String.valueOf(video.getNumero()));
-                cierre.setDesde(String.valueOf(vid.getNumero()));
-                cierre.setIngreso(false);
-                cierre.setConcepto("Video Conferencia");
-                cierre.setNumero(String.valueOf(tamanio));
-      
-                float to =0;
-                for(int j=0;j<tamanio;j++){
-                    VideoConferencia vi=(VideoConferencia)codigo.getObject(j);
-                    to=to+vi.getTotal();
-                           
-                }
-                cierre.setTotal(String.valueOf(to));
-                cierre.setNeto("0");
-                cierre.setHorario(otro);
-                cierre.guardar();
-                }
-   
-  }
- private void Cabina(){
-     
-      
-            horario=new Horario();
-            Horario otro = new Horario();
-            Boolean est=(false);
-            otro=horario.buscar(est);
-      
-            cabinas = new Cabinas();
-            codigo = new Lista(new Cabinas().lista3(otro));
-      
-            int tamanio = codigo.getSize();
-            if(tamanio==0){
-      
-            }else{
-                cabinas=(Cabinas) codigo.primero();
-                ultimo=(Cabinas) codigo.ultimo();
-                cierre = new Cierre();
-                cierre.setDesde(" ");
-                cierre.setHasta(" ");
-                cierre.setIngreso(false);
-                cierre.setConcepto("Cabinas");
-                cierre.setNumero(String.valueOf(tamanio));
-      
-                float o =0;
-                for(int j=0;j<tamanio;j++){
-                     Cabinas sumas=(Cabinas)codigo.getObject(j);
-                    o=o+sumas.getValor();
-                  }
-                cierre.setTotal(String.valueOf(o));
-                cierre.setNeto("0");
-                cierre.setHorario(otro);
-                if (cierre.guardar()){
-     // Mensaje.showError(this,"ya se guardo ","Error");
-                 }
-            } 
-      
-
-  }
- private void venats(){
-   
-    
-            venta = new VentaProductos();
-            otros = new Otros();
-          
-            horario=new Horario();
-            Horario otro = new Horario();
-            Boolean est=(false);
-            otro=horario.buscar(est);
-            txtNombre.setText(otro.getUsuario().getNombre()+" "+otro.getUsuario().getApellido());
- 
-            lista = new Lista(new VentaProductos().lista2(otro));
-            for(int i=0;i<lista.getSize();i++){
-                    venta =(VentaProductos) lista.getObject(i);
-                    int tamanio = lista.getSize();
-                    if(tamanio==0){
-                    }else{
-                        cierre = new Cierre();
-                       // Mensaje.showMensaje(this,"La agencia es "+venta.getOtros().getNombre());
-                        
-                       
-                        cierre.setConcepto(venta.getOtros().getNombre());
-                        cierre.setIngreso(false);
-                        cierre.setHorario(otro);
-                        cierre.setDesde(" ");
-                        cierre.setHasta(" ");
-                        cierre.setNeto(" ");
-                       // cierre.setTotal(String.valueOf(venta.getTotal()));
-                        if (cierre.guardar()){
-                        //   Mensaje.showError(this,"BIEN CARAJO ","Error");
-                         }else{
-                            Mensaje.showError(this,"SE PUDRIO TODO","Error");
-                                }
-                        }
-                }
-    
-   
-} 
- private void cheq(){
-     
-      
-      horario=new Horario();
-      Horario otro = new Horario();
-      Boolean est=(false);
-      otro=horario.buscar(est);
-      
-      cheque = new Cheque();
-      boolean b = true;
-      codigo = new Lista(new Cheque().lista4(otro,b, b));
-      
-      int tamanio = codigo.getSize();
-      if(tamanio==0){
-      
-      }else{
-      
-      cierre = new Cierre();
-      
-      cierre.setHasta("");
-      cierre.setDesde("");
-      cierre.setIngreso(false);
-      cierre.setConcepto("Cheques Protestados");
-      
-      int unidades=0;
-      float o =0;
-      for(int j=0;j<tamanio;j++){
-           Cheque bainas=(Cheque)codigo.getObject(j);
-           if (bainas.getGiro()==null){
-                                       o=o+bainas.getTotal();
-                                       unidades=unidades+1;
-                                       }
-           
-         }
-      cierre.setNumero(String.valueOf(unidades));
-      cierre.setTotal(String.valueOf(o));
-      cierre.setNeto("0");
-      cierre.setHorario(otro);
-      cierre.setCierre1(true);
-      if (cierre.guardar()){
-         }
-  
-//Aqui pongo el total del saldo de los cheques protesto el valor de protesto
-      
-      cierre = new Cierre();
-      
-      cierre.setHasta("");
-      cierre.setDesde("");
-      cierre.setIngreso(false);
-      cierre.setConcepto("Vaolor del Protesto");
-      
-      int protesto=0;
-      float p =0;
-      for(int j=0;j<tamanio;j++){
-           Cheque bainas=(Cheque)codigo.getObject(j);
-           if (bainas.getGiro()==null){
-                                       p=p+bainas.getProtesto();
-                                       
-                                       }
-           
-         }
-      cierre.setNumero(String.valueOf(unidades));
-      cierre.setTotal(String.valueOf(p));
-      cierre.setNeto("0");
-      cierre.setHorario(otro);
-      cierre.setCierre1(true);
-      if (cierre.guardar()){
-         }
-    
-      } 
-     
- }
- private void ccobrar(){
-      
-      
-              horario=new Horario();
-              Horario otro = new Horario();
-              Boolean est=(false);
-              otro=horario.buscar(est);
-             
-              
-              cxp = new CuentasXCobrar();
-              codigo = new Lista(new CuentasXCobrar().lista5(otro));
-
-              int tamanio = codigo.getSize();
-              if(tamanio==0){
-
-              }else{
-
-              cierre = new Cierre();
-              cierre.setDesde("");
-              cierre.setHasta("");
-              cierre.setIngreso(false);
-              cierre.setConcepto("Cuentas X Cobrar");
-              cierre.setNumero(String.valueOf(tamanio));
-
-              float o =0;
-
-              for(int j=0;j<tamanio;j++){
-                   CuentasXCobrar cxp1=(CuentasXCobrar)codigo.getObject(j);
-                   o=o+cxp1.getCuota();
-                 }
-              cierre.setTotal(String.valueOf(o));
-              cierre.setNeto("0");
-              cierre.setHorario(otro);
-              cierre.setCierre1(true);
-              if (cierre.guardar()){
-            //  Mensaje.showError(this,"guardado las cuentas por cobrar ","Error");
-              }
-              } 
-     
- }
- private void dgiros(){
-     //para que no se repitan los giros full quiromancias
-     Agencia agencia = new Agencia();
-     Agencia age= new Agencia();
-     String cod ="PQ";
-     age= agencia.Busca(cod);
-     Giro sum = new Giro();
-             
-     horario=new Horario();
-     Horario otro = new Horario();
-     Boolean est=(false);
-     otro=horario.buscar(est);
-
-     giro = new Giro();
-     boolean b = true;
-     codigo = new Lista(new Giro().lista18(otro, b));
-     float o =0;    
-     int num=0;
-     int tamanio = codigo.getSize();
-     if(tamanio==0){
-
-                    }else{
-                          cierre = new Cierre();
-                          cierre.setDesde("");
-                          cierre.setHasta("");
-                          cierre.setIngreso(true);
-                          cierre.setConcepto("Devolucion de Giros");
-                          
-                          
-                          
-                          Lista codigo=new Lista (new Agencia().lista());
-                          int tamanio1 = codigo.getSize();
-                          for(int j=0;j<tamanio1;j++){
-                             agencia=(Agencia)codigo.getObject(j); 
-                             if (agencia!=age){
-                                 Lista codigo1 =new Lista(new Giro().lista8(otro, b, agencia)); 
-                                 int tamanio2 = codigo1.getSize();
-                                 if(tamanio2==0){
-                                 }else{
-                                      for(int i=0;i<tamanio2;i++){
-                                       sum=(Giro)codigo1.getObject(i);
-                                       o=o+sum.getTotal();
-                                       num=num+1;
-                                     }
-                            }
-                 }
-              
-                       }
-                  cierre.setNumero(String.valueOf(num));
-                  cierre.setTotal(String.valueOf(o));
-                  cierre.setNeto("0");
-                  cierre.setHorario(otro);
-                  if (cierre.guardar()){
-                //  Mensaje.showError(this,"guardado los giros devueltos ","Error");
-                  }
-            } 
-      
- }
- private void pgiros(){
-     
-                  horario=new Horario();
-                  Horario otro = new Horario();
-                  Boolean est=(false);
-                  otro=horario.buscar(est);
-
-                  giro = new Giro();
-                  boolean b = true;
-                  codigo = new Lista(new Giro().lista9(otro, b));
-
-                  int tamanio = codigo.getSize();
-                  if(tamanio==0){
-
-                  }else{
-
-                  cierre = new Cierre();
-                  cierre.setDesde("");
-                  cierre.setHasta("");
-                  cierre.setIngreso(true);
-                  cierre.setConcepto("Giros Pagados");
-                  cierre.setNumero(String.valueOf(tamanio));
-
-                  float o =0;
-
-                  for(int j=0;j<tamanio;j++){
-                       Giro sum=(Giro)codigo.getObject(j);
-                       o=o+sum.getTotal();
-                     }
-                  cierre.setTotal(String.valueOf(o));
-                  cierre.setNeto("0");
-                  cierre.setHorario(otro);
-                  if (cierre.guardar()){
-                //  Mensaje.showError(this,"guardado los giros pagados ","Error");
-                  }
-                  } 
-     
- }
- private void dpaquetes(){
- 
-     
-                  horario=new Horario();
-                  Horario otro = new Horario();
-                  Boolean est=(false);
-                  otro=horario.buscar(est);
-
-                  agencia = new Agencia();
-                   String cod ="PQ";
-                  agencia = agencia.Busca(cod);
-                //  Mensaje.showMensaje(this,"Cual es teamanio "+agencia.getNombre());
-                  giro = new Giro();
-                  boolean b = true;
-                  codigo = new Lista(new Giro().lista10(agencia, otro, b));
-
-                  int tamanio = codigo.getSize();
-
-                  if(tamanio==0){
-               //   Mensaje.showMensaje(this,"Cual es teamanio "+tamanio);
-                  }else{
-
-                  cierre = new Cierre();
-                  cierre.setDesde("");
-                  cierre.setHasta("");
-                  cierre.setIngreso(true);
-                  cierre.setConcepto("Paquetes Devueltos ");
-                  cierre.setNumero(String.valueOf(tamanio));
-
-                  float o =0;
-
-                  for(int j=0;j<tamanio;j++){
-                       Giro sum=(Giro)codigo.getObject(j);
-                       o=o+sum.getTotal();
-                     }
-                  cierre.setTotal(String.valueOf(o));
-                  cierre.setNeto("0");
-                  cierre.setHorario(otro);
-                  if (cierre.guardar()){
-                //  Mensaje.showError(this,"guardado los paquetes devueltos ","Error");
-                  }
-                  } 
-     
- }
- private void cpagar(){
- 
-      
-                  horario=new Horario();
-                  Horario otro = new Horario();
-                  Boolean est=(false);
-                  otro=horario.buscar(est);
-                  
-                  boolean pagos =false;
-                  cp = new CuentasXPagar();
-                  codigo = new Lista(new CuentasXPagar().lista3(otro, pagos));
-
-                  int tamanio = codigo.getSize();
-                  if(tamanio==0){
-
-                  }else{
-
-                  cierre = new Cierre();
-                  cierre.setDesde("");
-                  cierre.setHasta("");
-                  cierre.setIngreso(true);
-                  cierre.setConcepto("Cuentas X Pagar");
-                  cierre.setNumero(String.valueOf(tamanio));
-
-                  float o =0;
-                  for(int j=0;j<tamanio;j++){
-                       CuentasXPagar cp1=(CuentasXPagar)codigo.getObject(j);
-                       o=o+cp1.getTotal();
-                     }
-                  cierre.setTotal(String.valueOf(o));
-                  cierre.setNeto("0");
-                  cierre.setHorario(otro);
-                  if (cierre.guardar()){
-                //  Mensaje.showError(this,"guardado las cuentas por cobrar ","Error");
-                  }
-                  } 
-     
- }
- private void rgiro(){
- 
-      
-                  horario=new Horario();
-                  Horario otro = new Horario();
-                  Boolean est=(false);
-                  otro=horario.buscar(est);
-
-                  giro = new Giro();
-                  boolean b = true;
-                  codigo = new Lista(new Giro().lista11(otro, b));
-
-                  int tamanio = codigo.getSize();
-                  if(tamanio==0){
-
-                  }else{
-
-                  cierre = new Cierre();
-                  cierre.setDesde("");
-                  cierre.setHasta("");
-                  cierre.setIngreso(true);
-                  cierre.setConcepto("Remplazo de Giros");
-                  cierre.setNumero(String.valueOf(tamanio));
-
-                  float o =0;
-                  for(int j=0;j<tamanio;j++){
-                       Giro sum=(Giro)codigo.getObject(j);
-                       o=o+sum.getTotal();
-
-                     }
-                  cierre.setTotal(String.valueOf(o));
-                  cierre.setNeto("0");
-                  cierre.setHorario(otro);
-                  if (cierre.guardar()){
-                ////  Mensaje.showError(this,"guardado los giros remplazados ","Error");
-                  }
-                  } 
-      
- }
  private void compras(){
      
                       horario=new Horario();
@@ -807,8 +178,7 @@ txtUtilidadche.setText(String.valueOf(che1));
                       otro=horario.buscar(est);
 
                       pras = new ComprasOficina();
-                      boolean b = true;
-                      codigo = new Lista(new ComprasOficina().lista3(otro, b));
+                      codigo = new Lista(new ComprasOficina().lista3(otro));
 
                       int tamanio = codigo.getSize();
                       if(tamanio==0){
@@ -821,7 +191,7 @@ txtUtilidadche.setText(String.valueOf(che1));
                       cierre.setIngreso(true);
                       cierre.setConcepto("Compras de Oficina");
                       cierre.setNumero(String.valueOf(tamanio));
-
+                      cierre.setCierre1(true);
                       float o =0;
                       for(int j=0;j<tamanio;j++){
                            ComprasOficina pras1=(ComprasOficina)codigo.getObject(j);
@@ -833,93 +203,13 @@ txtUtilidadche.setText(String.valueOf(che1));
                       cierre.setNeto("0");
                       cierre.setHorario(otro);
                       if (cierre.guardar()){
-                    //  Mensaje.showError(this,"guardadas las compras ","Error");
+                     Mensaje.showError(this,"guardadas las compras ","Error");
                       }
                       } 
      
  }
- private void goficina(){
- 
-     
-                      horario=new Horario();
-                      Horario otro = new Horario();
-                      Boolean est=(false);
-                      otro=horario.buscar(est);
 
-                      agencia = new Agencia();
-                       String cod ="GO";
-                      agencia = agencia.Busca(cod);
 
-                      giro = new Giro();
-
-                      codigo = new Lista(new Giro().lista2(agencia, otro));
-
-                      int tamanio = codigo.getSize();
-
-                      if(tamanio==0){
-
-                      }else{
-
-                      cierre = new Cierre();
-                      cierre.setDesde("");
-                      cierre.setHasta("");
-                      cierre.setIngreso(true);
-                      cierre.setConcepto("Giros de Oficina ");
-                      cierre.setNumero(String.valueOf(tamanio));
-
-                      float o =0;
-
-                      for(int j=0;j<tamanio;j++){
-                           Giro sum=(Giro)codigo.getObject(j);
-                           o=o+sum.getTotal();
-                         }
-                      cierre.setTotal(String.valueOf(o));
-                      cierre.setNeto("0");
-                      cierre.setHorario(otro);
-                      if (cierre.guardar()){
-                    //  Mensaje.showError(this,"guardado los giros de oficina ","Error");
-                      }
-                      } 
-     
- 
- }
- private void pt(){
-     
-     
-                  horario=new Horario();
-                  Horario otro = new Horario();
-                  Boolean est=(false);
-                  otro=horario.buscar(est);
-
-                  pg = new PagoT();
-
-                  codigo = new Lista(new PagoT().lista3(otro));
-                  int tamanio = codigo.getSize();
-
-                  if(tamanio==0){
-                  }else{
-                      cierre = new Cierre();
-                      cierre.setDesde("");
-                      cierre.setHasta("");
-                      cierre.setIngreso(true);
-                      cierre.setConcepto("Pago Facturas de Tarjetas ");
-                      cierre.setNumero(String.valueOf(tamanio));
-                      float o =0;
-                      for(int j=0;j<tamanio;j++){
-                            PagoT pg1=(PagoT)codigo.getObject(j);
-                            o=o+pg1.getValorpagar();
-
-                     }
-                  cierre.setTotal(String.valueOf(o));
-                  cierre.setNeto("0");
-                  cierre.setHorario(otro);
-                  if (cierre.guardar()){
-               //   Mensaje.showError(this,"guardado los giros de oficina ","Error");
-                  }
-                  } 
-     
- 
- }
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
@@ -1241,28 +531,10 @@ txtUtilidadche.setText(String.valueOf(che1));
         
     }//GEN-LAST:event_jButton3ActionPerformed
 private void generarcierre(){
+      compras();
        cie();
-       agencias();
-       flores();
-       pasaje();
-       videos();
-       Cabina();
-       venats();
-       cheq();
-       ccobrar();
-      
-       
        cie1();
-       dgiros();
-       pgiros();
-       dpaquetes();
-       cpagar();
-       rgiro();
-       compras();   
-       goficina();
-       pt();
-       sumas();
-
+      sumas();
 }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
@@ -1331,5 +603,7 @@ private void generarcierre(){
     private javax.swing.JTextField txtTotal;
     private javax.swing.JTextField txtUtilidadche;
     // End of variables declaration//GEN-END:variables
+
+    
     
 }

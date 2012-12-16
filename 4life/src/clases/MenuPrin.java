@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.SwingUtilities;
+import Paneles.PanelCierre;
 
 public class MenuPrin extends javax.swing.JFrame {
 
@@ -1306,12 +1307,12 @@ public class MenuPrin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMProvedoresActionPerformed
 
     private void jMBilletesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBilletesActionPerformed
-        ComBilletes f = new ComBilletes();
+        PanelCierre f = new PanelCierre();
         f.setVisible(true);
         f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
         escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
 
-        f.moveToFront();
+        //f.moveToFront();
     }//GEN-LAST:event_jMBilletesActionPerformed
 
     private void jXHCheques2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHCheques2ActionPerformed

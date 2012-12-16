@@ -24,9 +24,6 @@
     <property name="valor" column="VALOR"/>
     
         
-   <property name="gmt" type="java.lang.Boolean"  >
-   <column name="GMT" sql-type="tinyint(1)" not-null="true"/>
-   </property>
    
     <many-to-one name="horario" column="ID_HORARIO"/>
     

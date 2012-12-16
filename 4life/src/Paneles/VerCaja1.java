@@ -627,7 +627,7 @@ private void generarcierre(){
 
                       pras = new ComprasOficina();
                       boolean b = true;
-                      codigo = new Lista(new ComprasOficina().lista3(otro, b));
+                      codigo = new Lista(new ComprasOficina().lista3(otro));
 
                       int tamanio = codigo.getSize();
                       if(tamanio==0){

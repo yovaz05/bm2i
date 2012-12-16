@@ -885,7 +885,7 @@ private void compras(){
 
                       pras = new ComprasOficina();
                       boolean b = true;
-                      codigo = new Lista(new ComprasOficina().lista3(otro, est));
+                      codigo = new Lista(new ComprasOficina().lista3(otro));
 
                       int tamanio = codigo.getSize();
                       if(tamanio==0){
@@ -991,7 +991,7 @@ private void moneytrasmiter(){
 
                       pras = new ComprasOficina();
                       boolean b = true;
-                      codigo = new Lista(new ComprasOficina().lista3(otro, b));
+                      codigo = new Lista(new ComprasOficina().lista3(otro));
 
                       int tamanio = codigo.getSize();
                       if(tamanio==0){
@@ -1922,7 +1922,7 @@ txtSoCheque.setText(String.valueOf(si1));
 }
 
   
-    // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
@@ -1992,10 +1992,10 @@ txtSoCheque.setText(String.valueOf(si1));
         jLabelCivil20 = new javax.swing.JLabel();
         txtDepositoLG = new javax.swing.JTextField();
 
+        setBackground(java.awt.SystemColor.activeCaptionText);
         setLayout(new java.awt.GridBagLayout());
 
-        setBackground(java.awt.SystemColor.activeCaptionText);
-        jLabelCreditopendiente1.setFont(new java.awt.Font("Arial Black", 0, 12));
+        jLabelCreditopendiente1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabelCreditopendiente1.setForeground(new java.awt.Color(51, 153, 0));
         jLabelCreditopendiente1.setText("           LG MONEY TRASNMITTER");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2006,7 +2006,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 9, 0);
         add(jLabelCreditopendiente1, gridBagConstraints);
 
-        jLabelCreditopendiente3.setFont(new java.awt.Font("Arial Black", 0, 12));
+        jLabelCreditopendiente3.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabelCreditopendiente3.setForeground(new java.awt.Color(0, 153, 51));
         jLabelCreditopendiente3.setText("Fecha ");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2023,7 +2023,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 23, 0);
         add(datFechaIngreso, gridBagConstraints);
 
-        jLabelApellido2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelApellido2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelApellido2.setText("Total Egresos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -2032,7 +2032,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 39, 0, 0);
         add(jLabelApellido2, gridBagConstraints);
 
-        jLabelCivil2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil2.setText("Utilidad Neta");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -2041,7 +2041,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 39, 0, 0);
         add(jLabelCivil2, gridBagConstraints);
 
-        jLabelCivil4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil4.setText("Total Efectivo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -2051,7 +2051,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelCivil4, gridBagConstraints);
 
         txtTIngresos.setEditable(false);
-        txtTIngresos.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtTIngresos.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtTIngresos.setBorder(null);
         txtTIngresos.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2062,7 +2062,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(txtTIngresos, gridBagConstraints);
 
         txtTEgresos.setEditable(false);
-        txtTEgresos.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtTEgresos.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtTEgresos.setBorder(null);
         txtTEgresos.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         txtTEgresos.addActionListener(new java.awt.event.ActionListener() {
@@ -2070,7 +2070,6 @@ txtSoCheque.setText(String.valueOf(si1));
                 txtTEgresosActionPerformed(evt);
             }
         });
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
@@ -2079,8 +2078,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(txtTEgresos, gridBagConstraints);
 
         txtUNeta.setEditable(false);
-        txtUNeta.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
-        txtUNeta.setAutoscrolls(false);
+        txtUNeta.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtUNeta.setBorder(null);
         txtUNeta.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2091,7 +2089,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(txtUNeta, gridBagConstraints);
 
         txtEfectivo.setEditable(false);
-        txtEfectivo.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtEfectivo.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtEfectivo.setBorder(null);
         txtEfectivo.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2101,7 +2099,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 34, 0, 0);
         add(txtEfectivo, gridBagConstraints);
 
-        jLabelCivil5.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil5.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil5.setText("Sobrante de  Cheques");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -2110,7 +2108,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 39, 0, 0);
         add(jLabelCivil5, gridBagConstraints);
 
-        jLabelCivil6.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil6.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil6.setText("Utilidad de Cheques");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -2119,7 +2117,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 39, 0, 0);
         add(jLabelCivil6, gridBagConstraints);
 
-        jLabelCivil8.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil8.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil8.setText("Total Creditos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -2128,7 +2126,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 39, 0, 0);
         add(jLabelCivil8, gridBagConstraints);
 
-        jLabelCivil7.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil7.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil7.setText("Total Cheques");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -2138,7 +2136,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelCivil7, gridBagConstraints);
 
         txtSoCheque.setEditable(false);
-        txtSoCheque.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtSoCheque.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtSoCheque.setBorder(null);
         txtSoCheque.setDisabledTextColor(java.awt.SystemColor.activeCaptionText);
         txtSoCheque.setSelectionColor(java.awt.SystemColor.activeCaptionText);
@@ -2150,7 +2148,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(txtSoCheque, gridBagConstraints);
 
         txtSobranteChe.setEditable(false);
-        txtSobranteChe.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtSobranteChe.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtSobranteChe.setBorder(null);
         txtSobranteChe.setDisabledTextColor(java.awt.SystemColor.activeCaptionText);
         txtSobranteChe.setSelectionColor(java.awt.SystemColor.activeCaptionText);
@@ -2162,7 +2160,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(txtSobranteChe, gridBagConstraints);
 
         txtCredito.setEditable(false);
-        txtCredito.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtCredito.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtCredito.setBorder(null);
         txtCredito.setDisabledTextColor(java.awt.SystemColor.activeCaptionText);
         txtCredito.setSelectionColor(java.awt.SystemColor.activeCaptionText);
@@ -2174,7 +2172,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(txtCredito, gridBagConstraints);
 
         txtNeto2.setEditable(false);
-        txtNeto2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtNeto2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtNeto2.setBorder(null);
         txtNeto2.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2184,7 +2182,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 34, 0, 0);
         add(txtNeto2, gridBagConstraints);
 
-        jLabelCreditopendiente2.setFont(new java.awt.Font("Arial Black", 0, 12));
+        jLabelCreditopendiente2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabelCreditopendiente2.setForeground(new java.awt.Color(204, 0, 51));
         jLabelCreditopendiente2.setText("                                                     CIERRE TOTAL DE CAJA");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2193,7 +2191,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 9, 0);
         add(jLabelCreditopendiente2, gridBagConstraints);
 
-        jLabelCreditopendiente4.setFont(new java.awt.Font("Arial Black", 0, 12));
+        jLabelCreditopendiente4.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabelCreditopendiente4.setForeground(new java.awt.Color(51, 153, 0));
         jLabelCreditopendiente4.setText("             CIERRE  TOTAL DE LG TRAVEL");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2204,7 +2202,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 9, 0);
         add(jLabelCreditopendiente4, gridBagConstraints);
 
-        jLabelCreditopendiente5.setFont(new java.awt.Font("Arial Black", 0, 12));
+        jLabelCreditopendiente5.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabelCreditopendiente5.setForeground(new java.awt.Color(0, 153, 51));
         jLabelCreditopendiente5.setText("Fecha ");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2221,7 +2219,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 23, 0);
         add(datFechaIngreso1, gridBagConstraints);
 
-        jLabelNombre2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelNombre2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelNombre2.setText("Horas Trabajadas");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -2230,7 +2228,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelNombre2, gridBagConstraints);
 
         txtCodigo.setEditable(false);
-        txtCodigo.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtCodigo.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtCodigo.setBorder(null);
         txtCodigo.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2240,7 +2238,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 33, 0, 0);
         add(txtCodigo, gridBagConstraints);
 
-        jLabelApellido3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelApellido3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelApellido3.setText("Fecha de Ingreso");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -2249,7 +2247,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelApellido3, gridBagConstraints);
 
         txtNombre1.setEditable(false);
-        txtNombre1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtNombre1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtNombre1.setBorder(null);
         txtNombre1.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2259,7 +2257,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 34, 0, 0);
         add(txtNombre1, gridBagConstraints);
 
-        jLabelCivil3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil3.setText("Faltante Total");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -2269,8 +2267,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelCivil3, gridBagConstraints);
 
         txtAgente.setEditable(false);
-        txtAgente.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
-        txtAgente.setAutoscrolls(false);
+        txtAgente.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtAgente.setBorder(null);
         txtAgente.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2280,7 +2277,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 34, 0, 0);
         add(txtAgente, gridBagConstraints);
 
-        jLabelCivil9.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil9.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil9.setText("Fecha de salida");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -2290,7 +2287,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelCivil9, gridBagConstraints);
 
         txtEfec.setEditable(false);
-        txtEfec.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtEfec.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtEfec.setBorder(null);
         txtEfec.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2300,7 +2297,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 34, 0, 0);
         add(txtEfec, gridBagConstraints);
 
-        jLabelCivil10.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil10.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil10.setText("Sobrante de  Cheques");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -2309,7 +2306,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelCivil10, gridBagConstraints);
 
         txtChequesSobrante.setEditable(false);
-        txtChequesSobrante.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtChequesSobrante.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtChequesSobrante.setBorder(null);
         txtChequesSobrante.setDisabledTextColor(java.awt.SystemColor.activeCaptionText);
         txtChequesSobrante.setSelectionColor(java.awt.SystemColor.activeCaptionText);
@@ -2320,7 +2317,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 34, 0, 0);
         add(txtChequesSobrante, gridBagConstraints);
 
-        jLabelCivil11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil11.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil11.setText("Utilidad de Cheques");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -2329,7 +2326,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelCivil11, gridBagConstraints);
 
         txtChequeUtil.setEditable(false);
-        txtChequeUtil.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtChequeUtil.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtChequeUtil.setBorder(null);
         txtChequeUtil.setDisabledTextColor(java.awt.SystemColor.activeCaptionText);
         txtChequeUtil.setSelectionColor(java.awt.SystemColor.activeCaptionText);
@@ -2340,7 +2337,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 34, 0, 0);
         add(txtChequeUtil, gridBagConstraints);
 
-        jLabelCivil12.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil12.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil12.setText("Total Creditos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -2349,7 +2346,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelCivil12, gridBagConstraints);
 
         txtNeto3.setEditable(false);
-        txtNeto3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtNeto3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtNeto3.setBorder(null);
         txtNeto3.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2360,7 +2357,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(txtNeto3, gridBagConstraints);
 
         txtCredito1.setEditable(false);
-        txtCredito1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtCredito1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtCredito1.setBorder(null);
         txtCredito1.setDisabledTextColor(java.awt.SystemColor.activeCaptionText);
         txtCredito1.setSelectionColor(java.awt.SystemColor.activeCaptionText);
@@ -2371,7 +2368,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 34, 0, 0);
         add(txtCredito1, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabel1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabel1.setText("Faltante de Caja");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -2379,14 +2376,12 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(22, 40, 0, 0);
         add(jLabel1, gridBagConstraints);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 14;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(22, 0, 0, 0);
         add(jTextField1, gridBagConstraints);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 14;
@@ -2394,7 +2389,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(22, 0, 0, 0);
         add(jTextField2, gridBagConstraints);
 
-        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabel2.setText("Faltante de Caja");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -2403,7 +2398,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(22, 0, 0, 0);
         add(jLabel2, gridBagConstraints);
 
-        jLabelNombre3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelNombre3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelNombre3.setText("Total Ingresos ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -2412,7 +2407,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 39, 0, 0);
         add(jLabelNombre3, gridBagConstraints);
 
-        jLabelCivil14.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil14.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil14.setText("Total Cheques");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -2420,7 +2415,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(jLabelCivil14, gridBagConstraints);
 
-        jLabelCreditopendiente6.setFont(new java.awt.Font("Arial Black", 0, 12));
+        jLabelCreditopendiente6.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabelCreditopendiente6.setForeground(new java.awt.Color(204, 0, 51));
         jLabelCreditopendiente6.setText("                                          DATOS DE LA PERSONA ENCARGADA");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2431,7 +2426,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 9, 0);
         add(jLabelCreditopendiente6, gridBagConstraints);
 
-        jLabelNombre4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelNombre4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelNombre4.setText("Total Ingresos ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -2440,7 +2435,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelNombre4, gridBagConstraints);
 
         txtNombre.setEditable(false);
-        txtNombre.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtNombre.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtNombre.setBorder(null);
         txtNombre.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2450,7 +2445,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 33, 0, 0);
         add(txtNombre, gridBagConstraints);
 
-        jLabelApellido4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelApellido4.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelApellido4.setText("Total Egresos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -2459,7 +2454,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelApellido4, gridBagConstraints);
 
         txtIngreso.setEditable(false);
-        txtIngreso.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtIngreso.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtIngreso.setBorder(null);
         txtIngreso.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2469,7 +2464,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 34, 0, 0);
         add(txtIngreso, gridBagConstraints);
 
-        jLabelCivil15.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil15.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil15.setText("Utilidad Neta");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -2478,8 +2473,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelCivil15, gridBagConstraints);
 
         txtApellido.setEditable(false);
-        txtApellido.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
-        txtApellido.setAutoscrolls(false);
+        txtApellido.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtApellido.setBorder(null);
         txtApellido.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2489,7 +2483,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 34, 0, 0);
         add(txtApellido, gridBagConstraints);
 
-        jLabelCivil16.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil16.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil16.setText("Total Efectivo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -2498,7 +2492,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelCivil16, gridBagConstraints);
 
         txtSalida.setEditable(false);
-        txtSalida.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtSalida.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtSalida.setBorder(null);
         txtSalida.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2508,7 +2502,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 34, 0, 0);
         add(txtSalida, gridBagConstraints);
 
-        jLabelNombre5.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelNombre5.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelNombre5.setText("Nombre");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -2517,7 +2511,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelNombre5, gridBagConstraints);
 
         txtNombre2.setEditable(false);
-        txtNombre2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        txtNombre2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtNombre2.setBorder(null);
         txtNombre2.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2527,7 +2521,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 33, 0, 0);
         add(txtNombre2, gridBagConstraints);
 
-        jLabelCivil17.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelCivil17.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelCivil17.setText("Apellido");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -2537,8 +2531,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelCivil17, gridBagConstraints);
 
         txtApellido1.setEditable(false);
-        txtApellido1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
-        txtApellido1.setAutoscrolls(false);
+        txtApellido1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtApellido1.setBorder(null);
         txtApellido1.setSelectionColor(java.awt.SystemColor.activeCaptionText);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2554,7 +2547,6 @@ txtSoCheque.setText(String.valueOf(si1));
                 jButton3ActionPerformed(evt);
             }
         });
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 21;
@@ -2563,7 +2555,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(11, 0, 7, 0);
         add(jButton3, gridBagConstraints);
 
-        jLabelCivil13.setFont(new java.awt.Font("Arial Black", 1, 12));
+        jLabelCivil13.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabelCivil13.setForeground(new java.awt.Color(0, 0, 255));
         jLabelCivil13.setText("Deposito Adelantado");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2573,7 +2565,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelCivil13, gridBagConstraints);
 
         txtAdelantoMT.setEditable(false);
-        txtAdelantoMT.setFont(new java.awt.Font("Arial Black", 1, 12));
+        txtAdelantoMT.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         txtAdelantoMT.setForeground(new java.awt.Color(0, 0, 255));
         txtAdelantoMT.setBorder(null);
         txtAdelantoMT.setDisabledTextColor(java.awt.SystemColor.activeCaptionText);
@@ -2585,7 +2577,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 32, 0, 0);
         add(txtAdelantoMT, gridBagConstraints);
 
-        jLabelCivil18.setFont(new java.awt.Font("Arial Black", 1, 12));
+        jLabelCivil18.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabelCivil18.setForeground(new java.awt.Color(0, 0, 255));
         jLabelCivil18.setText("Deposito Fin de Dia");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2595,7 +2587,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelCivil18, gridBagConstraints);
 
         txtDepositoMT.setEditable(false);
-        txtDepositoMT.setFont(new java.awt.Font("Arial Black", 1, 12));
+        txtDepositoMT.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         txtDepositoMT.setForeground(new java.awt.Color(0, 0, 255));
         txtDepositoMT.setBorder(null);
         txtDepositoMT.setDisabledTextColor(java.awt.SystemColor.activeCaptionText);
@@ -2607,7 +2599,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 32, 0, 0);
         add(txtDepositoMT, gridBagConstraints);
 
-        jLabelCivil19.setFont(new java.awt.Font("Arial Black", 1, 12));
+        jLabelCivil19.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabelCivil19.setForeground(new java.awt.Color(0, 0, 255));
         jLabelCivil19.setText("Deposito Adelantado");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2618,7 +2610,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelCivil19, gridBagConstraints);
 
         txtAdelantoLG.setEditable(false);
-        txtAdelantoLG.setFont(new java.awt.Font("Arial Black", 1, 12));
+        txtAdelantoLG.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         txtAdelantoLG.setForeground(new java.awt.Color(0, 0, 255));
         txtAdelantoLG.setBorder(null);
         txtAdelantoLG.setDisabledTextColor(java.awt.SystemColor.activeCaptionText);
@@ -2630,7 +2622,7 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.insets = new java.awt.Insets(0, 32, 0, 0);
         add(txtAdelantoLG, gridBagConstraints);
 
-        jLabelCivil20.setFont(new java.awt.Font("Arial Black", 1, 12));
+        jLabelCivil20.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabelCivil20.setForeground(new java.awt.Color(0, 0, 255));
         jLabelCivil20.setText("Deposito Fin de Dia");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -2641,7 +2633,7 @@ txtSoCheque.setText(String.valueOf(si1));
         add(jLabelCivil20, gridBagConstraints);
 
         txtDepositoLG.setEditable(false);
-        txtDepositoLG.setFont(new java.awt.Font("Arial Black", 1, 12));
+        txtDepositoLG.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         txtDepositoLG.setForeground(new java.awt.Color(0, 0, 255));
         txtDepositoLG.setBorder(null);
         txtDepositoLG.setDisabledTextColor(java.awt.SystemColor.activeCaptionText);
@@ -2652,7 +2644,6 @@ txtSoCheque.setText(String.valueOf(si1));
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 31, 0, 0);
         add(txtDepositoLG, gridBagConstraints);
-
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

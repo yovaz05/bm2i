@@ -21,7 +21,6 @@ public class ComprasOficina {
      private Date fecha;
      private String descripcion;
      private Float valor;
-     private Boolean gmt;
      private Horario horario;
      
      private ComprasOficinaHBM base;
@@ -81,8 +80,8 @@ public class ComprasOficina {
         getBase().eliminar(this);
     }
   
- public List lista3(Horario horas, Boolean b){
-        return getBase().lista3(horas, b);
+ public List lista3(Horario horas){
+        return getBase().lista3(horas);
    }
 
     public Float getValor() {
@@ -93,11 +92,5 @@ public class ComprasOficina {
         this.valor = valor;
     }
 
-    public Boolean getGmt() {
-        return gmt;
-    }
-
-    public void setGmt(Boolean gmt) {
-        this.gmt = gmt;
-    }
+  
 }

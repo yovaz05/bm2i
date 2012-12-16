@@ -23,11 +23,11 @@ public class ComprasOficinaHBM extends HibernateDAO{
    
     }
     
-    public List lista3(Horario hora, Boolean a){
+    public List lista3(Horario hora){
             Criteria crit = session.createCriteria(ComprasOficina.class);
             if ( hora!=null)
                  crit.add(Restrictions.eq("horario",hora));
-                 crit.add(Restrictions.eq("gmt",a));
+                 
                  return crit.list();
                                }
     }

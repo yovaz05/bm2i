@@ -217,12 +217,7 @@ private void getPanel(){
        compras.setValor(Float.parseFloat(txtValor.getText()));
        compras.setHorario(otro);
        
-       if (rb2.isSelected()==true){
-        compras.setGmt(false);
-        }
-       if (rb3.isSelected()==true){
-         compras.setGmt(true);
-        }
+       
     }
     
    
@@ -240,13 +235,7 @@ private void getPanel2(){
         compras.setHorario(otro);
         gh.setHorario(otro);
         
-        if (rb2.isSelected()==true){
-        compras.setGmt(false);
-        }
-       if (rb3.isSelected()==true){
-         compras.setGmt(true);
-        }
-        
+         
         gh.actualizar();      
   
     }
@@ -293,21 +282,14 @@ private void setTabla(){
          Boolean est=(false);
          hora=horario.buscar(est);
          
-         Boolean c=true;
-         if (rb2.isSelected()==true){
-        c=(false);
-        }
-       if (rb3.isSelected()==true){
-         c=(true);
-        }
             
-        listaAnteriores =new Lista(new ComprasOficina().lista3(hora, c));         
+        listaAnteriores =new Lista(new ComprasOficina().lista3(hora));         
          Mapa mapa = new Mapa(listaAnteriores,Mapa.MAPACOMPRAS,true);
          reportesXML.ModeloTabla modelo = mapa.getModeloTabla();
          tblProducto.setModel(modelo);
     
      }
-    // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
@@ -325,13 +307,12 @@ private void setTabla(){
         panMantenimiento1 = new clases.PanMantenimiento();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProducto = new org.jdesktop.swingx.JXTable();
-        rb2 = new javax.swing.JRadioButton();
-        rb3 = new javax.swing.JRadioButton();
-
-        setLayout(new java.awt.GridBagLayout());
 
         setBackground(java.awt.SystemColor.activeCaptionText);
-        jLabelCreditopendiente1.setFont(new java.awt.Font("Arial Black", 0, 12));
+        setForeground(new java.awt.Color(255, 255, 255));
+        setLayout(new java.awt.GridBagLayout());
+
+        jLabelCreditopendiente1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabelCreditopendiente1.setForeground(new java.awt.Color(204, 0, 51));
         jLabelCreditopendiente1.setText("                         COMPRAS DE OFICINA");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -342,46 +323,47 @@ private void setTabla(){
         gridBagConstraints.insets = new java.awt.Insets(1, 0, 10, 0);
         add(jLabelCreditopendiente1, gridBagConstraints);
 
+        lblFechaIngreso.setBackground(new java.awt.Color(0, 0, 0));
         lblFechaIngreso.setText("Fecha de Ingreso");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(lblFechaIngreso, gridBagConstraints);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         add(datFechaIngreso, gridBagConstraints);
 
+        jLabelApellido1.setBackground(new java.awt.Color(0, 0, 0));
         jLabelApellido1.setText("Descripcion");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(jLabelApellido1, gridBagConstraints);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         add(txtDescripcion, gridBagConstraints);
 
+        lblFechaIngreso1.setBackground(new java.awt.Color(0, 0, 0));
         lblFechaIngreso1.setText("Valor");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(lblFechaIngreso1, gridBagConstraints);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         add(txtValor, gridBagConstraints);
 
-        jLabelSubtitulo6.setFont(new java.awt.Font("Bodoni MT", 1, 12));
+        jLabelSubtitulo6.setBackground(new java.awt.Color(0, 0, 0));
+        jLabelSubtitulo6.setFont(new java.awt.Font("Bodoni MT", 1, 12)); // NOI18N
         jLabelSubtitulo6.setForeground(new java.awt.Color(0, 0, 204));
         jLabelSubtitulo6.setText("DATOS DEL RESPONSABLE");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -406,7 +388,6 @@ private void setTabla(){
         gridBagConstraints.ipadx = 196;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         add(txtNombre, gridBagConstraints);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 11;
@@ -430,7 +411,6 @@ private void setTabla(){
                 tblProductoMouseClicked(evt);
             }
         });
-
         jScrollPane2.setViewportView(tblProducto);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -439,53 +419,7 @@ private void setTabla(){
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(jScrollPane2, gridBagConstraints);
-
-        rb2.setBackground(java.awt.SystemColor.activeCaptionText);
-        buttonGroup1.add(rb2);
-        rb2.setText("LG TRAVEL");
-        rb2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        rb2.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        rb2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb2ActionPerformed(evt);
-            }
-        });
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 17, 0);
-        add(rb2, gridBagConstraints);
-
-        rb3.setBackground(java.awt.SystemColor.activeCaptionText);
-        buttonGroup1.add(rb3);
-        rb3.setSelected(true);
-        rb3.setText("LG TRASMITTER");
-        rb3.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        rb3.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        rb3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb3ActionPerformed(evt);
-            }
-        });
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 17, 0);
-        add(rb3, gridBagConstraints);
-
     }// </editor-fold>//GEN-END:initComponents
-
-    private void rb3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb3ActionPerformed
-        setTabla();
-    }//GEN-LAST:event_rb3ActionPerformed
-
-    private void rb2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb2ActionPerformed
-        setTabla();
-    }//GEN-LAST:event_rb2ActionPerformed
 
     private void tblProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductoMouseClicked
 // TODO add your handling code here:
@@ -506,8 +440,6 @@ private void setTabla(){
     private javax.swing.JLabel lblFechaIngreso;
     private javax.swing.JLabel lblFechaIngreso1;
     private clases.PanMantenimiento panMantenimiento1;
-    private javax.swing.JRadioButton rb2;
-    private javax.swing.JRadioButton rb3;
     private org.jdesktop.swingx.JXTable tblProducto;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtNombre;

@@ -962,7 +962,7 @@ public class VerCierre2 extends javax.swing.JPanel {
         
         pras = new ComprasOficina();
         boolean b = true;
-        codigo = new Lista(new ComprasOficina().lista3(otro, est));
+        codigo = new Lista(new ComprasOficina().lista3(otro));
         
         int tamanio = codigo.getSize();
         if(tamanio==0){
