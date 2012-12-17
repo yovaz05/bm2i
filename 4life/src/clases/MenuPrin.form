@@ -326,43 +326,10 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMVerCaja1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="LG MONEY TRASNMITTER"/>
+                <Property name="text" type="java.lang.String" value="Cierre de Caja"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVerCaja1ActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMVerCaja2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="LG TRAVEL"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVerCaja2ActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMCierreCajas">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="CIERRE DE CAJA"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMCierreCajasActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMBilletes">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Billetes"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMBilletesActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMAdelantoDeposito">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Adelanto de Deposito"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMAdelantoDepositoActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

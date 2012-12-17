@@ -10,6 +10,7 @@
 package Datos;
 
 import beans.Factura;
+import beans.Horario;
 import hibernate.HibernateDAO;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -59,6 +60,13 @@ public class FacturaHBM extends HibernateDAO{
          //   System.out.println("si hay");
             return (Factura)crit.uniqueResult();
         }
+    }
+    
+    public List lista2( Horario hora){
+        Criteria crit = session.createCriteria(Factura.class);
+          if ( hora!=null)
+              crit.add(Restrictions.eq("horario",hora));
+          return crit.list();
     }
     
 }

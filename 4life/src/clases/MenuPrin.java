@@ -113,10 +113,6 @@ public class MenuPrin extends javax.swing.JFrame {
         jmProducto = new javax.swing.JMenuItem();
         jMCajas = new javax.swing.JMenu();
         jMVerCaja1 = new javax.swing.JMenuItem();
-        jMVerCaja2 = new javax.swing.JMenuItem();
-        jMCierreCajas = new javax.swing.JMenuItem();
-        jMBilletes = new javax.swing.JMenuItem();
-        jMAdelantoDeposito = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMNuevoUsuario = new javax.swing.JMenuItem();
@@ -871,46 +867,13 @@ public class MenuPrin extends javax.swing.JFrame {
 
         jMCajas.setText("CIERRE DE CAJA");
 
-        jMVerCaja1.setText("LG MONEY TRASNMITTER");
+        jMVerCaja1.setText("Cierre de Caja");
         jMVerCaja1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMVerCaja1ActionPerformed(evt);
             }
         });
         jMCajas.add(jMVerCaja1);
-
-        jMVerCaja2.setText("LG TRAVEL");
-        jMVerCaja2.setToolTipText("");
-        jMVerCaja2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMVerCaja2ActionPerformed(evt);
-            }
-        });
-        jMCajas.add(jMVerCaja2);
-
-        jMCierreCajas.setText("CIERRE DE CAJA");
-        jMCierreCajas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMCierreCajasActionPerformed(evt);
-            }
-        });
-        jMCajas.add(jMCierreCajas);
-
-        jMBilletes.setText("Billetes");
-        jMBilletes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMBilletesActionPerformed(evt);
-            }
-        });
-        jMCajas.add(jMBilletes);
-
-        jMAdelantoDeposito.setText("Adelanto de Deposito");
-        jMAdelantoDeposito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMAdelantoDepositoActionPerformed(evt);
-            }
-        });
-        jMCajas.add(jMAdelantoDeposito);
 
         jMenuBar1.add(jMCajas);
 
@@ -1281,15 +1244,6 @@ public class MenuPrin extends javax.swing.JFrame {
         f.moveToFront();
     }//GEN-LAST:event_jMCierreFaltanteActionPerformed
 
-    private void jMAdelantoDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAdelantoDepositoActionPerformed
-        AdelantoDeposito f = new AdelantoDeposito();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-
-        f.moveToFront();
-    }//GEN-LAST:event_jMAdelantoDepositoActionPerformed
-
     private void jMDEUDASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMDEUDASActionPerformed
         ComDeuda f = new ComDeuda();
         f.setVisible(true);
@@ -1305,15 +1259,6 @@ public class MenuPrin extends javax.swing.JFrame {
         escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jMProvedoresActionPerformed
-
-    private void jMBilletesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMBilletesActionPerformed
-        PanelCierre f = new PanelCierre();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-
-        //f.moveToFront();
-    }//GEN-LAST:event_jMBilletesActionPerformed
 
     private void jXHCheques2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHCheques2ActionPerformed
 // TODO add your handling code here:
@@ -1438,32 +1383,11 @@ public class MenuPrin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jXHEnviarGiroActionPerformed
 
-    private void jMCierreCajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCierreCajasActionPerformed
-        FindeTurno f = new FindeTurno();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-
-        f.moveToFront();
-
-
-    }//GEN-LAST:event_jMCierreCajasActionPerformed
-
-    private void jMVerCaja2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerCaja2ActionPerformed
-        COMCIERRE f = new COMCIERRE();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-
-        f.moveToFront();
-    }//GEN-LAST:event_jMVerCaja2ActionPerformed
-
     private void jMVerCaja1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerCaja1ActionPerformed
-        ConCierre1 f = new ConCierre1();
+        COMFLORES f = new COMFLORES();
         f.setVisible(true);
         f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
         escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-
         f.moveToFront();
     }//GEN-LAST:event_jMVerCaja1ActionPerformed
 
@@ -1819,11 +1743,8 @@ public class MenuPrin extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JMenuItem jMAdelantoDeposito;
-    private javax.swing.JMenuItem jMBilletes;
     private javax.swing.JMenu jMCajas;
     private javax.swing.JMenu jMCheques;
-    private javax.swing.JMenuItem jMCierreCajas;
     private javax.swing.JMenuItem jMCierreFaltante;
     private javax.swing.JMenuItem jMDEUDAS;
     private javax.swing.JMenu jMFlores;
@@ -1836,7 +1757,6 @@ public class MenuPrin extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMProvedores;
     private javax.swing.JMenuItem jMReportesCabinas;
     private javax.swing.JMenuItem jMVerCaja1;
-    private javax.swing.JMenuItem jMVerCaja2;
     private javax.swing.JMenuItem jMVerDarCreditos;
     private javax.swing.JMenuItem jMVerFlores;
     private javax.swing.JMenuItem jMVerGiroOfi;

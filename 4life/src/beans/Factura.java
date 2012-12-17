@@ -204,4 +204,7 @@ public class Factura {
     public void setCerrada(Boolean cerrada) {
         this.cerrada = cerrada;
     }
+     public List lista2( Horario horas){
+        return getBase().lista2(horas);
+    } 
 }
