@@ -24,12 +24,12 @@ public class MapaCierre extends ModeloTabla implements ModeloMapa{
     private String[] nombre = new String[]{
             
             "N",
-            "Concepto",
-            "# Unidades",
-            "Desde",
-            "Hasta",
-            "Neto",
-            "Total"
+            "T ungreso",
+            "Utilidad P",
+            "Puntos",
+            "Egreso",
+            "Efectivo",
+            "Deposito"
             
     };
     private boolean[] edit = new boolean[]{
@@ -72,12 +72,12 @@ public class MapaCierre extends ModeloTabla implements ModeloMapa{
             setCierre((Cierre)lista.getObject(i));
             if(isNumerador())
                 row.add(i+1);
-            row.add(""+ getCierre().getConcepto());
-            row.add(""+ getCierre().getNumero());
-            row.add(""+ getCierre().getDesde());
-            row.add(""+ getCierre().getHasta());
-            row.add(""+ getCierre().getNeto());
-            row.add(""+ getCierre().getTotal());
+            row.add(""+ getCierre().getTingreso());
+            row.add(""+ getCierre().getUproducto());
+            row.add(""+ getCierre().getTpuntos());
+            row.add(""+ getCierre().getTegresos());
+            row.add(""+ getCierre().getEfectivo());
+            row.add(""+ getCierre().getDeposito());
             rows.add(row);
         }
         setRows(rows);

@@ -53,7 +53,7 @@ public class COMFLORES extends javax.swing.JInternalFrame {
         initComponents();
         generarcierre();
         setTabla3();
-        
+       txtAperCaja.setText("0"); 
         
     }
     private void generarcierre(){
@@ -151,56 +151,19 @@ public class COMFLORES extends javax.swing.JInternalFrame {
                         hora.setHoras(0);
                         hora.setMinutos(minutollegada);
                         hora.setSegundos(segundo);
-                        txtHorast.setText(""+0+" "+minutollegada+" "+ segundo );
+                        txtHorast.setText(""+0+" H :"+minutollegada+"  Min  :"+ segundo+"  Seg  " );
                       }else{
                         hora.setHoras(horallegada);
                         hora.setMinutos(minutollegada);
                         hora.setSegundos(segundo);
-                        txtHorast.setText(""+horallegada+" "+minutollegada+" "+ segundo );
+                        txtHorast.setText(""+horallegada+" H  :"+minutollegada+"  Min  :"+ segundo+"  Seg  " );
                       }
     
     }
 
 
 
- private void compras(){
-     
-                      horario=new Horario();
-                      Horario otro = new Horario();
-                      Boolean est=(false);
-                      otro=horario.buscar(est);
-                      txtNombre.setText(otro.getUsuario().getNombre()+" " + otro.getUsuario().getApellido() );
-                      pras = new ComprasOficina();
-                      codigo = new Lista(new ComprasOficina().lista3(otro));
 
-                      int tamanio = codigo.getSize();
-                      if(tamanio==0){
-
-                      }else{
-
-                      cierre = new Cierre();
-                      cierre.setDesde("");
-                      cierre.setHasta("");
-                      cierre.setIngreso(true);
-                      cierre.setConcepto("Compras de Oficina");
-                      cierre.setNumero(String.valueOf(tamanio));
-                      cierre.setCierre1(true);
-                      float o =0;
-                      for(int j=0;j<tamanio;j++){
-                           ComprasOficina pras1=(ComprasOficina)codigo.getObject(j);
-                           o=o+pras1.getValor();
-
-
-                         }
-                      cierre.setTotal(String.valueOf(o));
-                      cierre.setNeto("0");
-                      cierre.setHorario(otro);
-                      if (cierre.guardar()){
-                     Mensaje.showError(this,"guardadas las compras ","Error");
-                      }
-                      } 
-     
- }
      private void setTabla(){
          horario=new Horario();
          Horario hora = new Horario();
@@ -816,6 +779,61 @@ public class COMFLORES extends javax.swing.JInternalFrame {
         hora.setFechaFin(new Date());
         hora.setSecion(true);
         hora.actualizar();
+        /*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                                             calcula  horas trabajadas                        */ 
+     
+    int horallegada=0;
+    int minutollegada=0;
+    int segundo=0;
+    Date fin= new Date();
+    fin=datFechahasta.getDate();
+    
+    horallegada= fin.getHours()-hora.getFechaInicio().getHours();
+    
+    if (hora.getFechaInicio().getMinutes()<fin.getMinutes()){
+                    minutollegada=(fin.getMinutes()-hora.getFechaInicio().getMinutes());
+    }else{
+                    horallegada=horallegada-1;
+                    minutollegada=(60-hora.getFechaInicio().getMinutes()+fin.getMinutes());
+    }
+    if (hora.getFechaInicio().getSeconds()<fin.getSeconds()){
+                    segundo=(fin.getSeconds()-hora.getFechaInicio().getSeconds());
+    }else{
+                    minutollegada=minutollegada-1;
+                    segundo=(60-hora.getFechaInicio().getSeconds()+fin.getSeconds());
+    }
+    if (horallegada<0){
+                        hora.setHoras(0);
+                        hora.setMinutos(minutollegada);
+                        hora.setSegundos(segundo);
+                       // txtHorast.setText(""+0+" H :"+minutollegada+"  Min  :"+ segundo+"  Seg  " );
+                         cierre.setHora(0);
+                         cierre.setMinutos(minutollegada);
+                         cierre.setSegundos(segundo);
+                      }else{
+                        hora.setHoras(horallegada);
+                        hora.setMinutos(minutollegada);
+                        hora.setSegundos(segundo);
+                       // txtHorast.setText(""+horallegada+" H  :"+minutollegada+"  Min  :"+ segundo+"  Seg  " );
+                        cierre.setHora(horallegada);
+                         cierre.setMinutos(minutollegada);
+                         cierre.setSegundos(segundo);
+    }
+        
+        
+        Cierre cierre = new Cierre();
+        cierre.setTingreso(Float.parseFloat(txtIngreso.getText()));
+        cierre.setUproducto(Float.parseFloat(txtUtilidad.getText()));
+        cierre.setTpuntos(Integer.parseInt(txtPuntos.getText()));
+        cierre.setTegresos(Float.parseFloat(txtEgreso.getText()));
+        cierre.setEfectivo(Float.parseFloat(txtEfectivo.getText()));
+        cierre.setDeposito(Float.parseFloat(txtDeposito.getText()));
+        cierre.setDesde(datFechadesde.getDate());
+        cierre.setHasta(datFechahasta.getDate());
+        cierre.guardar();
+       
+        
+        
 
         try {
 

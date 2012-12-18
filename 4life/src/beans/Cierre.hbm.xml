@@ -18,23 +18,22 @@
     <id name="id_Cierre"  column="ID_CIERRE">
         <generator class="native"/>
     </id>          
-    <property name="concepto" column="CONCEPTO"/>
-    <property name="numero" column="NUMERO"/>
     <property name="desde" column="DESDE"/>
     <property name="hasta" column="HASTA"/>
-    <property name="neto" column="NETO"/>
-    <property name="total" column="TOTAL"/>
-    
-    <property name="ingreso" type="java.lang.Boolean"  >
-    <column name="INGRESO" sql-type="tinyint(1)" not-null="true"/>
-    </property>
-    
-    <property name="cierre1" type="java.lang.Boolean"  >
-    <column name="CIERRE1" sql-type="tinyint(1)" not-null="true"/>
-    </property>
-    
+    <property name="tingreso" column="TINGRESO"/>
+    <property name="uproducto" column="UPRODUCTO"/>
+    <property name="tpuntos" column="TPUNTOS"/>
+    <property name="tegresos" column="TEGRESO"/>
+    <property name="efectivo" column="EFECTIVO"/>
+    <property name="deposito" column="DEPOSITO"/>
+    <property name="hora" column="HORA"/>
+    <property name="minutos" column="MINUTOS"/>
+    <property name="segundos" column="SEGUNDOS"/>
+    <property name="aperturacaja" column="APERTURACAJA"/>
+    <property name="totalcaja" column="TOTALCAJA"/>
+  
     <many-to-one name="horario" column="ID_HORARIO"/>
-    
+
     
 </class>
 </hibernate-mapping>

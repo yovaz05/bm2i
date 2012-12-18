@@ -65,20 +65,7 @@ public class MapaReporteCierre extends ModeloTabla implements ModeloMapa{
             setCierre((Cierre)lista.getObject(i));
             
             Cierre cierre=(Cierre)lista.getObject(i);
-            if (cierre.getIngreso()==true){
-         
-            row.add(""+ getCierre().getConcepto());
-            row.add(""+ getCierre().getTotal());
-            row.add("___________________");
-            row.add("____________________");
-            rows.add(row);
-        }else{
-            row.add("_____________________");
-            row.add("_____________________");  
-            row.add(""+ getCierre().getConcepto());
-            row.add(""+ getCierre().getTotal());
-            rows.add(row);
-         }
+  
         
         }
         setRows(rows);

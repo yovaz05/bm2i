@@ -119,7 +119,7 @@ public void  sumas(){
     
     for(int j=0;j<lista.getSize();j++){
          Cierre sum=(Cierre)lista.getObject(j);
-         suma1= suma1+ Float.parseFloat(sum.getTotal());
+        // suma1= suma1+ Float.parseFloat(sum.getTotal());
        }
    //txtCodigo.setText(String.valueOf(suma1));
     }else{
@@ -137,7 +137,7 @@ public void  sumas(){
     
     for(int j=0;j<codigo.getSize();j++){
          Cierre sum=(Cierre)codigo.getObject(j);
-         suma2= suma2+ Float.parseFloat(sum.getTotal());
+//         suma2= suma2+ Float.parseFloat(sum.getTotal());
        }
  //  txtNombre1.setText(String.valueOf(suma2));
     }else{
@@ -167,13 +167,7 @@ public void  sumas(){
 
                       }else{
 
-                      cierre = new Cierre();
-                      cierre.setDesde("");
-                      cierre.setHasta("");
-                      cierre.setIngreso(true);
-                      cierre.setConcepto("Compras de Oficina");
-                      cierre.setNumero(String.valueOf(tamanio));
-                      cierre.setCierre1(true);
+                   
                       float o =0;
                       for(int j=0;j<tamanio;j++){
                            ComprasOficina pras1=(ComprasOficina)codigo.getObject(j);
@@ -181,8 +175,7 @@ public void  sumas(){
 
 
                          }
-                      cierre.setTotal(String.valueOf(o));
-                      cierre.setNeto("0");
+                 
                       cierre.setHorario(otro);
                       if (cierre.guardar()){
                      Mensaje.showError(this,"guardadas las compras ","Error");
