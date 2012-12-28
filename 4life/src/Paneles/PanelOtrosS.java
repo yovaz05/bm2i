@@ -64,6 +64,20 @@ Lista listaAnteriores;
         combos();
     }
     
+      private void encerar() {
+   // a qui enceramos todo para una nueva factura
+       jtNfactura.setText(""); 
+       jButton2.setEnabled(true);
+       jCTipoPago.setEnabled(true);
+       jButton6.setEnabled(true);
+       txtVtotal.setText("0");
+       txtPtotal.setText("0");
+       txtUtilidad.setText("0");
+       enblanco();
+       setBlanco();
+       setTabla();
+    }
+    
     
     private void combos(){
     linea = new Linea();
@@ -195,7 +209,7 @@ Lista listaAnteriores;
     private void cancelar(){
         modoEdicion(false);
         if(!lista.isEmpty()){
-            venta=(VentaProductos)lista.getMyself();
+//         venta=(VentaProductos)lista.getMyself();
             setPanel();
         }
     }
@@ -299,6 +313,8 @@ private void getPanellinete(){
                             modoEdicion2(false);
                             Mensaje.showMensaje(this,"Se ha creado el Cliente con EXITO");
                             modoEdicion2(false);
+                            jButton2.setEnabled(false);
+                jButton6.setEnabled(false);
                             }else{
                                 Mensaje.showError(this,"ERRO AL GRABAR","Error");
                             }
@@ -313,10 +329,17 @@ private void getPanellinete(){
 
 
 private void setPanel(VentaProductos gg){
- 
-  int p;
+ //jTCantidad.setEditable(true);
+    cboLinea.setSelectedItem(gg.getOtros().getLinea().getNombre()); 
+    cboProductos.setSelectedItem(gg.getOtros().getNombre());  
+    jTCantidad.setText(""+gg.getCantidad());
+    txtStock.setText(""+gg.getOtros().getStock());
+    jTPuntos.setText(""+gg.getOtros().getPuntos());
+    jTPrecio.setText(""+gg.getVuproducto());
+   jTotal.setText(""+gg.getTotalproducto());
+ // int p;
    //txtPrecio.setText(""+gg.getOtros().getStock());
-      cboLinea.setSelectedItem(gg.getOtros().getNombre().toString());
+   //   cboLinea.setSelectedItem(gg.getOtros().getNombre().toString());
   // txCodigo.setText(""+gg.getId_Venta());     
     }  
     
@@ -328,7 +351,7 @@ private void setPanel(VentaProductos gg){
            codigo =new Lista(new Otros().lista2(linea));
            otros = ((Otros)codigo.getObject(cboProductos.getSelectedIndex()));
       
-               
+            jCTipoPago.setEnabled(false);   
            
            Cliente cli = new Cliente();        
            String bus = jTCodigo.getText();
@@ -380,7 +403,7 @@ private void setPanel(VentaProductos gg){
        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/        
            
          Factura l =new Factura();
-           l=l.Busca(jtNfactura.getText());   
+         l=l.Busca(jtNfactura.getText());   
         if((l.getCerrada().equals(false)) |(l.getCerrada().equals(null))){
            venta = new VentaProductos();
            venta.setFechasalida(datFechaIngreso.getDate());
@@ -412,6 +435,7 @@ private void setPanel(VentaProductos gg){
            
            
            if(venta.guardar()){
+               //Mensaje.showError(this,"Producto agregado","ERROR");
               inicializa();
               setTabla();
               }else{
@@ -502,7 +526,7 @@ private void setPanel(VentaProductos gg){
          Horario hora = new Horario();
          Boolean est=(false);
          hora=horario.buscar(est);
-         
+        
          jTCantidad.setText("1"); 
          jTotal.setText("0");
          txtStock.setText("");
@@ -621,13 +645,13 @@ public void modoEdicion(boolean b){
         jLabel20 = new javax.swing.JLabel();
         jLabelNombreGrup2 = new javax.swing.JLabel();
         jtNfactura = new javax.swing.JTextField();
+        jLabelNombreGrup3 = new javax.swing.JLabel();
+        jCTipoPago = new javax.swing.JComboBox();
         jXPanel6 = new org.jdesktop.swingx.JXPanel();
         jLabel24 = new javax.swing.JLabel();
-        jLabelNombreGrup3 = new javax.swing.JLabel();
         txtPtotal = new javax.swing.JTextField();
         txtVtotal = new javax.swing.JTextField();
         jLabelNombreGrup4 = new javax.swing.JLabel();
-        jCTipoPago = new javax.swing.JComboBox();
         jLabelNombreGrup5 = new javax.swing.JLabel();
         jLabelNombreGrup6 = new javax.swing.JLabel();
         txtUtilidad = new javax.swing.JTextField();
@@ -1170,7 +1194,7 @@ public void modoEdicion(boolean b){
         jLabel20.setText("---------------------------------------");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 3, 8, 25);
@@ -1192,6 +1216,28 @@ public void modoEdicion(boolean b){
         gridBagConstraints.ipady = 1;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 18);
         jXPanel5.add(jtNfactura, gridBagConstraints);
+
+        jLabelNombreGrup3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabelNombreGrup3.setText("Tipo de Pago");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 14, 0, 11);
+        jXPanel5.add(jLabelNombreGrup3, gridBagConstraints);
+
+        jCTipoPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCTipoPagoActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 30);
+        jXPanel5.add(jCTipoPago, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -1218,15 +1264,6 @@ public void modoEdicion(boolean b){
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 3, 8, 25);
         jXPanel6.add(jLabel24, gridBagConstraints);
-
-        jLabelNombreGrup3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
-        jLabelNombreGrup3.setText("Tipo de Pago");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(10, 14, 0, 11);
-        jXPanel6.add(jLabelNombreGrup3, gridBagConstraints);
 
         txtPtotal.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         txtPtotal.setForeground(java.awt.SystemColor.activeCaption);
@@ -1266,19 +1303,6 @@ public void modoEdicion(boolean b){
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(10, 14, 0, 11);
         jXPanel6.add(jLabelNombreGrup4, gridBagConstraints);
-
-        jCTipoPago.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCTipoPagoActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 30);
-        jXPanel6.add(jCTipoPago, gridBagConstraints);
 
         jLabelNombreGrup5.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelNombreGrup5.setText("Total Utilidad");
@@ -1330,7 +1354,7 @@ public void modoEdicion(boolean b){
          Boolean est=(false);
          hora=horario.buscar(est);
         
-        Lista listaAnteriores =new Lista(new VentaProductos().lista2(hora));
+        Lista listaAnteriores =new Lista(new VentaProductos().lista9(jtNfactura.getText(),hora));
         int fila=tblProducto.getSelectedRow();
         gh=(VentaProductos)listaAnteriores.getObject(fila);
         setPanel(gh);
@@ -1351,6 +1375,8 @@ public void modoEdicion(boolean b){
                  enblanco();
       }else{
                 setPanel2(cli);
+                jButton2.setEnabled(false);
+                jButton6.setEnabled(false);
        }
     }
         
@@ -1453,7 +1479,7 @@ getPanellinete();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jBPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPrint1ActionPerformed
-       
+          
            Factura li =new Factura();
            li=li.Busca(jtNfactura.getText());
        
@@ -1501,7 +1527,7 @@ getPanellinete();
             
        li.setCerrada(true);
        li.actualizar();
-        
+   encerar();
         // TODO add your handling code here:
     }//GEN-LAST:event_jBPrint1ActionPerformed
 
