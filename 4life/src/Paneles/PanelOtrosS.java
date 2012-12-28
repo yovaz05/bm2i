@@ -186,6 +186,7 @@ Lista listaAnteriores;
             if(saveOrUpdate()){
            // Mensaje.showMensaje(this,"Se ha realizado la venta con EXITO");
             modoEdicion(false);
+            
             setTabla();
             inicializa();
         }else
@@ -455,42 +456,62 @@ private void setPanel(VentaProductos gg){
          Horario hora = new Horario();
          Boolean est=(false);
          hora=horario.buscar(est);
-               
-        Lista listaAnteriores =new Lista(new VentaProductos().lista2(hora));
+        
+        Lista listaAnteriores =new Lista(new VentaProductos().lista9(jtNfactura.getText(),hora));
         int fila=tblProducto.getSelectedRow();
-        if (fila<0){
-            Mensaje.showError(this,"No ha elejido ningun producto","ERROR");
-        }else{
-               gh=(VentaProductos)listaAnteriores.getObject(fila);
-//#########################################################################################
-        //RESTRUCTURO EL ANTIGUO ESTOK
-     /*   Otros otros=new Otros();
-        otros=gh.getOtros();
-        if (gh.getCredito().equals(null)){
-            gh.setCredito("0");
-            gh.actualizar();
-        }
-            
-        int ant= otros.getStock()+Integer.parseInt(gh.getContado())+Integer.parseInt(gh.getCredito());
-//        otros.setStock(ant-Integer.parseInt(txtCantidad.getText()));
-        otros.actualizar();*/
-//#########################################################################################        
-       
-           gh.setOtros((Otros)lista.getObject(cboLinea.getSelectedIndex()));
+        gh=(VentaProductos)listaAnteriores.getObject(fila);
+        
+        
+   //primero devuelvo el estok 
+        
+        otros= gh.getOtros();
+        int cant=0;
+        cant=otros.getStock()+gh.getCantidad();
+        otros.setStock(cant);
+        otros.actualizar();
+   //ahora grabamos nuevamente
+        
+           Float pro= Float.parseFloat(jTPrecio.getText())*Float.parseFloat(jTCantidad.getText());
+           int pu=  Integer.parseInt(jTPuntos.getText())*Integer.parseInt(jTCantidad.getText());
+           Float uti=(Float.parseFloat(jTPrecio.getText())-otros.getCosto())*Float.parseFloat(jTCantidad.getText());;
+
+           Float tt=(Float.parseFloat(txtVtotal.getText())+pro)-gh.getTotalproducto();
+           int tp=(Integer.parseInt(txtPtotal.getText())+pu)-gh.getTotalpuntos();
+           Float tu=(Float.parseFloat(txtUtilidad.getText())+uti)-gh.getUtilidad(); 
+        
+        
            gh.setFechasalida(datFechaIngreso.getDate());
-  //         Float sun= Float.parseFloat(txtVunitario.getText())*Float.parseFloat(txtCantidad.getText());
-  //         gh.setTotal(sun);
-  //         gh.setContado(txtCantidad.getText());
-        //   gh.setCredito("0");
-  //       gh.setNombre(txNombre.getText());
-  //       gh.setCedula(txCedula.getText());
-      //     gh.setPagado(true);
+           gh.setNfactura(""+jtNfactura.getText());
+           gh.setVuproducto(Float.parseFloat(jTPrecio.getText()));
+           gh.setTotalproducto(pro);
+           gh.setVupuntos(Float.parseFloat(jTPuntos.getText()));
+           gh.setTotalpuntos(pu); 
+           gh.setCantidad(Integer.parseInt(jTCantidad.getText()));
            gh.setHorario(hora);
            gh.setUsuario(hora.getUsuario());
-           gh.actualizar();  
- 
-        }
-
+           gh.setOtros(otros); 
+           gh.setUtilidad(uti);
+           gh.setFactura(factura);
+           gh.setCosto(otros.getCosto());
+           
+           txtVtotal.setText(""+tt);
+           txtPtotal.setText(""+tp);
+           txtUtilidad.setText(""+tu); 
+           otros.setStock(otros.getStock()-Integer.parseInt(jTCantidad.getText()));  
+           otros.actualizar();
+           
+            factura.setVtotal(tt);
+            factura.setVpuntos(tp);
+            factura.setUtilidad(tu);
+            factura.actualizar();   
+    
+ if(venta.guardar()){
+               //Mensaje.showError(this,"Producto agregado","ERROR");
+              inicializa();
+              setTabla();
+              }else{
+                     Mensaje.showMensaje(this,"Editado con exito");
+               } 
         
 
     }
