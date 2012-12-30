@@ -38,6 +38,14 @@ Lista listaAnteriores;
 
 
     public IngreProductos_1() {
+       
+                horario=new Horario();
+         Horario hora = new Horario();
+         Boolean est=(false);
+         hora=horario.buscar(est);
+        if (hora==null){
+            Mensaje.showMensaje(this,"DEBE INICIAR CESION  CIERRE Y ABRA EL PROGRAMA NUEVAMENTE");
+        }else{
         compras = new Compras();
         initComponents();
         fijaMetodos();
@@ -56,6 +64,15 @@ Lista listaAnteriores;
                    Provedor pro=(Provedor) codigo.getObject(i);
                    cboProveedor.addItem(pro.getNombre());
                    }  
+        }
+        
+        
+        
+        
+        
+        
+        
+      
         
     }
     

@@ -33,10 +33,21 @@ public class PanelCompras extends javax.swing.JPanel {
     Lista listaAnteriores;
     
     public PanelCompras() {
-          initComponents();
+         
+        horario=new Horario();
+         Horario hora = new Horario();
+         Boolean est=(false);
+         hora=horario.buscar(est);
+        if (hora==null){
+            Mensaje.showMensaje(this,"DEBE INICIAR CESION  CIERRE Y ABRA EL PROGRAMA NUEVAMENTE");
+        }else{
+       initComponents();
           fijaMetodos();
           inicializa();
           setTabla();
+        }
+        
+       
     }
     
   private boolean isVacio(){

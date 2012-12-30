@@ -56,13 +56,23 @@ VentaProductos gh;
 Lista listaAnteriores;
 
     public PanelOtrosS() {
+       
+        horario=new Horario();
+         Horario hora = new Horario();
+         Boolean est=(false);
+         hora=horario.buscar(est);
+        if (hora==null){
+            Mensaje.showMensaje(this,"DEBE INICIAR CESION  CIERRE Y ABRA EL PROGRAMA NUEVAMENTE");
+        }else{
         initComponents();
         fijaMetodos();
         inicializa();
         responsable();
         setTabla();
         combos();
-    }
+        }
+        
+      }
     
       private void encerar() {
    // a qui enceramos todo para una nueva factura

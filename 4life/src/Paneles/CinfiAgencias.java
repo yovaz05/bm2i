@@ -19,13 +19,25 @@ public class CinfiAgencias extends javax.swing.JPanel {
     private String mensaje = "";
     private boolean editar;
     Lista listaAnteriores;
+    private Horario horario;
 
     public CinfiAgencias() {
+         horario=new Horario();
+         Horario hora = new Horario();
+         Boolean est=(false);
+         hora=horario.buscar(est);
+        if (hora==null){
+            Mensaje.showMensaje(this,"DEBE INICIAR CESION  CIERRE Y ABRA EL PROGRAMA NUEVAMENTE");
+        }else{
         initComponents();
         fijaMetodos();
         inicializa();
         setTabla();
 
+        }
+        
+            
+      
     }
 
     private boolean isVacio() {

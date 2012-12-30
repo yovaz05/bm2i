@@ -50,11 +50,22 @@ public class COMFLORES extends javax.swing.JInternalFrame {
     
     
     public COMFLORES() {
+        
+        horario=new Horario();
+         Horario hora = new Horario();
+         Boolean est=(false);
+         hora=horario.buscar(est);
+        if (hora==null){
+            Mensaje.showMensaje(this,"DEBE INICIAR CESION  CIERRE Y ABRA EL PROGRAMA NUEVAMENTE");
+        }else{
+          
         initComponents();
         generarcierre();
         setTabla3();
        txtAperCaja.setText("0"); 
+        }
         
+            
     }
     private void generarcierre(){
      // compras();
@@ -261,7 +272,7 @@ public class COMFLORES extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Panel para enviar Flores");
+        setTitle("Cierre Diario de Caja");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/16/kcontrol.png"))); // NOI18N
         addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
@@ -272,13 +283,29 @@ public class COMFLORES extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setAutoscrolls(true);
+        jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jLabelCreditopendiente2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabelCreditopendiente2.setForeground(new java.awt.Color(204, 0, 51));
         jLabelCreditopendiente2.setText("Responsable");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 87, 0, 0);
+        jPanel2.add(jLabelCreditopendiente2, gridBagConstraints);
 
         txtNombre.setBorder(null);
         txtNombre.setSelectionColor(java.awt.SystemColor.activeCaptionText);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 196;
+        gridBagConstraints.ipady = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 4, 0, 0);
+        jPanel2.add(txtNombre, gridBagConstraints);
 
         jXTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -294,6 +321,19 @@ public class COMFLORES extends javax.swing.JInternalFrame {
         jXTable2.setAutoscrolls(false);
         jXTable2.setColumnControlVisible(true);
         jScrollPane2.setViewportView(jXTable2);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 13;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1163;
+        gridBagConstraints.ipady = 352;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 3.3;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(18, 13, 360, 76);
+        jPanel2.add(jScrollPane2, gridBagConstraints);
 
         jXPanel2.setBackground(new java.awt.Color(235, 247, 247));
         jXPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -322,6 +362,16 @@ public class COMFLORES extends javax.swing.JInternalFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 1, 7, 0);
         jXPanel2.add(jLabel13, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 32;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 124, 0, 0);
+        jPanel2.add(jXPanel2, gridBagConstraints);
 
         jXPanel1.setBackground(new java.awt.Color(235, 247, 247));
         jXPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -376,6 +426,16 @@ public class COMFLORES extends javax.swing.JInternalFrame {
         gridBagConstraints.ipadx = 6;
         gridBagConstraints.insets = new java.awt.Insets(4, 0, 3, 0);
         jXPanel1.add(jButton1, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 34;
+        gridBagConstraints.ipady = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(31, 37, 0, 0);
+        jPanel2.add(jXPanel1, gridBagConstraints);
 
         jXPanel3.setBackground(new java.awt.Color(235, 247, 247));
         jXPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -530,6 +590,15 @@ public class COMFLORES extends javax.swing.JInternalFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(4, 30, 4, 0);
         jXPanel3.add(jLabelCivil10, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(37, 18, 0, 0);
+        jPanel2.add(jXPanel3, gridBagConstraints);
 
         jXPanel4.setBackground(new java.awt.Color(235, 247, 247));
         jXPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -699,60 +768,22 @@ public class COMFLORES extends javax.swing.JInternalFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jXPanel4.add(jBCalcular, gridBagConstraints);
 
-        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2Layout.createSequentialGroup()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 1179, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(37, 37, 37)
-                        .add(jXPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 179, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(18, 18, 18)
-                        .add(jXPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(18, 18, 18)
-                        .add(jXPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(340, 340, 340)
-                        .add(jXPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 465, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(87, 87, 87)
-                        .add(jLabelCreditopendiente2)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(txtNombre, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 196, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel2Layout.createSequentialGroup()
-                .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(jXPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(18, 18, 18)
-                        .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jXPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jXPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                    .add(jPanel2Layout.createSequentialGroup()
-                        .add(98, 98, 98)
-                        .add(jXPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 155, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(18, 18, 18)
-                        .add(jLabelCreditopendiente2)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtNombre, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 18, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(18, 18, 18)
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 379, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(360, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 18, 0, 0);
+        jPanel2.add(jXPanel4, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 3;
         gridBagConstraints.ipady = 349;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 127, 0, 128);
+        gridBagConstraints.insets = new java.awt.Insets(0, 7, 0, 0);
         getContentPane().add(jPanel2, gridBagConstraints);
 
         pack();
@@ -787,6 +818,7 @@ public class COMFLORES extends javax.swing.JInternalFrame {
     int segundo=0;
     Date fin= new Date();
     fin=datFechahasta.getDate();
+    Cierre cierre = new Cierre();
     
     horallegada= fin.getHours()-hora.getFechaInicio().getHours();
     
@@ -806,7 +838,7 @@ public class COMFLORES extends javax.swing.JInternalFrame {
                         hora.setHoras(0);
                         hora.setMinutos(minutollegada);
                         hora.setSegundos(segundo);
-                       // txtHorast.setText(""+0+" H :"+minutollegada+"  Min  :"+ segundo+"  Seg  " );
+                       txtHorast.setText(""+0+" H :"+minutollegada+"  Min  :"+ segundo+"  Seg  " );
                          cierre.setHora(0);
                          cierre.setMinutos(minutollegada);
                          cierre.setSegundos(segundo);
@@ -814,14 +846,14 @@ public class COMFLORES extends javax.swing.JInternalFrame {
                         hora.setHoras(horallegada);
                         hora.setMinutos(minutollegada);
                         hora.setSegundos(segundo);
-                       // txtHorast.setText(""+horallegada+" H  :"+minutollegada+"  Min  :"+ segundo+"  Seg  " );
+                        txtHorast.setText(""+horallegada+" H  :"+minutollegada+"  Min  :"+ segundo+"  Seg  " );
                         cierre.setHora(horallegada);
                          cierre.setMinutos(minutollegada);
                          cierre.setSegundos(segundo);
     }
         
         
-        Cierre cierre = new Cierre();
+        
         cierre.setTingreso(Float.parseFloat(txtIngreso.getText()));
         cierre.setUproducto(Float.parseFloat(txtUtilidad.getText()));
         cierre.setTpuntos(Integer.parseInt(txtPuntos.getText()));
@@ -830,6 +862,8 @@ public class COMFLORES extends javax.swing.JInternalFrame {
         cierre.setDeposito(Float.parseFloat(txtDeposito.getText()));
         cierre.setDesde(datFechadesde.getDate());
         cierre.setHasta(datFechahasta.getDate());
+        cierre.setAperturacaja(Float.parseFloat(txtAperCaja.getText()));
+        cierre.setTotalcaja(Float.parseFloat(txtAperCaja.getText())+Float.parseFloat(txtEfectivo.getText())-Float.parseFloat(txtEgreso.getText()));
         cierre.guardar();
        
         
@@ -849,7 +883,7 @@ public class COMFLORES extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jBCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalcularActionPerformed
-        // TODO add your handling code here:
+txtTotalCaja.setText(""+(Float.parseFloat(txtAperCaja.getText())+Float.parseFloat(txtEfectivo.getText())-Float.parseFloat(txtEgreso.getText())));        // TODO add your handling code here:
     }//GEN-LAST:event_jBCalcularActionPerformed
     
     

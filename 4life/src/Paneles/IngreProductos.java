@@ -40,11 +40,21 @@ Boolean activado;
 
 
     public IngreProductos() {
-        initComponents();
+        horario=new Horario();
+         Horario hora = new Horario();
+         Boolean est=(false);
+         hora=horario.buscar(est);
+        if (hora==null){
+            Mensaje.showMensaje(this,"DEBE INICIAR CESION  CIERRE Y ABRA EL PROGRAMA NUEVAMENTE");
+        }else{
+       initComponents();
         fijaMetodos();
         combos();
         inicializa();
         setTabla();
+        }
+        
+      
     }
     
 private boolean isVacio(){
