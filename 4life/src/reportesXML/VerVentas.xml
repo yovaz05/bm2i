@@ -266,8 +266,8 @@
                     <basic-key name="trim-text-content">true</basic-key>
                     <basic-key name="Excel.WrapText">false</basic-key>
                     <compound-key name="absolute_pos">
-                        <basic-object name="x">392.0</basic-object>
-                        <basic-object name="y">6.0</basic-object>
+                        <basic-object name="x">486.0</basic-object>
+                        <basic-object name="y">7.0</basic-object>
                     </compound-key>
                 </style>
                 <template references="string-field">
@@ -297,8 +297,8 @@
                     <basic-key name="trim-text-content">true</basic-key>
                     <basic-key name="Excel.WrapText">false</basic-key>
                     <compound-key name="absolute_pos">
-                        <basic-object name="x">490.0</basic-object>
-                        <basic-object name="y">7.0</basic-object>
+                        <basic-object name="x">383.0</basic-object>
+                        <basic-object name="y">5.0</basic-object>
                     </compound-key>
                 </style>
                 <template references="string-field">
@@ -483,7 +483,7 @@
     </report-description>
     <functions>
         <property-ref name="report.date"/>
-             <property-ref name="report.date"/>
+        <property-ref name="report.date"/>
         <property-ref name="report.date"/>
         <property-ref name="report.date"/>
         <property-ref name="respon"/>
@@ -494,5 +494,6 @@
         <property-ref name="totale"/>
         <property-ref name="punto"/>
 
+        
     </functions>
 </report-definition>
