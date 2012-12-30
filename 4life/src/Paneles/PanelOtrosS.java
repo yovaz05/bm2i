@@ -474,7 +474,8 @@ private void setPanel(VentaProductos gg){
            Float pro= Float.parseFloat(jTPrecio.getText())*Float.parseFloat(jTCantidad.getText());
            int pu=  Integer.parseInt(jTPuntos.getText())*Integer.parseInt(jTCantidad.getText());
            Float uti=(Float.parseFloat(jTPrecio.getText())-otros.getCosto())*Float.parseFloat(jTCantidad.getText());;
-
+//  restamos el valor  editado.
+           
            Float tt=(Float.parseFloat(txtVtotal.getText())+pro)-gh.getTotalproducto();
            int tp=(Integer.parseInt(txtPtotal.getText())+pu)-gh.getTotalpuntos();
            Float tu=(Float.parseFloat(txtUtilidad.getText())+uti)-gh.getUtilidad(); 
@@ -518,26 +519,40 @@ private void setPanel(VentaProductos gg){
     
     
  private void borra(){
+ 
+     
          horario=new Horario();
          Horario hora = new Horario();
          Boolean est=(false);
          hora=horario.buscar(est);
         
-        Lista listaAnteriores =new Lista(new VentaProductos().lista2(hora));
-     
+        Lista listaAnteriores =new Lista(new VentaProductos().lista9(jtNfactura.getText(),hora));
         int fila=tblProducto.getSelectedRow();
-        gh=(VentaProductos)listaAnteriores.getObject(fila);     
-//#########################################################################################
-        //SE DEBE SUMAR LO QUE SE BORRA A LA TABLA OTROS
-        Otros otros = new Otros();
+        gh=(VentaProductos)listaAnteriores.getObject(fila);
+        
+        
+   //primero devuelvo el estok 
+        
         otros= gh.getOtros();
-      //  otros.setStock(otros.getStock()+Integer.parseInt(gh.getContado())+Integer.parseInt(gh.getCredito()));
-        otros.actualizar();
-//#########################################################################################       
+        int cant=0;
+        cant=otros.getStock()+gh.getCantidad();
+        otros.setStock(cant);
+        otros.actualizar();    
+// corregir la sumatoria de factura.  
+        
+           Float tt=(Float.parseFloat(txtVtotal.getText()))-gh.getTotalproducto();
+           int tp=(Integer.parseInt(txtPtotal.getText()))-gh.getTotalpuntos();
+           Float tu=(Float.parseFloat(txtUtilidad.getText()))-gh.getUtilidad(); 
+        factura.setVtotal(tt);
+            factura.setVpuntos(tp);
+            factura.setUtilidad(tu);
+            factura.actualizar();   
         
         gh.borrar();   
         setTabla();
-        
+        txtVtotal.setText(""+tt);
+        txtPtotal.setText(""+tp);
+        txtUtilidad.setText(""+tu); 
         
    }
     
@@ -1500,7 +1515,13 @@ getPanellinete();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jBPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPrint1ActionPerformed
-          
+
+         boolean b = Mensaje.showPregunta(this,"SEGURO QUE DESEA CERRAR LA FACTURA","IMPRIMIR");
+        if (b){
+            
+        
+        
+        
            Factura li =new Factura();
            li=li.Busca(jtNfactura.getText());
        
@@ -1549,7 +1570,7 @@ getPanellinete();
        li.setCerrada(true);
        li.actualizar();
    encerar();
-        // TODO add your handling code here:
+  }      // TODO add your handling code here:
     }//GEN-LAST:event_jBPrint1ActionPerformed
 
     private void jCTipoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCTipoPagoActionPerformed
