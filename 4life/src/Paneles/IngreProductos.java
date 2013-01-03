@@ -176,7 +176,7 @@ private boolean isVacio(){
     private void cancelar(){
         modoEdicion(false);
         if(!lista.isEmpty()){
-            otros=(Otros)lista.getMyself();
+            //otros=(Otros)lista.getMyself();
             setPanel();
         }
     }
@@ -495,7 +495,7 @@ public void modoEdicion(boolean b){
 
         jLabelSubtitulo6.setFont(new java.awt.Font("Bodoni MT", 1, 12)); // NOI18N
         jLabelSubtitulo6.setForeground(new java.awt.Color(0, 0, 204));
-        jLabelSubtitulo6.setText("                                           Dato del Responsable de Transacción");
+        jLabelSubtitulo6.setText("                                           Dato del Responsable de Transacciï¿½n");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 12;

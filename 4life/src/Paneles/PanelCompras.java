@@ -319,7 +319,7 @@ private void setTabla(){
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProducto = new org.jdesktop.swingx.JXTable();
 
-        setBackground(java.awt.SystemColor.activeCaptionText);
+        setBackground(java.awt.SystemColor.window);
         setForeground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridBagLayout());
 

@@ -7,6 +7,7 @@ package clases;
 import Paneles.CinfLinea;
 import Paneles.ClientePanel;
 import beans.Cliente;
+import beans.Horario;
 import beans.Linea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,16 +25,25 @@ public class ClienteGestionIFrame extends javax.swing.JInternalFrame {
     Cliente cliente;
     private Lista lista;
     private Linea linea;
-    Linea gh;
+    Cliente gh;
     private String mensaje = "";
     private boolean editar;
     //Lista listaAnteriores;
-
+    private Horario horario;
     public ClienteGestionIFrame() {
+         horario=new Horario();
+         Horario hora = new Horario();
+         Boolean est=(false);
+         hora=horario.buscar(est);
+        if (hora==null){
+            Mensaje.showMensaje(this,"DEBE INICIAR CESION  CIERRE Y ABRA EL PROGRAMA NUEVAMENTE");
+        }else{
         initComponents();
         fijaMetodos();
         inicializa();
         setTabla();
+        }
+        
     }
 
     /**
@@ -497,7 +507,10 @@ public class ClienteGestionIFrame extends javax.swing.JInternalFrame {
 
     private void tblProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductoMouseClicked
         // TODO add your handling code here:
-        int fila = tblProducto.getSelectedRow();
+        int fila=tblProducto.getSelectedRow();
+        gh=(Cliente)listaAnteriores.getObject(fila);
+        setPanel(gh);
+        
 
     }//GEN-LAST:event_tblProductoMouseClicked
     // Variables declaration - do not modify//GEN-BEGIN:variables

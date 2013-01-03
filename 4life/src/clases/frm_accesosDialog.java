@@ -54,6 +54,7 @@ public class frm_accesosDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTNombre = new javax.swing.JTextField();
@@ -62,6 +63,9 @@ public class frm_accesosDialog extends javax.swing.JDialog {
         jPanel6 = new javax.swing.JPanel();
         bt_ingresar = new javax.swing.JButton();
         bt_salir = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ingreso al sistema");
@@ -152,23 +156,38 @@ public class frm_accesosDialog extends javax.swing.JDialog {
         });
         jPanel6.add(bt_salir);
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Escoja una opción"));
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("Ventas");
+        jPanel2.add(jRadioButton1, new java.awt.GridBagConstraints());
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("Reportes");
+        jPanel2.add(jRadioButton2, new java.awt.GridBagConstraints());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -195,11 +214,17 @@ public class frm_accesosDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jPasswordField2KeyPressed
 
     private void bt_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ingresarActionPerformed
-        try {
-            mt_ingresar();
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(frm_accesosDialog.class.getName()).log(Level.SEVERE, null, ex);
+        if (jRadioButton1.isSelected()) {
+            try {
+                mt_ingresar();
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(frm_accesosDialog.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        if (jRadioButton2.isSelected()) {
+            mt_ingresarReportes();
+        }
+        
     }//GEN-LAST:event_bt_ingresarActionPerformed
 
     private void bt_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salirActionPerformed
@@ -210,6 +235,32 @@ public class frm_accesosDialog extends javax.swing.JDialog {
     private void bt_salirAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_bt_salirAncestorAdded
     }//GEN-LAST:event_bt_salirAncestorAdded
 
+    public void mt_ingresarReportes(){
+
+        jTNombre.setEditable(false);
+        jPasswordField2.setEditable(false);
+
+
+        Usuario u = new Usuario();
+        horario = new Horario();
+        String nom = jTNombre.getText();
+        String clav = jPasswordField2.getText();
+        Boolean seci = false;
+        Usuario usa = new Usuario();
+        u = usa.bus(nom, clav);
+
+        if (u == null) {
+            Mensaje.showMensaje(this, "EL socio no existe ");
+        } else {
+            this.dispose();
+            java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+            MenuPrinReportes pantallaPrincipal = new MenuPrinReportes();
+            pantallaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            pantallaPrincipal.setBounds(0, 0, screenSize.width, screenSize.height);
+            pantallaPrincipal.setVisible(true);
+        }
+    }
+    
     public void mt_ingresar() throws UnsupportedEncodingException {
         jTNombre.setEditable(false);
         jPasswordField2.setEditable(false);
@@ -341,11 +392,15 @@ public class frm_accesosDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_ingresar;
     private javax.swing.JButton bt_salir;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTNombre;
     // End of variables declaration//GEN-END:variables
 }

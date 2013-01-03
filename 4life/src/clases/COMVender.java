@@ -6,11 +6,14 @@
 
 package clases;
 
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
+
 /**
  *
  * @author  ANtro
  */
-public class COMVender extends javax.swing.JInternalFrame {
+public class COMVender extends javax.swing.JInternalFrame  implements InternalFrameListener{
     
     /** Creates new form COMVender */
     public COMVender() {
@@ -42,5 +45,36 @@ public class COMVender extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Paneles.PanelOtrosS panelOtrosS1;
     // End of variables declaration//GEN-END:variables
+
+    public void internalFrameOpened(InternalFrameEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void internalFrameClosing(InternalFrameEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+        panelOtrosS1.guardarFactura();
+        System.out.println("_____________");
+    }
+
+    public void internalFrameClosed(InternalFrameEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("::::::::::::::::::::::::::");
+    }
+
+    public void internalFrameIconified(InternalFrameEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void internalFrameDeiconified(InternalFrameEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void internalFrameActivated(InternalFrameEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void internalFrameDeactivated(InternalFrameEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet.");
+    }
     
 }

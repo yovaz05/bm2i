@@ -784,7 +784,7 @@ public void modoEdicion(boolean b){
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel13.setForeground(java.awt.SystemColor.textHighlight);
-        jLabel13.setText("                      Selección de cliente,  y elegir  los productos a vender.");
+        jLabel13.setText("                      SelecciÃ³n de cliente,  y elegir  los productos a vender.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -1145,6 +1145,12 @@ public void modoEdicion(boolean b){
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 21);
         jXPanel3.add(txtStock, gridBagConstraints);
+
+        jTCantidad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTCantidadFocusLost(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 9;
@@ -1526,66 +1532,79 @@ getPanellinete();
 
     private void jBPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPrint1ActionPerformed
 
-         boolean b = Mensaje.showPregunta(this,"SEGURO QUE DESEA CERRAR LA FACTURA","IMPRIMIR");
-        if (b){
-            
-        
-        
-        
-           Factura li =new Factura();
-           li=li.Busca(jtNfactura.getText());
-       
-           if(li==null){
-               Mensaje.showError(this,"No se ha ingresado el numero de FACTURA ","Error");
-           }else{
-                    
-                    horario=new Horario();
-                    Horario hora= new Horario();
-                    Boolean est=(false);
-                    hora=horario.buscar(est);
-        
-                    if (activado==true){
-
-                         Lista listaAnteriores =new Lista(new VentaProductos().lista9(jtNfactura.getText(),hora));
-                         try {
-                              ReportePrevio rp = new ReportePrevio(new Mapa(listaAnteriores,Mapa.MAPAVENTASDIA,true),ReportePrevio.VERVENTAS);
-                             rp.setDesde(li.getFecha());
-                             rp.setRespon(li.getCliente().getNombres()+" "+otro.getUsuario().getApellido());
-                             rp.setAgencia(li.getCliente().getCodigocliente());
-                             rp.setTelefono(li.getCliente().getTelefono());
-                             rp.setDireccion(li.getCliente().getNombre());
-                             rp.setTotale(li.getVtotal());
-                             rp.setPunto(li.getVpuntos());
-                              rp.mostrarVistaPreliminar(MenuPrin.escritorio);
-                             } catch (Exception e) {
-                               e.printStackTrace();
-                             }
-
-                        }else{
-                         Date hora1;
-                         hora1= new Date();
-
-                         Lista listaAnteriores =new Lista(new Otros().lista());
-                         try {
-                              ReportePrevio rp = new ReportePrevio(new Mapa(listaAnteriores,Mapa.MAPAOTROSV,true),ReportePrevio.INVENTARIO);
-                              rp.setRespon(otro.getUsuario().getNombre()+" "+otro.getUsuario().getApellido());
-                              rp.setDesde(hora1);
-                              rp.mostrarVistaPreliminar(MenuPrin.escritorio);
-                             } catch (Exception e) {
-                               e.printStackTrace();
-                             }
-                        }  
-           }
-            
-       li.setCerrada(true);
-       li.actualizar();
-   encerar();
-  }      // TODO add your handling code here:
+         guardarFactura();
+   // TODO add your handling code here:
     }//GEN-LAST:event_jBPrint1ActionPerformed
+
+    public void guardarFactura() {
+        boolean b = Mensaje.showPregunta(this, "SEGURO QUE DESEA CERRAR LA FACTURA", "IMPRIMIR");
+        if (b) {
+            
+            Factura li = new Factura();
+            li = li.Busca(jtNfactura.getText());
+
+            if (li == null) {
+                Mensaje.showError(this, "No se ha ingresado el numero de FACTURA ", "Error");
+            } else {
+
+                horario = new Horario();
+                Horario hora = new Horario();
+                Boolean est = (false);
+                hora = horario.buscar(est);
+
+                if (activado == true) {
+
+                    Lista listaAnteriores = new Lista(new VentaProductos().lista9(jtNfactura.getText(), hora));
+                    try {
+                        ReportePrevio rp = new ReportePrevio(new Mapa(listaAnteriores, Mapa.MAPAVENTASDIA, true), ReportePrevio.VERVENTAS);
+                        rp.setDesde(li.getFecha());
+                        rp.setRespon(li.getCliente().getNombres() + " " + otro.getUsuario().getApellido());
+                        rp.setAgencia(li.getCliente().getCodigocliente());
+                        rp.setTelefono(li.getCliente().getTelefono());
+                        rp.setDireccion(li.getCliente().getNombre());
+                        rp.setTotale(li.getVtotal());
+                        rp.setPunto(li.getVpuntos());
+                        rp.mostrarVistaPreliminar(MenuPrin.escritorio);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    Date hora1;
+                    hora1 = new Date();
+
+                    Lista listaAnteriores = new Lista(new Otros().lista());
+                    try {
+                        ReportePrevio rp = new ReportePrevio(new Mapa(listaAnteriores, Mapa.MAPAOTROSV, true), ReportePrevio.INVENTARIO);
+                        rp.setRespon(otro.getUsuario().getNombre() + " " + otro.getUsuario().getApellido());
+                        rp.setDesde(hora1);
+                        rp.mostrarVistaPreliminar(MenuPrin.escritorio);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            li.setCerrada(true);
+            li.actualizar();
+            encerar();
+        }
+    }
 
     private void jCTipoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCTipoPagoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCTipoPagoActionPerformed
+
+    private void jTCantidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTCantidadFocusLost
+        if (jTPrecio.getText().equals("")){
+            Mensaje.showMensaje(this,"NO ha seleccionado un precio");
+        }else {
+            float vunit=Float.parseFloat(jTPrecio.getText());
+            float cant = Float.parseFloat(jTCantidad.getText());
+            float igual= (vunit * cant);
+            jTotal.setText(String.valueOf(igual));
+        }
+    }//GEN-LAST:event_jTCantidadFocusLost
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

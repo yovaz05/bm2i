@@ -864,6 +864,7 @@ public class COMFLORES extends javax.swing.JInternalFrame {
         cierre.setHasta(datFechahasta.getDate());
         cierre.setAperturacaja(Float.parseFloat(txtAperCaja.getText()));
         cierre.setTotalcaja(Float.parseFloat(txtAperCaja.getText())+Float.parseFloat(txtEfectivo.getText())-Float.parseFloat(txtEgreso.getText()));
+        cierre.setHorario(hora);
         cierre.guardar();
        
         

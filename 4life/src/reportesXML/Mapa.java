@@ -38,6 +38,9 @@ public class Mapa {
     public static final int MAPALINEA = 32;
     public static final int MAPAMINIMA = 33;
     public static final int CLIENTES = 34;
+    public static final int MAPADESGLOCE = 35;
+    public static final int MAPAFACTURA = 36;
+    
     private Lista lista;
     private Vector vec;
     private int type;
@@ -205,9 +208,26 @@ public class Mapa {
             case CLIENTES:
                 setMapaCliente();
                 break;
+                
+            case MAPADESGLOCE:
+                setMapaDesgloce();
+                break;
+                
+            case MAPAFACTURA:
+                setMapafactura();
+                break;
         }
     }
 
+     private void setMapafactura() {
+        modeloTabla = new MapaFacturas(lista, isNumerador());
+    }
+    
+    
+     private void setMapaDesgloce() {
+        modeloTabla = new MapaDesgloce(lista, isNumerador());
+    }
+    
     private void setMapaCliente() {
         modeloTabla = new MapaCliente(lista, isNumerador());
     }
