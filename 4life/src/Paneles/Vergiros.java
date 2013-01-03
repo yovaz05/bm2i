@@ -111,7 +111,7 @@ public class Vergiros extends javax.swing.JPanel {
         jBVer = new javax.swing.JButton();
         jBImprimir = new javax.swing.JButton();
 
-        setBackground(java.awt.SystemColor.activeCaptionText);
+        setBackground(java.awt.SystemColor.window);
         setLayout(new java.awt.GridBagLayout());
 
         jLabelCreditopendiente2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N

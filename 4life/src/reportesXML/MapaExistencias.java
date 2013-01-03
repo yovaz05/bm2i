@@ -40,10 +40,10 @@ public class MapaExistencias extends ModeloTabla implements ModeloMapa{
     private Class[] tipo =new Class[]{
             Integer.class,
             String.class,
-            String.class,
-            String.class,
-            String.class,
-            String.class
+            java.lang.Integer.class,
+            java.lang.Integer.class,
+            java.lang.Integer.class,
+            java.lang.Double.class
                                     
     };
     
@@ -72,11 +72,11 @@ public class MapaExistencias extends ModeloTabla implements ModeloMapa{
             setOtro((Otros)lista.getObject(i));
             if(isNumerador())
                 row.add(i+1);
-            row.add(""+ getOtro().getNombre());
-            row.add(""+ String.valueOf(getOtro().getStock()));
-            row.add(""+ String.valueOf(getOtro().getEminima()));
-            row.add(""+ String.valueOf(getOtro().getEmaxima()));
-            row.add(""+ String.valueOf(getOtro().getVunitario()));
+            row.add(getOtro().getNombre());
+            row.add(new Integer(getOtro().getStock()));
+            row.add(new Integer(getOtro().getEminima()));
+            row.add(new Integer(getOtro().getEmaxima()));
+            row.add(new Double(getOtro().getVunitario()));
             rows.add(row);
         }
         setRows(rows);
