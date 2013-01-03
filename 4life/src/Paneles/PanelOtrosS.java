@@ -57,7 +57,7 @@ Lista listaAnteriores;
 
     public PanelOtrosS() {
        
-        horario=new Horario();
+         horario=new Horario();
          Horario hora = new Horario();
          Boolean est=(false);
          hora=horario.buscar(est);
