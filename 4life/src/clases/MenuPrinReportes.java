@@ -48,16 +48,6 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jXHConferenciaV = new org.jdesktop.swingx.JXHyperlink();
         jXHVentas = new org.jdesktop.swingx.JXHyperlink();
         jXHFlores1 = new org.jdesktop.swingx.JXHyperlink();
-        jXTaskPane3 = new org.jdesktop.swingx.JXTaskPane();
-        jXHCobrarCreditos = new org.jdesktop.swingx.JXHyperlink();
-        jXHDarCredito = new org.jdesktop.swingx.JXHyperlink();
-        jXHCheques = new org.jdesktop.swingx.JXHyperlink();
-        jXHComprasOfi = new org.jdesktop.swingx.JXHyperlink();
-        jXHPasajes = new org.jdesktop.swingx.JXHyperlink();
-        jXTaskPane5 = new org.jdesktop.swingx.JXTaskPane();
-        jXHCobrarCreditos2 = new org.jdesktop.swingx.JXHyperlink();
-        jXHDarCredito2 = new org.jdesktop.swingx.JXHyperlink();
-        jXHCheques2 = new org.jdesktop.swingx.JXHyperlink();
         panel = new javax.swing.JPanel();
         jToolBar2 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
@@ -123,6 +113,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jXHEnviarGiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/Accesos.png"))); // NOI18N
         jXHEnviarGiro.setText("Enviar un Giro");
+        jXHEnviarGiro.setEnabled(false);
         jXHEnviarGiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXHEnviarGiroActionPerformed(evt);
@@ -131,6 +122,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jXHPagarGiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16/edit_f2.png"))); // NOI18N
         jXHPagarGiro.setText("Pago de Giros");
+        jXHPagarGiro.setEnabled(false);
         jXHPagarGiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXHPagarGiroActionPerformed(evt);
@@ -139,6 +131,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jXHGiroOficina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16/guardar.png"))); // NOI18N
         jXHGiroOficina.setText("Giros de Oficina");
+        jXHGiroOficina.setEnabled(false);
         jXHGiroOficina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXHGiroOficinaActionPerformed(evt);
@@ -155,6 +148,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jXHEnviarGiro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/Cortar.png"))); // NOI18N
         jXHEnviarGiro1.setText("Devolver un Giro");
+        jXHEnviarGiro1.setEnabled(false);
         jXHEnviarGiro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXHEnviarGiro1ActionPerformed(evt);
@@ -163,6 +157,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jXHEnviarGiro2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/Warning.png"))); // NOI18N
         jXHEnviarGiro2.setText("Remplazar un Giro");
+        jXHEnviarGiro2.setEnabled(false);
         jXHEnviarGiro2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXHEnviarGiro2ActionPerformed(evt);
@@ -211,6 +206,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jXHFlores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16/kcontrol.png"))); // NOI18N
         jXHFlores.setText("Enviar Flores");
+        jXHFlores.setEnabled(false);
         jXHFlores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXHFloresActionPerformed(evt);
@@ -219,6 +215,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jXHCabinas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16/Materia.png"))); // NOI18N
         jXHCabinas.setText("Cabinas");
+        jXHCabinas.setEnabled(false);
         jXHCabinas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXHCabinasActionPerformed(evt);
@@ -227,6 +224,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jXHConferenciaV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16/Pensum.png"))); // NOI18N
         jXHConferenciaV.setText("Video Conferencia");
+        jXHConferenciaV.setEnabled(false);
         jXHConferenciaV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXHConferenciaVActionPerformed(evt);
@@ -235,6 +233,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jXHVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16/Usuarios.png"))); // NOI18N
         jXHVentas.setText("Ventas ");
+        jXHVentas.setEnabled(false);
         jXHVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXHVentasActionPerformed(evt);
@@ -243,6 +242,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jXHFlores1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16/Internet.png"))); // NOI18N
         jXHFlores1.setText("Pasajes");
+        jXHFlores1.setEnabled(false);
         jXHFlores1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXHFlores1ActionPerformed(evt);
@@ -285,131 +285,6 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(7, 0, 7, 0);
         jPanel5.add(jXTaskPane2, gridBagConstraints);
 
-        jXTaskPane3.setTitle("Cuentas");
-
-        jXHCobrarCreditos.setText("Cobrar Creditos");
-        jXHCobrarCreditos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXHCobrarCreditosActionPerformed(evt);
-            }
-        });
-
-        jXHDarCredito.setText("Dar Creditos");
-        jXHDarCredito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXHDarCreditoActionPerformed(evt);
-            }
-        });
-
-        jXHCheques.setText("Pago con Cheque");
-        jXHCheques.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXHChequesActionPerformed(evt);
-            }
-        });
-
-        jXHComprasOfi.setText("Conpras de Oficina");
-        jXHComprasOfi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXHComprasOfiActionPerformed(evt);
-            }
-        });
-
-        jXHPasajes.setText("Pasajes");
-        jXHPasajes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXHPasajesActionPerformed(evt);
-            }
-        });
-
-        org.jdesktop.layout.GroupLayout jXTaskPane3Layout = new org.jdesktop.layout.GroupLayout(jXTaskPane3.getContentPane());
-        jXTaskPane3.getContentPane().setLayout(jXTaskPane3Layout);
-        jXTaskPane3Layout.setHorizontalGroup(
-            jXTaskPane3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jXTaskPane3Layout.createSequentialGroup()
-                .add(20, 20, 20)
-                .add(jXTaskPane3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jXHPasajes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jXHComprasOfi, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jXHCobrarCreditos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jXHDarCredito, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jXHCheques, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(90, Short.MAX_VALUE))
-        );
-        jXTaskPane3Layout.setVerticalGroup(
-            jXTaskPane3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jXTaskPane3Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jXHCobrarCreditos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jXHDarCredito, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jXHCheques, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jXHComprasOfi, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jXHPasajes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 0);
-        jPanel5.add(jXTaskPane3, gridBagConstraints);
-
-        jXTaskPane5.setTitle("Cierre de Caja");
-
-        jXHCobrarCreditos2.setText("Money Trasnmitter");
-        jXHCobrarCreditos2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXHCobrarCreditos2ActionPerformed(evt);
-            }
-        });
-
-        jXHDarCredito2.setText("LG Travel");
-        jXHDarCredito2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXHDarCredito2ActionPerformed(evt);
-            }
-        });
-
-        jXHCheques2.setText("Cierre Total");
-        jXHCheques2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXHCheques2ActionPerformed(evt);
-            }
-        });
-
-        org.jdesktop.layout.GroupLayout jXTaskPane5Layout = new org.jdesktop.layout.GroupLayout(jXTaskPane5.getContentPane());
-        jXTaskPane5.getContentPane().setLayout(jXTaskPane5Layout);
-        jXTaskPane5Layout.setHorizontalGroup(
-            jXTaskPane5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jXTaskPane5Layout.createSequentialGroup()
-                .add(20, 20, 20)
-                .add(jXTaskPane5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jXHCobrarCreditos2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jXHDarCredito2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jXHCheques2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(89, Short.MAX_VALUE))
-        );
-        jXTaskPane5Layout.setVerticalGroup(
-            jXTaskPane5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jXTaskPane5Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jXHCobrarCreditos2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(jXHDarCredito2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jXHCheques2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(51, 51, 51))
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        jPanel5.add(jXTaskPane5, gridBagConstraints);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
@@ -429,6 +304,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/Asistencia.png"))); // NOI18N
         jButton1.setToolTipText("Configurar Agencia");
+        jButton1.setEnabled(false);
         jButton1.setName("Configurar Agencia"); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -439,6 +315,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         enviargiro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/Accesos.png"))); // NOI18N
         enviargiro.setToolTipText("Enviar un Giro");
+        enviargiro.setEnabled(false);
         enviargiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enviargiroActionPerformed(evt);
@@ -448,6 +325,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/edit_f2.png"))); // NOI18N
         jButton2.setToolTipText("Pago de Giros");
+        jButton2.setEnabled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -457,6 +335,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/guardar.png"))); // NOI18N
         jButton4.setToolTipText("Giros de Oficina");
+        jButton4.setEnabled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -466,6 +345,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/system-log-out(2).png"))); // NOI18N
         jButton5.setToolTipText("Envio de Paquetes");
+        jButton5.setEnabled(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -478,6 +358,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/kcontrol.png"))); // NOI18N
         jButton3.setToolTipText("Enviar Flores");
+        jButton3.setEnabled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -487,6 +368,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/Materia.png"))); // NOI18N
         jButton6.setToolTipText("Cabinas");
+        jButton6.setEnabled(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -496,6 +378,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/Pensum.png"))); // NOI18N
         jButton7.setToolTipText("Video Conferencia");
+        jButton7.setEnabled(false);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -505,6 +388,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/Usuarios.png"))); // NOI18N
         jButton8.setToolTipText("Ventas");
+        jButton8.setEnabled(false);
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -514,6 +398,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/Internet.png"))); // NOI18N
         jButton9.setToolTipText("Pasajes");
+        jButton9.setEnabled(false);
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -525,6 +410,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/abrir.png"))); // NOI18N
         jButton10.setToolTipText("Crear un nuevo Producto");
+        jButton10.setEnabled(false);
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -534,6 +420,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/Profesor.png"))); // NOI18N
         jButton11.setToolTipText("Agregar Unidades");
+        jButton11.setEnabled(false);
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
@@ -543,6 +430,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/Usuarios.png"))); // NOI18N
         jButton12.setToolTipText("Vender Productos");
+        jButton12.setEnabled(false);
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
@@ -554,6 +442,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/preferences-desktop-accessibility(2).png"))); // NOI18N
         jButton13.setToolTipText("Pago de Credito (Cuentas por Pagar)");
+        jButton13.setEnabled(false);
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
@@ -563,6 +452,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/24/preferences-desktop-peripherals(2).png"))); // NOI18N
         jButton14.setToolTipText("Dar Creditos (Cuentas por Cobrar)");
+        jButton14.setEnabled(false);
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -576,7 +466,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jMenu2.setText("REPORTES");
 
-        jMVerFlores.setText("Ventas por fecha");
+        jMVerFlores.setText("REPORTE DE FACTURAS");
         jMVerFlores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMVerFloresActionPerformed(evt);
@@ -584,7 +474,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         });
         jMenu2.add(jMVerFlores);
 
-        jMvERgIROS.setText("Existencias Máximas y Minimas");
+        jMvERgIROS.setText("EXISTENCIA DE PRODUCTOS");
         jMvERgIROS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMvERgIROSActionPerformed(evt);
@@ -593,6 +483,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jMenu2.add(jMvERgIROS);
 
         jMGirosRemplazados.setText("Ver Giros Remplazados");
+        jMGirosRemplazados.setEnabled(false);
         jMGirosRemplazados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMGirosRemplazadosActionPerformed(evt);
@@ -601,6 +492,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jMenu2.add(jMGirosRemplazados);
 
         jMGirosAnulados.setText("Ver Giros Anulados");
+        jMGirosAnulados.setEnabled(false);
         jMGirosAnulados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMGirosAnuladosActionPerformed(evt);
@@ -609,6 +501,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jMenu2.add(jMGirosAnulados);
 
         jMGirospagados.setText("Ver Giros Pagados");
+        jMGirospagados.setEnabled(false);
         jMGirospagados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMGirospagadosActionPerformed(evt);
@@ -617,6 +510,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jMenu2.add(jMGirospagados);
 
         jMVerGiroOfi.setText("Ver Giros de Oficina");
+        jMVerGiroOfi.setEnabled(false);
         jMVerGiroOfi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMVerGiroOfiActionPerformed(evt);
@@ -625,6 +519,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jMenu2.add(jMVerGiroOfi);
 
         JMVerPaquetes.setText("Ver Paquetes Enviados");
+        JMVerPaquetes.setEnabled(false);
         JMVerPaquetes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JMVerPaquetesActionPerformed(evt);
@@ -633,6 +528,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jMenu2.add(JMVerPaquetes);
 
         jMReportesCabinas.setText("Ver Reportes de Cabinas");
+        jMReportesCabinas.setEnabled(false);
         jMReportesCabinas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMReportesCabinasActionPerformed(evt);
@@ -641,6 +537,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jMenu2.add(jMReportesCabinas);
 
         jMVerVideo.setText("Reporte de Video Conferencias");
+        jMVerVideo.setEnabled(false);
         jMVerVideo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMVerVideoActionPerformed(evt);
@@ -649,6 +546,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jMenu2.add(jMVerVideo);
 
         jMVerVentas.setText("Reporte de Ventas Diarias");
+        jMVerVentas.setEnabled(false);
         jMVerVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMVerVentasActionPerformed(evt);
@@ -657,6 +555,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jMenu2.add(jMVerVentas);
 
         jMVerDarCreditos.setText("Reporte de Creditos Dados");
+        jMVerDarCreditos.setEnabled(false);
         jMVerDarCreditos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMVerDarCreditosActionPerformed(evt);
@@ -665,6 +564,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jMenu2.add(jMVerDarCreditos);
 
         jMcREDITOSpAGADOS.setText("Reportes de Creditos Pagados");
+        jMcREDITOSpAGADOS.setEnabled(false);
         jMcREDITOSpAGADOS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMcREDITOSpAGADOSActionPerformed(evt);
@@ -673,6 +573,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jMenu2.add(jMcREDITOSpAGADOS);
 
         jMVerPagoCheque.setText("Reportes de Pagos con Cheques");
+        jMVerPagoCheque.setEnabled(false);
         jMVerPagoCheque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMVerPagoChequeActionPerformed(evt);
@@ -681,6 +582,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jMenu2.add(jMVerPagoCheque);
 
         JMVerProtestados.setText("Reporte de Cheques Protestados");
+        JMVerProtestados.setEnabled(false);
         JMVerProtestados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JMVerProtestadosActionPerformed(evt);
@@ -689,6 +591,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jMenu2.add(JMVerProtestados);
 
         jMVerPasajes.setText("Salir");
+        jMVerPasajes.setEnabled(false);
         jMVerPasajes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMVerPasajesActionPerformed(evt);
@@ -858,60 +761,6 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jXHCheques2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHCheques2ActionPerformed
-// TODO add your handling code here:
-    }//GEN-LAST:event_jXHCheques2ActionPerformed
-
-    private void jXHDarCredito2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHDarCredito2ActionPerformed
-// TODO add your handling code here:
-    }//GEN-LAST:event_jXHDarCredito2ActionPerformed
-
-    private void jXHCobrarCreditos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHCobrarCreditos2ActionPerformed
-// TODO add your handling code here:
-    }//GEN-LAST:event_jXHCobrarCreditos2ActionPerformed
-
-    private void jXHPasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHPasajesActionPerformed
-        COMviajes f = new COMviajes();
-        f.setVisible(true);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-
-        f.moveToFront();
-    }//GEN-LAST:event_jXHPasajesActionPerformed
-
-    private void jXHComprasOfiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHComprasOfiActionPerformed
-        COMprasOficina f = new COMprasOficina();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-
-        f.moveToFront();
-    }//GEN-LAST:event_jXHComprasOfiActionPerformed
-
-    private void jXHChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHChequesActionPerformed
-        COMCheque f = new COMCheque();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-    }//GEN-LAST:event_jXHChequesActionPerformed
-
-    private void jXHDarCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHDarCreditoActionPerformed
-        COMCxP f = new COMCxP();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-
-        f.moveToFront();
-    }//GEN-LAST:event_jXHDarCreditoActionPerformed
-
-    private void jXHCobrarCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHCobrarCreditosActionPerformed
-        COMCunetasXcobrar f = new COMCunetasXcobrar();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-    }//GEN-LAST:event_jXHCobrarCreditosActionPerformed
 
     private void jXHVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHVentasActionPerformed
         COMVender f = new COMVender();
@@ -1185,14 +1034,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar3;
     private javax.swing.JToolBar jToolBar4;
     private org.jdesktop.swingx.JXHyperlink jXHCabinas;
-    private org.jdesktop.swingx.JXHyperlink jXHCheques;
-    private org.jdesktop.swingx.JXHyperlink jXHCheques2;
-    private org.jdesktop.swingx.JXHyperlink jXHCobrarCreditos;
-    private org.jdesktop.swingx.JXHyperlink jXHCobrarCreditos2;
-    private org.jdesktop.swingx.JXHyperlink jXHComprasOfi;
     private org.jdesktop.swingx.JXHyperlink jXHConferenciaV;
-    private org.jdesktop.swingx.JXHyperlink jXHDarCredito;
-    private org.jdesktop.swingx.JXHyperlink jXHDarCredito2;
     private org.jdesktop.swingx.JXHyperlink jXHEnviarGiro;
     private org.jdesktop.swingx.JXHyperlink jXHEnviarGiro1;
     private org.jdesktop.swingx.JXHyperlink jXHEnviarGiro2;
@@ -1201,13 +1043,10 @@ public class MenuPrinReportes extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXHyperlink jXHFlores1;
     private org.jdesktop.swingx.JXHyperlink jXHGiroOficina;
     private org.jdesktop.swingx.JXHyperlink jXHPagarGiro;
-    private org.jdesktop.swingx.JXHyperlink jXHPasajes;
     private org.jdesktop.swingx.JXHyperlink jXHVentas;
     private org.jdesktop.swingx.calendar.JXMonthView jXMonthView1;
     private org.jdesktop.swingx.JXTaskPane jXTaskPane1;
     private org.jdesktop.swingx.JXTaskPane jXTaskPane2;
-    private org.jdesktop.swingx.JXTaskPane jXTaskPane3;
-    private org.jdesktop.swingx.JXTaskPane jXTaskPane5;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
     public static Paneles.Escritorio escritorio;

@@ -11,7 +11,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMVerFlores">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ventas por fecha"/>
+                <Property name="text" type="java.lang.String" value="REPORTE DE FACTURAS"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVerFloresActionPerformed"/>
@@ -19,7 +19,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMvERgIROS">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Existencias M&#xe1;ximas y Minimas"/>
+                <Property name="text" type="java.lang.String" value="EXISTENCIA DE PRODUCTOS"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMvERgIROSActionPerformed"/>
@@ -28,6 +28,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMGirosRemplazados">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Giros Remplazados"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMGirosRemplazadosActionPerformed"/>
@@ -36,6 +37,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMGirosAnulados">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Giros Anulados"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMGirosAnuladosActionPerformed"/>
@@ -44,6 +46,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMGirospagados">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Giros Pagados"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMGirospagadosActionPerformed"/>
@@ -52,6 +55,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMVerGiroOfi">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Giros de Oficina"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVerGiroOfiActionPerformed"/>
@@ -60,6 +64,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="JMVerPaquetes">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Paquetes Enviados"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMVerPaquetesActionPerformed"/>
@@ -68,6 +73,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMReportesCabinas">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Reportes de Cabinas"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMReportesCabinasActionPerformed"/>
@@ -76,6 +82,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMVerVideo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reporte de Video Conferencias"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVerVideoActionPerformed"/>
@@ -84,6 +91,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMVerVentas">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reporte de Ventas Diarias"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVerVentasActionPerformed"/>
@@ -92,6 +100,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMVerDarCreditos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reporte de Creditos Dados"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVerDarCreditosActionPerformed"/>
@@ -100,6 +109,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMcREDITOSpAGADOS">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reportes de Creditos Pagados"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMcREDITOSpAGADOSActionPerformed"/>
@@ -108,6 +118,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMVerPagoCheque">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reportes de Pagos con Cheques"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVerPagoChequeActionPerformed"/>
@@ -116,6 +127,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="JMVerProtestados">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reporte de Cheques Protestados"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMVerProtestadosActionPerformed"/>
@@ -124,6 +136,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMVerPasajes">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Salir"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVerPasajesActionPerformed"/>
@@ -279,6 +292,7 @@
                           <Image iconType="3" name="/24/Accesos.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Enviar un Giro"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHEnviarGiroActionPerformed"/>
@@ -290,6 +304,7 @@
                           <Image iconType="3" name="/16/edit_f2.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Pago de Giros"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHPagarGiroActionPerformed"/>
@@ -301,6 +316,7 @@
                           <Image iconType="3" name="/16/guardar.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Giros de Oficina"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHGiroOficinaActionPerformed"/>
@@ -323,6 +339,7 @@
                           <Image iconType="3" name="/24/Cortar.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Devolver un Giro"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHEnviarGiro1ActionPerformed"/>
@@ -334,6 +351,7 @@
                           <Image iconType="3" name="/24/Warning.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Remplazar un Giro"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHEnviarGiro2ActionPerformed"/>
@@ -392,6 +410,7 @@
                           <Image iconType="3" name="/16/kcontrol.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Enviar Flores"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHFloresActionPerformed"/>
@@ -403,6 +422,7 @@
                           <Image iconType="3" name="/16/Materia.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Cabinas"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHCabinasActionPerformed"/>
@@ -414,6 +434,7 @@
                           <Image iconType="3" name="/16/Pensum.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Video Conferencia"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHConferenciaVActionPerformed"/>
@@ -425,6 +446,7 @@
                           <Image iconType="3" name="/16/Usuarios.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Ventas "/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHVentasActionPerformed"/>
@@ -436,161 +458,10 @@
                           <Image iconType="3" name="/16/Internet.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Pasajes"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHFlores1ActionPerformed"/>
-                      </Events>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Container class="org.jdesktop.swingx.JXTaskPane" name="jXTaskPane3">
-                  <Properties>
-                    <Property name="title" type="java.lang.String" value="Cuentas"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                      <GridBagConstraints gridX="0" gridY="3" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="10" insetsLeft="0" insetsBottom="10" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
-                    </Constraint>
-                  </Constraints>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jXHPasajes" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jXHComprasOfi" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jXHCobrarCreditos" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jXHDarCredito" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jXHCheques" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="90" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jXHCobrarCreditos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jXHDarCredito" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jXHCheques" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jXHComprasOfi" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jXHPasajes" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHCobrarCreditos">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Cobrar Creditos"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHCobrarCreditosActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHDarCredito">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Dar Creditos"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHDarCreditoActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHCheques">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Pago con Cheque"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHChequesActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHComprasOfi">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Conpras de Oficina"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHComprasOfiActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHPasajes">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Pasajes"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHPasajesActionPerformed"/>
-                      </Events>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Container class="org.jdesktop.swingx.JXTaskPane" name="jXTaskPane5">
-                  <Properties>
-                    <Property name="title" type="java.lang.String" value="Cierre de Caja"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-                      <GridBagConstraints gridX="0" gridY="4" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
-                    </Constraint>
-                  </Constraints>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jXHCobrarCreditos2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jXHDarCredito2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jXHCheques2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="89" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jXHCobrarCreditos2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jXHDarCredito2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jXHCheques2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHCobrarCreditos2">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Money Trasnmitter"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHCobrarCreditos2ActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHDarCredito2">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="LG Travel"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHDarCredito2ActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHCheques2">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Cierre Total"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHCheques2ActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -629,6 +500,7 @@
               <Image iconType="3" name="/24/Asistencia.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Configurar Agencia"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="Configurar Agencia" noResource="true"/>
           </Properties>
           <Events>
@@ -641,6 +513,7 @@
               <Image iconType="3" name="/24/Accesos.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Enviar un Giro"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enviargiroActionPerformed"/>
@@ -652,6 +525,7 @@
               <Image iconType="3" name="/24/edit_f2.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Pago de Giros"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
@@ -663,6 +537,7 @@
               <Image iconType="3" name="/24/guardar.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Giros de Oficina"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
@@ -674,6 +549,7 @@
               <Image iconType="3" name="/24/system-log-out(2).png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Envio de Paquetes"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
@@ -695,6 +571,7 @@
                   <Image iconType="3" name="/24/kcontrol.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Enviar Flores"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
@@ -706,6 +583,7 @@
                   <Image iconType="3" name="/24/Materia.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Cabinas"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
@@ -717,6 +595,7 @@
                   <Image iconType="3" name="/24/Pensum.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Video Conferencia"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
@@ -728,6 +607,7 @@
                   <Image iconType="3" name="/24/Usuarios.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Ventas"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
@@ -739,6 +619,7 @@
                   <Image iconType="3" name="/24/Internet.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Pasajes"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton9ActionPerformed"/>
@@ -756,6 +637,7 @@
                   <Image iconType="3" name="/24/abrir.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Crear un nuevo Producto"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton10ActionPerformed"/>
@@ -767,6 +649,7 @@
                   <Image iconType="3" name="/24/Profesor.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Agregar Unidades"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
@@ -778,6 +661,7 @@
                   <Image iconType="3" name="/24/Usuarios.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Vender Productos"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton12ActionPerformed"/>
@@ -795,6 +679,7 @@
                   <Image iconType="3" name="/24/preferences-desktop-accessibility(2).png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Pago de Credito (Cuentas por Pagar)"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton13ActionPerformed"/>
@@ -806,6 +691,7 @@
                   <Image iconType="3" name="/24/preferences-desktop-peripherals(2).png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Dar Creditos (Cuentas por Cobrar)"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton14ActionPerformed"/>

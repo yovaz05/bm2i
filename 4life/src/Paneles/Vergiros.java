@@ -117,7 +117,7 @@ public class Vergiros extends javax.swing.JPanel {
         jLabelCreditopendiente2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabelCreditopendiente2.setForeground(new java.awt.Color(204, 0, 51));
         jLabelCreditopendiente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelCreditopendiente2.setText("Existencias Maximas y Mínimas");
+        jLabelCreditopendiente2.setText("Existencias de productos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
