@@ -9,6 +9,14 @@
             <Property name="text" type="java.lang.String" value="REPORTES"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMVerFlores">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ventas por fecha"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVerFloresActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMvERgIROS">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Giros"/>
@@ -55,14 +63,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMVerPaquetesActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMVerFlores">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ver las Flores Vendidas"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVerFloresActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMReportesCabinas">
@@ -363,7 +363,7 @@
                                   <Component id="jXHCabinas" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jXHConferenciaV" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="78" max="32767" attributes="0"/>
+                              <EmptySpace pref="72" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -465,7 +465,7 @@
                                   <Component id="jXHDarCredito" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jXHCheques" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="93" max="32767" attributes="0"/>
+                              <EmptySpace pref="90" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -550,7 +550,7 @@
                                   <Component id="jXHDarCredito2" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jXHCheques2" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="93" max="32767" attributes="0"/>
+                              <EmptySpace pref="89" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

@@ -79,13 +79,13 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jButton14 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
+        jMVerFlores = new javax.swing.JMenuItem();
         jMvERgIROS = new javax.swing.JMenuItem();
         jMGirosRemplazados = new javax.swing.JMenuItem();
         jMGirosAnulados = new javax.swing.JMenuItem();
         jMGirospagados = new javax.swing.JMenuItem();
         jMVerGiroOfi = new javax.swing.JMenuItem();
         JMVerPaquetes = new javax.swing.JMenuItem();
-        jMVerFlores = new javax.swing.JMenuItem();
         jMReportesCabinas = new javax.swing.JMenuItem();
         jMVerVideo = new javax.swing.JMenuItem();
         jMVerVentas = new javax.swing.JMenuItem();
@@ -260,7 +260,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
                     .add(jXHFlores, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXHCabinas, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXHConferenciaV, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         jXTaskPane2Layout.setVerticalGroup(
             jXTaskPane2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -333,7 +333,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
                     .add(jXHCobrarCreditos, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXHDarCredito, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXHCheques, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         jXTaskPane3Layout.setVerticalGroup(
             jXTaskPane3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -390,7 +390,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
                     .add(jXHCobrarCreditos2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXHDarCredito2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jXHCheques2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jXTaskPane5Layout.setVerticalGroup(
             jXTaskPane5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -575,6 +575,14 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         jMenu2.setText("REPORTES");
 
+        jMVerFlores.setText("Ventas por fecha");
+        jMVerFlores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMVerFloresActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMVerFlores);
+
         jMvERgIROS.setText("Ver Giros");
         jMvERgIROS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -622,14 +630,6 @@ public class MenuPrinReportes extends javax.swing.JFrame {
             }
         });
         jMenu2.add(JMVerPaquetes);
-
-        jMVerFlores.setText("Ver las Flores Vendidas");
-        jMVerFlores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMVerFloresActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMVerFlores);
 
         jMReportesCabinas.setText("Ver Reportes de Cabinas");
         jMReportesCabinas.addActionListener(new java.awt.event.ActionListener() {
