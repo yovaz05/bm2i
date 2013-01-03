@@ -583,7 +583,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         });
         jMenu2.add(jMVerFlores);
 
-        jMvERgIROS.setText("Ver Giros");
+        jMvERgIROS.setText("Existencias Máximas y Minimas");
         jMvERgIROS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMvERgIROSActionPerformed(evt);

@@ -40,6 +40,7 @@ public class Mapa {
     public static final int CLIENTES = 34;
     public static final int MAPADESGLOCE = 35;
     public static final int MAPAFACTURA = 36;
+    public static final int MAPAEXISTENCIAS = 37;
     
     private Lista lista;
     private Vector vec;
@@ -75,6 +76,10 @@ public class Mapa {
     public void setMapa() {
         switch (getType()) {
 
+            case MAPAEXISTENCIAS:
+                setMapaExistencias();
+                break;
+            
             case MAPAPRODUCTOS:
                 setMapaProductos();
                 break;
@@ -350,6 +355,10 @@ public class Mapa {
 
     private void setMapaProductos() {
         modeloTabla = new MapaProductos(lista, isNumerador());
+    }
+    
+    private void setMapaExistencias() {
+        modeloTabla = new MapaExistencias(lista, isNumerador());
     }
 
     private void setMapaVentasdia() {

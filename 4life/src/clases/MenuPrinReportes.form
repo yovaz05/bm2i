@@ -19,7 +19,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMvERgIROS">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ver Giros"/>
+                <Property name="text" type="java.lang.String" value="Existencias M&#xe1;ximas y Minimas"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMvERgIROSActionPerformed"/>
