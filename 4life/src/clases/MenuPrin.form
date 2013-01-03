@@ -220,26 +220,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMProvedoresActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMDEUDAS">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/12/Otro.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Pago de Productos Adquiridos"/>
-                <Property name="toolTipText" type="java.lang.String" value="I"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMDEUDASActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMPagarFiadas">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Pagar Tarjetas Fiadas"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMPagarFiadasActionPerformed"/>
-              </Events>
-            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuUsuarios">
@@ -332,6 +312,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVerCaja1ActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMVercierres1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="EDITAR FACTURA"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVercierres1ActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu1">
@@ -350,6 +338,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMNuevoUsuario">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Entrar como Nuevo Usuario"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMNuevoUsuarioActionPerformed"/>
@@ -358,6 +347,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMVercierres">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Cierres"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVercierresActionPerformed"/>
@@ -611,7 +601,7 @@
                                   <Component id="jXHPagarGiro" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jXHEnvioPaquete" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="89" max="32767" attributes="0"/>
+                              <EmptySpace pref="88" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -704,7 +694,7 @@
                 </Container>
                 <Container class="org.jdesktop.swingx.JXTaskPane" name="jXTaskPane2">
                   <Properties>
-                    <Property name="title" type="java.lang.String" value="Ingresos LG"/>
+                    <Property name="title" type="java.lang.String" value="MENU PRINCIPAL"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -724,7 +714,7 @@
                                   <Component id="jXHCabinas" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jXHConferenciaV" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="96" max="32767" attributes="0"/>
+                              <EmptySpace pref="81" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -752,7 +742,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/16/kcontrol.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Enviar Flores"/>
+                        <Property name="text" type="java.lang.String" value="Crear Lineas"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHFloresActionPerformed"/>
@@ -763,7 +753,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/16/Materia.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Cabinas"/>
+                        <Property name="text" type="java.lang.String" value="Crear Clientes"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHCabinasActionPerformed"/>
@@ -774,7 +764,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/16/Pensum.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Video Conferencia"/>
+                        <Property name="text" type="java.lang.String" value="Crear producto"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHConferenciaVActionPerformed"/>
@@ -785,7 +775,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/16/Usuarios.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Ventas "/>
+                        <Property name="text" type="java.lang.String" value="AGREGAR UNIDADES"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHVentasActionPerformed"/>
@@ -796,7 +786,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/16/Internet.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Pasajes"/>
+                        <Property name="text" type="java.lang.String" value="CREAR PROVEEDOR"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHFlores1ActionPerformed"/>
@@ -820,13 +810,11 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jXHPasajes" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jXHComprasOfi" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jXHCobrarCreditos" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jXHDarCredito" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jXHCheques" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="102" max="32767" attributes="0"/>
+                              <EmptySpace pref="93" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -839,11 +827,7 @@
                               <Component id="jXHDarCredito" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jXHCheques" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jXHComprasOfi" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jXHPasajes" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -851,7 +835,7 @@
                   <SubComponents>
                     <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHCobrarCreditos">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Cobrar Creditos"/>
+                        <Property name="text" type="java.lang.String" value="FACTURAR"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHCobrarCreditosActionPerformed"/>
@@ -859,7 +843,7 @@
                     </Component>
                     <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHDarCredito">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Dar Creditos"/>
+                        <Property name="text" type="java.lang.String" value="COMPRAS DE OFICINA"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHDarCreditoActionPerformed"/>
@@ -867,33 +851,17 @@
                     </Component>
                     <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHCheques">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Pago con Cheque"/>
+                        <Property name="text" type="java.lang.String" value="CIERRE DE CAJA"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHChequesActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHComprasOfi">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Conpras de Oficina"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHComprasOfiActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHPasajes">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Pasajes"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHPasajesActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
                 </Container>
                 <Container class="org.jdesktop.swingx.JXTaskPane" name="jXTaskPane5">
                   <Properties>
-                    <Property name="title" type="java.lang.String" value="Cierre de Caja"/>
+                    <Property name="title" type="java.lang.String" value="USUARIOS Y REPORTES"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -932,7 +900,7 @@
                   <SubComponents>
                     <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHCobrarCreditos2">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Money Trasnmitter"/>
+                        <Property name="text" type="java.lang.String" value="USUARIOS"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHCobrarCreditos2ActionPerformed"/>
@@ -940,7 +908,7 @@
                     </Component>
                     <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHDarCredito2">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="LG Travel"/>
+                        <Property name="text" type="java.lang.String" value="REPORTE 1"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHDarCredito2ActionPerformed"/>
@@ -948,7 +916,7 @@
                     </Component>
                     <Component class="org.jdesktop.swingx.JXHyperlink" name="jXHCheques2">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Cierre Total"/>
+                        <Property name="text" type="java.lang.String" value="REPORTE 2"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXHCheques2ActionPerformed"/>
@@ -989,7 +957,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/24/Asistencia.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Configurar Agencia"/>
+            <Property name="toolTipText" type="java.lang.String" value="Crear Lineas"/>
             <Property name="name" type="java.lang.String" value="Configurar Agencia" noResource="true"/>
           </Properties>
           <Events>
@@ -1001,7 +969,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/24/Accesos.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Enviar un Giro"/>
+            <Property name="toolTipText" type="java.lang.String" value="Crear Cliente"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enviargiroActionPerformed"/>
@@ -1012,7 +980,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/24/edit_f2.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Pago de Giros"/>
+            <Property name="toolTipText" type="java.lang.String" value="Crear Producto"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
@@ -1023,7 +991,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/24/guardar.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Giros de Oficina"/>
+            <Property name="toolTipText" type="java.lang.String" value="GREGAR UNIDADES"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
@@ -1034,7 +1002,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/24/system-log-out(2).png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Envio de Paquetes"/>
+            <Property name="toolTipText" type="java.lang.String" value="PROVEEDOR"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
@@ -1055,7 +1023,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/24/kcontrol.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Enviar Flores"/>
+                <Property name="toolTipText" type="java.lang.String" value="FACTURAR"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
@@ -1066,7 +1034,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/24/Materia.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value="Cabinas"/>
+                <Property name="toolTipText" type="java.lang.String" value="COMPRAS DE OFICINA"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
@@ -1089,6 +1057,7 @@
                   <Image iconType="3" name="/24/Usuarios.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Ventas"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
@@ -1100,6 +1069,7 @@
                   <Image iconType="3" name="/24/Internet.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Pasajes"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton9ActionPerformed"/>
@@ -1117,6 +1087,7 @@
                   <Image iconType="3" name="/24/abrir.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Crear un nuevo Producto"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton10ActionPerformed"/>
@@ -1128,6 +1099,7 @@
                   <Image iconType="3" name="/24/Profesor.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Agregar Unidades"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
@@ -1139,6 +1111,7 @@
                   <Image iconType="3" name="/24/Usuarios.png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Vender Productos"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton12ActionPerformed"/>
@@ -1156,6 +1129,7 @@
                   <Image iconType="3" name="/24/preferences-desktop-accessibility(2).png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Pago de Credito (Cuentas por Pagar)"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton13ActionPerformed"/>
@@ -1167,6 +1141,7 @@
                   <Image iconType="3" name="/24/preferences-desktop-peripherals(2).png"/>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Dar Creditos (Cuentas por Cobrar)"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton14ActionPerformed"/>
