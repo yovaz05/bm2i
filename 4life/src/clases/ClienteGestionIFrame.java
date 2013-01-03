@@ -508,7 +508,7 @@ public class ClienteGestionIFrame extends javax.swing.JInternalFrame {
     private void tblProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductoMouseClicked
         // TODO add your handling code here:
         int fila=tblProducto.getSelectedRow();
-        gh=(Cliente)listaAnteriores.getObject(fila);
+//        gh=(Cliente)listaAnteriores.getObject(fila);
         setPanel(gh);
         
 

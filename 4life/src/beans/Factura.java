@@ -207,4 +207,8 @@ public class Factura {
      public List lista2( Horario horas){
         return getBase().lista2(horas);
     } 
+     
+     public List listarFecha(Date desde, Date hasta){
+         return getBase().listarFecha(desde, hasta);
+     }
 }

@@ -12,6 +12,7 @@ package Datos;
 import beans.Factura;
 import beans.Horario;
 import hibernate.HibernateDAO;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
@@ -67,6 +68,14 @@ public class FacturaHBM extends HibernateDAO{
           if ( hora!=null)
               crit.add(Restrictions.eq("horario",hora));
           return crit.list();
+    }
+    
+    
+    public List listarFecha(Date desde, Date hasta){
+        Criteria crit = session.createCriteria(Factura.class);
+        crit.add(Restrictions.between("fecha",desde,hasta));
+        crit.addOrder(Order.asc("fecha"));
+        return crit.list();
     }
     
 }
