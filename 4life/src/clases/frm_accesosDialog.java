@@ -210,17 +210,16 @@ public class frm_accesosDialog extends javax.swing.JDialog {
 
     private void jPasswordField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField2KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                mt_ingresar();
-            } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(frm_accesosDialog.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            ingresarSistema();
         }
     }//GEN-LAST:event_jPasswordField2KeyPressed
 
     private void bt_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ingresarActionPerformed
-        
-        
+        ingresarSistema();
+    }//GEN-LAST:event_bt_ingresarActionPerformed
+
+    public void ingresarSistema(){
+        System.out.println("................" + jRadioButton1.isSelected() + " " + jRadioButton2.isSelected());
         if (jRadioButton1.isSelected()) {
             try {
                 mt_ingresar();
@@ -231,9 +230,8 @@ public class frm_accesosDialog extends javax.swing.JDialog {
         if (jRadioButton2.isSelected()) {
             mt_ingresarReportes();
         }
-        
-    }//GEN-LAST:event_bt_ingresarActionPerformed
-
+    }
+    
     private void bt_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salirActionPerformed
         Configuracion.cerrar();
         this.dispose();
@@ -246,7 +244,7 @@ public class frm_accesosDialog extends javax.swing.JDialog {
         System.out.println("jejejejeje");
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
-    public void mt_ingresarReportes(){
+    public void mt_ingresarReportes() {
 
         jTNombre.setEditable(false);
         jPasswordField2.setEditable(false);
@@ -271,7 +269,7 @@ public class frm_accesosDialog extends javax.swing.JDialog {
             pantallaPrincipal.setVisible(true);
         }
     }
-    
+
     public void mt_ingresar() throws UnsupportedEncodingException {
         jTNombre.setEditable(false);
         jPasswordField2.setEditable(false);
@@ -352,7 +350,6 @@ public class frm_accesosDialog extends javax.swing.JDialog {
     public void iniciarMenuPrincipal() {
         final PanSplash panSplash = new PanSplash(new javax.swing.JFrame());
         SwingUtilities.invokeLater(new Runnable() {
-
             public void run() {
                 panSplash.showSplashScreen();
             }
@@ -360,7 +357,6 @@ public class frm_accesosDialog extends javax.swing.JDialog {
 
         final MenuPrin pantallaPrincipal = new MenuPrin();
         SwingUtilities.invokeLater(new Runnable() {
-
             public void run() {
                 panSplash.hideSplash();
                 java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -394,7 +390,6 @@ public class frm_accesosDialog extends javax.swing.JDialog {
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
-
             public void run() {
                 new frm_accesosDialog().setVisible(true);
             }

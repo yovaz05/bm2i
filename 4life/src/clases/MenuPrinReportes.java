@@ -5,6 +5,7 @@
  */
 package clases;
 
+import hibernate.Configuracion;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
@@ -687,7 +688,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         });
         jMenu2.add(JMVerProtestados);
 
-        jMVerPasajes.setText("Reporte de Pasajes");
+        jMVerPasajes.setText("Salir");
         jMVerPasajes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMVerPasajesActionPerformed(evt);
@@ -982,10 +983,12 @@ public class MenuPrinReportes extends javax.swing.JFrame {
     }//GEN-LAST:event_jXHEnviarGiroActionPerformed
 
     private void jMVerPasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerPasajesActionPerformed
-        ComVerPasajes f = new ComVerPasajes();
+        /*ComVerPasajes f = new ComVerPasajes();
         f.setVisible(true);
         escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
+        f.moveToFront();*/
+        Configuracion.cerrar();
+        System.exit(0);
     }//GEN-LAST:event_jMVerPasajesActionPerformed
 
     private void JMVerProtestadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMVerProtestadosActionPerformed
