@@ -30,6 +30,9 @@ public class ClienteGestionIFrame extends javax.swing.JInternalFrame {
     private boolean editar;
     //Lista listaAnteriores;
     private Horario horario;
+    //Lista listaAnteriores;
+   // private Horario horario;
+//>>>>>>> .r300
     public ClienteGestionIFrame() {
          horario=new Horario();
          Horario hora = new Horario();
