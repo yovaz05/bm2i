@@ -39,10 +39,20 @@
     
        <joined-subclass name ="beans.Provedor" table="PROVEDOR">
         <key column="ID_PROVEDOR"/>
-        
-       <property name="ruc" column="RUC"/> 
+        <property name="ruc" column="RUC"/> 
          
     </joined-subclass>
+    
+    
+    <joined-subclass name ="beans.Cliente" table="CLIENTE">
+        <key column="ID_CLIENTE"/>
+        
+        <property name="codigocliente" column="CODIGOCLIENTE"/>
+        <property name="celular" column="CELULAR"/>       
+        <property name="email" column="EMAIL"/>
+        
+  </joined-subclass>
+    
     
 </class>
 </hibernate-mapping>

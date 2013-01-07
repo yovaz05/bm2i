@@ -80,7 +80,7 @@ public class MapaDesgloce extends ModeloTabla implements ModeloMapa{
             setVenta((VentaProductos)lista.getObject(i));
             if(isNumerador())
             row.add(i+1);
-            row.add(""+ getVenta().getCliente().getNombres()+" "+getVenta().getCliente().getApellidos());
+            row.add(""+ getVenta().getCliente().getNombre()+" "+getVenta().getCliente().getApellido());
             row.add(""+ getVenta().getCantidad());
             row.add(""+ getVenta().getOtros().getNombre());
             row.add(""+ getVenta().getVuproducto());

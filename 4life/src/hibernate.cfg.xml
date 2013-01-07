@@ -19,7 +19,7 @@
     <property name="hbm2ddl.auto">update</property>
     <mapping resource="beans/Persona.hbm.xml"/>
     <mapping resource="beans/Horario.hbm.xml"/>
-    <mapping resource="beans/anulargiro.hbm.xml"/>
+      <mapping resource="beans/anulargiro.hbm.xml"/>
     <mapping resource="beans/Giro.hbm.xml"/>
     <mapping resource="beans/Agencia.hbm.xml"/>
     <mapping resource="beans/CodigoAgencia.hbm.xml"/>
@@ -43,7 +43,7 @@
     <mapping resource="beans/Linea.hbm.xml"/>
     <mapping resource="beans/factura.hbm.xml"/>
     <!--agregado por mi jiji-->
-    <mapping resource="beans/Cliente.hbm.xml"/>
+
     
     <!--<mapping resource="beans/Turno.hbm.xml"/>  
         <mapping resource="beans/Efectivo.hbm.xml"/>  

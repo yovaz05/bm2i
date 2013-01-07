@@ -25,10 +25,12 @@ public class ClienteHBM extends HibernateDAO {
 
     public List lista() {
         Criteria crit = session.createCriteria(Cliente.class);
-        crit.addOrder(Order.asc("cedularuc"));
         return crit.list();
-    }
-
+       }
+    
+        
+    
+ 
     public List<Cliente> buscarNombres(String nombre) {
         Criteria crit = session.createCriteria(Cliente.class);
         crit.add(Restrictions.like("nombre", nombre + "%"));

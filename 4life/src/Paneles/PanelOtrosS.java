@@ -270,12 +270,12 @@ private void setPanel(){
 // **********************************************
 private void setPanel2(Cliente cli){
     
-   jTNombre.setText(""+cli.getNombres());
-   jTApellido.setText(""+cli.getApellidos());
-   jTCedula.setText(""+cli.getCedularuc());
+   jTNombre.setText(""+cli.getNombre());
+   jTApellido.setText(""+cli.getApellido());
+   jTCedula.setText(""+cli.getCedula());
    jTelefono.setText(""+cli.getTelefono());
    jCelular.setText(""+cli.getCelular());
-   jDireccion.setText(""+cli.getNombre());//Nombres igual a direccion       
+   jDireccion.setText(""+cli.getDireccion());//Nombres igual a direccion       
 } 
 
 
@@ -313,12 +313,12 @@ private void getPanellinete(){
       if (cliente==null){
                         Cliente cli = new Cliente();
                         cli.setCodigocliente(jTCodigo.getText());
-                        cli.setNombres(jTNombre.getText());
-                        cli.setApellidos(jTApellido.getText());
-                        cli.setCedularuc(jTCedula.getText());
+                        cli.setNombre(jTNombre.getText());
+                        cli.setApellido(jTApellido.getText());
+                        cli.setCedula(jTCedula.getText());
                         cli.setTelefono(jTelefono.getText());
                         cli.setCelular(jCelular.getText());
-                        cli.setNombre(jDireccion.getText());
+                        cli.setDireccion(jDireccion.getText());
                         cli.guardar();   
                         if(cli.guardar()){
                             modoEdicion2(false);
@@ -553,7 +553,7 @@ private void setPanel(VentaProductos gg){
            Float tt=(Float.parseFloat(txtVtotal.getText()))-gh.getTotalproducto();
            int tp=(Integer.parseInt(txtPtotal.getText()))-gh.getTotalpuntos();
            Float tu=(Float.parseFloat(txtUtilidad.getText()))-gh.getUtilidad(); 
-        factura.setVtotal(tt);
+            factura.setVtotal(tt);
             factura.setVpuntos(tp);
             factura.setUtilidad(tu);
             factura.actualizar();   
@@ -686,6 +686,7 @@ public void modoEdicion(boolean b){
         jTPuntos = new javax.swing.JTextField();
         jBPrint1 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         txtNombre1 = new javax.swing.JTextField();
         jXPanel5 = new org.jdesktop.swingx.JXPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -784,7 +785,7 @@ public void modoEdicion(boolean b){
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel13.setForeground(java.awt.SystemColor.textHighlight);
-        jLabel13.setText("                      SelecciÃ³n de cliente,  y elegir  los productos a vender.");
+        jLabel13.setText("                      Selección de cliente,  y elegir  los productos a vender.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -1210,6 +1211,18 @@ public void modoEdicion(boolean b){
         gridBagConstraints.insets = new java.awt.Insets(0, 21, 0, 12);
         jXPanel3.add(jLabel19, gridBagConstraints);
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16/Informacion.png"))); // NOI18N
+        jButton3.setText("BORRAR TODO ");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 11;
+        jXPanel3.add(jButton3, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 7;
@@ -1552,16 +1565,14 @@ getPanellinete();
                 Boolean est = (false);
                 hora = horario.buscar(est);
 
-                if (activado == true) {
-
                     Lista listaAnteriores = new Lista(new VentaProductos().lista9(jtNfactura.getText(), hora));
                     try {
                         ReportePrevio rp = new ReportePrevio(new Mapa(listaAnteriores, Mapa.MAPAVENTASDIA, true), ReportePrevio.VERVENTAS);
                         rp.setDesde(li.getFecha());
-                        rp.setRespon(li.getCliente().getNombres() + " " + otro.getUsuario().getApellido());
+                        rp.setRespon(li.getCliente().getNombre() + " " + li.getCliente().getApellido());
                         rp.setAgencia(li.getCliente().getCodigocliente());
                         rp.setTelefono(li.getCliente().getTelefono());
-                        rp.setDireccion(li.getCliente().getNombre());
+                        rp.setDireccion(li.getCliente().getDireccion());
                         rp.setTotale(li.getVtotal());
                         rp.setPunto(li.getVpuntos());
                         rp.mostrarVistaPreliminar(MenuPrin.escritorio);
@@ -1569,20 +1580,7 @@ getPanellinete();
                         e.printStackTrace();
                     }
 
-                } else {
-                    Date hora1;
-                    hora1 = new Date();
-
-                    Lista listaAnteriores = new Lista(new Otros().lista());
-                    try {
-                        ReportePrevio rp = new ReportePrevio(new Mapa(listaAnteriores, Mapa.MAPAOTROSV, true), ReportePrevio.INVENTARIO);
-                        rp.setRespon(otro.getUsuario().getNombre() + " " + otro.getUsuario().getApellido());
-                        rp.setDesde(hora1);
-                        rp.mostrarVistaPreliminar(MenuPrin.escritorio);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
+                 
             }
 
             li.setCerrada(true);
@@ -1605,6 +1603,45 @@ getPanellinete();
             jTotal.setText(String.valueOf(igual));
         }
     }//GEN-LAST:event_jTCantidadFocusLost
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+   
+    
+   
+    horario = new Horario();
+    Horario hora = new Horario();
+    Boolean est = (false);
+    hora = horario.buscar(est);
+    
+    Factura li = new Factura();
+    li = li.Busca(jtNfactura.getText());
+    
+    Lista listaAnteriores = new Lista(new VentaProductos().lista9(jtNfactura.getText(), hora));
+    
+    modoEdicion(false);
+    modoEdicion2(false);
+    encerar();
+    setBlanco();
+   
+    boolean b = Mensaje.showPregunta(this, "SEGURO QUE DESEA BORRAR TODA LA FACTURA?", "IMPRIMIR");
+    if (li!= null){
+        if (b) {
+               for(int j=0;j<listaAnteriores.getSize();j++){
+                      venta=(VentaProductos)listaAnteriores.getObject(j);
+                      //primero devuelvo el estok 
+                      otros= venta.getOtros();
+                      int cant=0;
+                      cant=otros.getStock()+venta.getCantidad();
+                      otros.setStock(cant);
+                      otros.actualizar();
+                      venta.borrar();
+              }  
+       li.borrar();
+        }
+    }
+    
+            // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1615,6 +1652,7 @@ getPanellinete();
     private javax.swing.JButton jBPrint1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox jCParroquia;

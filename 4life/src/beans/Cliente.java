@@ -6,113 +6,93 @@ package beans;
 
 import Datos.ClienteHBM;
 import java.util.List;
-
+import java.util.HashSet;
+import java.util.Set;
 /**
  *
  * @author richard
  */
-public class Cliente {
+public class Cliente extends Persona{
 
-    private int id_cliente;
-    /**
-     * nombre voy a almacenar un solo nombre para la busqueda
-     */
-    private String nombre;
-    private String nombres;
-    private String apellidos;
-    private String cedularuc;
+    private int id_Cliente;
     private String codigocliente;
-    private String email;
-    private String telefono;
     private String celular;
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
+    private String email;
     private ClienteHBM base;
-
+    
     public Cliente() {
         setBase(new ClienteHBM());
     }
 
-    public int getId_cliente() {
-        return id_cliente;
+    /**
+     * @return the id_Cliente
+     */
+    public int getId_Cliente() {
+        return id_Cliente;
     }
 
-    public void setId_cliente(int id_cliente) {
-        this.id_cliente = id_cliente;
+    /**
+     * @param id_Cliente the id_Cliente to set
+     */
+    public void setId_Cliente(int id_Cliente) {
+        this.id_Cliente = id_Cliente;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getCedularuc() {
-        return cedularuc;
-    }
-
-    public void setCedularuc(String cedularuc) {
-        this.cedularuc = cedularuc;
-    }
-
+    /**
+     * @return the codigocliente
+     */
     public String getCodigocliente() {
         return codigocliente;
     }
 
+    /**
+     * @param codigocliente the codigocliente to set
+     */
     public void setCodigocliente(String codigocliente) {
         this.codigocliente = codigocliente;
-    }    
+    }
 
+    /**
+     * @return the celular
+     */
+    public String getCelular() {
+        return celular;
+    }
+
+    /**
+     * @param celular the celular to set
+     */
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    /**
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * @param email the email to set
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * @return the base
+     */
     public ClienteHBM getBase() {
         return base;
     }
 
+    /**
+     * @param base the base to set
+     */
     public void setBase(ClienteHBM base) {
         this.base = base;
     }
-    
-    
     public boolean guardar(){
         return getBase().guardar(this);
     }
@@ -123,16 +103,13 @@ public class Cliente {
     
     public void borrar(){
         getBase().eliminar(this);
-    }
-    
-    public List lista() {
+    }  
+     public List lista(){
         return getBase().lista();
     }
-    
-    public List<Cliente> buscarNombres(String nombre) {
-        return getBase().buscarNombres(nombre);
-    }
-
+     
+     
+     
     public Cliente buscarCodigo(String codigo) {
         return getBase().buscarCodigoCliente(codigo);
     }
@@ -140,4 +117,7 @@ public class Cliente {
     public Cliente buscarCedula(String cedula) {
         return getBase().buscaCedula(cedula);
     }
-}
+      public List<Cliente> buscarNombres(String nombre) {
+        return getBase().buscarNombres(nombre);
+    }
+  }

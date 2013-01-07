@@ -25,7 +25,7 @@ public class FacturaHBM extends HibernateDAO{
     }
     public List lista(){
         Criteria crit = session.createCriteria(Factura.class);     
-        crit.addOrder(Order.asc("nombre"));
+      //  crit.addOrder(Order.asc("nombre"));
         return crit.list();
     }
    

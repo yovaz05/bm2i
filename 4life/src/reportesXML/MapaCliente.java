@@ -63,12 +63,12 @@ public class MapaCliente extends ModeloTabla implements ModeloMapa {
             Vector row = new Vector();
             Cliente cliente = (Cliente) lista.getObject(i);
             row.add(cliente.getCodigocliente());
-            row.add(cliente.getNombres());
-            row.add(cliente.getApellidos());
-            row.add(cliente.getCedularuc());
+            row.add(cliente.getNombre());
+            row.add(cliente.getApellido());
+            row.add(cliente.getCedula());
             row.add(cliente.getTelefono());
             row.add(cliente.getCelular());
-            row.add(cliente.getNombre());
+            row.add(cliente.getDireccion());
             row.add(cliente.getEmail());
             
             rows.add(row);

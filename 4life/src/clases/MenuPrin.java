@@ -1496,10 +1496,11 @@ public class MenuPrin extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
 
-        ClienteGestionIFrame cgif = new ClienteGestionIFrame();
-        cgif.setVisible(true);
-        escritorio.add(cgif, JLayeredPane.DEFAULT_LAYER);
-        cgif.moveToFront();
+      COMvc f = new COMvc();
+        f.setVisible(true);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMVercierres1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVercierres1ActionPerformed

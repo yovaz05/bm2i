@@ -412,9 +412,9 @@ public class ClienteGestionIFrame extends javax.swing.JInternalFrame {
     }
 
     private void setPanel() {
-        jtCedula.setText(cliente.getCedularuc());
-        jtNombres.setText(cliente.getNombres());
-        jtApellidos.setText(cliente.getApellidos());
+        jtCedula.setText(cliente.getCedula());
+        jtNombres.setText(cliente.getNombre());
+        jtApellidos.setText(cliente.getApellido());
         jtCodigo.setText(cliente.getCodigocliente());
         jtCorreo.setText(cliente.getEmail());
         jtTelefono.setText(cliente.getTelefono());
@@ -422,9 +422,9 @@ public class ClienteGestionIFrame extends javax.swing.JInternalFrame {
     }
 
     private void setPanel(Cliente cliente) {
-        jtCedula.setText(cliente.getCedularuc());
-        jtNombres.setText(cliente.getNombres());
-        jtApellidos.setText(cliente.getApellidos());
+        jtCedula.setText(cliente.getCedula());
+        jtNombres.setText(cliente.getNombre());
+        jtApellidos.setText(cliente.getApellido());
         jtCodigo.setText(cliente.getCodigocliente());
         jtCorreo.setText(cliente.getEmail());
         jtTelefono.setText(cliente.getTelefono());
@@ -433,9 +433,9 @@ public class ClienteGestionIFrame extends javax.swing.JInternalFrame {
 
     private void getPanel() {
         //linea.setNombre(jTNombre.getText());
-        cliente.setCedularuc(jtCedula.getText());
-        cliente.setNombres(jtNombres.getText());
-        cliente.setApellidos(jtApellidos.getText());
+        cliente.setCedula(jtCedula.getText());
+        cliente.setNombre(jtNombres.getText());
+        cliente.setApellido(jtApellidos.getText());
         cliente.setCodigocliente(jtCodigo.getText());
         cliente.setEmail(jtCorreo.getText());
         cliente.setTelefono(jtTelefono.getText());

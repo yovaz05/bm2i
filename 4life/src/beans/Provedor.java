@@ -20,6 +20,8 @@ public class Provedor extends Persona{
 private int Id_Provedor;
 private String ruc;
 private ProvedorHBM base;
+
+
     public Provedor() {
         setBase(new ProvedorHBM());
     }

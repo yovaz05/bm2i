@@ -28,11 +28,14 @@ public class MapaFacturas extends ModeloTabla implements ModeloMapa{
             "Cliente",
             "Pago",
             "Total Puntos",
-            "Monto Total"
-           
+            "Monto Total",
+            "Cerrada",
+           "Utilidad",
             
     };
     private boolean[] edit = new boolean[]{
+            false,
+            false,
             false,
             false,
             false,
@@ -45,6 +48,8 @@ public class MapaFacturas extends ModeloTabla implements ModeloMapa{
     };
     private Class[] tipo =new Class[]{
             Integer.class,
+            String.class,
+            String.class,
             String.class,
             String.class,
             String.class,
@@ -75,10 +80,12 @@ public class MapaFacturas extends ModeloTabla implements ModeloMapa{
                 row.add(i+1);
                 row.add(""+ getFactura().getNumero());
                 row.add(""+ getFactura().getFecha());
-                row.add(""+ getFactura().getCliente().getNombres()+" "+getFactura().getCliente().getApellidos());
+                row.add(""+ getFactura().getCliente().getNombre()+" "+getFactura().getCliente().getApellido());
                 row.add(""+ getFactura().getTpago());
                 row.add(""+ getFactura().getVpuntos());
                 row.add(""+ getFactura().getVtotal());
+                row.add(""+ getFactura().getCerrada());
+                row.add(""+ getFactura().getUtilidad());
                 rows.add(row);
         }
         setRows(rows);

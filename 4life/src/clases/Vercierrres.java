@@ -269,12 +269,12 @@ private void setPanel(){
 // **********************************************
 private void setPanel2(Cliente cli){
     
-   jTNombre.setText(""+cli.getNombres());
-   jTApellido.setText(""+cli.getApellidos());
-   jTCedula.setText(""+cli.getCedularuc());
+   jTNombre.setText(""+cli.getNombre());
+   jTApellido.setText(""+cli.getApellido());
+   jTCedula.setText(""+cli.getCedula());
    jTelefono.setText(""+cli.getTelefono());
    jCelular.setText(""+cli.getCelular());
-   jDireccion.setText(""+cli.getNombre());//Nombres igual a direccion       
+   jDireccion.setText(""+cli.getDireccion());//Nombres igual a direccion       
 } 
 
 
@@ -312,12 +312,12 @@ private void getPanellinete(){
       if (cliente==null){
                         Cliente cli = new Cliente();
                         cli.setCodigocliente(jTCodigo.getText());
-                        cli.setNombres(jTNombre.getText());
-                        cli.setApellidos(jTApellido.getText());
-                        cli.setCedularuc(jTCedula.getText());
+                        cli.setNombre(jTNombre.getText());
+                        cli.setApellido(jTApellido.getText());
+                        cli.setCedula(jTCedula.getText());
                         cli.setTelefono(jTelefono.getText());
                         cli.setCelular(jCelular.getText());
-                        cli.setNombre(jDireccion.getText());
+                        cli.setDireccion(jDireccion.getText());
                         cli.guardar();   
                         if(cli.guardar()){
                             modoEdicion2(false);
@@ -621,8 +621,8 @@ public void modoEdicion(boolean b){
          hora=horario.buscar(est);
                
                 
-         Lista listaAnteriores =new Lista(new VentaProductos().lista9(jtNfactura.getText(),hora));
-         Mapa mapa = new Mapa(listaAnteriores,Mapa.MAPAVENTASDIA,true);
+         Lista listaAnteriores =new Lista(new Factura().lista());
+         Mapa mapa = new Mapa(listaAnteriores,Mapa.MAPAFACTURA,true);
          reportesXML.ModeloTabla modelo = mapa.getModeloTabla();
          tblProducto.setModel(modelo);
      
@@ -660,10 +660,10 @@ public void modoEdicion(boolean b){
                     try {
                         ReportePrevio rp = new ReportePrevio(new Mapa(listaAnteriores, Mapa.MAPAVENTASDIA, true), ReportePrevio.VERVENTAS);
                         rp.setDesde(li.getFecha());
-                        rp.setRespon(li.getCliente().getNombres() + " " + otro.getUsuario().getApellido());
+                        rp.setRespon(li.getCliente().getNombre() + " " + li.getCliente().getApellido());
                         rp.setAgencia(li.getCliente().getCodigocliente());
                         rp.setTelefono(li.getCliente().getTelefono());
-                        rp.setDireccion(li.getCliente().getNombre());
+                        rp.setDireccion(li.getCliente().getDireccion());
                         rp.setTotale(li.getVtotal());
                         rp.setPunto(li.getVpuntos());
                         rp.mostrarVistaPreliminar(MenuPrin.escritorio);
