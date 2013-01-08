@@ -118,6 +118,16 @@ public class VentaProductosHBM extends HibernateDAO{
         return crit.list();
     }
      
+         public List lista10(String nfac){
+        Criteria crit = session.createCriteria(VentaProductos.class);
+       if (nfac!=null)
+       crit.add(Restrictions.eq("nfactura",nfac));
+       if(crit.list().size()>1)
+            return null;
+       else 
+       return crit.list();
+    }
+     
      public VentaProductos habiliatr(Integer in){
         Criteria crit = session.createCriteria(VentaProductos.class);
             if (in!=null)

@@ -49,7 +49,7 @@ private javax.swing.DefaultComboBoxModel modelo3;
 Linea linea;
 Lista tres;
 Cliente cliente;
-
+ Factura g;
 Boolean activado;
 VentaProductos gh;
 Lista listaAnteriores;
@@ -339,18 +339,45 @@ private void getPanellinete(){
 
 
 private void setPanel(VentaProductos gg){
- //jTCantidad.setEditable(true);
+
     cboLinea.setSelectedItem(gg.getOtros().getLinea().getNombre()); 
     cboProductos.setSelectedItem(gg.getOtros().getNombre());  
     jTCantidad.setText(""+gg.getCantidad());
     txtStock.setText(""+gg.getOtros().getStock());
     jTPuntos.setText(""+gg.getOtros().getPuntos());
     jTPrecio.setText(""+gg.getVuproducto());
-   jTotal.setText(""+gg.getTotalproducto());
- // int p;
-   //txtPrecio.setText(""+gg.getOtros().getStock());
-   //   cboLinea.setSelectedItem(gg.getOtros().getNombre().toString());
-  // txCodigo.setText(""+gg.getId_Venta());     
+    jTotal.setText(""+gg.getTotalproducto());
+    
+    datFechaIngreso.setDate(gg.getFechasalida());
+    jTCodigo.setText(""+gg.getCliente().getCodigocliente()); 
+    jTNombre.setText(""+gg.getCliente().getNombre());
+    jTApellido.setText(""+gg.getCliente().getApellido());
+    jTCedula.setText(""+gg.getCliente().getCedula());
+    jTelefono.setText(""+gg.getCliente().getTelefono());
+    jCelular.setText(""+gg.getCliente().getCelular());
+    jDireccion.setText(""+gg.getCliente().getDireccion());
+    
+ 
+    } 
+private void setPanel2(Factura gg){
+ //jTCantidad.setEditable(true);
+    datFechaIngreso.setDate(gg.getFecha());
+    jTCodigo.setText(""+gg.getCliente().getCodigocliente()); 
+    jTNombre.setText(""+gg.getCliente().getNombre());
+    jTApellido.setText(""+gg.getCliente().getApellido());
+    jTCedula.setText(""+gg.getCliente().getCedula());
+    jTelefono.setText(""+gg.getCliente().getTelefono());
+    jCelular.setText(""+gg.getCliente().getCelular());
+    jDireccion.setText(""+gg.getCliente().getDireccion());
+    jtNfactura.setText(""+gg.getNumero());
+    
+    txtVtotal.setText(""+gg.getVtotal());
+    txtPtotal.setText(""+gg.getVpuntos());
+    txtUtilidad.setText(""+gg.getUtilidad());
+    
+    jCTipoPago.setSelectedItem(gg.getTpago());
+    
+
     }  
     
     
@@ -583,11 +610,7 @@ private void setPanel(VentaProductos gg){
     
     
 public void modoEdicion(boolean b){
-   if (jtNfactura.getText().equals("")){
-            jtNfactura.setEditable(b);
-        }else {
-       jtNfactura.setEditable(false);
-   }
+
     
            
     cboProductos.setEditable(b);
@@ -711,12 +734,10 @@ public void modoEdicion(boolean b){
         jLabel1 = new javax.swing.JLabel();
         jXPanel1 = new org.jdesktop.swingx.JXPanel();
         jLabel16 = new javax.swing.JLabel();
-        lblFechaIngreso1 = new javax.swing.JLabel();
         jLNombre1 = new javax.swing.JLabel();
         jLApellido1 = new javax.swing.JLabel();
         jLCedula1 = new javax.swing.JLabel();
         jLTelefono1 = new javax.swing.JLabel();
-        datFechaIngreso = new org.jdesktop.swingx.JXDatePicker();
         jTNombre = new javax.swing.JTextField();
         jTApellido = new javax.swing.JTextField();
         jTCedula = new javax.swing.JTextField();
@@ -756,6 +777,8 @@ public void modoEdicion(boolean b){
         jLabelNombreGrup3 = new javax.swing.JLabel();
         jCTipoPago = new javax.swing.JComboBox();
         jButton2 = new javax.swing.JButton();
+        lblFechaIngreso1 = new javax.swing.JLabel();
+        datFechaIngreso = new org.jdesktop.swingx.JXDatePicker();
         jXPanel6 = new org.jdesktop.swingx.JXPanel();
         jLabel24 = new javax.swing.JLabel();
         txtPtotal = new javax.swing.JTextField();
@@ -777,7 +800,7 @@ public void modoEdicion(boolean b){
 
         jLabelSubtitulo6.setFont(new java.awt.Font("Bodoni MT", 1, 12)); // NOI18N
         jLabelSubtitulo6.setForeground(new java.awt.Color(0, 0, 204));
-        jLabelSubtitulo6.setText("                                                                                                                            DATOS DEL USUARIO");
+        jLabelSubtitulo6.setText("                 DATOS DEL USUARIO");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 17;
@@ -909,15 +932,6 @@ public void modoEdicion(boolean b){
         gridBagConstraints.insets = new java.awt.Insets(12, 3, 6, 25);
         jXPanel1.add(jLabel16, gridBagConstraints);
 
-        lblFechaIngreso1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
-        lblFechaIngreso1.setText("Fecha de Ingreso");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
-        jXPanel1.add(lblFechaIngreso1, gridBagConstraints);
-
         jLNombre1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLNombre1.setText("Nombre");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -953,12 +967,6 @@ public void modoEdicion(boolean b){
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 12, 12, 0);
         jXPanel1.add(jLTelefono1, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 17);
-        jXPanel1.add(datFechaIngreso, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -1303,7 +1311,7 @@ public void modoEdicion(boolean b){
         jLabel20.setText("---------------------------------------");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 3, 8, 25);
@@ -1313,24 +1321,24 @@ public void modoEdicion(boolean b){
         jLabelNombreGrup2.setText("Numero de factura");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(10, 14, 0, 11);
         jXPanel5.add(jLabelNombreGrup2, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 18);
+        gridBagConstraints.insets = new java.awt.Insets(1, 2, 1, 21);
         jXPanel5.add(jtNfactura, gridBagConstraints);
 
         jLabelNombreGrup3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelNombreGrup3.setText("Tipo de Pago");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(10, 14, 0, 11);
         jXPanel5.add(jLabelNombreGrup3, gridBagConstraints);
@@ -1342,10 +1350,10 @@ public void modoEdicion(boolean b){
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 30);
+        gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 21);
         jXPanel5.add(jCTipoPago, gridBagConstraints);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16/BINOC02A.png"))); // NOI18N
@@ -1360,6 +1368,22 @@ public void modoEdicion(boolean b){
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 15);
         jXPanel5.add(jButton2, gridBagConstraints);
+
+        lblFechaIngreso1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        lblFechaIngreso1.setText("Fecha de Ingreso");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
+        jXPanel5.add(lblFechaIngreso1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 2, 0, 1);
+        jXPanel5.add(datFechaIngreso, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -1476,14 +1500,24 @@ public void modoEdicion(boolean b){
     private void tblProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductoMouseClicked
         // TODO add your handling code here:
         horario=new Horario();
+        Factura g = new Factura();
         Horario hora = new Horario();
         Boolean est=(false);
         hora=horario.buscar(est);
 
-        Lista listaAnteriores =new Lista(new VentaProductos().lista9(jtNfactura.getText(),hora));
-        int fila=tblProducto.getSelectedRow();
-        gh=(VentaProductos)listaAnteriores.getObject(fila);
-        setPanel(gh);
+        Lista listaA =new Lista(new VentaProductos().lista10(jtNfactura.getText()));
+        if (listaA.getSize()>1){ 
+           int fila=tblProducto.getSelectedRow();
+           gh=(VentaProductos)listaA.getObject(fila);
+           setPanel(gh); 
+        }else{ 
+             lista =new Lista(new Factura().lista());
+             int fila=tblProducto.getSelectedRow();
+             g=(Factura)lista.getObject(fila);
+             setPanel2(g);
+            }
+        
+        
     }//GEN-LAST:event_tblProductoMouseClicked
 
     private void jDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDireccionActionPerformed
@@ -1497,23 +1531,18 @@ public void modoEdicion(boolean b){
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        Factura cli = new  Factura();
-        if (jTCodigo.getText().equals("")){
-            Mensaje.showError(this,"No ha ingresado ningun codigo","Error");
-            enblanco();
-        }else{
-            String bus = jtNfactura.getText();
-            cli = cli.Busca(bus);
-            if (cli==null){
-                Mensaje.showError(this,"No hay ningun Cliente con este codigo intente denuevo","Error");
-                enblanco();
-            }else{
-                //setPanel2(cli);
-                jButton2.setEnabled(false);
-                jButton6.setEnabled(false);
-            }
-        }
+   Lista listaAnteriores =new Lista(new VentaProductos().lista10(jtNfactura.getText()));
 
+   if (listaAnteriores==null){
+         Mensaje.showError(this, "EL NUMERO DE FACTURA INGRESADO NO ES VALIDO ", "Error");
+   }else{
+      
+         Mapa mapa = new Mapa(listaAnteriores,Mapa.MAPAVENTASDIA,true);
+         reportesXML.ModeloTabla modelo = mapa.getModeloTabla();
+         tblProducto.setModel(modelo);
+   }
+   
+   
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCelularActionPerformed

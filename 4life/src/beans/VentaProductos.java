@@ -134,6 +134,10 @@ public class VentaProductos {
      public List lista9(String nfac, Horario hora){
         return getBase().lista9(nfac,hora);
     }   
+     
+     public List lista10(String nfac){
+        return getBase().lista10(nfac);
+    }   
     public VentaProductos habiliatr(Integer in){
         return getBase().habiliatr(in);
     }
