@@ -26,6 +26,7 @@ public class Factura {
     private Horario horario;
     private Cliente cliente;
     private Boolean cerrada;
+    private String ndepo;
     
     private FacturaHBM base;
 
@@ -71,6 +72,12 @@ public class Factura {
         return getBase().buscar(cod);
     }
 
+    
+     public List buscarAb(Boolean estado) {
+        return getBase().buscarAb(estado);
+         
+    }
+     
     public Factura bus(String nom) {
         return getBase().buscar(nom);
     }
@@ -211,4 +218,18 @@ public class Factura {
      public List listarFecha(Date desde, Date hasta){
          return getBase().listarFecha(desde, hasta);
      }
+
+    /**
+     * @return the ndepo
+     */
+    public String getNdepo() {
+        return ndepo;
+    }
+
+    /**
+     * @param ndepo the ndepo to set
+     */
+    public void setNdepo(String ndepo) {
+        this.ndepo = ndepo;
+    }
 }

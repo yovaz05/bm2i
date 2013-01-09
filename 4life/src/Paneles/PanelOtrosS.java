@@ -133,6 +133,7 @@ Lista listaAnteriores;
                   // venta=(VentaProductos) codigo.ultimo();
   modoEdicion(false);
   modoEdicion2(false);
+           jtNDeposito.setEditable(false);
 
   
   setTabla();
@@ -402,6 +403,7 @@ private void setPanel(VentaProductos gg){
                         factura.setUtilidad(tu);
                         factura.setCliente(cli);
                         factura.setHorario(hora);
+                        factura.setNdepo(""+jtNDeposito.getText());
                       
                         
                          if(factura.guardar()){
@@ -556,6 +558,7 @@ private void setPanel(VentaProductos gg){
             factura.setVtotal(tt);
             factura.setVpuntos(tp);
             factura.setUtilidad(tu);
+            //factura.setNdepo(jtNDeposito.getText());
             factura.actualizar();   
         
         gh.borrar();   
@@ -694,6 +697,8 @@ public void modoEdicion(boolean b){
         jtNfactura = new javax.swing.JTextField();
         jLabelNombreGrup3 = new javax.swing.JLabel();
         jCTipoPago = new javax.swing.JComboBox();
+        jLabelNombreGrup7 = new javax.swing.JLabel();
+        jtNDeposito = new javax.swing.JTextField();
         jXPanel6 = new org.jdesktop.swingx.JXPanel();
         jLabel24 = new javax.swing.JLabel();
         txtPtotal = new javax.swing.JTextField();
@@ -1266,10 +1271,10 @@ public void modoEdicion(boolean b){
         jXPanel5.add(jLabel20, gridBagConstraints);
 
         jLabelNombreGrup2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
-        jLabelNombreGrup2.setText("Numero de factura");
+        jLabelNombreGrup2.setText("Numero de Deposito");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(10, 14, 0, 11);
         jXPanel5.add(jLabelNombreGrup2, gridBagConstraints);
@@ -1303,6 +1308,23 @@ public void modoEdicion(boolean b){
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 30);
         jXPanel5.add(jCTipoPago, gridBagConstraints);
+
+        jLabelNombreGrup7.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLabelNombreGrup7.setText("Numero de factura");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 14, 0, 11);
+        jXPanel5.add(jLabelNombreGrup7, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 18);
+        jXPanel5.add(jtNDeposito, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -1590,6 +1612,15 @@ getPanellinete();
     }
 
     private void jCTipoPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCTipoPagoActionPerformed
+
+       int a = jCTipoPago.getSelectedIndex();
+       if (a==0){
+           jtNDeposito.setEditable(false);
+       }else
+         jtNDeposito.setEditable(true);    
+        
+     
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jCTipoPagoActionPerformed
 
@@ -1687,6 +1718,7 @@ getPanellinete();
     private javax.swing.JLabel jLabelNombreGrup4;
     private javax.swing.JLabel jLabelNombreGrup5;
     private javax.swing.JLabel jLabelNombreGrup6;
+    private javax.swing.JLabel jLabelNombreGrup7;
     private javax.swing.JLabel jLabelSubtitulo6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTApellido;
@@ -1703,6 +1735,7 @@ getPanellinete();
     private org.jdesktop.swingx.JXPanel jXPanel3;
     private org.jdesktop.swingx.JXPanel jXPanel5;
     private org.jdesktop.swingx.JXPanel jXPanel6;
+    private javax.swing.JTextField jtNDeposito;
     private javax.swing.JTextField jtNfactura;
     private javax.swing.JLabel lblFechaIngreso1;
     private clases.PanMantenimiento panMantenimiento1;

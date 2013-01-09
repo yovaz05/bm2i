@@ -47,6 +47,11 @@ public class FacturaHBM extends HibernateDAO{
             return (Factura)crit.uniqueResult();
     }
     
+    public List buscarAb(Boolean estado) {
+        Criteria crit = session.createCriteria(Factura.class);
+        crit.add(Restrictions.eq("cerrada",estado));
+        return crit.list();
+       }
     
     
     

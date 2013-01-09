@@ -32,10 +32,9 @@ public class VentaProductos {
      private Horario horario;
      private Cliente cliente;
      private Factura factura;
-     
-     
      private VentaProductosHBM base;
-    public VentaProductos() {
+     
+     public VentaProductos() {
        setBase(new VentaProductosHBM());    
     }
 

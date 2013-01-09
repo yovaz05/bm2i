@@ -23,6 +23,7 @@
     <property name="vtotal" column="VTOTAL"/>
     <property name="vpuntos" column="VPUNTOS"/>
     <property name="tpago" column="TPAGO"/>
+    <property name="ndepo" column="NDEPO"/>
     <property name="utilidad" column="UTILIDAD"/>
      <property name="cerrada" type="java.lang.Boolean"  >
     <column name="CERRADA" sql-type="tinyint(1)" not-null="false"/>
