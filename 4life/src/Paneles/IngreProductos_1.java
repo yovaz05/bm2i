@@ -39,7 +39,7 @@ Lista listaAnteriores;
 
     public IngreProductos_1() {
        
-                horario=new Horario();
+         horario=new Horario();
          Horario hora = new Horario();
          Boolean est=(false);
          hora=horario.buscar(est);
@@ -65,18 +65,8 @@ Lista listaAnteriores;
                    cboProveedor.addItem(pro.getNombre());
                    }  
         }
-        
-        
-        
-        
-        
-        
-        
       
-        
     }
-    
-
    
  private void inicializa(){
                   
@@ -259,6 +249,7 @@ private void setPanel(Compras gg){
         
                      otros.setTotal(tot+Integer.parseInt(txtStock.getText()));
                      otros.setStock(st+Integer.parseInt(txtStock.getText()));
+                    // otros.setUtilidad(Float.parseFloat(""+0));
                      otros.actualizar(); 
                      
                      provedor =((Provedor)codigo.getObject(cboProveedor.getSelectedIndex()));  

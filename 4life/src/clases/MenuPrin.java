@@ -804,8 +804,7 @@ public class MenuPrin extends javax.swing.JFrame {
         });
         jMenu2.add(jMGirosRemplazados);
 
-        jMGirosAnulados.setText("Ver Giros Anulados");
-        jMGirosAnulados.setEnabled(false);
+        jMGirosAnulados.setText("REPORTE UTILIDAD");
         jMGirosAnulados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMGirosAnuladosActionPerformed(evt);
@@ -1312,7 +1311,7 @@ public class MenuPrin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMGirospagadosActionPerformed
 
     private void jMGirosAnuladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGirosAnuladosActionPerformed
-        COManulargiros f = new COManulargiros();
+       ComVerCabinas f = new ComVerCabinas();
         f.setVisible(true);
         f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
         escritorio.add(f, JLayeredPane.DEFAULT_LAYER);

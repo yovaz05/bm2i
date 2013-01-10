@@ -378,8 +378,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMGirosAnulados">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ver Giros Anulados"/>
-                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" value="REPORTE UTILIDAD"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMGirosAnuladosActionPerformed"/>

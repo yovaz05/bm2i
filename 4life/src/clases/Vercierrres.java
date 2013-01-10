@@ -449,6 +449,7 @@ private void setPanel2(Factura g){
            txtPtotal.setText(""+tp);
            txtUtilidad.setText(""+tu); 
            otros.setStock(otros.getStock()-Integer.parseInt(jTCantidad.getText()));  
+           otros.setUtilidad(otros.getUtilidad()+uti);
            otros.actualizar();
             Factura factura= new Factura();
             factura=factura.Busca(jtNfactura.getText());
@@ -521,6 +522,7 @@ private void setPanel2(Factura g){
            txtPtotal.setText(""+tp);
            txtUtilidad.setText(""+tu); 
            otros.setStock(otros.getStock()-Integer.parseInt(jTCantidad.getText()));  
+            otros.setUtilidad(otros.getUtilidad()+uti);
            otros.actualizar();
            
             
@@ -564,6 +566,7 @@ private void setPanel2(Factura g){
         int cant=0;
         cant=otros.getStock()+gh.getCantidad();
         otros.setStock(cant);
+        otros.setUtilidad(otros.getUtilidad()-gh.getUtilidad());
         otros.actualizar();    
 // corregir la sumatoria de factura.  
         
@@ -1681,6 +1684,7 @@ setTabla();
                     int cant=0;
                     cant=otros.getStock()+venta.getCantidad();
                     otros.setStock(cant);
+                    otros.setUtilidad(otros.getUtilidad()-venta.getUtilidad());
                     otros.actualizar();
                     venta.borrar();
                 }

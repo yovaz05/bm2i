@@ -23,13 +23,14 @@
     <property name="stock" column="STOCK"/>
     <property name="nombre" column="NOMBRE"/>
     <property name="vunitario" column="VUNITARIO"/>
-    <property name="total" column="TOTAL"/>
     <property name="vunitario2" column="VUNITARIO2"/>
+    <property name="utilidad" column="UTILIDAD"/>
     <property name="eminima" column="EMINIMA"/>
     <property name="emaxima" column="EMAXIMA"/>
     <property name="unidad" column="UNIDAD"/>
     <property name="puntos" column="PUNTOS"/>
     <property name="costo" column="COSTO"/>
+    <property name="total" column="TOTAL"/>
 
 
    <many-to-one name="horario" column="ID_HORARIO"/>

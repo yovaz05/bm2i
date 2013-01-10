@@ -341,7 +341,7 @@ private void getPanellinete(){
 
 
 private void setPanel(VentaProductos gg){
- //jTCantidad.setEditable(true);
+
     cboLinea.setSelectedItem(gg.getOtros().getLinea().getNombre()); 
     cboProductos.setSelectedItem(gg.getOtros().getNombre());  
     jTCantidad.setText(""+gg.getCantidad());
@@ -349,10 +349,7 @@ private void setPanel(VentaProductos gg){
     jTPuntos.setText(""+gg.getOtros().getPuntos());
     jTPrecio.setText(""+gg.getVuproducto());
    jTotal.setText(""+gg.getTotalproducto());
- // int p;
-   //txtPrecio.setText(""+gg.getOtros().getStock());
-   //   cboLinea.setSelectedItem(gg.getOtros().getNombre().toString());
-  // txCodigo.setText(""+gg.getId_Venta());     
+ 
     }  
     
     
@@ -437,7 +434,8 @@ private void setPanel(VentaProductos gg){
            txtVtotal.setText(""+tt);
            txtPtotal.setText(""+tp);
            txtUtilidad.setText(""+tu); 
-           otros.setStock(otros.getStock()-Integer.parseInt(jTCantidad.getText()));  
+           otros.setStock(otros.getStock()-Integer.parseInt(jTCantidad.getText())); 
+           otros.setUtilidad(otros.getUtilidad()+uti);
            otros.actualizar();
            
             factura.setVtotal(tt);
@@ -511,6 +509,7 @@ private void setPanel(VentaProductos gg){
            txtPtotal.setText(""+tp);
            txtUtilidad.setText(""+tu); 
            otros.setStock(otros.getStock()-Integer.parseInt(jTCantidad.getText()));  
+           otros.setUtilidad(otros.getUtilidad()+uti);
            otros.actualizar();
            
             factura.setVtotal(tt);
@@ -549,6 +548,7 @@ private void setPanel(VentaProductos gg){
         int cant=0;
         cant=otros.getStock()+gh.getCantidad();
         otros.setStock(cant);
+        otros.setUtilidad(otros.getUtilidad()-gh.getUtilidad());
         otros.actualizar();    
 // corregir la sumatoria de factura.  
         
@@ -1664,6 +1664,7 @@ getPanellinete();
                       int cant=0;
                       cant=otros.getStock()+venta.getCantidad();
                       otros.setStock(cant);
+                      otros.setUtilidad(otros.getUtilidad()-venta.getUtilidad());
                       otros.actualizar();
                       venta.borrar();
               }  

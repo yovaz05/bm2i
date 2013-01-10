@@ -25,6 +25,7 @@
     <mapping resource="beans/CodigoAgencia.hbm.xml"/>
     <mapping resource="beans/Pasajes.hbm.xml"/>
     <mapping resource="beans/Flores.hbm.xml"/>
+    <mapping resource="beans/Linea.hbm.xml"/>
     <mapping resource="beans/Otros.hbm.xml"/>
     <mapping resource="beans/VentaProductos.hbm.xml"/>
     <mapping resource="beans/Remplazo.hbm.xml"/>
@@ -40,7 +41,7 @@
     <mapping resource="beans/Compras.hbm.xml"/>
     <mapping resource="beans/CierreFaltante.hbm.xml"/>
     <mapping resource="beans/Tarjetas.hbm.xml"/>
-    <mapping resource="beans/Linea.hbm.xml"/>
+    
     <mapping resource="beans/factura.hbm.xml"/>
     <!--agregado por mi jiji-->
 

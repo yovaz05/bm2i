@@ -767,16 +767,7 @@ private void setPanel(anulargiro gg){
     }//GEN-LAST:event_jButton1ActionPerformed
      private void setTabla(){
      
-     horario=new Horario();
-     Horario otro = new Horario();
-     Boolean est=(false);
-     Boolean b=(true);
-     otro=horario.buscar(est);
-     
-     Lista listaAnteriores =new Lista(new anulargiro().lista2(otro));
-     Mapa mapa = new Mapa(listaAnteriores,Mapa.MAPAGIROANULADO,true);
-     reportesXML.ModeloTabla modelo = mapa.getModeloTabla();
-     tblProducto.setModel(modelo);
+
      
   
      

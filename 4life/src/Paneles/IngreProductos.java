@@ -93,6 +93,8 @@ private boolean isVacio(){
                    
                    modoEdicion(false);
                    setTabla();
+                   
+                   
                           } 
  
  
@@ -262,7 +264,7 @@ private void setPanel(Otros gg){
         otros.setPuntos(Integer.parseInt(txtPuntos.getText()));
         otros.setUnidad(txtUnidad.getText());
         otros.setCosto(Float.parseFloat(txtCosto.getText()));
-        
+        otros.setUtilidad(Float.parseFloat(""+0));
        horario=new Horario();
        Horario otro = new Horario();
        Boolean est=(false);
@@ -276,7 +278,7 @@ private void setPanel(Otros gg){
         gh=(Otros)listaAnteriores.getObject(fila);
 
         gh.setFechaLlegada(datFechaIngreso.getDate());
-        gh.setStock(Integer.parseInt(txtFactura.getText()));
+        //gh.setStock(Integer.parseInt(txtFactura.getText()));
         gh.setTotal(Integer.parseInt(txtFactura.getText()));
         gh.setVunitario(Float.parseFloat(txtVunitario.getText()));
         gh.setNombre(txtNombreC.getText());

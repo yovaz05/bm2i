@@ -24,6 +24,7 @@ public class Otros {
      private String nombre;
      private Float vunitario;
      private Float vunitario2;
+     private Float utilidad;
      private int eminima;
      private int emaxima;
      private String unidad;
@@ -222,4 +223,22 @@ public class Otros {
     public void setLinea(Linea linea) {
         this.linea = linea;
     }
+ public List listarFecha(Date desde, Date hasta){
+         return getBase().listarFecha(desde, hasta);
+     }
+
+    /**
+     * @return the utilidad
+     */
+    public Float getUtilidad() {
+        return utilidad;
+    }
+
+    /**
+     * @param utilidad the utilidad to set
+     */
+    public void setUtilidad(Float utilidad) {
+        this.utilidad = utilidad;
+    }
+
 }

@@ -6,6 +6,7 @@ import beans.Horario;
 import beans.Otros;
 import beans.Linea;
 import hibernate.HibernateDAO;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
@@ -36,4 +37,15 @@ public List lista3(Horario hora){
             return crit.list();
          }return null;
     }
+   public List listarFecha(Date desde, Date hasta){
+        Criteria crit = session.createCriteria(Otros.class);
+        if ( desde!=null && hasta!=null )
+        crit.add(Restrictions.between("fechaLlegada",desde,hasta));
+        //crit.addOrder(Order.asc("fecha"));
+        return crit.list();
+        
+    }
+  
+  
+  
 }

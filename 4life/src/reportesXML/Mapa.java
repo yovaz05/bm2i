@@ -9,7 +9,7 @@ public class Mapa {
     public static final int MAPAVENTASDIA = 2;
     public static final int MAPAGIRO = 3;
     public static final int MAPAREMPLAZO = 4;
-    public static final int MAPAGIROANULADO = 5;
+    public static final int MAPAINVERSION = 5;
     public static final int MAPAPAGOGIROS = 6;
     public static final int MAPAAGENCIAS = 7;
     public static final int MAPAFLORES = 8;
@@ -96,8 +96,8 @@ public class Mapa {
                 setMapaRemplazo();
                 break;
 
-            case MAPAGIROANULADO:
-                setMapaGiroAnulado();
+            case MAPAINVERSION:
+                setMapaInversion();
                 break;
 
             case MAPAPAGOGIROS:
@@ -345,8 +345,8 @@ public class Mapa {
         modeloTabla = new MapaPagoGiros(lista, isNumerador());
     }
 
-    private void setMapaGiroAnulado() {
-        modeloTabla = new MapaGiroAnulado(lista, isNumerador());
+    private void setMapaInversion() {
+        modeloTabla = new MapaInversion(lista, isNumerador());
     }
 
     private void setMapaRemplazo() {
