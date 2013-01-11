@@ -311,7 +311,7 @@ private void setBlanco(){
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AnularGiro().setVisible(true);
+//                new AnularGiro().setVisible(true);
             }
         });
     }

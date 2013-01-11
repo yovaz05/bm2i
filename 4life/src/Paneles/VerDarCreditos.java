@@ -7,14 +7,12 @@
 package Paneles;
 
 import beans.Otros;
-import beans.VentaProductos;
+import beans.Cierre;
 import clases.MenuPrin;
 import java.util.Date;
 import java.util.List;
 import modelo.Mensaje;
 import modelo.Lista;
-
-import beans.CuentasXPagar;
 import beans.Horario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,10 +27,10 @@ public class VerDarCreditos extends javax.swing.JPanel {
     private Lista lista;
     private Lista codigo;
     private Horario horario;
-    private CuentasXPagar cuentas;
+    private Cierre cierre;
     private String mensaje="";
     private boolean editar;
-    CuentasXPagar gh;
+    Cierre gh;
     Lista listaAnteriores;
     
     public VerDarCreditos() {
@@ -50,27 +48,24 @@ public class VerDarCreditos extends javax.swing.JPanel {
   
  }
    private void setTabla(){
-         CuentasXPagar cuentas= new CuentasXPagar();
-               
-               
-        // Mensaje.showMensaje(this,"el nombre es "+agencia.getNombre());
+         Cierre cuentas= new Cierre();
+       // Mensaje.showMensaje(this,"el nombre es "+agencia.getNombre());
          Date hora1;
          Date hora2;
          
          hora1=datDesde.getDate();
          hora2=datHasta.getDate();
-         Boolean rem=true;
+          
          
-         listaAnteriores =new Lista(new CuentasXPagar().lista4(hora1,hora2));         
-         Mapa mapa = new Mapa(listaAnteriores,Mapa.MAPACXP,true);
+        listaAnteriores =new Lista(new Cierre().listarFecha(hora1,hora2));         
+         Mapa mapa = new Mapa(listaAnteriores,Mapa.MAPACIERRES,true);
          reportesXML.ModeloTabla modelo = mapa.getModeloTabla();
          tblProducto.setModel(modelo);
         
      
  }   
-    // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabelCreditopendiente2 = new javax.swing.JLabel();
         lblFechaIngreso1 = new javax.swing.JLabel();
@@ -84,51 +79,28 @@ public class VerDarCreditos extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProducto = new org.jdesktop.swingx.JXTable();
 
-        setLayout(new java.awt.GridBagLayout());
+        setBackground(java.awt.SystemColor.activeCaption);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        setBackground(java.awt.SystemColor.activeCaptionText);
-        jLabelCreditopendiente2.setFont(new java.awt.Font("Arial Black", 0, 12));
+        jLabelCreditopendiente2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabelCreditopendiente2.setForeground(new java.awt.Color(204, 0, 51));
-        jLabelCreditopendiente2.setText(" REPORTES DE CREDITOS DADOS DESDE UNA FECHA HASTA OTRA");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 13, 0);
-        add(jLabelCreditopendiente2, gridBagConstraints);
+        jLabelCreditopendiente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelCreditopendiente2.setText(" REPORTES DE CIERRES DE CAJA");
+        add(jLabelCreditopendiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(279, 85, 430, -1));
 
-        lblFechaIngreso1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        lblFechaIngreso1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         lblFechaIngreso1.setText("DESDE");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(lblFechaIngreso1, gridBagConstraints);
+        add(lblFechaIngreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(279, 116, -1, 23));
 
-        datDesde.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
-        add(datDesde, gridBagConstraints);
+        datDesde.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        add(datDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 116, 129, -1));
 
-        lblFechaIngreso2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        lblFechaIngreso2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         lblFechaIngreso2.setText("HASTA");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(lblFechaIngreso2, gridBagConstraints);
+        add(lblFechaIngreso2, new org.netbeans.lib.awtextra.AbsoluteConstraints(462, 116, -1, 23));
 
-        datHasta.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
-        add(datHasta, gridBagConstraints);
+        datHasta.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        add(datHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 116, -1, -1));
 
         jBVer.setText("Ver");
         jBVer.addActionListener(new java.awt.event.ActionListener() {
@@ -136,12 +108,7 @@ public class VerDarCreditos extends javax.swing.JPanel {
                 jBVerActionPerformed(evt);
             }
         });
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(jBVer, gridBagConstraints);
+        add(jBVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 116, 71, -1));
 
         jBImprimir.setText("Imprimir");
         jBImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -149,30 +116,15 @@ public class VerDarCreditos extends javax.swing.JPanel {
                 jBImprimirActionPerformed(evt);
             }
         });
+        add(jBImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 139, -1, -1));
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        add(jBImprimir, gridBagConstraints);
-
-        jLabelNombreGrup1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelNombreGrup1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelNombreGrup1.setText("Nombre del Responsable");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
-        add(jLabelNombreGrup1, gridBagConstraints);
+        add(jLabelNombreGrup1, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 167, -1, -1));
 
         txtNombre.setBorder(null);
         txtNombre.setSelectionColor(java.awt.SystemColor.activeCaptionText);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        add(txtNombre, gridBagConstraints);
+        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(503, 167, 206, -1));
 
         tblProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -191,16 +143,9 @@ public class VerDarCreditos extends javax.swing.JPanel {
                 tblProductoMouseClicked(evt);
             }
         });
-
         jScrollPane2.setViewportView(tblProducto);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(jScrollPane2, gridBagConstraints);
-
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 186, 1040, 450));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductoMouseClicked
@@ -222,10 +167,10 @@ public class VerDarCreditos extends javax.swing.JPanel {
         
         hora1=datDesde.getDate();
         hora2=datHasta.getDate();
-        
+        listaAnteriores =new Lista(new Cierre().listarFecha(hora1,hora2));
         try {
             
-            ReportePrevio rp = new ReportePrevio(new Mapa(new Lista(new CuentasXPagar().lista4(hora1,hora2)),Mapa.MAPACXP,true),ReportePrevio.DARCREDITO);
+            ReportePrevio rp = new ReportePrevio(new Mapa(new Lista(new Cierre().listarFecha(hora1,hora2)),Mapa.MAPACIERRES,true),ReportePrevio.DARCREDITO);
             rp.setRespon(hora.getUsuario().getNombre()+" "+hora.getUsuario().getApellido());
             rp.setDesde(hora1);
             rp.setHasta(hora2);

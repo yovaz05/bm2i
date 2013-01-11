@@ -386,8 +386,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMGirospagados">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ver Giros Pagados"/>
-                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" value="REPORTE DE CIERRES CAJA"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMGirospagadosActionPerformed"/>
@@ -395,8 +394,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMVerGiroOfi">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ver Giros de Oficina"/>
-                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" value="FACTURAS POR CLIENTE"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMVerGiroOfiActionPerformed"/>

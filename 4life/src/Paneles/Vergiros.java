@@ -101,7 +101,6 @@ public class Vergiros extends javax.swing.JPanel {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabelCreditopendiente2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -111,19 +110,14 @@ public class Vergiros extends javax.swing.JPanel {
         jBVer = new javax.swing.JButton();
         jBImprimir = new javax.swing.JButton();
 
-        setBackground(java.awt.SystemColor.window);
-        setLayout(new java.awt.GridBagLayout());
+        setBackground(java.awt.SystemColor.activeCaption);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelCreditopendiente2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabelCreditopendiente2.setForeground(new java.awt.Color(204, 0, 51));
         jLabelCreditopendiente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelCreditopendiente2.setText("Existencias de productos");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(jLabelCreditopendiente2, gridBagConstraints);
+        jLabelCreditopendiente2.setText("Inventario");
+        add(jLabelCreditopendiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 167, 19));
 
         tblProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -144,30 +138,15 @@ public class Vergiros extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblProducto);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 400.0;
-        add(jScrollPane2, gridBagConstraints);
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 960, 460));
 
         jLabelNombreGrup1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelNombreGrup1.setText("Nombre ");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(jLabelNombreGrup1, gridBagConstraints);
+        add(jLabelNombreGrup1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, -1));
 
         txtNombre.setBorder(null);
         txtNombre.setSelectionColor(java.awt.SystemColor.activeCaptionText);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        add(txtNombre, gridBagConstraints);
+        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 927, -1));
 
         jBVer.setText("Ver");
         jBVer.addActionListener(new java.awt.event.ActionListener() {
@@ -175,11 +154,7 @@ public class Vergiros extends javax.swing.JPanel {
                 jBVerActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        add(jBVer, gridBagConstraints);
+        add(jBVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
 
         jBImprimir.setText("Imprimir");
         jBImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -187,11 +162,7 @@ public class Vergiros extends javax.swing.JPanel {
                 jBImprimirActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        add(jBImprimir, gridBagConstraints);
+        add(jBImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBImprimirActionPerformed

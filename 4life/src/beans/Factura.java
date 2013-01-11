@@ -232,4 +232,8 @@ public class Factura {
     public void setNdepo(String ndepo) {
         this.ndepo = ndepo;
     }
+    
+    public List lista14(Date hora, Date anul, Cliente age){
+        return getBase().lista14(hora, anul, age);
+    } 
 }

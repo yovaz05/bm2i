@@ -41,6 +41,7 @@ public class Mapa {
     public static final int MAPADESGLOCE = 35;
     public static final int MAPAFACTURA = 36;
     public static final int MAPAEXISTENCIAS = 37;
+    public static final int MAPACIERRES = 38;
     
     private Lista lista;
     private Vector vec;
@@ -147,6 +148,10 @@ public class Mapa {
             case MAPACIERRE:
                 setMapaCierre();
                 break;
+                
+            case MAPACIERRES:
+                setMapaCierres();
+                break;    
 
             case MAPAVIDEO:
                 setMapaVC();
@@ -300,7 +305,9 @@ public class Mapa {
     private void setMapaCierre() {
         modeloTabla = new MapaCierre(lista, isNumerador());
     }
-
+ private void setMapaCierres() {
+        modeloTabla = new MapaCierres(lista, isNumerador());
+    }
     private void setMapaCabinas() {
         modeloTabla = new MapaCabinas(lista, isNumerador());
     }

@@ -209,7 +209,7 @@ public class ClientePanel extends javax.swing.JPanel {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CinfLinea().setVisible(true);
+//                new CinfLinea().setVisible(true);
 
             }
         });

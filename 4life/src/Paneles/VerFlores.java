@@ -74,7 +74,6 @@ public class VerFlores extends javax.swing.JPanel {
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jBImprimir = new javax.swing.JButton();
         lblFechaIngreso1 = new javax.swing.JLabel();
@@ -88,8 +87,8 @@ public class VerFlores extends javax.swing.JPanel {
         txtNombre = new javax.swing.JTextField();
         lblFechaIngreso2 = new javax.swing.JLabel();
 
-        setBackground(java.awt.SystemColor.window);
-        setLayout(new java.awt.GridBagLayout());
+        setBackground(java.awt.SystemColor.activeCaption);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jBImprimir.setText("Imprimir");
         jBImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -97,28 +96,14 @@ public class VerFlores extends javax.swing.JPanel {
                 jBImprimirActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        add(jBImprimir, gridBagConstraints);
+        add(jBImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, -1, -1));
 
         lblFechaIngreso1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         lblFechaIngreso1.setText("HASTA");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(lblFechaIngreso1, gridBagConstraints);
+        add(lblFechaIngreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, -1, 23));
 
         datDesde.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
-        add(datDesde, gridBagConstraints);
+        add(datDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 129, -1));
 
         jScrollPane2.setPreferredSize(new java.awt.Dimension(390, 368));
 
@@ -141,30 +126,14 @@ public class VerFlores extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblProducto);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 400.0;
-        add(jScrollPane2, gridBagConstraints);
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 980, 430));
 
         datHasta.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
-        add(datHasta, gridBagConstraints);
+        add(datHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, -1, -1));
 
         jLabelNombreGrup1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelNombreGrup1.setText("Nombre del Responsable");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
-        add(jLabelNombreGrup1, gridBagConstraints);
+        add(jLabelNombreGrup1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 167, -1, -1));
 
         jBVer.setText("Ver");
         jBVer.addActionListener(new java.awt.event.ActionListener() {
@@ -172,40 +141,22 @@ public class VerFlores extends javax.swing.JPanel {
                 jBVerActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        add(jBVer, gridBagConstraints);
+        add(jBVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, -1, -1));
 
         jLabelCreditopendiente2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabelCreditopendiente2.setForeground(new java.awt.Color(204, 0, 51));
-        jLabelCreditopendiente2.setText(" TODAS LAS FLORES VENDIDAS DESDE UNA FECHA HASTA OTRA");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(jLabelCreditopendiente2, gridBagConstraints);
+        jLabelCreditopendiente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelCreditopendiente2.setText(" FACTURAS POR FECHA ");
+        add(jLabelCreditopendiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, 450, -1));
 
         txtNombre.setBorder(null);
         txtNombre.setPreferredSize(new java.awt.Dimension(20, 16));
         txtNombre.setSelectionColor(java.awt.SystemColor.activeCaptionText);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        add(txtNombre, gridBagConstraints);
+        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 166, 771, -1));
 
         lblFechaIngreso2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         lblFechaIngreso2.setText("DESDE");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(lblFechaIngreso2, gridBagConstraints);
+        add(lblFechaIngreso2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, 23));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerActionPerformed

@@ -88,7 +88,7 @@ private Giro giro;
         
      
  }
-    // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
@@ -107,10 +107,10 @@ private Giro giro;
         rb2 = new javax.swing.JRadioButton();
         rb3 = new javax.swing.JRadioButton();
 
+        setBackground(java.awt.SystemColor.activeCaptionText);
         setLayout(new java.awt.GridBagLayout());
 
-        setBackground(java.awt.SystemColor.activeCaptionText);
-        jLabelCreditopendiente2.setFont(new java.awt.Font("Arial Black", 0, 12));
+        jLabelCreditopendiente2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabelCreditopendiente2.setForeground(new java.awt.Color(204, 0, 51));
         jLabelCreditopendiente2.setText(" REPORTES DE PAGOS CON CHEQUES DESDE UNA FECHA HASTA OTRA");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -121,7 +121,7 @@ private Giro giro;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 13, 0);
         add(jLabelCreditopendiente2, gridBagConstraints);
 
-        lblFechaIngreso1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        lblFechaIngreso1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         lblFechaIngreso1.setText("DESDE");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -129,7 +129,7 @@ private Giro giro;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(lblFechaIngreso1, gridBagConstraints);
 
-        datDesde.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        datDesde.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -137,7 +137,7 @@ private Giro giro;
         gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
         add(datDesde, gridBagConstraints);
 
-        lblFechaIngreso2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        lblFechaIngreso2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         lblFechaIngreso2.setText("HASTA");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -145,7 +145,7 @@ private Giro giro;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(lblFechaIngreso2, gridBagConstraints);
 
-        datHasta.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        datHasta.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
@@ -159,7 +159,6 @@ private Giro giro;
                 jBVerActionPerformed(evt);
             }
         });
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
@@ -174,7 +173,6 @@ private Giro giro;
                 jBImprimirActionPerformed(evt);
             }
         });
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 3;
@@ -182,7 +180,7 @@ private Giro giro;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         add(jBImprimir, gridBagConstraints);
 
-        jLabelNombreGrup1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelNombreGrup1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelNombreGrup1.setText("Nombre del Responsable");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -217,7 +215,6 @@ private Giro giro;
                 tblProductoMouseClicked(evt);
             }
         });
-
         jScrollPane2.setViewportView(tblProducto);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -229,7 +226,7 @@ private Giro giro;
 
         rb2.setBackground(java.awt.SystemColor.activeCaptionText);
         buttonGroup1.add(rb2);
-        rb2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        rb2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         rb2.setForeground(new java.awt.Color(0, 51, 255));
         rb2.setText("LG TRAVEL");
         rb2.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -239,7 +236,6 @@ private Giro giro;
                 rb2ActionPerformed(evt);
             }
         });
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
@@ -249,7 +245,7 @@ private Giro giro;
 
         rb3.setBackground(java.awt.SystemColor.activeCaptionText);
         buttonGroup1.add(rb3);
-        rb3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        rb3.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         rb3.setForeground(new java.awt.Color(51, 51, 255));
         rb3.setSelected(true);
         rb3.setText("LG TRASMITTER");
@@ -260,14 +256,12 @@ private Giro giro;
                 rb3ActionPerformed(evt);
             }
         });
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(0, 8, 8, 0);
         add(rb3, gridBagConstraints);
-
     }// </editor-fold>//GEN-END:initComponents
 
     private void rb3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb3ActionPerformed

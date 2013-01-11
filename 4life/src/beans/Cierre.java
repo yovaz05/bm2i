@@ -265,5 +265,8 @@ public class Cierre {
     public void setTotalcaja(Float totalcaja) {
         this.totalcaja = totalcaja;
     }
+    public List listarFecha(Date desde, Date hasta){
+         return getBase().listarFecha(desde, hasta);
+     }
 
     }

@@ -812,8 +812,7 @@ public class MenuPrin extends javax.swing.JFrame {
         });
         jMenu2.add(jMGirosAnulados);
 
-        jMGirospagados.setText("Ver Giros Pagados");
-        jMGirospagados.setEnabled(false);
+        jMGirospagados.setText("REPORTE DE CIERRES CAJA");
         jMGirospagados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMGirospagadosActionPerformed(evt);
@@ -821,8 +820,7 @@ public class MenuPrin extends javax.swing.JFrame {
         });
         jMenu2.add(jMGirospagados);
 
-        jMVerGiroOfi.setText("Ver Giros de Oficina");
-        jMVerGiroOfi.setEnabled(false);
+        jMVerGiroOfi.setText("FACTURAS POR CLIENTE");
         jMVerGiroOfi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMVerGiroOfiActionPerformed(evt);
@@ -1056,10 +1054,7 @@ public class MenuPrin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void enviargiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviargiroActionPerformed
-      ClienteGestionIFrame cgif = new ClienteGestionIFrame();
-        cgif.setVisible(true);
-        escritorio.add(cgif, JLayeredPane.DEFAULT_LAYER);
-        cgif.moveToFront();;
+   
 
     }//GEN-LAST:event_enviargiroActionPerformed
 
@@ -1176,10 +1171,7 @@ public class MenuPrin extends javax.swing.JFrame {
     }//GEN-LAST:event_jXHConferenciaVActionPerformed
 
     private void jXHCabinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHCabinasActionPerformed
-          ClienteGestionIFrame cgif = new ClienteGestionIFrame();
-        cgif.setVisible(true);
-        escritorio.add(cgif, JLayeredPane.DEFAULT_LAYER);
-        cgif.moveToFront();
+        
     }//GEN-LAST:event_jXHCabinasActionPerformed
 
     private void jXHFloresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHFloresActionPerformed
@@ -1284,26 +1276,21 @@ public class MenuPrin extends javax.swing.JFrame {
     }//GEN-LAST:event_JMVerPaquetesActionPerformed
 
     private void jMVerGiroOfiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerGiroOfiActionPerformed
-        ComVerGirosOfi f = new ComVerGirosOfi();
+          COManulargiros f = new COManulargiros();
         f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+       f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
+        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
-
-
 
     }//GEN-LAST:event_jMVerGiroOfiActionPerformed
 
     private void jMProtestarChequeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMProtestarChequeActionPerformed
-        COMChequeProtestado f = new COMChequeProtestado();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
+        
     }//GEN-LAST:event_jMProtestarChequeActionPerformed
 
     private void jMGirospagadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGirospagadosActionPerformed
-        COMgirosPagados f = new COMgirosPagados();
+      
+       ComVerDarCreditos f = new ComVerDarCreditos();
         f.setVisible(true);
         f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
         escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
@@ -1364,11 +1351,7 @@ public class MenuPrin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        COMgirosOficina f = new COMgirosOficina();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
+      
 
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
@@ -1383,12 +1366,7 @@ public class MenuPrin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        AnularGiros f = new AnularGiros();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-//                DEFAULT_LAYER);
-        f.moveToFront();
+     
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
@@ -1460,11 +1438,7 @@ public class MenuPrin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAgregarProActionPerformed
 
     private void jMenuItemConfiCuoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfiCuoActionPerformed
-        COMAnuPq f = new COMAnuPq();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
+       
     }//GEN-LAST:event_jMenuItemConfiCuoActionPerformed
 
     private void jMenuItemPagoCuoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPagoCuoActionPerformed

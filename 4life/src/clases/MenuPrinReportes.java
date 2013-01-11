@@ -678,12 +678,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
     }//GEN-LAST:event_jXHEnviarGiro2ActionPerformed
 
     private void jXHEnviarGiro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHEnviarGiro1ActionPerformed
-        AnularGiros f = new AnularGiros();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-//                DEFAULT_LAYER);
-        f.moveToFront();
+        
 
     }//GEN-LAST:event_jXHEnviarGiro1ActionPerformed
 
@@ -729,11 +724,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        COMgirosOficina f = new COMgirosOficina();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
+      
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -806,11 +797,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
     }//GEN-LAST:event_jXHEnvioPaqueteActionPerformed
 
     private void jXHGiroOficinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHGiroOficinaActionPerformed
-        COMgirosOficina f = new COMgirosOficina();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
+        
     }//GEN-LAST:event_jXHGiroOficinaActionPerformed
 
     private void jXHPagarGiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXHPagarGiroActionPerformed

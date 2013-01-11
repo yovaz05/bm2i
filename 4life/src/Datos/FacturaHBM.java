@@ -9,6 +9,7 @@
 
 package Datos;
 
+import beans.Cliente;
 import beans.Factura;
 import beans.Horario;
 import hibernate.HibernateDAO;
@@ -82,5 +83,13 @@ public class FacturaHBM extends HibernateDAO{
         crit.addOrder(Order.asc("fecha"));
         return crit.list();
     }
+    
+     public List lista14(Date hora, Date anul, Cliente cli){
+        Criteria crit = session.createCriteria(Factura.class);
+        if ( hora!=null && anul!=null && cli!=null)
+            crit.add( Restrictions.between("fecha",hora,anul));
+            crit.add(Restrictions.eq("cliente",cli));
+            return crit.list();
+    }    
     
 }

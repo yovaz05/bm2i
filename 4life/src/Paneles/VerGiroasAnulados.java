@@ -15,7 +15,9 @@ package Paneles;
     import modelo.Lista;
 
     import beans.Agencia;
+import beans.Cliente;
     import beans.CodigoAgencia;
+import beans.Factura;
     import beans.Giro;
     import beans.Horario;
     import java.awt.event.ActionEvent;
@@ -46,12 +48,7 @@ public VerGiroasAnulados() {
  }
     
 private void inicializa(){
-    agencia = new Agencia();
-    lista = new Lista(new Agencia().lista());
-    for(int i=0;i<lista.getSize();i++){
-                                        Agencia b1=(Agencia) lista.getObject(i);
-                                        cboAgencia.addItem(b1.getNombre());
-                                       }
+
     horario=new Horario();
     Horario otro = new Horario();
     Boolean est=(false);
@@ -60,129 +57,46 @@ private void inicializa(){
   
  }
 
-private void setTabla(){
-     
-         horario=new Horario();
-         Horario hora = new Horario();
-         Boolean est=(false);
-         hora=horario.buscar(est);
-         codigo = new Lista(new CodigoAgencia().lista((Agencia)lista.getObject(cboAgencia.getSelectedIndex())));      
-         codigos = new CodigoAgencia();
-         codigos=(CodigoAgencia) codigo.ultimo();  
-         
-         Date hora1;
-         Date hora2;
-         
-         hora1=datDesde.getDate();
-         hora2=datHasta.getDate();
-         Boolean rem=true;
-         
-         listaAnteriores =new Lista(new Giro().lista14(hora1,hora2,codigos.getAgencia(),rem));         
-         Mapa mapa = new Mapa(listaAnteriores,Mapa.MAPAGIRO,true);
-         reportesXML.ModeloTabla modelo = mapa.getModeloTabla();
-         tblProducto.setModel(modelo);
-        
-     
- }
-    // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
+
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabelCreditopendiente2 = new javax.swing.JLabel();
         lblFechaIngreso1 = new javax.swing.JLabel();
         datDesde = new org.jdesktop.swingx.JXDatePicker();
         lblFechaIngreso = new javax.swing.JLabel();
         datHasta = new org.jdesktop.swingx.JXDatePicker();
-        jBVer = new javax.swing.JButton();
-        jLabelCedula2 = new javax.swing.JLabel();
-        cboAgencia = new javax.swing.JComboBox();
         jBImprimir = new javax.swing.JButton();
         jLabelNombreGrup1 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProducto = new org.jdesktop.swingx.JXTable();
+        jButton2 = new javax.swing.JButton();
+        jTCodigo = new javax.swing.JTextField();
+        jLNombre2 = new javax.swing.JLabel();
 
-        setLayout(new java.awt.GridBagLayout());
+        setBackground(java.awt.SystemColor.activeCaption);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        setBackground(java.awt.SystemColor.activeCaptionText);
-        jLabelCreditopendiente2.setFont(new java.awt.Font("Arial Black", 0, 12));
+        jLabelCreditopendiente2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabelCreditopendiente2.setForeground(new java.awt.Color(204, 0, 51));
-        jLabelCreditopendiente2.setText(" TODOS LOS GIROS ANULADOS DESDE UNA FECHA HASTA OTRA");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 13, 0);
-        add(jLabelCreditopendiente2, gridBagConstraints);
+        jLabelCreditopendiente2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelCreditopendiente2.setText("INFORME DE VENTAS POR FECHA Y POR CLIENTE");
+        add(jLabelCreditopendiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 533, -1));
 
-        lblFechaIngreso1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        lblFechaIngreso1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         lblFechaIngreso1.setText("DESDE");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(lblFechaIngreso1, gridBagConstraints);
+        add(lblFechaIngreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 54, 23));
 
-        datDesde.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
-        add(datDesde, gridBagConstraints);
+        datDesde.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        add(datDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 129, -1));
 
-        lblFechaIngreso.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        lblFechaIngreso.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         lblFechaIngreso.setText("HASTA");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(0, 7, 0, 0);
-        add(lblFechaIngreso, gridBagConstraints);
+        add(lblFechaIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 125, 23));
 
-        datHasta.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
-        add(datHasta, gridBagConstraints);
-
-        jBVer.setText("Ver");
-        jBVer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBVerActionPerformed(evt);
-            }
-        });
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(jBVer, gridBagConstraints);
-
-        jLabelCedula2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
-        jLabelCedula2.setText("AGENCIA");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(jLabelCedula2, gridBagConstraints);
-
-        cboAgencia.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
-        cboAgencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboAgenciaActionPerformed(evt);
-            }
-        });
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 11, 0, 0);
-        add(cboAgencia, gridBagConstraints);
+        datHasta.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        add(datHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, -1, -1));
 
         jBImprimir.setText("Imprimir");
         jBImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -190,30 +104,15 @@ private void setTabla(){
                 jBImprimirActionPerformed(evt);
             }
         });
+        add(jBImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 90, -1, 25));
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        add(jBImprimir, gridBagConstraints);
-
-        jLabelNombreGrup1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11));
+        jLabelNombreGrup1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelNombreGrup1.setText("Nombre del Responsable");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
-        add(jLabelNombreGrup1, gridBagConstraints);
+        add(jLabelNombreGrup1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         txtNombre.setBorder(null);
         txtNombre.setSelectionColor(java.awt.SystemColor.activeCaptionText);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        add(txtNombre, gridBagConstraints);
+        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 780, -1));
 
         tblProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -232,16 +131,23 @@ private void setTabla(){
                 tblProductoMouseClicked(evt);
             }
         });
-
         jScrollPane2.setViewportView(tblProducto);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(jScrollPane2, gridBagConstraints);
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 960, 470));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/16/BINOC02A.png"))); // NOI18N
+        jButton2.setText("Busca Cliente");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, -1, -1));
+        add(jTCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 130, -1));
+
+        jLNombre2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
+        jLNombre2.setText("Codigo 4 Life");
+        add(jLNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductoMouseClicked
@@ -252,65 +158,79 @@ private void setTabla(){
     }//GEN-LAST:event_tblProductoMouseClicked
 
     private void jBImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBImprimirActionPerformed
-        horario=new Horario();
-        Horario hora = new Horario();
-        Boolean est=(false);
-        hora=horario.buscar(est);
-        codigo = new Lista(new CodigoAgencia().lista((Agencia)lista.getObject(cboAgencia.getSelectedIndex())));
-        codigos = new CodigoAgencia();
-        codigos=(CodigoAgencia) codigo.ultimo();
-        
+        Cliente cli = new  Cliente();
+        String bus = jTCodigo.getText();
+        cli = cli.buscarCodigo(bus);
         
         Date hora1;
         Date hora2;
         
         hora1=datDesde.getDate();
         hora2=datHasta.getDate();
-        Boolean rem=true;
-        
-        try {
+ 
+        if (jTCodigo.getText().equals("")){
+            Mensaje.showError(this,"No ha ingresado ningun codigo","Error");
+           // enblanco();
+        }else{
+                 try {
             
-            ReportePrevio rp = new ReportePrevio(new Mapa(new Lista(new Giro().lista14(hora1,hora2,codigos.getAgencia(),rem)),Mapa.MAPAGIRO,true),ReportePrevio.ANULA_GIROS);
-            rp.setRespon(hora.getUsuario().getNombre()+" "+hora.getUsuario().getApellido());
+            ReportePrevio rp = new ReportePrevio(new Mapa(new Lista(new Factura().lista14(hora1,hora2,cli)),Mapa.MAPAFACTURA,true),ReportePrevio.ANULA_GIROS);
+       //     rp.setRespon(hora.getUsuario().getNombre()+" "+hora.getUsuario().getApellido());
             rp.setDesde(hora1);
             rp.setHasta(hora2);
-            rp.setAgencia(""+codigos.getAgencia().getNombre());
+           // rp.setAgencia(""+codigos.getAgencia().getNombre());
             rp.mostrarVistaPreliminar(MenuPrin.escritorio);
         } catch (Exception e) {
             e.printStackTrace();
+        } 
         }
+  
     }//GEN-LAST:event_jBImprimirActionPerformed
 
-    private void cboAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboAgenciaActionPerformed
-        /**    codigo = new Lista(new CodigoAgencia().lista((Agencia)lista.getObject(cboAgencia.getSelectedIndex())));
-        codigos = new CodigoAgencia();
-        codigos=(CodigoAgencia) codigo.ultimo();
- 
-        if (codigos==null){
-            Mensaje.showError(this,"Esta agencia no tiene codigo ingrese uno por favor","Error");
- 
-        }else{
-            Float newcod= codigos.getCodigo()+1;
-            txtCodigo.setText(String.valueOf(newcod));
-            setTabla();
-        }   */
-    }//GEN-LAST:event_cboAgenciaActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-    private void jBVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerActionPerformed
-        setTabla();
-    }//GEN-LAST:event_jBVerActionPerformed
+        Cliente cli = new  Cliente();
+        Date hora1;
+        Date hora2;
+         
+         hora1=datDesde.getDate();
+         hora2=datHasta.getDate();
+      
+        
+        
+        if (jTCodigo.getText().equals("")){
+            Mensaje.showError(this,"No ha ingresado ningun codigo","Error");
+           // enblanco();
+        }else{
+            String bus = jTCodigo.getText();
+            cli = cli.buscarCodigo(bus);
+            if (cli==null){
+                Mensaje.showError(this,"No hay ningun Cliente con este codigo intente denuevo","Error");
+                //enblanco();
+            }else{
+              
+         listaAnteriores =new Lista(new Factura().lista14(hora1,hora2,cli));         
+         Mapa mapa = new Mapa(listaAnteriores,Mapa.MAPAFACTURA,true);
+         reportesXML.ModeloTabla modelo = mapa.getModeloTabla();
+         tblProducto.setModel(modelo);   
+                
+                
+            }
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox cboAgencia;
     private org.jdesktop.swingx.JXDatePicker datDesde;
     private org.jdesktop.swingx.JXDatePicker datHasta;
     private javax.swing.JButton jBImprimir;
-    private javax.swing.JButton jBVer;
-    private javax.swing.JLabel jLabelCedula2;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLNombre2;
     private javax.swing.JLabel jLabelCreditopendiente2;
     private javax.swing.JLabel jLabelNombreGrup1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTCodigo;
     private javax.swing.JLabel lblFechaIngreso;
     private javax.swing.JLabel lblFechaIngreso1;
     private org.jdesktop.swingx.JXTable tblProducto;

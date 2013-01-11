@@ -12,6 +12,7 @@ package Datos;
 import beans.Cierre;
 import beans.Horario;
 import hibernate.HibernateDAO;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
@@ -46,5 +47,14 @@ public class CierreHBM extends HibernateDAO{
             crit.add(Restrictions.eq("cierre1",anul));
         return crit.list();
        
+    }
+     
+      public List listarFecha(Date desde, Date hasta){
+        Criteria crit = session.createCriteria(Cierre.class);
+        if ( desde!=null && hasta!=null )
+        crit.add(Restrictions.between("desde",desde,hasta));
+        //crit.addOrder(Order.asc("fecha"));
+        return crit.list();
+        
     }
 }
