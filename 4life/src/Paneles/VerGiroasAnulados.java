@@ -8,7 +8,6 @@ package Paneles;
 
     import beans.Otros;
     import clases.MenuPrin;
-   // import com.sun.rmi.rmid.ExecOptionPermission;
     import java.util.Date;
     import java.util.List;
     import modelo.Mensaje;
@@ -161,7 +160,10 @@ private void inicializa(){
         Cliente cli = new  Cliente();
         String bus = jTCodigo.getText();
         cli = cli.buscarCodigo(bus);
-        
+    horario=new Horario();
+    Horario otro = new Horario();
+    Boolean est=(false);
+    otro=horario.buscar(est);
         Date hora1;
         Date hora2;
         
@@ -174,11 +176,11 @@ private void inicializa(){
         }else{
                  try {
             
-            ReportePrevio rp = new ReportePrevio(new Mapa(new Lista(new Factura().lista14(hora1,hora2,cli)),Mapa.MAPAFACTURA,true),ReportePrevio.ANULA_GIROS);
-       //     rp.setRespon(hora.getUsuario().getNombre()+" "+hora.getUsuario().getApellido());
+            ReportePrevio rp = new ReportePrevio(new Mapa(new Lista(new Factura().lista14(hora1,hora2,cli)),Mapa.MAPAFAC,true),ReportePrevio.REPORTEQUITO);
+            rp.setRespon(otro.getUsuario().getNombre()+" "+otro.getUsuario().getApellido());
             rp.setDesde(hora1);
             rp.setHasta(hora2);
-           // rp.setAgencia(""+codigos.getAgencia().getNombre());
+            //rp.setAgencia(""+codigos.getAgencia().getNombre());
             rp.mostrarVistaPreliminar(MenuPrin.escritorio);
         } catch (Exception e) {
             e.printStackTrace();

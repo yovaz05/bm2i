@@ -828,8 +828,7 @@ public class MenuPrin extends javax.swing.JFrame {
         });
         jMenu2.add(jMVerGiroOfi);
 
-        JMVerPaquetes.setText("Ver Paquetes Enviados");
-        JMVerPaquetes.setEnabled(false);
+        JMVerPaquetes.setText("REPORTE PARA ENVIAR");
         JMVerPaquetes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JMVerPaquetesActionPerformed(evt);
@@ -1268,10 +1267,9 @@ public class MenuPrin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMVerFloresActionPerformed
 
     private void JMVerPaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMVerPaquetesActionPerformed
-        ComVerPaquetes f = new ComVerPaquetes();
+           ComVerPasajes f = new  ComVerPasajes();
         f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
         f.moveToFront();
     }//GEN-LAST:event_JMVerPaquetesActionPerformed
 

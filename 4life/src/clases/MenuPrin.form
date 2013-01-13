@@ -402,8 +402,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JMVerPaquetes">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ver Paquetes Enviados"/>
-                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" value="REPORTE PARA ENVIAR"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMVerPaquetesActionPerformed"/>

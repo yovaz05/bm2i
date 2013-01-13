@@ -42,6 +42,7 @@ public class Mapa {
     public static final int MAPAFACTURA = 36;
     public static final int MAPAEXISTENCIAS = 37;
     public static final int MAPACIERRES = 38;
+    public static final int MAPAFAC = 39;
     
     private Lista lista;
     private Vector vec;
@@ -226,13 +227,21 @@ public class Mapa {
             case MAPAFACTURA:
                 setMapafactura();
                 break;
+                
+           case MAPAFAC:
+                setMapafac();
+                break;     
+                
+                
         }
     }
 
      private void setMapafactura() {
         modeloTabla = new MapaFacturas(lista, isNumerador());
     }
-    
+     private void setMapafac() {
+        modeloTabla = new MapaFac(lista, isNumerador());
+    }
     
      private void setMapaDesgloce() {
         modeloTabla = new MapaDesgloce(lista, isNumerador());

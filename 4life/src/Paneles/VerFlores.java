@@ -13,7 +13,7 @@ import java.util.List;
 import modelo.Mensaje;
 import modelo.Lista;
 
-import beans.Flores;
+
 import beans.Horario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,7 +28,7 @@ public class VerFlores extends javax.swing.JPanel {
     private Lista lista;
     private Lista codigo;
     private Horario horario;
-    private Flores flores;
+
     private String mensaje = "";
     private boolean editar;
     Lista listaAnteriores;
@@ -50,7 +50,7 @@ public class VerFlores extends javax.swing.JPanel {
     }
 
     private void setTabla() {
-        flores = new Flores();
+     
         horario = new Horario();
         Horario hora = new Horario();
         Boolean est = (false);
