@@ -24,14 +24,14 @@ public class MapaCierres extends ModeloTabla implements ModeloMapa{
     private String[] nombre = new String[]{
             
             "N",
-            "Desde",
-            "Hasta",
+            "Inicio",
+            "Fin",
             "T Ingreso",
             "T Egreso",
             "T Puntod",
             "Efectivo",
             "Deposito",
-            "Apertura Caja",
+            "Aper Caja",
             "Total Caja",
             "Hora : Min : Seg",
             

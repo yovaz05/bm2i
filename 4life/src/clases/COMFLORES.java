@@ -868,11 +868,14 @@ public class COMFLORES extends javax.swing.JInternalFrame {
         cierre.guardar();
        
         
-        
+     Lista  listaA =new Lista(new Cierre().lista3(hora));
 
         try {
 
-            ReportePrevio rp = new ReportePrevio(new Mapa(new Lista(cierre.lista3(hora)),Mapa.MAPACIERRE,true),ReportePrevio.CIERRE);
+            ReportePrevio rp = new ReportePrevio(new Mapa(listaA,Mapa.MAPACIERRES,true),ReportePrevio.REPORTECIERRE);
+            rp.setRespon(hora.getUsuario().getNombre()+" "+hora.getUsuario().getApellido());
+            rp.setDesde(hora.getFechaInicio());
+            rp.setHasta(hora.getFechaFin());
             rp.mostrarVistaPreliminar(MenuPrin.escritorio);
         } catch (Exception e) {
             e.printStackTrace();

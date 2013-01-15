@@ -69,22 +69,22 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMVerFlores = new javax.swing.JMenuItem();
-        jMvERgIROS = new javax.swing.JMenuItem();
-        jMGirosRemplazados = new javax.swing.JMenuItem();
-        jMGirosAnulados = new javax.swing.JMenuItem();
-        jMGirospagados = new javax.swing.JMenuItem();
-        jMVerGiroOfi = new javax.swing.JMenuItem();
-        JMVerPaquetes = new javax.swing.JMenuItem();
-        jMReportesCabinas = new javax.swing.JMenuItem();
-        jMVerVideo = new javax.swing.JMenuItem();
-        jMVerVentas = new javax.swing.JMenuItem();
-        jMVerDarCreditos = new javax.swing.JMenuItem();
-        jMcREDITOSpAGADOS = new javax.swing.JMenuItem();
-        jMVerPagoCheque = new javax.swing.JMenuItem();
-        JMVerProtestados = new javax.swing.JMenuItem();
-        jMVerPasajes = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMvERgIROS1 = new javax.swing.JMenuItem();
+        jMGirosRemplazados1 = new javax.swing.JMenuItem();
+        jMGirosAnulados1 = new javax.swing.JMenuItem();
+        jMGirospagados1 = new javax.swing.JMenuItem();
+        jMVerGiroOfi1 = new javax.swing.JMenuItem();
+        JMVerPaquetes1 = new javax.swing.JMenuItem();
+        jMVerFlores1 = new javax.swing.JMenuItem();
+        jMReportesCabinas1 = new javax.swing.JMenuItem();
+        jMVerVideo1 = new javax.swing.JMenuItem();
+        jMVerVentas1 = new javax.swing.JMenuItem();
+        jMVerDarCreditos1 = new javax.swing.JMenuItem();
+        jMcREDITOSpAGADOS1 = new javax.swing.JMenuItem();
+        jMVerPagoCheque1 = new javax.swing.JMenuItem();
+        JMVerProtestados1 = new javax.swing.JMenuItem();
+        jMVerPasajes1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Princippal");
@@ -464,142 +464,138 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
         getContentPane().add(jToolBar2, java.awt.BorderLayout.NORTH);
 
-        jMenu2.setText("REPORTES");
+        jMenu3.setText("REPORTES");
 
-        jMVerFlores.setText("REPORTE DE FACTURAS");
-        jMVerFlores.addActionListener(new java.awt.event.ActionListener() {
+        jMvERgIROS1.setText("EXISTENCIA DE PRODUCTOS");
+        jMvERgIROS1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMVerFloresActionPerformed(evt);
+                jMvERgIROS1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMVerFlores);
+        jMenu3.add(jMvERgIROS1);
 
-        jMvERgIROS.setText("EXISTENCIA DE PRODUCTOS");
-        jMvERgIROS.addActionListener(new java.awt.event.ActionListener() {
+        jMGirosRemplazados1.setText("RERPORTES DE FACTURAS");
+        jMGirosRemplazados1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMvERgIROSActionPerformed(evt);
+                jMGirosRemplazados1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMvERgIROS);
+        jMenu3.add(jMGirosRemplazados1);
 
-        jMGirosRemplazados.setText("Ver Giros Remplazados");
-        jMGirosRemplazados.setEnabled(false);
-        jMGirosRemplazados.addActionListener(new java.awt.event.ActionListener() {
+        jMGirosAnulados1.setText("REPORTE UTILIDAD");
+        jMGirosAnulados1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMGirosRemplazadosActionPerformed(evt);
+                jMGirosAnulados1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMGirosRemplazados);
+        jMenu3.add(jMGirosAnulados1);
 
-        jMGirosAnulados.setText("Ver Giros Anulados");
-        jMGirosAnulados.setEnabled(false);
-        jMGirosAnulados.addActionListener(new java.awt.event.ActionListener() {
+        jMGirospagados1.setText("REPORTE DE CIERRES CAJA");
+        jMGirospagados1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMGirosAnuladosActionPerformed(evt);
+                jMGirospagados1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMGirosAnulados);
+        jMenu3.add(jMGirospagados1);
 
-        jMGirospagados.setText("Ver Giros Pagados");
-        jMGirospagados.setEnabled(false);
-        jMGirospagados.addActionListener(new java.awt.event.ActionListener() {
+        jMVerGiroOfi1.setText("FACTURAS POR CLIENTE");
+        jMVerGiroOfi1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMGirospagadosActionPerformed(evt);
+                jMVerGiroOfi1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMGirospagados);
+        jMenu3.add(jMVerGiroOfi1);
 
-        jMVerGiroOfi.setText("Ver Giros de Oficina");
-        jMVerGiroOfi.setEnabled(false);
-        jMVerGiroOfi.addActionListener(new java.awt.event.ActionListener() {
+        JMVerPaquetes1.setText("REPORTE PARA ENVIAR");
+        JMVerPaquetes1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMVerGiroOfiActionPerformed(evt);
+                JMVerPaquetes1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMVerGiroOfi);
+        jMenu3.add(JMVerPaquetes1);
 
-        JMVerPaquetes.setText("Ver Paquetes Enviados");
-        JMVerPaquetes.setEnabled(false);
-        JMVerPaquetes.addActionListener(new java.awt.event.ActionListener() {
+        jMVerFlores1.setText("Ver las Flores Vendidas");
+        jMVerFlores1.setEnabled(false);
+        jMVerFlores1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JMVerPaquetesActionPerformed(evt);
+                jMVerFlores1ActionPerformed(evt);
             }
         });
-        jMenu2.add(JMVerPaquetes);
+        jMenu3.add(jMVerFlores1);
 
-        jMReportesCabinas.setText("Ver Reportes de Cabinas");
-        jMReportesCabinas.setEnabled(false);
-        jMReportesCabinas.addActionListener(new java.awt.event.ActionListener() {
+        jMReportesCabinas1.setText("Ver Reportes de Cabinas");
+        jMReportesCabinas1.setEnabled(false);
+        jMReportesCabinas1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMReportesCabinasActionPerformed(evt);
+                jMReportesCabinas1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMReportesCabinas);
+        jMenu3.add(jMReportesCabinas1);
 
-        jMVerVideo.setText("Reporte de Video Conferencias");
-        jMVerVideo.setEnabled(false);
-        jMVerVideo.addActionListener(new java.awt.event.ActionListener() {
+        jMVerVideo1.setText("Reporte de Video Conferencias");
+        jMVerVideo1.setEnabled(false);
+        jMVerVideo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMVerVideoActionPerformed(evt);
+                jMVerVideo1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMVerVideo);
+        jMenu3.add(jMVerVideo1);
 
-        jMVerVentas.setText("Reporte de Ventas Diarias");
-        jMVerVentas.setEnabled(false);
-        jMVerVentas.addActionListener(new java.awt.event.ActionListener() {
+        jMVerVentas1.setText("Reporte de Ventas Diarias");
+        jMVerVentas1.setEnabled(false);
+        jMVerVentas1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMVerVentasActionPerformed(evt);
+                jMVerVentas1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMVerVentas);
+        jMenu3.add(jMVerVentas1);
 
-        jMVerDarCreditos.setText("Reporte de Creditos Dados");
-        jMVerDarCreditos.setEnabled(false);
-        jMVerDarCreditos.addActionListener(new java.awt.event.ActionListener() {
+        jMVerDarCreditos1.setText("Reporte de Creditos Dados");
+        jMVerDarCreditos1.setEnabled(false);
+        jMVerDarCreditos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMVerDarCreditosActionPerformed(evt);
+                jMVerDarCreditos1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMVerDarCreditos);
+        jMenu3.add(jMVerDarCreditos1);
 
-        jMcREDITOSpAGADOS.setText("Reportes de Creditos Pagados");
-        jMcREDITOSpAGADOS.setEnabled(false);
-        jMcREDITOSpAGADOS.addActionListener(new java.awt.event.ActionListener() {
+        jMcREDITOSpAGADOS1.setText("Reportes de Creditos Pagados");
+        jMcREDITOSpAGADOS1.setEnabled(false);
+        jMcREDITOSpAGADOS1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMcREDITOSpAGADOSActionPerformed(evt);
+                jMcREDITOSpAGADOS1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMcREDITOSpAGADOS);
+        jMenu3.add(jMcREDITOSpAGADOS1);
 
-        jMVerPagoCheque.setText("Reportes de Pagos con Cheques");
-        jMVerPagoCheque.setEnabled(false);
-        jMVerPagoCheque.addActionListener(new java.awt.event.ActionListener() {
+        jMVerPagoCheque1.setText("Reportes de Pagos con Cheques");
+        jMVerPagoCheque1.setEnabled(false);
+        jMVerPagoCheque1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMVerPagoChequeActionPerformed(evt);
+                jMVerPagoCheque1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMVerPagoCheque);
+        jMenu3.add(jMVerPagoCheque1);
 
-        JMVerProtestados.setText("Reporte de Cheques Protestados");
-        JMVerProtestados.setEnabled(false);
-        JMVerProtestados.addActionListener(new java.awt.event.ActionListener() {
+        JMVerProtestados1.setText("Reporte de Cheques Protestados");
+        JMVerProtestados1.setEnabled(false);
+        JMVerProtestados1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JMVerProtestadosActionPerformed(evt);
+                JMVerProtestados1ActionPerformed(evt);
             }
         });
-        jMenu2.add(JMVerProtestados);
+        jMenu3.add(JMVerProtestados1);
 
-        jMVerPasajes.setText("Salir");
-        jMVerPasajes.setEnabled(false);
-        jMVerPasajes.addActionListener(new java.awt.event.ActionListener() {
+        jMVerPasajes1.setText("Reporte de Pasajes");
+        jMVerPasajes1.setEnabled(false);
+        jMVerPasajes1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMVerPasajesActionPerformed(evt);
+                jMVerPasajes1ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMVerPasajes);
+        jMenu3.add(jMVerPasajes1);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -818,130 +814,7 @@ public class MenuPrinReportes extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jXHEnviarGiroActionPerformed
 
-    private void jMVerPasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerPasajesActionPerformed
-        /*ComVerPasajes f = new ComVerPasajes();
-        f.setVisible(true);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();*/
-        Configuracion.cerrar();
-        System.exit(0);
-    }//GEN-LAST:event_jMVerPasajesActionPerformed
-
-    private void JMVerProtestadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMVerProtestadosActionPerformed
-        VerChequePro f = new VerChequePro();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-
-
-    }//GEN-LAST:event_JMVerProtestadosActionPerformed
-
-    private void jMVerPagoChequeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerPagoChequeActionPerformed
-        ComVerPagoCheque f = new ComVerPagoCheque();
-        f.setVisible(true);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-
-    }//GEN-LAST:event_jMVerPagoChequeActionPerformed
-
-    private void jMcREDITOSpAGADOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMcREDITOSpAGADOSActionPerformed
-// TODO add your handling code here:
-        ComDarCredito f = new ComDarCredito();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-    }//GEN-LAST:event_jMcREDITOSpAGADOSActionPerformed
-
-    private void jMVerDarCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerDarCreditosActionPerformed
-        ComVerDarCreditos f = new ComVerDarCreditos();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-
-
-    }//GEN-LAST:event_jMVerDarCreditosActionPerformed
-
-    private void jMVerVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerVentasActionPerformed
-        ConVerVentas f = new ConVerVentas();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-    }//GEN-LAST:event_jMVerVentasActionPerformed
-
-    private void jMVerVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerVideoActionPerformed
-        ComVerVideo f = new ComVerVideo();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-    }//GEN-LAST:event_jMVerVideoActionPerformed
-
-    private void jMReportesCabinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMReportesCabinasActionPerformed
-        ComVerCabinas f = new ComVerCabinas();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-
-    }//GEN-LAST:event_jMReportesCabinasActionPerformed
-
-    private void jMVerFloresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerFloresActionPerformed
-        ComVerFlores f = new ComVerFlores();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-    }//GEN-LAST:event_jMVerFloresActionPerformed
-
-    private void JMVerPaquetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMVerPaquetesActionPerformed
-        ComVerPaquetes f = new ComVerPaquetes();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-    }//GEN-LAST:event_JMVerPaquetesActionPerformed
-
-    private void jMVerGiroOfiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerGiroOfiActionPerformed
-        ComVerGirosOfi f = new ComVerGirosOfi();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-
-
-
-    }//GEN-LAST:event_jMVerGiroOfiActionPerformed
-
-    private void jMGirospagadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGirospagadosActionPerformed
-        COMgirosPagados f = new COMgirosPagados();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-    }//GEN-LAST:event_jMGirospagadosActionPerformed
-
-    private void jMGirosAnuladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGirosAnuladosActionPerformed
-        COManulargiros f = new COManulargiros();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-
-    }//GEN-LAST:event_jMGirosAnuladosActionPerformed
-
-    private void jMGirosRemplazadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGirosRemplazadosActionPerformed
-        COMvergiroremplazado f = new COMvergiroremplazado();
-        f.setVisible(true);
-        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
-        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
-        f.moveToFront();
-    }//GEN-LAST:event_jMGirosRemplazadosActionPerformed
-
-    private void jMvERgIROSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMvERgIROSActionPerformed
+    private void jMvERgIROS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMvERgIROS1ActionPerformed
 
         COMverGiros f = new COMverGiros();
         f.setVisible(true);
@@ -949,8 +822,120 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
 
         f.moveToFront();
+    }//GEN-LAST:event_jMvERgIROS1ActionPerformed
 
-    }//GEN-LAST:event_jMvERgIROSActionPerformed
+    private void jMGirosRemplazados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGirosRemplazados1ActionPerformed
+        ComVerFlores f = new ComVerFlores();
+        f.setVisible(true);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
+    }//GEN-LAST:event_jMGirosRemplazados1ActionPerformed
+
+    private void jMGirosAnulados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGirosAnulados1ActionPerformed
+        ComVerCabinas f = new ComVerCabinas();
+        f.setVisible(true);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
+    }//GEN-LAST:event_jMGirosAnulados1ActionPerformed
+
+    private void jMGirospagados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGirospagados1ActionPerformed
+
+        ComVerDarCreditos f = new ComVerDarCreditos();
+        f.setVisible(true);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
+    }//GEN-LAST:event_jMGirospagados1ActionPerformed
+
+    private void jMVerGiroOfi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerGiroOfi1ActionPerformed
+        COManulargiros f = new COManulargiros();
+        f.setVisible(true);
+        f.setBounds(0,0,escritorio.getSize().width,escritorio.getSize().height);
+        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
+    }//GEN-LAST:event_jMVerGiroOfi1ActionPerformed
+
+    private void JMVerPaquetes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMVerPaquetes1ActionPerformed
+        ComVerPasajes f = new  ComVerPasajes();
+        f.setVisible(true);
+        escritorio.add(f,JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
+    }//GEN-LAST:event_JMVerPaquetes1ActionPerformed
+
+    private void jMVerFlores1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerFlores1ActionPerformed
+        ComVerFlores f = new ComVerFlores();
+        f.setVisible(true);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
+    }//GEN-LAST:event_jMVerFlores1ActionPerformed
+
+    private void jMReportesCabinas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMReportesCabinas1ActionPerformed
+        ComVerCabinas f = new ComVerCabinas();
+        f.setVisible(true);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
+    }//GEN-LAST:event_jMReportesCabinas1ActionPerformed
+
+    private void jMVerVideo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerVideo1ActionPerformed
+        ComVerVideo f = new ComVerVideo();
+        f.setVisible(true);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
+    }//GEN-LAST:event_jMVerVideo1ActionPerformed
+
+    private void jMVerVentas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerVentas1ActionPerformed
+        ConVerVentas f = new ConVerVentas();
+        f.setVisible(true);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
+    }//GEN-LAST:event_jMVerVentas1ActionPerformed
+
+    private void jMVerDarCreditos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerDarCreditos1ActionPerformed
+        ComVerDarCreditos f = new ComVerDarCreditos();
+        f.setVisible(true);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
+
+    }//GEN-LAST:event_jMVerDarCreditos1ActionPerformed
+
+    private void jMcREDITOSpAGADOS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMcREDITOSpAGADOS1ActionPerformed
+        // TODO add your handling code here:
+        ComDarCredito f = new ComDarCredito();
+        f.setVisible(true);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
+    }//GEN-LAST:event_jMcREDITOSpAGADOS1ActionPerformed
+
+    private void jMVerPagoCheque1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerPagoCheque1ActionPerformed
+        ComVerPagoCheque f = new ComVerPagoCheque();
+        f.setVisible(true);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
+    }//GEN-LAST:event_jMVerPagoCheque1ActionPerformed
+
+    private void JMVerProtestados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMVerProtestados1ActionPerformed
+        VerChequePro f = new VerChequePro();
+        f.setVisible(true);
+        f.setBounds(0, 0, escritorio.getSize().width, escritorio.getSize().height);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
+
+    }//GEN-LAST:event_JMVerProtestados1ActionPerformed
+
+    private void jMVerPasajes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMVerPasajes1ActionPerformed
+        ComVerPasajes f = new ComVerPasajes();
+        f.setVisible(true);
+        escritorio.add(f, JLayeredPane.DEFAULT_LAYER);
+        f.moveToFront();
+    }//GEN-LAST:event_jMVerPasajes1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -981,8 +966,8 @@ public class MenuPrinReportes extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem JMVerPaquetes;
-    private javax.swing.JMenuItem JMVerProtestados;
+    private javax.swing.JMenuItem JMVerPaquetes1;
+    private javax.swing.JMenuItem JMVerProtestados1;
     private javax.swing.JButton enviargiro;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -998,21 +983,21 @@ public class MenuPrinReportes extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JMenuItem jMGirosAnulados;
-    private javax.swing.JMenuItem jMGirosRemplazados;
-    private javax.swing.JMenuItem jMGirospagados;
-    private javax.swing.JMenuItem jMReportesCabinas;
-    private javax.swing.JMenuItem jMVerDarCreditos;
-    private javax.swing.JMenuItem jMVerFlores;
-    private javax.swing.JMenuItem jMVerGiroOfi;
-    private javax.swing.JMenuItem jMVerPagoCheque;
-    private javax.swing.JMenuItem jMVerPasajes;
-    private javax.swing.JMenuItem jMVerVentas;
-    private javax.swing.JMenuItem jMVerVideo;
-    private javax.swing.JMenuItem jMcREDITOSpAGADOS;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMGirosAnulados1;
+    private javax.swing.JMenuItem jMGirosRemplazados1;
+    private javax.swing.JMenuItem jMGirospagados1;
+    private javax.swing.JMenuItem jMReportesCabinas1;
+    private javax.swing.JMenuItem jMVerDarCreditos1;
+    private javax.swing.JMenuItem jMVerFlores1;
+    private javax.swing.JMenuItem jMVerGiroOfi1;
+    private javax.swing.JMenuItem jMVerPagoCheque1;
+    private javax.swing.JMenuItem jMVerPasajes1;
+    private javax.swing.JMenuItem jMVerVentas1;
+    private javax.swing.JMenuItem jMVerVideo1;
+    private javax.swing.JMenuItem jMcREDITOSpAGADOS1;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMvERgIROS;
+    private javax.swing.JMenuItem jMvERgIROS1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSplitPane jSplitPane1;

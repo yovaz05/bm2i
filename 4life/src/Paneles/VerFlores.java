@@ -186,18 +186,14 @@ public class VerFlores extends javax.swing.JPanel {
 
         try {
 
-            //listaFactura = new Lista(new Factura().listarFecha(hora1, hora2));
-            //listaAnteriores =new Lista(new Flores().lista4(hora1,hora2));         
-            //Mapa mapa = new Mapa(listaFactura, Mapa.MAPAFACTURA, true);
-            ReportePrevio rp = new ReportePrevio(new Mapa(new Lista(new Factura().listarFecha(hora1, hora2)), Mapa.MAPAFACTURA, true), ReportePrevio.VERFLORES);
-            //ReportePrevio rp = new ReportePrevio(new Mapa(new Lista(new Flores().lista4(hora1,hora2)),Mapa.MAPAFLORES,true),ReportePrevio.VERFLORES);
+        listaFactura = new Lista(new Factura().listarFecha(hora1, hora2));
+            Mapa mapa = new Mapa(listaFactura, Mapa.MAPAFAC, true);
+            ReportePrevio rp = new ReportePrevio(new Mapa(new Lista(new Factura().listarFecha(hora1, hora2)), Mapa.MAPAFAC, true), ReportePrevio.REPORTEQUITO);
             rp.setRespon(hora.getUsuario().getNombre() + " " + hora.getUsuario().getApellido());
             rp.setDesde(hora1);
             rp.setHasta(hora2);
-
-            //rp.setAgencia(""+agencia.getNombre());
             rp.mostrarVistaPreliminar(MenuPrin.escritorio);
-        } catch (Exception e) {
+              } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jBImprimirActionPerformed

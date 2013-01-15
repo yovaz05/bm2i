@@ -65,7 +65,10 @@ public class ReportePrevio {
     public static final int FINDETURNO= 28;
     public static final int INVENTARIO= 29;
     public static final int TARJETAS= 30;
-     public static final int REPORTEQUITO= 31;
+    public static final int REPORTEQUITO= 31;
+    public static final int REPORTECIERRE= 32;
+     public static final int REPORTEUTILIDAD= 33;
+    
     
     private String encabezadoDelReporte;
     private String encabezadoDePagina;
@@ -327,8 +330,13 @@ public class ReportePrevio {
          
          case  REPORTEQUITO:
                 setUrl(getClass().getResource("Reportequito.xml"));
+                break;   
+              case  REPORTECIERRE:
+                setUrl(getClass().getResource("ReporteCierre.xml"));
                 break;    
-                
+                 case  REPORTEUTILIDAD:
+                setUrl(getClass().getResource("ReporteUtilidad.xml"));
+                break;   
         }
     
     }

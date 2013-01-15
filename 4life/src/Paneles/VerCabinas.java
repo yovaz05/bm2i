@@ -93,7 +93,7 @@ Lista listaAnteriores;
                 jBVerActionPerformed(evt);
             }
         });
-        add(jBVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 71, -1));
+        add(jBVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 71, -1));
 
         jBImprimir.setText("Imprimir");
         jBImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +101,7 @@ Lista listaAnteriores;
                 jBImprimirActionPerformed(evt);
             }
         });
-        add(jBImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, -1, -1));
+        add(jBImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, -1, -1));
 
         jLabelNombreGrup1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelNombreGrup1.setText("Nombre del Responsable");
@@ -244,18 +244,42 @@ Lista listaAnteriores;
         
         Date hora1;
         Date hora2;
-        
         hora1=datDesde.getDate();
         hora2=datHasta.getDate();
-        listaAnteriores =new Lista(new Otros().listarFecha(hora1,hora2)); 
+        listaAnteriores =new Lista(new Otros().listarFecha(hora1,hora2));  
+        
+        Otros otros = new Otros();
+        
+         float inver=0;
+         float gan=0;
+         int pun=0;
+      
+         
+         
+          if (listaAnteriores!= null){
+   
+               for(int j=0;j<listaAnteriores.getSize();j++){
+                      otros=(Otros)listaAnteriores.getObject(j);
+                      inver=inver+(otros.getTotal()*otros.getCosto());
+                      gan=gan+(otros.getUtilidad());
+                      pun=pun+(otros.getPuntos()*otros.getTotal());
+              } 
+                 }  
+         txtVtotal.setText(""+inver);  
+         txtPtotal.setText(""+gan);
+         txtPuntos.setText(""+pun);
+        
+        
         
         try {
             
-            ReportePrevio rp = new ReportePrevio(new Mapa(listaAnteriores,Mapa.MAPAINVERSION,true),ReportePrevio.INVENTARIO);
+            ReportePrevio rp = new ReportePrevio(new Mapa(listaAnteriores,Mapa.MAPAINVERSION,true),ReportePrevio.REPORTEUTILIDAD);
             rp.setRespon(hora.getUsuario().getNombre()+" "+hora.getUsuario().getApellido());
             rp.setDesde(hora1);
             rp.setHasta(hora2);
-            //rp.setAgencia(""+agencia.getNombre());
+            rp.setTotale(inver);
+            rp.setTotali(gan);
+            rp.setPunto(pun);
             rp.mostrarVistaPreliminar(MenuPrin.escritorio);
         } catch (Exception e) {
             e.printStackTrace();

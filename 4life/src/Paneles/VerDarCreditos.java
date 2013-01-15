@@ -49,21 +49,17 @@ public class VerDarCreditos extends javax.swing.JPanel {
  }
    private void setTabla(){
          Cierre cuentas= new Cierre();
-       // Mensaje.showMensaje(this,"el nombre es "+agencia.getNombre());
          Date hora1;
          Date hora2;
          
          hora1=datDesde.getDate();
          hora2=datHasta.getDate();
           
-         
-        listaAnteriores =new Lista(new Cierre().listarFecha(hora1,hora2));         
+         listaAnteriores =new Lista(new Cierre().listarFecha(hora1,hora2));         
          Mapa mapa = new Mapa(listaAnteriores,Mapa.MAPACIERRES,true);
          reportesXML.ModeloTabla modelo = mapa.getModeloTabla();
          tblProducto.setModel(modelo);
-        
-     
- }   
+       }   
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -108,7 +104,7 @@ public class VerDarCreditos extends javax.swing.JPanel {
                 jBVerActionPerformed(evt);
             }
         });
-        add(jBVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 116, 71, -1));
+        add(jBVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 71, -1));
 
         jBImprimir.setText("Imprimir");
         jBImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +112,7 @@ public class VerDarCreditos extends javax.swing.JPanel {
                 jBImprimirActionPerformed(evt);
             }
         });
-        add(jBImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 139, -1, -1));
+        add(jBImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, -1, -1));
 
         jLabelNombreGrup1.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 11)); // NOI18N
         jLabelNombreGrup1.setText("Nombre del Responsable");
@@ -149,12 +145,8 @@ public class VerDarCreditos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductoMouseClicked
-        /**TODO add your handling code here:
-        int fila=tblProducto.getSelectedRow();
-        gh=(Giro)listaAnteriores.getObject(fila);
-        setPanel(gh); */
+    
     }//GEN-LAST:event_tblProductoMouseClicked
-
     private void jBImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBImprimirActionPerformed
         horario=new Horario();
         Horario hora = new Horario();
@@ -169,8 +161,8 @@ public class VerDarCreditos extends javax.swing.JPanel {
         hora2=datHasta.getDate();
         listaAnteriores =new Lista(new Cierre().listarFecha(hora1,hora2));
         try {
-            
-            ReportePrevio rp = new ReportePrevio(new Mapa(new Lista(new Cierre().listarFecha(hora1,hora2)),Mapa.MAPACIERRES,true),ReportePrevio.DARCREDITO);
+        //  ReportePrevio rp = new ReportePrevio(new Mapa(listaAnteriores,Mapa.MAPAINVERSION,true),ReportePrevio.INVENTARIO); 
+            ReportePrevio rp = new ReportePrevio(new Mapa(listaAnteriores,Mapa.MAPACIERRES,true),ReportePrevio.REPORTECIERRE);
             rp.setRespon(hora.getUsuario().getNombre()+" "+hora.getUsuario().getApellido());
             rp.setDesde(hora1);
             rp.setHasta(hora2);
