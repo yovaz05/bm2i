@@ -267,6 +267,8 @@ private void setPanel(Compras gg){
     
   private void getPanel3(){
         int fila=tblProducto.getSelectedRow();
+         //g=(Compras)listaAnteriores.getObject(fila);
+        
         otros = new Otros(); 
         if (fila<=0){
                     Mensaje.showError(this,"No ha elejido un producto para editar","ERROR");
@@ -280,11 +282,12 @@ private void setPanel(Compras gg){
                   gh=(Compras)listaAnteriores.getObject(fila);     
                                
      
-                  int tot=gh.getOtros().getTotal();
-                  int st=gh.getOtros().getStock();
+                  int tot=gh.getOtros().getTotal()-gh.getUnidades();
+                  int st=gh.getOtros().getStock()-gh.getUnidades();
                   Otros otros = new Otros(); 
                   otros=gh.getOtros();
                   
+               
                   otros.setTotal(tot+Integer.parseInt(txtStock.getText()));
                   otros.setStock(st+Integer.parseInt(txtStock.getText()));
                   otros.actualizar();    
