@@ -287,7 +287,6 @@ private void setPanel(Compras gg){
                   Otros otros = new Otros(); 
                   otros=gh.getOtros();
                   
-               
                   otros.setTotal(tot+Integer.parseInt(txtStock.getText()));
                   otros.setStock(st+Integer.parseInt(txtStock.getText()));
                   otros.actualizar();    
